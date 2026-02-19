@@ -64,7 +64,7 @@
       <div class="mb-6!">
         {% if section.settings.title != blank %}
           <div class="flex justify-between">
-            <h2>
+            <h2 class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
               {{ section.settings.title }}
             </h2>
             {% if section.settings.enable_btn %}
@@ -82,7 +82,7 @@
 
       {% if use_swiper %}
         {%- comment -%} Swiper carousel mode (> 5 products) {%- endcomment -%}
-        <div class="product-grid-swiper-{{ section.id }} relative!">
+        <div class="product-grid-swiper-{{ section.id }} relative! {% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
           <div class="swiper" id="ProductGridSwiper-{{ section.id }}">
             <div class="swiper-wrapper gap-10">
               {%- for product in section.settings.collection.products limit: products_to_show -%}
