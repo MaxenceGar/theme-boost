@@ -1,0 +1,68 @@
+{% doc %}
+  Conteneur flex qui peut contenir d'autres blocs.
+
+  @example
+  {% content_for 'block', type: 'group', id: 'group' %}
+{% enddoc %}
+
+<div
+  class="group-block"
+  style="
+    display: flex;
+    flex-direction: {{ block.settings.direction }};
+    gap: {{ block.settings.gap }}px;
+    align-items: {{ block.settings.align }};
+  "
+  {{ block.shopify_attributes }}
+>
+  {% content_for 'blocks' %}
+</div>
+
+{% schema %}
+{
+  "name": "Groupe",
+  "settings": [
+    {
+      "type": "select",
+      "id": "direction",
+      "label": "Direction",
+      "options": [
+        { "value": "row", "label": "Horizontal" },
+        { "value": "column", "label": "Vertical" }
+      ],
+      "default": "row"
+    },
+    {
+      "type": "select",
+      "id": "align",
+      "label": "Alignement",
+      "options": [
+        { "value": "flex-start", "label": "Début" },
+        { "value": "center", "label": "Centre" },
+        { "value": "flex-end", "label": "Fin" }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Espacement",
+      "min": 0,
+      "max": 80,
+      "step": 4,
+      "default": 16,
+      "unit": "px"
+    }
+  ],
+  "blocks": 
+  [
+    { "type": "@theme" 
+    }
+  ],
+  "presets": [
+    {
+      "name": "group"
+    }
+  ]
+}
+{% endschema %}

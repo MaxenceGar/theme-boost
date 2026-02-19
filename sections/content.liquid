@@ -1,0 +1,178 @@
+{%- liquid
+  assign layout = section.settings.layout
+  assign columns = section.settings.grid_columns
+  assign columns_mobile = section.settings.grid_columns_mobile
+  assign gap = section.settings.gap
+  assign gap_mobile = section.settings.gap_mobile
+  assign align_items = section.settings.align_items
+  assign justify_content = section.settings.justify_content
+-%}
+
+<div
+  class="page-width"
+  style="
+    --layout-gap: {{ gap }}px;
+    --layout-gap-mobile: {{ gap_mobile }}px;
+    --grid-columns: {{ columns }};
+    --grid-columns-mobile: {{ columns_mobile }};
+    --align-items: {{ align_items }};
+    --justify-content: {{ justify_content }};
+    padding-top: {{ section.settings.padding_top }}px;
+    padding-bottom: {{ section.settings.padding_bottom }}px;
+  "
+>
+  <div class="content-layout content-layout--{{ layout }}">
+    {% content_for 'blocks' %}
+  </div>
+</div>
+
+{% stylesheet %}
+  .content-layout {
+    gap: var(--layout-gap-mobile);
+  }
+
+  .content-layout--flex {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: var(--align-items);
+    justify-content: var(--justify-content);
+  }
+
+  .content-layout--grid {
+    display: grid;
+    grid-template-columns: repeat(var(--grid-columns-mobile), 1fr);
+    align-items: var(--align-items);
+  }
+
+  .content-layout--stack {
+    display: flex;
+    flex-direction: column;
+    align-items: var(--align-items);
+  }
+
+  @media (width > 750px) {
+    .content-layout {
+      gap: var(--layout-gap);
+    }
+
+    .content-layout--grid {
+      grid-template-columns: repeat(var(--grid-columns), 1fr);
+    }
+  }
+{% endstylesheet %}
+
+{% schema %}
+{
+  "name": "Contenu",
+  "settings": [
+    {
+      "type": "select",
+      "id": "layout",
+      "label": "Disposition",
+      "options": [
+        { "value": "stack",  "label": "Colonne (stack)" },
+        { "value": "flex",   "label": "Flex (ligne)" },
+        { "value": "grid",   "label": "Grille" }
+      ],
+      "default": "stack"
+    },
+    {
+      "type": "header",
+      "content": "Grille"
+    },
+    {
+      "type": "range",
+      "id": "grid_columns",
+      "label": "Colonnes (desktop)",
+      "min": 1,
+      "max": 6,
+      "step": 1,
+      "default": 3
+    },
+    {
+      "type": "range",
+      "id": "grid_columns_mobile",
+      "label": "Colonnes (mobile)",
+      "min": 1,
+      "max": 4,
+      "step": 1,
+      "default": 1
+    },
+    {
+      "type": "header",
+      "content": "Alignement"
+    },
+    {
+      "type": "select",
+      "id": "align_items",
+      "label": "Aligner les éléments",
+      "options": [
+        { "value": "flex-start", "label": "Début" },
+        { "value": "center",     "label": "Centre" },
+        { "value": "flex-end",   "label": "Fin" },
+        { "value": "stretch",    "label": "Étirer" }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "select",
+      "id": "justify_content",
+      "label": "Justifier le contenu",
+      "options": [
+        { "value": "flex-start",    "label": "Début" },
+        { "value": "center",        "label": "Centre" },
+        { "value": "flex-end",      "label": "Fin" },
+        { "value": "space-between", "label": "Espace entre" },
+        { "value": "space-around",  "label": "Espace autour" }
+      ],
+      "default": "flex-start"
+    },
+    {
+      "type": "header",
+      "content": "Espacement"
+    },
+    {
+      "type": "range",
+      "id": "gap",
+      "label": "Gap (desktop)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 24,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "gap_mobile",
+      "label": "Gap (mobile)",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "default": 16,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "label": "Padding haut",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "label": "Padding bas",
+      "min": 0,
+      "max": 120,
+      "step": 4,
+      "default": 40,
+      "unit": "px"
+    }
+  ],
+  "blocks": [{ "type": "@theme" }],
+  "presets": [{ "name": "Contenu" }]
+}
+{% endschema %}

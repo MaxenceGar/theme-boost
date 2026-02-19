@@ -1,0 +1,130 @@
+{% comment %}
+  Snippet: palier-cart-drawer.liquid
+  Expects: block (with settings palier_1_amount, palier_1_text, palier_1_icon,
+                                  palier_2_amount, palier_2_text, palier_2_icon,
+                                  bar_color)
+{% endcomment %}
+
+{%- assign cart_total = cart.total_price | divided_by: 100.0 -%}
+
+{%- assign p1_amount = block.settings.palier_1_amount | times: 1.0 -%}
+{%- assign p1_text = block.settings.palier_1_text -%}
+{%- assign p2_amount = block.settings.palier_2_amount | times: 1.0 -%}
+{%- assign p2_text = block.settings.palier_2_text -%}
+{%- assign bar_color = block.settings.bar_color | default: '#000000' -%}
+
+{%- comment -%} Max = dernier palier actif {%- endcomment -%}
+{%- assign max_amount = 0 -%}
+{%- assign palier_count = 0 -%}
+{%- if p1_amount > 0 and p1_text != blank -%}
+  {%- assign max_amount = p1_amount -%}
+  {%- assign palier_count = 1 -%}
+{%- endif -%}
+{%- if p2_amount > 0 and p2_text != blank -%}
+  {%- assign max_amount = p2_amount -%}
+  {%- assign palier_count = 2 -%}
+{%- endif -%}
+
+{%- if palier_count > 0 and cart != empty -%}
+  {%- comment -%} Calcul du pourcentage {%- endcomment -%}
+  {%- if cart_total >= max_amount -%}
+    {%- assign progress_pct = 100 -%}
+  {%- else -%}
+    {%- assign progress_pct = cart_total | divided_by: max_amount | times: 100.0 | round -%}
+  {%- endif -%}
+
+  {%- comment -%} Position des paliers en % sur la barre {%- endcomment -%}
+  {%- if palier_count == 1 -%}
+    {%- assign p1_pos = 100 -%}
+  {%- else -%}
+    {%- assign p1_pos = p1_amount | divided_by: max_amount | times: 100.0 | round -%}
+  {%- endif -%}
+
+  {%- comment -%} Quel est le prochain palier ? {%- endcomment -%}
+  {%- assign next_text = '' -%}
+  {%- assign remaining = 0 -%}
+  {%- assign all_reached = false -%}
+
+  {%- if palier_count == 1 -%}
+    {%- if cart_total < p1_amount -%}
+      {%- assign remaining = p1_amount | minus: cart_total -%}
+      {%- assign next_text = p1_text -%}
+    {%- else -%}
+      {%- assign all_reached = true -%}
+    {%- endif -%}
+  {%- elsif palier_count == 2 -%}
+    {%- if cart_total < p1_amount -%}
+      {%- assign remaining = p1_amount | minus: cart_total -%}
+      {%- assign next_text = p1_text -%}
+    {%- elsif cart_total < p2_amount -%}
+      {%- assign remaining = p2_amount | minus: cart_total -%}
+      {%- assign next_text = p2_text -%}
+    {%- else -%}
+      {%- assign all_reached = true -%}
+    {%- endif -%}
+  {%- endif -%}
+
+  <div class="px-4! py-3!" {{ block.shopify_attributes }}>
+    {%- comment -%} Message {%- endcomment -%}
+    <p class="text-[13px]! text-center! m-0! mb-2! leading-snug!">
+      {%- if all_reached -%}
+        <span class="font-bold!">Félicitations !</span> Tous les avantages sont débloqués
+      {%- else -%}
+        Plus que <span class="font-bold!">{{ remaining | ceil }}€</span> pour : {{ next_text }}
+      {%- endif -%}
+    </p>
+
+    {%- comment -%} Barre de progression {%- endcomment -%}
+    <div class="relative! h-[6px]! rounded-full! w-full!" style="background-color: #e5e7eb;">
+      <div class="absolute! top-0! left-0! h-full! rounded-full! transition-all! duration-500!" style="width: {{ progress_pct }}%; background-color: {{ bar_color }};"></div>
+
+      {%- comment -%} Marqueurs paliers {%- endcomment -%}
+      {%- if palier_count >= 1 -%}
+        <div class="absolute! top-1/2! -translate-y-1/2!" style="left: {{ p1_pos }}%; transform: translateX(-50%) translateY(-50%);">
+          <div class="w-[18px]! h-[18px]! rounded-full! border-2! flex! items-center! justify-content-center!"
+            style="border-color: {{ bar_color }}; background-color: {% if cart_total >= p1_amount %}{{ bar_color }}{% else %}#fff{% endif %};">
+            {%- if cart_total >= p1_amount -%}
+              <svg class="block! m-auto!" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if palier_count >= 2 -%}
+        <div class="absolute! top-1/2! -translate-y-1/2!" style="left: 100%; transform: translateX(-50%) translateY(-50%);">
+          <div class="w-[18px]! h-[18px]! rounded-full! border-2! flex! items-center! justify-content-center!"
+            style="border-color: {{ bar_color }}; background-color: {% if cart_total >= p2_amount %}{{ bar_color }}{% else %}#fff{% endif %};">
+            {%- if cart_total >= p2_amount -%}
+              <svg class="block! m-auto!" width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+            {%- endif -%}
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+
+    {%- comment -%} Labels sous la barre {%- endcomment -%}
+    <div class="relative! mt-2! text-[11px]! text-gray-500!">
+      {%- if palier_count >= 1 -%}
+        <div class="absolute!" style="left: {{ p1_pos }}%; transform: translateX(-50%);">
+          <div class="text-center! whitespace-nowrap!">
+            {%- if block.settings.palier_1_icon != blank -%}
+              <div class="mb-[2px]!">{{ block.settings.palier_1_icon | image_url: width: 20 | image_tag: class: 'inline-block! w-[16px]! h-[16px]!', loading: 'lazy' }}</div>
+            {%- endif -%}
+            <span class="{% if cart_total >= p1_amount %}font-bold! text-black!{% endif %}">{{ p1_text }}</span>
+          </div>
+        </div>
+      {%- endif -%}
+
+      {%- if palier_count >= 2 -%}
+        <div class="absolute!" style="left: 100%; transform: translateX(-50%);">
+          <div class="text-center! whitespace-nowrap!">
+            {%- if block.settings.palier_2_icon != blank -%}
+              <div class="mb-[2px]!">{{ block.settings.palier_2_icon | image_url: width: 20 | image_tag: class: 'inline-block! w-[16px]! h-[16px]!', loading: 'lazy' }}</div>
+            {%- endif -%}
+            <span class="{% if cart_total >= p2_amount %}font-bold! text-black!{% endif %}">{{ p2_text }}</span>
+          </div>
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+{%- endif -%}

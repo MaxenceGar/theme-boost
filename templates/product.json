@@ -1,0 +1,355 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "content_nTdVUV": {
+      "type": "content",
+      "blocks": {
+        "image_4bNTq6": {
+          "type": "image",
+          "name": "Image",
+          "settings": {
+            "img": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+            "image_ratio": "aspect-video"
+          },
+          "blocks": {}
+        },
+        "group_gjRaCH": {
+          "type": "group",
+          "name": "group",
+          "settings": {
+            "direction": "column",
+            "align": "flex-start",
+            "gap": 16
+          },
+          "blocks": {
+            "text_iA8YtK": {
+              "type": "text",
+              "name": "Texte",
+              "settings": {
+                "text": "<p>Mon texte</p>"
+              },
+              "blocks": {}
+            },
+            "text_dMndBt": {
+              "type": "text",
+              "name": "Texte",
+              "settings": {
+                "text": "<p>Mon texte</p>"
+              },
+              "blocks": {}
+            }
+          },
+          "block_order": [
+            "text_iA8YtK",
+            "text_dMndBt"
+          ]
+        }
+      },
+      "block_order": [
+        "image_4bNTq6",
+        "group_gjRaCH"
+      ],
+      "name": "Contenu",
+      "settings": {
+        "layout": "grid",
+        "grid_columns": 2,
+        "grid_columns_mobile": 1,
+        "align_items": "center",
+        "justify_content": "center",
+        "gap": 0,
+        "gap_mobile": 16,
+        "padding_top": 40,
+        "padding_bottom": 40
+      }
+    },
+    "main": {
+      "type": "main-product",
+      "blocks": {
+        "badge_max_bRGcBD": {
+          "type": "badge_max",
+          "settings": {
+            "badge_1": "Badge 1",
+            "badge_2": "Badge 2",
+            "badge_3": "Badge 3",
+            "rounded": "rounded-lg"
+          }
+        },
+        "text_6dWypF": {
+          "type": "text",
+          "settings": {
+            "text": "{{ product.title }}",
+            "text_style": "uppercase"
+          }
+        },
+        "description_max_qTkaCL": {
+          "type": "description_max",
+          "settings": {}
+        },
+        "buy_buttons_max_WTNj9H": {
+          "type": "buy_buttons_max",
+          "settings": {
+            "button_style": "btn-primaire"
+          }
+        },
+        "quantity_break_qBmx7i": {
+          "type": "quantity-break",
+          "settings": {
+            "title": "Économisez plus",
+            "qty_1": 1,
+            "label_1": "1 unité",
+            "qty_2": 2,
+            "label_2": "2 unités",
+            "discount_2": 10,
+            "qty_3": 3,
+            "label_3": "3 unités",
+            "discount_3": 15,
+            "best_deal_label": "Meilleure offre"
+          }
+        },
+        "time_livraison_fkJ6dY": {
+          "type": "time_livraison",
+          "settings": {}
+        },
+        "faq_section_ywQckf": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Ingrédients",
+            "reponse": "Réponse"
+          }
+        },
+        "faq_section_DQqUq3": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Recommandé pour",
+            "reponse": "Réponse"
+          }
+        },
+        "faq_section_7tajTz": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Conseils",
+            "reponse": "Réponse"
+          }
+        },
+        "upsell_product_page_kgtXRU": {
+          "type": "upsell-product-page",
+          "settings": {
+            "title": "Vous aimerez aussi",
+            "product_1": "creme-riche-hydratation-intense",
+            "product_2": "creme-solaire-spf50",
+            "product_3": "deodorant-stick-douceur-monoi-efficace-48h",
+            "product_4": "deodorant-naturel-stick-fleur-de-coton-50g"
+          }
+        }
+      },
+      "block_order": [
+        "badge_max_bRGcBD",
+        "text_6dWypF",
+        "description_max_qTkaCL",
+        "buy_buttons_max_WTNj9H",
+        "quantity_break_qBmx7i",
+        "time_livraison_fkJ6dY",
+        "faq_section_ywQckf",
+        "faq_section_DQqUq3",
+        "faq_section_7tajTz",
+        "upsell_product_page_kgtXRU"
+      ],
+      "settings": {
+        "enable_sticky_info": true,
+        "color_scheme": "",
+        "media_size": "small",
+        "constrain_to_viewport": true,
+        "media_fit": "contain",
+        "gallery_layout": "thumbnail_slider",
+        "mobile_thumbnails": "hide",
+        "media_position": "left",
+        "image_zoom": "lightbox",
+        "hide_variants": true,
+        "enable_video_looping": false,
+        "padding_top": 36,
+        "padding_bottom": 12
+      }
+    },
+    "section_maxence_brouillon_HKzpfN": {
+      "type": "section-maxence-brouillon",
+      "blocks": {
+        "block_eFwkht": {
+          "type": "block",
+          "settings": {
+            "title": "Zéro Plastique",
+            "text": "Plus de plastique, moins de poissons. Euh non, le contraire..."
+          }
+        },
+        "block_jyE7Ma": {
+          "type": "block",
+          "settings": {
+            "title": "Zéro Plastique",
+            "text": "Plus de plastique, moins de poissons. Euh non, le contraire..."
+          }
+        },
+        "block_KaVAJN": {
+          "type": "block",
+          "settings": {
+            "title": "Zéro Plastique",
+            "text": "Plus de plastique, moins de poissons. Euh non, le contraire..."
+          }
+        },
+        "block_AtW9Hb": {
+          "type": "block",
+          "settings": {
+            "title": "Zéro Plastique",
+            "text": "Plus de plastique, moins de poissons. Euh non, le contraire..."
+          }
+        },
+        "block_xjbqtw": {
+          "type": "block",
+          "settings": {
+            "title": "Zéro Plastique",
+            "text": "Plus de plastique, moins de poissons. Euh non, le contraire..."
+          }
+        }
+      },
+      "block_order": [
+        "block_eFwkht",
+        "block_jyE7Ma",
+        "block_KaVAJN",
+        "block_AtW9Hb",
+        "block_xjbqtw"
+      ],
+      "name": "Reassurance Icons",
+      "settings": {
+        "padding_mobile": "py-[38px]! md:py-[32px]!"
+      }
+    },
+    "section_gauche_droite_nU3hJz": {
+      "type": "section-gauche-droite",
+      "blocks": {
+        "title_MyaWDq": {
+          "type": "title",
+          "settings": {
+            "title": "Anne Borde & <br> Charlotte Rey",
+            "color": "#191918"
+          }
+        },
+        "description_YXxgf4": {
+          "type": "description",
+          "settings": {
+            "description": "<p>Deux expertes en joaillerie, avec chacune plus de 20 ans d'expérience, dénichent les trésors cachés dans les coffres des particuliers et des professionnels.</p>",
+            "color": "#444441"
+          }
+        },
+        "button_z8N9Y8": {
+          "type": "button",
+          "settings": {
+            "button_label": "Découvrir les fondatrices",
+            "button_label_mobile": "Découvrir",
+            "button_url": "shopify://collections",
+            "button_style": "btn-primaire"
+          }
+        }
+      },
+      "block_order": [
+        "title_MyaWDq",
+        "description_YXxgf4",
+        "button_z8N9Y8"
+      ],
+      "name": "Section Gauche Droite",
+      "settings": {
+        "image_object_fit": "object-cover",
+        "image_position": "right",
+        "background_color": "#fbf8f5",
+        "background_color_image": "#fbf8f5",
+        "parallax": false,
+        "padding_mobile": "py-[38px]! md:py-[32px]!"
+      }
+    },
+    "faq_product_page_eDmRRi": {
+      "type": "faq-product-page",
+      "blocks": {
+        "faq_section_BFjHTP": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Ces produits sont-ils naturels ?",
+            "reponse": "Le Shampoing Tous Cheveux est naturel à 94% et l'Après-Shampoing Cheveux Soyeux à 100% !"
+          }
+        },
+        "faq_section_njCrgz": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Les parfums de ces produits sont-ils naturels ?",
+            "reponse": "Les parfums de tous nos produits sont 100% naturels et élaborés à Grasse par un nez expert des matières premières naturelles."
+          }
+        },
+        "faq_section_NYwEAz": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Ces produits contiennent-ils des huiles essentielles ?",
+            "reponse": "Le Shampoing Tous Cheveux contient des huiles essentielles dans le parfum. L'Après-Shampoing n'en contient pas."
+          }
+        },
+        "faq_section_ifWzPy": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Le shampoing mousse-t-il ?",
+            "reponse": "Tous nos shampoings produisent une mousse crémeuse et généreuse, comme un shampoing liquide, le plastique en moins."
+          }
+        },
+        "faq_section_8XMD7G": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Quelle est la note de ces produits sur Yuka ?",
+            "reponse": "Tous nos produits sont notés Excellents sur Yuka 😁"
+          }
+        }
+      },
+      "block_order": [
+        "faq_section_BFjHTP",
+        "faq_section_njCrgz",
+        "faq_section_NYwEAz",
+        "faq_section_ifWzPy",
+        "faq_section_8XMD7G"
+      ],
+      "name": "FAQ Produt Page",
+      "settings": {
+        "image": "shopify://shop_images/VENDRE_HOMEPAGE.webp",
+        "image_position": "left",
+        "padding_mobile": "py-[38px]! md:py-[32px]!",
+        "button_style": "btn-primaire"
+      }
+    },
+    "related-products": {
+      "type": "related-products",
+      "settings": {
+        "heading": "You may also like",
+        "heading_size": "h2",
+        "products_to_show": 4,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "scheme-1",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "padding_top": 36,
+        "padding_bottom": 28
+      }
+    }
+  },
+  "order": [
+    "content_nTdVUV",
+    "main",
+    "section_maxence_brouillon_HKzpfN",
+    "section_gauche_droite_nU3hJz",
+    "faq_product_page_eDmRRi",
+    "related-products"
+  ]
+}

@@ -1,0 +1,696 @@
+{%- comment -%}
+  Snippet: product-video.liquid
+  Usage: {% render 'product-video', product_block: block %}
+  4 slots fixes. Si pas de vidéo dans un slot → rien affiché.
+{%- endcomment -%}
+
+{%- if product_block == blank -%}
+  {%- assign _pv_skip = true -%}
+{%- endif -%}
+{%- unless _pv_skip -%}
+
+{%- assign bid = product_block.id -%}
+{%- assign size_circle = product_block.settings.size_circle | default: 90 -%}
+{%- assign size_circle_mobile = product_block.settings.size_circle_mobile | default: 90 -%}
+{%- assign color_circle = product_block.settings.color_circle | default: '#FFFFFF' -%}
+
+{%- comment -%} Vérifier quels slots ont une vidéo {%- endcomment -%}
+{%- assign has_v1 = false -%}
+{%- assign has_v2 = false -%}
+{%- assign has_v3 = false -%}
+{%- assign has_v4 = false -%}
+{%- if product_block.settings.video_1 != blank or product_block.settings.video_url_1 != blank -%}{%- assign has_v1 = true -%}{%- endif -%}
+{%- if product_block.settings.video_2 != blank or product_block.settings.video_url_2 != blank -%}{%- assign has_v2 = true -%}{%- endif -%}
+{%- if product_block.settings.video_3 != blank or product_block.settings.video_url_3 != blank -%}{%- assign has_v3 = true -%}{%- endif -%}
+{%- if product_block.settings.video_4 != blank or product_block.settings.video_url_4 != blank -%}{%- assign has_v4 = true -%}{%- endif -%}
+
+{%- unless has_v1 or has_v2 or has_v3 or has_v4 -%}
+  {%- assign _pv_skip = true -%}
+{%- endunless -%}
+{%- unless _pv_skip -%}
+
+{%- assign video_count = 0 -%}
+{%- if has_v1 -%}{%- assign video_count = video_count | plus: 1 -%}{%- endif -%}
+{%- if has_v2 -%}{%- assign video_count = video_count | plus: 1 -%}{%- endif -%}
+{%- if has_v3 -%}{%- assign video_count = video_count | plus: 1 -%}{%- endif -%}
+{%- if has_v4 -%}{%- assign video_count = video_count | plus: 1 -%}{%- endif -%}
+
+{%- comment -%} SVG mute/unmute (réutilisés par slide) {%- endcomment -%}
+{%- capture svg_mute -%}<svg class="video-modal-mute-{{ bid }}" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M5.889 16H2a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3.889l5.294-4.332a.5.5 0 0 1 .817.387v15.89a.5.5 0 0 1-.817.387L5.89 16zm14.525-4l3.536 3.536-1.414 1.414L19 13.414l-3.536 3.536-1.414-1.414L17.586 12 14.05 8.464l1.414-1.414L19 10.586l3.536-3.536 1.414 1.414L20.414 12z"></path></svg>{%- endcapture -%}
+{%- capture svg_unmute -%}<svg class="video-modal-unmute-{{ bid }}" viewBox="0 0 24 24" width="24" height="24"><path fill="none" d="M0 0h24v24H0z"></path><path d="M5.889 16H2a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1h3.889l5.294-4.332a.5.5 0 0 1 .817.387v15.89a.5.5 0 0 1-.817.387L5.89 16zm13.517 4.134l-1.416-1.416A8.978 8.978 0 0 0 21 12a8.982 8.982 0 0 0-3.304-6.968l1.42-1.42A10.976 10.976 0 0 1 23 12c0 3.223-1.386 6.122-3.594 8.134zm-3.543-3.543l-1.422-1.422A3.993 3.993 0 0 0 16 12c0-1.43-.75-2.685-1.88-3.392l1.439-1.439A5.991 5.991 0 0 1 18 12c0 1.842-.83 3.49-2.137 4.591z"></path></svg>{%- endcapture -%}
+
+<style>
+  .pv-{{ bid }} {
+    display: flex;
+    gap: 12px;
+  }
+
+  .pv-{{ bid }}__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex-shrink: 0;
+    width: {{ size_circle }}px;
+  }
+
+  .pv-{{ bid }}__bubble {
+    flex-shrink: 0;
+    width: {{ size_circle }}px;
+    height: {{ size_circle }}px;
+    border-radius: 50%;
+    padding: 3px;
+    background: {{ color_circle }};
+    cursor: pointer;
+    border: none;
+    transition: transform 0.3s ease;
+    -webkit-appearance: none;
+    overflow: hidden;
+    box-sizing: border-box;
+  }
+
+  .pv-{{ bid }}__bubble:hover {
+    transform: scale(1.08);
+  }
+
+  .pv-{{ bid }}__title {
+    display: block;
+    font-size: 11px;
+    font-weight: 600;
+    text-align: center;
+    margin-top: 6px;
+    line-height: 1.2;
+    color: rgb(var(--color-foreground));
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    max-width: 100%;
+  }
+
+  .pv-{{ bid }}__bubble-inner {
+    width: 100%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid rgb(var(--color-background));
+    background: rgba(var(--color-foreground), 0.05);
+    position: relative;
+  }
+
+  .pv-{{ bid }}__bubble-inner video,
+  .pv-{{ bid }}__bubble-inner img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    border-radius: 50%;
+  }
+
+  .pv-{{ bid }}__bubble-inner .pv-play-icon {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: rgba(var(--color-foreground), 0.4);
+  }
+
+  .pv-{{ bid }}__bubble-inner .pv-play-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  /* Modale */
+  .video-modal-{{ bid }} {
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: 0;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    overflow: hidden;
+    overflow-y: scroll;
+    pointer-events: none;
+    background: rgba(36, 36, 36, 1);
+    padding: 10px;
+  }
+
+  .video-modal-{{ bid }}.active {
+    opacity: 1;
+    z-index: 9999;
+    pointer-events: all;
+    transition: all 250ms ease-in 0s;
+  }
+
+  .video-modal-inner-{{ bid }} {
+    position: relative;
+    width: 100%;
+    max-width: 95%;
+  }
+
+  .video-modal-slider-{{ bid }} {
+    overflow: visible !important;
+  }
+
+  .video-modal-slide-{{ bid }} {
+    display: grid !important;
+    grid-template-columns: repeat(1, 1fr);
+    overflow: hidden;
+    padding: 0px;
+    border: 0px solid transparent;
+    background-color: #FFFFFF;
+    border-radius: 16px;
+    box-sizing: border-box !important;
+    opacity: 0.7;
+    transition: all 0.25s ease 0s;
+  }
+
+  .video-modal-slide-{{ bid }}.swiper-slide-active {
+    opacity: 1;
+    transform: translate3d(0px, 0px, 0px) rotateX(0deg) rotateY(0deg) scale(1) !important;
+    transition: all 0.25s ease 0s;
+  }
+
+  .video-modal-close-{{ bid }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    top: 10px !important;
+    right: 10px !important;
+    padding: 6px;
+    background-color: #000000;
+    border-radius: 50%;
+    border: 0px;
+    box-shadow: none;
+    cursor: pointer;
+    z-index: 99;
+    position: fixed;
+    margin: 0px;
+  }
+
+  .video-modal-close-{{ bid }} svg {
+    display: block;
+    width: 80%;
+    height: 80%;
+  }
+
+  .video-modal-close-{{ bid }} svg path {
+    fill: #FFFFFF;
+  }
+
+  .video-modal-prev-{{ bid }},
+  .video-modal-next-{{ bid }} {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    z-index: 99;
+    position: absolute;
+    margin: 0px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px;
+    background-color: #FFFFFF;
+    border-radius: 50%;
+    border: 0px;
+    box-shadow: none;
+  }
+
+  .video-modal-prev-{{ bid }}.swiper-button-disabled,
+  .video-modal-next-{{ bid }}.swiper-button-disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+  }
+
+  .video-modal-prev-{{ bid }} { left: 20px; }
+  .video-modal-next-{{ bid }} { right: 20px; }
+
+  .video-modal-prev-{{ bid }} svg,
+  .video-modal-next-{{ bid }} svg {
+    width: 75%;
+    height: 75%;
+    fill: #000000;
+  }
+
+  .video-modal-left-{{ bid }} {
+    width: 100%;
+    border-radius: 0px;
+    border: 0px solid transparent;
+    overflow: hidden;
+    max-height: 75vh;
+    aspect-ratio: 9.6/16;
+  }
+
+  .video-modal-left-{{ bid }} video,
+  .video-modal-left-{{ bid }} iframe {
+    display: block;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    box-shadow: none;
+    border: 0px;
+  }
+
+  .video-modal-left-{{ bid }}:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top: 0;
+    cursor: pointer;
+    z-index: 1;
+  }
+
+  .video-modal-action-{{ bid }} {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: black;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    -webkit-appearance: none;
+    transition: all 0.25s ease 0s;
+    z-index: 2;
+  }
+
+  .video-modal-action-{{ bid }} svg {
+    height: 20px;
+    width: 20px;
+    fill: #FFFFFF;
+  }
+
+  .video-modal-action-{{ bid }} .video-modal-unmute-{{ bid }} { display: none; }
+  .video-modal-action-{{ bid }}.active .video-modal-unmute-{{ bid }} { display: block; }
+  .video-modal-action-{{ bid }}.active .video-modal-mute-{{ bid }} { display: none; }
+
+  .video-modal-poster-{{ bid }} {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 2;
+  }
+
+  .video-modal-poster-{{ bid }}.active { display: none; }
+
+  .video-modal-poster-{{ bid }} img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media(max-width: 768px) {
+    .video-modal-{{ bid }} { z-index: -1; }
+  }
+
+  @media(max-width: 767px) {
+    .pv-{{ bid }}__bubble {
+      width: {{ size_circle_mobile }}px;
+      height: {{ size_circle_mobile }}px;
+    }
+    .pv-{{ bid }}__item {
+      width: {{ size_circle_mobile }}px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    .video-modal-{{ bid }} { padding: 100px; }
+    .video-modal-inner-{{ bid }} { max-width: 30%; margin-left: auto; margin-right: auto; }
+    .video-modal-close-{{ bid }} { top: 20px !important; right: 30px !important; }
+    .video-modal-prev-{{ bid }} { left: -50px; }
+    .video-modal-next-{{ bid }} { right: -50px; }
+    .video-modal-left-{{ bid }} { max-height: calc(95vh - 100px); aspect-ratio: 9.6/16; }
+  }
+</style>
+
+{%- comment -%} ====== BULLES (rendu direct) ====== {%- endcomment -%}
+<div class="pv-{{ bid }}">
+
+  {%- assign idx = 0 -%}
+
+  {%- if has_v1 -%}
+    <div class="pv-{{ bid }}__item">
+      <button type="button" class="pv-{{ bid }}__bubble" data-index="{{ idx }}">
+        <div class="pv-{{ bid }}__bubble-inner">
+          {%- if product_block.settings.poster_1 != blank -%}
+            <img src="{{ product_block.settings.poster_1 | image_url: width: 200 }}" alt="{{ product_block.settings.poster_1.alt }}" loading="lazy">
+          {%- elsif product_block.settings.video_1 != blank -%}
+            <video src="{{ product_block.settings.video_1.sources[1].url }}" muted playsinline autoplay preload="metadata" loop></video>
+          {%- elsif product_block.settings.preload_video_1 != blank -%}
+            <video src="{{ product_block.settings.preload_video_1.sources[1].url }}" muted playsinline autoplay preload="metadata" loop></video>
+          {%- else -%}
+            <div class="pv-play-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          {%- endif -%}
+        </div>
+      </button>
+      {%- if product_block.settings.title_1 != blank -%}
+        <span class="pv-{{ bid }}__title">{{ product_block.settings.title_1 }}</span>
+      {%- endif -%}
+    </div>
+    {%- assign idx = idx | plus: 1 -%}
+  {%- endif -%}
+
+  {%- if has_v2 -%}
+    <div class="pv-{{ bid }}__item">
+      <button type="button" class="pv-{{ bid }}__bubble" data-index="{{ idx }}">
+        <div class="pv-{{ bid }}__bubble-inner">
+          {%- if product_block.settings.poster_2 != blank -%}
+            <img src="{{ product_block.settings.poster_2 | image_url: width: 200 }}" alt="{{ product_block.settings.poster_2.alt }}" loading="lazy">
+          {%- elsif product_block.settings.video_2 != blank -%}
+            <video src="{{ product_block.settings.video_2.sources[1].url }}" muted playsinline autoplay preload="metadata" loop></video>
+          {%- elsif product_block.settings.preload_video_2 != blank -%}
+            <video src="{{ product_block.settings.preload_video_2.sources[1].url }}" muted playsinline autoplay preload="metadata" loop></video>
+          {%- else -%}
+            <div class="pv-play-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          {%- endif -%}
+        </div>
+      </button>
+      {%- if product_block.settings.title_2 != blank -%}
+        <span class="pv-{{ bid }}__title">{{ product_block.settings.title_2 }}</span>
+      {%- endif -%}
+    </div>
+    {%- assign idx = idx | plus: 1 -%}
+  {%- endif -%}
+
+  {%- if has_v3 -%}
+    <div class="pv-{{ bid }}__item">
+      <button type="button" class="pv-{{ bid }}__bubble" data-index="{{ idx }}">
+        <div class="pv-{{ bid }}__bubble-inner">
+          {%- if product_block.settings.poster_3 != blank -%}
+            <img src="{{ product_block.settings.poster_3 | image_url: width: 200 }}" alt="{{ product_block.settings.poster_3.alt }}" loading="lazy">
+          {%- elsif product_block.settings.video_3 != blank -%}
+            <video src="{{ product_block.settings.video_3.sources[1].url }}" muted playsinline autoplay preload="metadata" loop></video>
+          {%- elsif product_block.settings.preload_video_3 != blank -%}
+            <video src="{{ product_block.settings.preload_video_3.sources[1].url }}" muted playsinline autoplay preload="metadata" loop></video>
+          {%- else -%}
+            <div class="pv-play-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          {%- endif -%}
+        </div>
+      </button>
+      {%- if product_block.settings.title_3 != blank -%}
+        <span class="pv-{{ bid }}__title">{{ product_block.settings.title_3 }}</span>
+      {%- endif -%}
+    </div>
+    {%- assign idx = idx | plus: 1 -%}
+  {%- endif -%}
+
+  {%- if has_v4 -%}
+    <div class="pv-{{ bid }}__item">
+      <button type="button" class="pv-{{ bid }}__bubble" data-index="{{ idx }}">
+        <div class="pv-{{ bid }}__bubble-inner">
+          {%- if product_block.settings.poster_4 != blank -%}
+            <img src="{{ product_block.settings.poster_4 | image_url: width: 200 }}" alt="{{ product_block.settings.poster_4.alt }}" loading="lazy">
+          {%- elsif product_block.settings.video_4 != blank -%}
+            <video src="{{ product_block.settings.video_4.sources[1].url }}" muted playsinline autoplay preload="metadata" loop></video>
+          {%- elsif product_block.settings.preload_video_4 != blank -%}
+            <video src="{{ product_block.settings.preload_video_4.sources[1].url }}" muted playsinline autoplay preload="metadata" loop></video>
+          {%- else -%}
+            <div class="pv-play-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><polygon points="5 3 19 12 5 21 5 3"/></svg></div>
+          {%- endif -%}
+        </div>
+      </button>
+      {%- if product_block.settings.title_4 != blank -%}
+        <span class="pv-{{ bid }}__title">{{ product_block.settings.title_4 }}</span>
+      {%- endif -%}
+    </div>
+  {%- endif -%}
+
+</div>
+
+{%- comment -%} ====== MODALE (template injecté dans body) ====== {%- endcomment -%}
+<template id="pv-modal-tpl-{{ bid }}">
+  <div class="video-modal-{{ bid }}">
+    <div class="video-modal-inner-{{ bid }}">
+      <div class="video-modal-slider-{{ bid }} swiper">
+        <div class="swiper-wrapper">
+
+          {%- if has_v1 -%}
+            <div class="video-modal-slide-{{ bid }} swiper-slide">
+              <div class="video-modal-left-{{ bid }}">
+                {%- if product_block.settings.modal_poster_1 != blank -%}
+                  <div class="video-modal-poster-{{ bid }}">
+                    <img src="{{ product_block.settings.modal_poster_1 | image_url }}" alt="{{ product_block.settings.modal_poster_1.alt }}">
+                  </div>
+                {%- endif -%}
+                {%- if product_block.settings.video_1 == blank and product_block.settings.video_url_1 != blank -%}
+                  {%- assign vid1 = product_block.settings.video_url_1.id -%}
+                  {%- assign loop1 = '&loop=1&playlist=' | append: vid1 -%}
+                  {%- if product_block.settings.video_url_1.type == 'youtube' -%}
+                    <iframe src="https://www.youtube.com/embed/{{ vid1 }}?enablejsapi=1&mute=1&autoplay=1{{ loop1 }}" data-src="https://www.youtube.com/embed/{{ vid1 }}?enablejsapi=1&mute=1{{ loop1 }}" data-src2="https://www.youtube.com/embed/{{ vid1 }}?enablejsapi=1&autoplay=1{{ loop1 }}" allow="autoplay; encrypted-media" allowfullscreen title="Video"></iframe>
+                  {%- else -%}
+                    <iframe src="https://player.vimeo.com/video/{{ vid1 }}?mute=1&autoplay=1&loop=1" data-src="https://player.vimeo.com/video/{{ vid1 }}?mute=1&loop=1" data-src2="https://player.vimeo.com/video/{{ vid1 }}?autoplay=1&loop=1" allow="autoplay; encrypted-media" allowfullscreen title="Video"></iframe>
+                  {%- endif -%}
+                {%- elsif product_block.settings.video_1 != blank -%}
+                  <video src="{{ product_block.settings.video_1.sources[1].url }}" muted autoplay playsinline preload="none" loop></video>
+                {%- endif -%}
+                <div class="video-modal-action-{{ bid }}">{{ svg_mute }}{{ svg_unmute }}</div>
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- if has_v2 -%}
+            <div class="video-modal-slide-{{ bid }} swiper-slide">
+              <div class="video-modal-left-{{ bid }}">
+                {%- if product_block.settings.modal_poster_2 != blank -%}
+                  <div class="video-modal-poster-{{ bid }}">
+                    <img src="{{ product_block.settings.modal_poster_2 | image_url }}" alt="{{ product_block.settings.modal_poster_2.alt }}">
+                  </div>
+                {%- endif -%}
+                {%- if product_block.settings.video_2 == blank and product_block.settings.video_url_2 != blank -%}
+                  {%- assign vid2 = product_block.settings.video_url_2.id -%}
+                  {%- assign loop2 = '&loop=1&playlist=' | append: vid2 -%}
+                  {%- if product_block.settings.video_url_2.type == 'youtube' -%}
+                    <iframe src="https://www.youtube.com/embed/{{ vid2 }}?enablejsapi=1&mute=1&autoplay=1{{ loop2 }}" data-src="https://www.youtube.com/embed/{{ vid2 }}?enablejsapi=1&mute=1{{ loop2 }}" data-src2="https://www.youtube.com/embed/{{ vid2 }}?enablejsapi=1&autoplay=1{{ loop2 }}" allow="autoplay; encrypted-media" allowfullscreen title="Video"></iframe>
+                  {%- else -%}
+                    <iframe src="https://player.vimeo.com/video/{{ vid2 }}?mute=1&autoplay=1&loop=1" data-src="https://player.vimeo.com/video/{{ vid2 }}?mute=1&loop=1" data-src2="https://player.vimeo.com/video/{{ vid2 }}?autoplay=1&loop=1" allow="autoplay; encrypted-media" allowfullscreen title="Video"></iframe>
+                  {%- endif -%}
+                {%- elsif product_block.settings.video_2 != blank -%}
+                  <video src="{{ product_block.settings.video_2.sources[1].url }}" muted autoplay playsinline preload="none" loop></video>
+                {%- endif -%}
+                <div class="video-modal-action-{{ bid }}">{{ svg_mute }}{{ svg_unmute }}</div>
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- if has_v3 -%}
+            <div class="video-modal-slide-{{ bid }} swiper-slide">
+              <div class="video-modal-left-{{ bid }}">
+                {%- if product_block.settings.modal_poster_3 != blank -%}
+                  <div class="video-modal-poster-{{ bid }}">
+                    <img src="{{ product_block.settings.modal_poster_3 | image_url }}" alt="{{ product_block.settings.modal_poster_3.alt }}">
+                  </div>
+                {%- endif -%}
+                {%- if product_block.settings.video_3 == blank and product_block.settings.video_url_3 != blank -%}
+                  {%- assign vid3 = product_block.settings.video_url_3.id -%}
+                  {%- assign loop3 = '&loop=1&playlist=' | append: vid3 -%}
+                  {%- if product_block.settings.video_url_3.type == 'youtube' -%}
+                    <iframe src="https://www.youtube.com/embed/{{ vid3 }}?enablejsapi=1&mute=1&autoplay=1{{ loop3 }}" data-src="https://www.youtube.com/embed/{{ vid3 }}?enablejsapi=1&mute=1{{ loop3 }}" data-src2="https://www.youtube.com/embed/{{ vid3 }}?enablejsapi=1&autoplay=1{{ loop3 }}" allow="autoplay; encrypted-media" allowfullscreen title="Video"></iframe>
+                  {%- else -%}
+                    <iframe src="https://player.vimeo.com/video/{{ vid3 }}?mute=1&autoplay=1&loop=1" data-src="https://player.vimeo.com/video/{{ vid3 }}?mute=1&loop=1" data-src2="https://player.vimeo.com/video/{{ vid3 }}?autoplay=1&loop=1" allow="autoplay; encrypted-media" allowfullscreen title="Video"></iframe>
+                  {%- endif -%}
+                {%- elsif product_block.settings.video_3 != blank -%}
+                  <video src="{{ product_block.settings.video_3.sources[1].url }}" muted autoplay playsinline preload="none" loop></video>
+                {%- endif -%}
+                <div class="video-modal-action-{{ bid }}">{{ svg_mute }}{{ svg_unmute }}</div>
+              </div>
+            </div>
+          {%- endif -%}
+
+          {%- if has_v4 -%}
+            <div class="video-modal-slide-{{ bid }} swiper-slide">
+              <div class="video-modal-left-{{ bid }}">
+                {%- if product_block.settings.modal_poster_4 != blank -%}
+                  <div class="video-modal-poster-{{ bid }}">
+                    <img src="{{ product_block.settings.modal_poster_4 | image_url }}" alt="{{ product_block.settings.modal_poster_4.alt }}">
+                  </div>
+                {%- endif -%}
+                {%- if product_block.settings.video_4 == blank and product_block.settings.video_url_4 != blank -%}
+                  {%- assign vid4 = product_block.settings.video_url_4.id -%}
+                  {%- assign loop4 = '&loop=1&playlist=' | append: vid4 -%}
+                  {%- if product_block.settings.video_url_4.type == 'youtube' -%}
+                    <iframe src="https://www.youtube.com/embed/{{ vid4 }}?enablejsapi=1&mute=1&autoplay=1{{ loop4 }}" data-src="https://www.youtube.com/embed/{{ vid4 }}?enablejsapi=1&mute=1{{ loop4 }}" data-src2="https://www.youtube.com/embed/{{ vid4 }}?enablejsapi=1&autoplay=1{{ loop4 }}" allow="autoplay; encrypted-media" allowfullscreen title="Video"></iframe>
+                  {%- else -%}
+                    <iframe src="https://player.vimeo.com/video/{{ vid4 }}?mute=1&autoplay=1&loop=1" data-src="https://player.vimeo.com/video/{{ vid4 }}?mute=1&loop=1" data-src2="https://player.vimeo.com/video/{{ vid4 }}?autoplay=1&loop=1" allow="autoplay; encrypted-media" allowfullscreen title="Video"></iframe>
+                  {%- endif -%}
+                {%- elsif product_block.settings.video_4 != blank -%}
+                  <video src="{{ product_block.settings.video_4.sources[1].url }}" muted autoplay playsinline preload="none" loop></video>
+                {%- endif -%}
+                <div class="video-modal-action-{{ bid }}">{{ svg_mute }}{{ svg_unmute }}</div>
+              </div>
+            </div>
+          {%- endif -%}
+
+        </div>
+      </div>
+
+      {%- if video_count > 1 -%}
+        <button class="video-modal-prev-{{ bid }}">
+          <svg viewBox="0 0 24 24"><path d="m8.5 12.8 5.7 5.6c.4.4 1 .4 1.4 0 .4-.4.4-1 0-1.4l-4.9-5 4.9-5c.4-.4.4-1 0-1.4-.2-.2-.4-.3-.7-.3-.3 0-.5.1-.7.3l-5.7 5.6c-.4.5-.4 1.1 0 1.6 0-.1 0-.1 0 0z"></path></svg>
+        </button>
+        <button class="video-modal-next-{{ bid }}">
+          <svg viewBox="0 0 24 24"><path d="M15.54,11.29,9.88,5.64a1,1,0,0,0-1.42,0,1,1,0,0,0,0,1.41l4.95,5L8.46,17a1,1,0,0,0,0,1.41,1,1,0,0,0,.71.3,1,1,0,0,0,.71-.3l5.66-5.65A1,1,0,0,0,15.54,11.29Z"></path></svg>
+        </button>
+      {%- endif -%}
+
+    </div>
+    <button class="video-modal-close-{{ bid }}">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path fill-rule="evenodd" clip-rule="evenodd" d="M12.0002 10.586L4.70718 3.29297L3.29297 4.70718L10.586 12.0002L3.29297 19.2933L4.70718 20.7075L12.0002 13.4145L19.2933 20.7075L20.7075 19.2933L13.4145 12.0002L20.7075 4.70723L19.2933 3.29302L12.0002 10.586Z" fill="white"></path></svg>
+    </button>
+  </div>
+</template>
+
+{%- comment -%} ====== JS ====== {%- endcomment -%}
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+
+<script>
+  (function() {
+    var BID = '{{ bid }}';
+
+    function initPV() {
+      var tpl = document.querySelector('#pv-modal-tpl-' + BID);
+      if (tpl) document.body.appendChild(tpl.content.firstElementChild);
+
+      setTimeout(function() {
+        var modalEl = document.querySelector('.video-modal-' + BID);
+        var sliderEl = document.querySelector('.video-modal-slider-' + BID);
+        if (!modalEl || !sliderEl) return;
+
+        var slider2 = new Swiper('.video-modal-slider-' + BID, {
+          effect: "coverflow",
+          speed: 300,
+          slidesPerView: 1,
+          spaceBetween: 200,
+          navigation: {
+            nextEl: '.video-modal-next-' + BID,
+            prevEl: '.video-modal-prev-' + BID
+          },
+          coverflowEffect: {
+            rotate: 15,
+            scale: 0.95,
+            stretch: 0,
+            depth: 100,
+            modifier: 1,
+            slideShadows: false
+          },
+          on: {
+            slideChange: function() {
+              if (!modalEl.classList.contains('active')) return;
+              var slides = this.slides;
+              for (var t = 0; t < slides.length; t++) {
+                var poster = slides[t].querySelector('.video-modal-poster-' + BID),
+                    n = slides[t].querySelector('video'),
+                    s = slides[t].querySelector('iframe'),
+                    a = slides[t].querySelector('.video-modal-action-' + BID),
+                    o, r;
+                if (s) {
+                  o = s.getAttribute('data-src');
+                  r = s.getAttribute('data-src2');
+                }
+                if (t === this.activeIndex) {
+                  if (n) { n.play(); n.muted = false; }
+                  if (s) { s.src = r; }
+                  if (a) { a.classList.add('active'); }
+                  if (poster) { poster.classList.add('active'); }
+                } else {
+                  if (n) { n.pause(); }
+                  if (s) { s.src = o; }
+                  if (poster) { poster.classList.remove('active'); }
+                }
+              }
+            }
+          }
+        });
+
+        var bubbles = document.querySelectorAll('.pv-' + BID + '__bubble');
+        var close = document.querySelector('.video-modal-close-' + BID);
+
+        bubbles.forEach(function(el, index) {
+          el.addEventListener('click', function() {
+            slider2.slideTo(index);
+            var activeSlide = slider2.slides[index];
+            var video = activeSlide.querySelector('video');
+            var frame = activeSlide.querySelector('iframe');
+            var src2 = frame ? frame.getAttribute('data-src2') : null;
+            var btn = activeSlide.querySelector('.video-modal-action-' + BID);
+            setTimeout(function() {
+              document.body.style.overflow = 'hidden';
+              modalEl.classList.add('active');
+              if (video) { video.play(); video.muted = false; }
+              if (btn) { btn.classList.add('active'); }
+              if (frame && src2) { frame.src = src2; }
+            }, 200);
+          });
+        });
+
+        function closeModal() {
+          document.body.style.overflow = '';
+          modalEl.classList.remove('active');
+          modalEl.querySelectorAll('iframe').forEach(function(el) {
+            var src1 = el.getAttribute('data-src');
+            el.src = src1;
+            if (el.src.includes('youtube.com')) {
+              el.contentWindow.postMessage('{"event":"command","func":"pauseVideo","args":""}', '*');
+            } else if (el.src.includes('vimeo.com')) {
+              el.contentWindow.postMessage('{"method":"pause"}', '*');
+            }
+          });
+          modalEl.querySelectorAll('video').forEach(function(el) {
+            el.pause();
+            el.currentTime = 0;
+            el.muted = true;
+          });
+        }
+
+        close.addEventListener('click', closeModal);
+        document.addEventListener('click', function(e) {
+          if (e.target === modalEl) closeModal();
+        });
+
+        document.querySelectorAll('.video-modal-slide-' + BID).forEach(function(el) {
+          var btn = el.querySelector('.video-modal-action-' + BID);
+          var frame = el.querySelector('iframe');
+          var src2 = frame ? frame.getAttribute('data-src2') : null;
+          var video = el.querySelector('video');
+          if (btn) {
+            btn.addEventListener('click', function() {
+              btn.classList.toggle('active');
+              if (btn.classList.contains('active')) {
+                if (frame) { frame.src = src2; }
+                if (video) { video.muted = false; }
+              } else {
+                if (frame) { frame.src = frame.getAttribute('data-src'); }
+                if (video) { video.muted = true; }
+              }
+            });
+          }
+        });
+
+      }, 400);
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', initPV);
+    } else {
+      initPV();
+    }
+  })();
+</script>
+
+{%- endunless -%}
+{%- endunless -%}

@@ -1,0 +1,105 @@
+<section class="{{ section.settings.padding_mobile }}">
+  <div class="section-container">
+    <div class="flex gap-16 justify-center overflow-x-auto scrollbar-hide py-2">
+      {% for block in section.blocks %}
+        <a
+          href="{{ block.settings.button_url }}"
+          class="shrink-0 max-w-100"
+          {{ block.shopify_attributes }}>
+          <div class="flex-col justify-center cursor-pointer text-center">
+            {% if block.settings.image != blank %}
+              {{ block.settings.image | image_url: width: 1000 | image_tag: class: 'w-25! h-25! md:w-50! md:h-50! rounded-full! object-cover! mx-auto! border! border-gray-300! outline-2! outline-offset-4! outline-gray-200! hover:outline-black! duration-300! ease-in!', loading: 'lazy'
+              }}
+            {% else %}
+              <div class="w-20 h-20 md:w-25 md:h-25 rounded-full bg-gray-200 mx-auto border border-gray-300 outline-2 outline-offset-4 outline-gray-200"></div>
+            {% endif %}
+            <p class="mt-3! text-[14px] w-full text-center">{{ block.settings.title }}</p>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+<style>
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+</style>
+
+{% schema %}
+  {
+    "name": "Round Collection",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Round Collection"
+      },
+      {
+        "type": "select",
+        "id": "padding_mobile",
+        "label": "Padding sur mobile",
+        "options": [
+          {
+            "value": "pt-[38px]! md:py-[32px]!",
+            "label": "Padding en haut"
+          },
+          {
+            "value": "pb-[38px]! md:py-[32px]!",
+            "label": "Padding en bas"
+          },
+          {
+            "value": "py-[38px]! md:py-[32px]!",
+            "label": "Padding en haut et en bas"
+          }
+        ],
+        "default": "py-[38px]! md:py-[32px]!"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "slide",
+        "name": "Slide",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Titre",
+            "default": "Titre de la slide"
+          },
+          {
+            "type": "url",
+            "id": "button_url",
+            "label": "Lien du bouton"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Round Collection",
+        "category": "Maxence",
+        "blocks": [
+          {
+            "type": "slide"
+          },
+          {
+            "type": "slide"
+          },
+          {
+            "type": "slide"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

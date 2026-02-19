@@ -1,0 +1,17 @@
+<li class="relative overflow-clip" {{ block.shopify_attributes }}>
+  <a href="{{ block.settings.link | default: '#' }}" class="group relative overflow-clip block">
+    {% if block.settings.image %}
+      <picture class="rounded-lg! block group-hover:scale-110 transition-transform duration-1000 group-hover:duration-500 ease-expo-out">
+        {{
+          block.settings.image | image_url: width: 420, height: 420, crop: 'center' | image_tag: loading: 'lazy', class: 'w-full', sizes: '29vw'
+        }}
+      </picture>
+    {% endif %}
+
+    {% if block.settings.title != blank %}
+      <span class="absolute left-8 top-8 text-4xl/none font-black tracking-tight text-white">
+        {{ block.settings.title | escape }}
+      </span>
+    {% endif %}
+  </a>
+</li>

@@ -1,0 +1,117 @@
+{%- capture icon1 -%}<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M4 11.25C3.58579 11.25 3.25 11.5858 3.25 12C3.25 12.4142 3.58579 12.75 4 12.75L4 11.25ZM20 12.75C20.4142 12.75 20.75 12.4142 20.75 12C20.75 11.5858 20.4142 11.25 20 11.25V12.75ZM16.528 6.46731C16.2338 6.17573 15.7589 6.17784 15.4673 6.47204C15.1757 6.76624 15.1778 7.24111 15.472 7.53269L16.528 6.46731ZM17.763 8.74731L17.235 9.28L17.763 8.74731ZM17.763 15.2527L18.2909 15.7854L17.763 15.2527ZM15.472 16.4673C15.1778 16.7589 15.1757 17.2338 15.4673 17.528C15.7589 17.8222 16.2338 17.8243 16.528 17.5327L15.472 16.4673ZM19.9801 11.6867L20.7241 11.5918V11.5918L19.9801 11.6867ZM19.9801 12.3133L20.7241 12.4082V12.4082L19.9801 12.3133ZM4 12.75L20 12.75V11.25L4 11.25L4 12.75ZM15.472 7.53269L17.235 9.28L18.2909 8.21462L16.528 6.46731L15.472 7.53269ZM17.235 14.72L15.472 16.4673L16.528 17.5327L18.2909 15.7854L17.235 14.72ZM17.235 9.28C17.9505 9.98914 18.4413 10.4772 18.7734 10.8907C19.096 11.2924 19.2067 11.5504 19.2361 11.7815L20.7241 11.5918C20.6453 10.9737 20.3504 10.4588 19.9429 9.95146C19.545 9.45597 18.9814 8.89892 18.2909 8.21462L17.235 9.28ZM18.2909 15.7854C18.9814 15.1011 19.545 14.544 19.9429 14.0485C20.3504 13.5412 20.6453 13.0263 20.7241 12.4082L19.2361 12.2185C19.2067 12.4496 19.096 12.7076 18.7734 13.1093C18.4413 13.5228 17.9505 14.0109 17.235 14.72L18.2909 15.7854ZM19.2361 11.7815C19.2546 11.9266 19.2546 12.0734 19.2361 12.2185L20.7241 12.4082C20.7586 12.1371 20.7586 11.8629 20.7241 11.5918L19.2361 11.7815Z" fill="currentColor"></path>
+                  </svg>{%- endcapture -%}
+<section class="{{ section.settings.padding_mobile }}">
+  <div class="border-t-[1px] border-b-[1px] border-black/10 pt-10 pb-10">
+    <div class="page-width flex gap-4 overflow-x-auto overscroll-x-none [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'filtre' %}
+            <a href="{{ block.settings.url }}" {{ block.shopify_attributes }}>
+              <div class="group px-16 py-4 border-1 border-black/10 rounded-lg {{ section.settings.hover_color }} {{ section.settings.font_size }} flex items-center gap-4">
+                {{ block.settings.title_filter }}
+                <div class="rotate-45! group-hover:rotate-0! transition-all duration-300">{{ icon1 }}</div>
+              </div>
+            </a>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Filtre Collection",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Filtre Collection"
+      },
+      {
+        "type": "select",
+        "id": "padding_mobile",
+        "label": "Padding sur mobile",
+        "options": [
+          {
+            "value": "pt-[38px]! md:py-[32px]!",
+            "label": "Padding en haut"
+          },
+          {
+            "value": "pb-[38px]! md:py-[32px]!",
+            "label": "Padding en bas"
+          },
+          {
+            "value": "py-[38px]! md:py-[32px]!",
+            "label": "Padding en haut et en bas"
+          }
+        ],
+        "default": "py-[38px]! md:py-[32px]!"
+      },
+      {
+        "type": "select",
+        "id": "hover_color",
+        "label": "Couleur en hover",
+        "options": [
+          {
+            "value": "hover:bg-yellow-200/20",
+            "label": "Jaune"
+          },
+          {
+            "value": "hover:bg-red-200/20",
+            "label": "Rouge"
+          },
+          {
+            "value": "hover:bg-blue-200/20",
+            "label": "Bleu"
+          }
+        ],
+        "default": "hover:bg-blue-200/20"
+      },
+      {
+        "type": "select",
+        "id": "font_size",
+        "label": "Padding sur mobile",
+        "options": [
+          {
+            "value": "text-2xl!",
+            "label": "Petit texte"
+          },
+          {
+            "value": "text-4xl!",
+            "label": "Moyen texte"
+          },
+          {
+            "value": "text-7xl!",
+            "label": "Grand texte"
+          }
+        ],
+        "default": "text-4xl!"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "filtre",
+        "name": "Filtre",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title_filter",
+            "label": "Filtre"
+          },
+          {
+            "type": "url",
+            "id": "url",
+            "label": "URLs"
+
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Filtre Collection",
+        "category": "Maxence"
+      }
+    ]
+  }
+{% endschema %}

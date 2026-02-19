@@ -1,0 +1,72 @@
+{% comment %}
+  Renders a simplified product card (image, title, price).
+
+  Accepts:
+  - card_product: {Object} Product Liquid object (optional)
+  - lazy_load: {Boolean} Image should be lazy loaded. Default: true (optional)
+  - section_id: {String} The ID of the section that contains this card.
+  - placeholder_image: {String} The placeholder image to use when no product exists.
+  - custom_classes: {String} Additional CSS classes to add to the card container (optional)
+  - custom_price_classes: {String} Additional CSS classes to add to the price container (optional)
+
+  Usage:
+  {% render 'card-product', card_product: product, section_id: section.id %}
+{% endcomment %}
+
+{%- if card_product and card_product != empty -%}
+  <div class="card-product h-full! {{ custom_classes }}">
+    <a href="{{ card_product.url }}" class="group overflow-clip! flex! flex-col! h-full! no-underline! text-inherit!">
+      {%- if card_product.featured_media -%}
+        <div class="rounded-md! mb-[30px]!" style="overflow: hidden; border-radius: var(--rounded--size) !important;">
+          <img
+            srcset="
+              {%- if card_product.featured_media.width >= 165 -%}{{ card_product.featured_media | image_url: width: 165 }} 165w,{%- endif -%}
+              {%- if card_product.featured_media.width >= 360 -%}{{ card_product.featured_media | image_url: width: 360 }} 360w,{%- endif -%}
+              {%- if card_product.featured_media.width >= 533 -%}{{ card_product.featured_media | image_url: width: 533 }} 533w,{%- endif -%}
+              {%- if card_product.featured_media.width >= 720 -%}{{ card_product.featured_media | image_url: width: 720 }} 720w,{%- endif -%}
+              {{ card_product.featured_media | image_url }} {{ card_product.featured_media.width }}w
+            "
+            src="{{ card_product.featured_media | image_url: width: 533 }}"
+            sizes="(min-width: 990px) calc(100vw / 4), (min-width: 750px) calc(100vw / 3), 50vw"
+            alt="{{ card_product.featured_media.alt | escape }}"
+            class="block! w-full! aspect-square! object-cover! transition-transform duration-500 ease-expo-out group-hover:scale-110"
+            {% unless lazy_load == false %}
+            loading="lazy"
+            {% endunless %}
+            width="{{ card_product.featured_media.width }}"
+            height="{{ card_product.featured_media.height }}">
+        </div>
+      {%- endif -%}
+
+      <h3 class="text-[12px]! font-bold! mt-0! mb-1! leading-snug! grow!">
+        {{ card_product.title | escape }}
+      </h3>
+
+      <p class="text-[12px]! opacity-70!">{{ card_product.vendor }}</p>
+
+      <div class="mt-auto!">
+        {% render 'price'
+          , product: card_product
+          , price_class: 'font-bold text-[12px] text-black!'
+          , show_compare_at_price: true %}
+      </div>
+    </a>
+  </div>
+
+{%- else -%}
+  <div class="card-product">
+    <div class="overflow-hidden! mb-3!" style="overflow: hidden; border-radius: var(--rounded--size) !important;">
+      {%- if placeholder_image -%}
+        {{ placeholder_image | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- else -%}
+        {{ 'product-apparel-2' | placeholder_svg_tag: 'placeholder-svg' }}
+      {%- endif -%}
+    </div>
+    <h3 class="text-[14px]! font-medium! mt-0! mb-1! leading-snug!">
+      {{ 'onboarding.product_title' | t }}
+    </h3>
+    {% render 'price'
+      , placeholder: true
+      , show_compare_at_price: true %}
+  </div>
+{%- endif -%}

@@ -1,0 +1,111 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer_reassurance_niL9yM": {
+      "type": "footer-reassurance",
+      "blocks": {
+        "feature_NG44RW": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/truck.svg",
+            "title": "Livraison gratuite",
+            "subtitle": "Livraison gratuite sur toutes les commandes à partir de 40 €"
+          }
+        },
+        "feature_wkVYNf": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/service_client.svg",
+            "title": "Service client",
+            "subtitle": "Via le formulaire de contact."
+          }
+        },
+        "feature_iR4a4i": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/cadeau.svg",
+            "title": "Cadeau offert",
+            "subtitle": "dès 29€ d'achat"
+          }
+        },
+        "feature_THFg9J": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/secure.svg",
+            "title": "Paiement sécurisé",
+            "subtitle": "Paiements 100 % sécurisés par CB, Paypal ou Scalapay. Achetez en toute confiance"
+          }
+        }
+      },
+      "block_order": [
+        "feature_NG44RW",
+        "feature_wkVYNf",
+        "feature_iR4a4i",
+        "feature_THFg9J"
+      ],
+      "name": "Reassurance Footer",
+      "settings": {
+        "bg_color": "#ffffff",
+        "padding_mobile": "py-[38px]! md:py-[32px]!"
+      }
+    },
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "icon_social_8DQFLp": {
+          "type": "icon_social",
+          "settings": {
+            "show_social": true,
+            "logo": "shopify://shop_images/monsieurmadame_logo.webp"
+          }
+        },
+        "footer-1": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Info",
+            "menu": "footer"
+          }
+        },
+        "footer-0": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Légal",
+            "menu": "l-gal"
+          }
+        }
+      },
+      "block_order": [
+        "icon_social_8DQFLp",
+        "footer-1",
+        "footer-0"
+      ],
+      "settings": {
+        "bg_color": "#4ea2de",
+        "copyright": "© 2026 MAXENCE-GARANDEL",
+        "navigation": "customer-account-main-menu",
+        "color_scheme": "scheme-3",
+        "newsletter_enable": true,
+        "bg_footer": "#4ea2de",
+        "color_text_footer": "#ffffff",
+        "logo_enable": false,
+        "newsletter_heading": "- 5% de réduction en vous abonnant à notre newsletter !",
+        "newsletter_subheading": "Remplissez le formulaire pour vous inscrire.",
+        "logo_footer": "shopify://shop_images/Logo_endro_noir.webp"
+      }
+    }
+  },
+  "order": [
+    "footer_reassurance_niL9yM",
+    "footer"
+  ]
+}

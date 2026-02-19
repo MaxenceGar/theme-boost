@@ -1,0 +1,156 @@
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+
+<section class="{{ section.settings.padding_mobile }}">
+  <div class="page-width">
+    <h2 class="text-[30px]! lg:text-[30px]! font-heading tracking-[-0.2px] text-left rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      {{ section.settings.title }}
+    </h2>
+    <div class="collection__description {{ section.settings.description_style }} rte{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <p>{{ section.settings.subtitle }}</p>
+    </div>
+  </div>
+
+  <div class="page-width pt-[20px]!">
+    <div class="swiper collection-swiper--{{ section.id }}">
+      <div class="swiper-wrapper">
+        {% for block in section.blocks %}
+          <div class="swiper-slide" {{ block.shopify_attributes }}>
+            <a href="{{ block.settings.link }}" class="text-center group block!">
+              {% if block.settings.icon != blank %}
+                <div class="overflow-hidden! {{ section.settings.image_shape }}" style="border-radius: var(--rounded--size) !important;">
+                  {% assign img_classes = 'w-full! h-full! object-cover! shrink-0! mx-auto! block! group-hover:scale-110! transition-transform! duration-1000! group-hover:duration-500!' %}
+                  {{ block.settings.icon | image_url: width: 1000 | image_tag: class: img_classes, loading: 'lazy' }}
+                </div>
+              {% endif %}
+              <div>
+                <p class="text-center text-black text-[14px]! md:text-[18px]! font-bold tracking-[0.8px] uppercase mt-3!">
+                  {{ block.settings.collection_title }}
+                </p>
+              </div>
+            </a>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ 'swiper-bundle.min.js' | asset_url | script_tag }}
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    new Swiper('.collection-swiper--{{ section.id }}', {
+      slidesPerView: 2.3,
+      spaceBetween: 16,
+      grabCursor: true,
+      breakpoints: {
+        768: { slidesPerView: 3, spaceBetween: 20 },
+        1024: { slidesPerView: {{ section.blocks.size }}, spaceBetween: 24 }
+      }
+    });
+  });
+</script>
+
+{% schema %}
+  {
+    "name": "Liste Collections",
+    "settings": [
+      {
+        "type": "text",
+        "default": "Titre de la section",
+        "id": "title",
+        "label": "Titre de la section"
+      },
+      {
+        "type": "text",
+        "default": "Titre de la section",
+        "id": "subtitle",
+        "label": "Sous-titre de la section"
+      },
+      {
+        "type": "select",
+        "id": "padding_mobile",
+        "label": "Padding sur mobile",
+        "options": [
+          {
+            "value": "pt-[38px]! md:py-[32px]!",
+            "label": "Padding en haut"
+          },
+          {
+            "value": "pb-[38px]! md:py-[32px]!",
+            "label": "Padding en bas"
+          },
+          {
+            "value": "py-[38px]! md:py-[32px]!",
+            "label": "Padding en haut et en bas"
+          }
+        ],
+        "default": "py-[38px]! md:py-[32px]!"
+      },
+      {
+        "type": "select",
+        "id": "image_shape",
+        "label": "Forme de l'image",
+        "options": [
+          {
+            "value": "aspect-square!",
+            "label": "Carré"
+          },
+          {
+            "value": "aspect-9/12!",
+            "label": "Rectangle"
+          }
+        ],
+        "default": "aspect-square!"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "feature",
+        "name": "Feature",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icone"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Texte",
+            "default": "Faits au Quebec"
+          },
+          {
+            "type": "text",
+            "default": "Nom de la collection",
+            "id": "collection_title",
+            "label": "Nom de la collection"
+          },
+          {
+            "type": "url",
+            "default": "/",
+            "id": "link",
+            "label": "Lien de la collection"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Liste Collections",
+        "category": "Maxence",
+        "blocks": [
+          {
+            "type": "feature"
+          },
+          {
+            "type": "feature"
+          },
+          {
+            "type": "feature"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

@@ -1,0 +1,197 @@
+{% liquid
+  assign image_position = section.settings.image_position
+
+  if image_position == 'left'
+    assign image_position = 'lg:order-1'
+    assign content_position = 'lg:order-2'
+  endif
+%}
+
+<section class="relative overflow-hidden">
+  <div class="page-width">
+    <div class="grid! grid-cols-1! md:grid-cols-2! gap-10 items-center py-16">
+
+      <!-- CONTENU -->
+      <div class="flex flex-col gap-6 {{ content_position }}">
+
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'trust' %}
+              <div class="flex flex-row gap-4" {{ block.shopify_attributes }}>
+                <img
+                  src="https://bonjourdrink.co/cdn/shop/files/stars-5.svg?v=1739431681"
+                  class="w-40!"
+                  alt="">
+                <span class="uppercase font-bold! text-black! underline">
+                  {{ block.settings.trust_text }}
+                </span>
+              </div>
+
+            {% when 'title' %}
+              <h1 class="font-bold! leading-15! uppercase" {{ block.shopify_attributes }}>
+                {{ block.settings.title }}
+              </h1>
+
+            {% when 'benefit' %}
+              <li class="flex items-start gap-3 rounded-lg" {{ block.shopify_attributes }}>
+                <span class="mt-1">✓</span>
+                <p>{{ block.settings.text }}</p>
+              </li>
+
+            {% when 'button' %}
+              <a
+                href="{{ block.settings.button_url }}"
+                class="btn {{ block.settings.button_style }}"
+                {{ block.shopify_attributes }}>
+                {{ block.settings.button_label }}
+              </a>
+
+            {% when 'badge' %}
+              <div class="grid grid-cols-3">
+                <span class="bg-[#2E7D5A]! rounded-lg text-white! px-5" {{ block.shopify_attributes }}>
+                  {{ block.settings.text_badge }}
+                </span>
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
+
+      <!-- IMAGE -->
+      <div class="relative {{ image_position }}">
+        {% if section.settings.image != blank %}
+          {{
+            section.settings.image | image_url: width: 900 | image_tag: loading: 'eager', class: 'aspect-square w-full h-auto object-cover rounded'
+          }}
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Hero CRO",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image hero"
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "label": "Position de l'image",
+        "options": [
+          {
+            "value": "left",
+            "label": "Gauche"
+          },
+          {
+            "value": "right",
+            "label": "Droite"
+          }
+        ],
+        "default": "left"
+      },
+    ],
+    "blocks": [
+      {
+        "type": "benefit",
+        "name": "Bénéfice",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Texte",
+            "default": "Un bénéfice clair et orienté client"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Bouton",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Label"
+          },
+          {
+            "type": "text",
+            "id": "button_label_mobile",
+            "label": "Label mobile"
+          },
+          {
+            "type": "url",
+            "id": "button_url",
+            "label": "URL"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Style du bouton",
+            "options": [
+              {
+                "value": "btn-primaire",
+                "label": "Primaire"
+              },
+              {
+                "value": "btn-secondaire",
+                "label": "Secondaire"
+              },
+              {
+                "value": "btn-tertiaire",
+                "label": "Tertiaire"
+              }
+            ],
+            "default": "btn-primaire"
+          }
+        ]
+      },
+      {
+        "type": "badge",
+        "name": "badge",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text_badge",
+            "label": "Label"
+          }
+        ]
+      },
+      {
+        "type": "title",
+        "name": "Title",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Label"
+          }
+        ]
+      },
+      {
+        "type": "trust",
+        "name": "Trust",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Trust"
+          },
+          {
+            "type": "text",
+            "id": "trust_text",
+            "default": "4.5/5 10298+ avis",
+            "label": "Texte avis"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Hero CRO",
+        "category": "Maxence"
+      }
+    ]
+  }
+{% endschema %}

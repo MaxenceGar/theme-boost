@@ -1,0 +1,82 @@
+<section class="{{ section.settings.padding_mobile }}">
+  <div class="page-width grid! grid-cols-1! md:grid-cols-2! items-center">
+    <div class="rounded-lg">
+      {% if section.settings.image_banner != blank %}
+        <img
+          src="{{ section.settings.image_banner | image_url }}"
+          alt=""
+          class="aspect-3/2 {{ section.settings.aspect-ratio }} object-cover rounded-lg">
+      {% else %}
+        {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+      {% endif %}
+    </div>
+    <div class="mx-10">
+      <h1 class="font-serif! font-bold!">{{- collection.title | escape -}}</h1>
+      <p>{{ section.settings.description }}</p>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "(Collection)",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Image + Texte (Collection)"
+      },
+      {
+        "type": "select",
+        "id": "padding_mobile",
+        "label": "Padding sur mobile",
+        "options": [
+          {
+            "value": "pt-[38px]! md:py-[32px]!",
+            "label": "Padding en haut"
+          },
+          {
+            "value": "pb-[38px]! md:py-[32px]!",
+            "label": "Padding en bas"
+          },
+          {
+            "value": "py-[38px]! md:py-[32px]!",
+            "label": "Padding en haut et en bas"
+          }
+        ],
+        "default": "py-[38px]! md:py-[32px]!"
+      },
+      {
+        "type": "image_picker",
+        "id": "image_banner",
+        "label": "Image de la bannière"
+      },
+      {
+        "type": "select",
+        "id": "aspect-ratio",
+        "label": "Ratio Image",
+        "options": [
+          {
+            "value": "aspect-square",
+            "label": "aspect-square"
+          },
+          {
+            "value": "aspect-video",
+            "label": "aspect-video"
+          }
+        ],
+        "default": "aspect-video"
+      },
+      {
+        "type": "richtext",
+        "id": "description",
+        "label": "Description"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Image + Texte (Collection)",
+        "category": "Image"
+      }
+    ]
+  }
+{% endschema %}

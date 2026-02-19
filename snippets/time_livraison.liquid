@@ -1,0 +1,107 @@
+{% assign today = 'now' | date: '%s' %}
+{% assign days_to_add = 5 | times: 86400 %}
+{% assign future_date = today | plus: days_to_add %}
+{% assign day_name = future_date | date: '%A' %}
+{% assign month_name = future_date | date: '%B' %}
+{% assign day_number = future_date | date: '%d' %}
+
+{% case day_name %}
+  {% when 'Monday' %}
+    {% assign day_fr = 'Lundi' %}
+  {% when 'Tuesday' %}
+    {% assign day_fr = 'Mardi' %}
+  {% when 'Wednesday' %}
+    {% assign day_fr = 'Mercredi' %}
+  {% when 'Thursday' %}
+    {% assign day_fr = 'Jeudi' %}
+  {% when 'Friday' %}
+    {% assign day_fr = 'Vendredi' %}
+  {% when 'Saturday' %}
+    {% assign day_fr = 'Samedi' %}
+  {% when 'Sunday' %}
+    {% assign day_fr = 'Dimanche' %}
+{% endcase %}
+
+{% case month_name %}
+  {% when 'January' %}
+    {% assign month_fr = 'janvier' %}
+  {% when 'February' %}
+    {% assign month_fr = 'février' %}
+  {% when 'March' %}
+    {% assign month_fr = 'mars' %}
+  {% when 'April' %}
+    {% assign month_fr = 'avril' %}
+  {% when 'May' %}
+    {% assign month_fr = 'mai' %}
+  {% when 'June' %}
+    {% assign month_fr = 'juin' %}
+  {% when 'July' %}
+    {% assign month_fr = 'juillet' %}
+  {% when 'August' %}
+    {% assign month_fr = 'août' %}
+  {% when 'September' %}
+    {% assign month_fr = 'septembre' %}
+  {% when 'October' %}
+    {% assign month_fr = 'octobre' %}
+  {% when 'November' %}
+    {% assign month_fr = 'novembre' %}
+  {% when 'December' %}
+    {% assign month_fr = 'décembre' %}
+{% endcase %}
+
+<div class="bg-white p-6 space-y-3">
+  <div class="flex items-center gap-3 text-stone-700">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="size-5 text-stone-500 shrink-0"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="1.5">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M8.25 18.75a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 0 1-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 0 1-3 0m3 0a1.5 1.5 0 0 0-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 0 0-3.213-9.193 2.056 2.056 0 0 0-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 0 0-10.026 0 1.106 1.106 0 0 0-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" />
+    </svg>
+    <span>Livraison estimée
+      <span class="font-semibold text-stone-900">{{ day_fr }} {{ day_number }} {{ month_fr }}</span>
+    </span>
+  </div>
+
+  <div class="flex items-center gap-3 text-black">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="size-5 shrink-0"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="1.5">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+    </svg>
+    <span>
+      <span class="font-semibold">Livraison offerte</span>
+      en relais dès 30€</span>
+      <span>
+        </div>
+        <div class="flex items-center gap-3 text-black">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      class="size-5 shrink-0"
+      fill="none"
+      viewBox="0 0 24 24"
+      stroke="currentColor"
+      stroke-width="1.5">
+      <path
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        d="M9 12.75 11.25 15 15 9.75M21 12a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
+    </svg>
+    <span>
+      <span class="font-semibold">Paiement</span>
+      100% sécurisé</span>
+      <span>
+        </div>
+</div>

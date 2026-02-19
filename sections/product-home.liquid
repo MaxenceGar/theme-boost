@@ -1,0 +1,82 @@
+<section class="page-width my-50!">
+  <div class="mb-10">
+    <h2 class="font-bold! uppercase text-7xl!">Votre nouveau rituel bien-être</h2>
+    <p>La routine gourmande qui transforme vos journées. Formulée scientifiquement en France.</p>
+  </div>
+
+  <div class="page-width bg-[#2E7D5A]/20! rounded-xl!">
+
+
+    <div class="flex items-center justify-between gap-10 py-10">
+      <div class="w-auto h-auto flex-1">
+        <img
+          src="https://labombilla.fr/cdn/shop/articles/Gout_Mate_800x400_b08e9d42-e347-4789-ad98-58d3652bd285_800x.jpg?v=1666991471"
+          alt=""
+          class="aspect-square w-full h-full object-cover rounded-xl! shadow-2xl" />
+      </div>
+      <div class="flex! flex-col gap-10 flex-1">
+        <div class="flex flex-row gap-4">
+          <img
+            src="https://bonjourdrink.co/cdn/shop/files/stars-5.svg?v=1739431681"
+            class="w-40!"
+            alt="">
+          <span class="uppercase font-bold! text-black! underline">
+            4.9/5 (10,390+ avis)
+          </span>
+        </div>
+        <p class="text-6xl font-bold! uppercase text-black! h2">Pack C'est d'la bombe</p>
+        <div class="flex flex-col gap-4">
+          <div class="flex flex-row gap-4 items-center">{% render 'check-icon.liquid' %}
+            <p>Un bénéfice clair et orienté client</p>
+          </div>
+          <div class="flex flex-row gap-4 items-center">{% render 'check-icon.liquid' %}
+            <p>Un bénéfice clair et orienté client</p>
+          </div>
+          <div class="flex flex-row gap-4 items-center">{% render 'check-icon.liquid' %}
+            <p>Un bénéfice clair et orienté client</p>
+          </div>
+        </div>
+        <div class="btn {{ section.settings.button_style }}">
+          AJOUTER AU PANIER - 79,90€
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Product home",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Header"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Style du bouton",
+        "options": [
+          {
+            "value": "btn-primaire",
+            "label": "Primaire"
+          },
+          {
+            "value": "btn-secondaire",
+            "label": "Secondaire"
+          },
+          {
+            "value": "btn-tertiaire",
+            "label": "Tertiaire"
+          }
+        ],
+        "default": "btn-primaire"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Product home",
+        "category": "Maxence"
+      }
+    ]
+  }
+{% endschema %}

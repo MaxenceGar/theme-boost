@@ -1,0 +1,75 @@
+<section class="{{ section.settings.padding_mobile }}">
+  <div class="w-full max-auto py-10">
+    <div class="flex flex-row gap-6 mx-auto section-container">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'block' %}
+            <div class="flex flex-col items-center text-center" {{ section.shopify_attributes }}>
+              <img
+                src="//unbottled.co/cdn/shop/files/zero-plastique-hp-100x100.png?v=1682007977"
+                alt="Zéro Plastique"
+                width="60"
+                height="60"
+                loading="lazy"
+                class="mx-auto">
+              <h2 class="text-[16px]! font-bold mt-4 md:mt-6 mb-2">{{ block.settings.title }}</h2>
+              <p class="text-black text-[14px]!">{{ block.settings.text }}</p>
+            </div>
+        {% endcase %}
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+{% schema %}
+  {
+    "name": "Reassurance Icons",
+    "settings": [
+      {
+        "type": "select",
+        "id": "padding_mobile",
+        "label": "Padding sur mobile",
+        "options": [
+          {
+            "value": "pt-[38px]! md:py-[32px]!",
+            "label": "Padding en haut"
+          },
+          {
+            "value": "pb-[38px]! md:py-[32px]!",
+            "label": "Padding en bas"
+          },
+          {
+            "value": "py-[38px]! md:py-[32px]!",
+            "label": "Padding en haut et en bas"
+          }
+        ],
+        "default": "py-[38px]! md:py-[32px]!"
+      }
+    ],
+    "presets": [
+      {
+        "name": "Reassurance Icons"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "block",
+        "name": "Titre",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title",
+            "default": "Zéro Plastique"
+          },
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Texte",
+            "default": "Plus de plastique, moins de poissons. Euh non, le contraire..."
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

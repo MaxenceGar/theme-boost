@@ -1,0 +1,182 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "text_white_image_collection_ctpkWh": {
+      "type": "text-white-image-collection",
+      "name": "Image + Texte (Collection)",
+      "settings": {
+        "padding_mobile": "pt-[38px]! md:py-[32px]!",
+        "image_banner": "shopify://shop_images/Visuel_baume.png",
+        "aspect-ratio": "aspect-video",
+        "description": "<p>Chez Energie Fruit, tous nos soins du corps sont BIO certifiés par Ecocert et composés entre 98% et 100% d'ingrédients d'origine naturelle. Leur vertu : vous offrir des soins performants et efficaces, les plus doux pour votre peau.</p>"
+      }
+    },
+    "marquee_hzb3C9": {
+      "type": "marquee",
+      "blocks": {
+        "text_9rBFgc": {
+          "type": "text",
+          "settings": {
+            "text": "Livraison offerte dès 49€",
+            "image_banner": "shopify://shop_images/hot-deal.webp"
+          }
+        },
+        "text_MwJQLT": {
+          "type": "text",
+          "settings": {
+            "text": "Paiement sécurisé",
+            "image_banner": "shopify://shop_images/easter-egg.webp"
+          }
+        },
+        "text_BxJpaE": {
+          "type": "text",
+          "settings": {
+            "text": "Retours gratuits",
+            "image_banner": "shopify://shop_images/flash.webp"
+          }
+        }
+      },
+      "block_order": [
+        "text_9rBFgc",
+        "text_MwJQLT",
+        "text_BxJpaE"
+      ],
+      "name": "Marquee",
+      "settings": {
+        "bg_color": "#ffffff",
+        "text_color": "#4d4c47",
+        "speed": 60,
+        "font_size": "md:text-4xl!",
+        "icon_size": "w-16! h-16!",
+        "space_size": "py-8",
+        "font_weight": "font-bold!",
+        "border_color": "#4d4c47"
+      }
+    },
+    "filter_collection_TVQh6D": {
+      "type": "filter-collection",
+      "blocks": {
+        "filtre_yRTPam": {
+          "type": "filtre",
+          "settings": {
+            "title_filter": "T-shirt",
+            "url": "shopify://collections/transpire"
+          }
+        },
+        "filtre_B4h98E": {
+          "type": "filtre",
+          "settings": {
+            "title_filter": "Hoodies",
+            "url": "shopify://collections/transpire"
+          }
+        },
+        "filtre_8yP9x9": {
+          "type": "filtre",
+          "settings": {
+            "title_filter": "Peluches",
+            "url": ""
+          }
+        },
+        "filtre_UERUT7": {
+          "type": "filtre",
+          "settings": {
+            "title_filter": "Livres",
+            "url": ""
+          }
+        },
+        "filtre_JKqWAG": {
+          "type": "filtre",
+          "settings": {
+            "title_filter": "Affiches",
+            "url": ""
+          }
+        }
+      },
+      "block_order": [
+        "filtre_yRTPam",
+        "filtre_B4h98E",
+        "filtre_8yP9x9",
+        "filtre_UERUT7",
+        "filtre_JKqWAG"
+      ],
+      "name": "Filtre Collection",
+      "settings": {
+        "padding_mobile": "pt-[38px]! md:py-[32px]!",
+        "hover_color": "hover:bg-blue-200/20",
+        "font_size": "text-4xl!"
+      }
+    },
+    "product-grid": {
+      "type": "main-collection-product-grid",
+      "settings": {
+        "products_per_page": 16,
+        "columns_desktop": 4,
+        "columns_mobile": "2",
+        "color_scheme": "",
+        "image_ratio": "square",
+        "image_shape": "default",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "enable_filtering": false,
+        "filter_type": "horizontal",
+        "enable_sorting": true,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "faq_product_page_XbzXpA": {
+      "type": "faq-product-page",
+      "blocks": {
+        "faq_section_Fqn3RR": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Question",
+            "reponse": "Réponse"
+          }
+        },
+        "faq_section_zmfMR4": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Question",
+            "reponse": "Réponse"
+          }
+        },
+        "faq_section_RNRNFB": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Question",
+            "reponse": "Réponse"
+          }
+        }
+      },
+      "block_order": [
+        "faq_section_Fqn3RR",
+        "faq_section_zmfMR4",
+        "faq_section_RNRNFB"
+      ],
+      "name": "FAQ Produt Page",
+      "settings": {
+        "image_position": "left",
+        "padding_mobile": "py-[38px]! md:py-[32px]!",
+        "button_style": "btn-primaire"
+      }
+    }
+  },
+  "order": [
+    "text_white_image_collection_ctpkWh",
+    "marquee_hzb3C9",
+    "filter_collection_TVQh6D",
+    "product-grid",
+    "faq_product_page_XbzXpA"
+  ]
+}

@@ -1,0 +1,191 @@
+<section class="{{ section.settings.space_size }} overflow-hidden" style="background-color: {{ section.settings.bg_color }}; color: {{ section.settings.text_color }}; border-top: 1px solid {{ section.settings.border_color }}; border-bottom: 1px solid {{ section.settings.border_color }};">
+  <div class="marquee" style="--marquee-duration: {{ section.settings.speed }}s;">
+    {% for i in (1..4) %}
+      <div
+        class="flex gap-8 items-center mr-8"
+        {% if i > 1 %}
+        aria-hidden="true"
+        {% endif %}>
+        {% for block in section.blocks %}
+          <span class="flex items-center gap-8 whitespace-nowrap {{ section.settings.font_size }} {{ section.settings.font_weight }} uppercase tracking-widest" {{ block.shopify_attributes }}>
+            {% if block.settings.image_banner != blank %}
+              <img
+                src="{{ block.settings.image_banner | image_url: width: 200 }}"
+                alt=""
+                class="{{ section.settings.icon_size }} object-contain shrink-0">
+            {% endif %}
+            {{ block.settings.text }}
+          </span>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "Marquee",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Couleur de fond",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Couleur du texte",
+        "default": "#ffffff"
+      },
+      {
+        "type": "range",
+        "id": "speed",
+        "label": "Vitesse du défilement",
+        "min": 5,
+        "max": 60,
+        "step": 5,
+        "default": 20,
+        "unit": "s"
+      },
+      {
+        "type": "select",
+        "id": "font_size",
+        "label": "Taille du texte",
+        "options": [
+          {
+            "value": "md:text-2xl!",
+            "label": "Petit texte"
+          },
+          {
+            "value": "md:text-4xl!",
+            "label": "Moyen texte"
+          },
+          {
+            "value": "md:text-7xl!",
+            "label": "Grand texte"
+          }
+        ],
+        "default": "md:text-4xl!"
+      },
+      {
+        "type": "select",
+        "id": "icon_size",
+        "label": "Taille des images",
+        "options": [
+          {
+            "value": "w-8! h-8!",
+            "label": "Petite images"
+          },
+          {
+            "value": "w-16! h-16!",
+            "label": "Moyenne images"
+          },
+          {
+            "value": "w-32! h-32!",
+            "label": "Grandes images"
+          }
+        ],
+        "default": "w-32! h-32!"
+      },
+      {
+        "type": "select",
+        "id": "space_size",
+        "label": "Hauteur du marquee",
+        "options": [
+          {
+            "value": "py-4",
+            "label": "Petit espace"
+          },
+          {
+            "value": "py-8",
+            "label": "Moyen espace"
+          },
+          {
+            "value": "py-16",
+            "label": "Grand espace"
+          }
+        ],
+        "default": "py-16"
+      },
+      {
+        "type": "select",
+        "id": "font_weight",
+        "label": "Font Bold, Medium,... ?",
+        "options": [
+          {
+            "value": "font-light!",
+            "label": "Light"
+          },
+          {
+            "value": "font-normal!",
+            "label": "Normal"
+          },
+          {
+            "value": "font-medium!",
+            "label": "Medium"
+          },
+          {
+            "value": "font-semibold!",
+            "label": "Semi-bold"
+          },
+          {
+            "value": "font-bold!",
+            "label": "Bold"
+          }
+        ],
+        "default": "font-bold!"
+      },
+      {
+        "type": "color",
+        "id": "border_color",
+        "label": "Couleur bordure"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "text",
+        "name": "Texte",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Texte",
+            "default": "Livraison offerte dès 49€"
+          },
+          {
+            "type": "image_picker",
+            "id": "image_banner",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Marquee",
+        "category": "Maxence",
+        "blocks": [
+          {
+            "type": "text",
+            "settings": {
+              "text": "Livraison offerte dès 49€"
+            }
+          },
+          {
+            "type": "text",
+            "settings": {
+              "text": "Paiement sécurisé"
+            }
+          },
+          {
+            "type": "text",
+            "settings": {
+              "text": "Retours gratuits"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

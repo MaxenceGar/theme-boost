@@ -1,0 +1,314 @@
+{% liquid
+  assign image_position = section.settings.image_position
+
+  if image_position == 'right'
+    assign image_position = 'lg:order-2'
+    assign content_position = 'lg:order-1'
+  endif
+%}
+
+<div class="py-[54px]!" {{ section.shopify_attributes }}>
+  <div class="grid! grid-cols-1! md:grid-cols-2! overflow-hidden lg:min-h-[466px]" style="background-color: {{ section.settings.background_color }};">
+    <!-- Image -->
+    {%- assign parallax = section.settings.parallax -%}
+    <div
+      class="relative w-full h-[350px] md:h-full {{ image_position }} overflow-hidden!"
+      style="background-color: {{ section.settings.background_color_image }};"
+      {% if parallax %}
+      data-parallax-container="{{ section.id }}"
+      {% endif %}>
+      {% assign image_class = 'absolute w-full inset-0 ' | append: section.settings.image_object_fit %}
+      {% if parallax %}
+        {% assign image_class = image_class | append: ' h-[160%]! -top-[20%]!' %}
+      {% else %}
+        {% assign image_class = image_class | append: ' h-full' %}
+      {% endif %}
+      {% if section.settings.image %}
+        {%- liquid
+          assign fetchpriority = 'low'
+          assign loading = 'lazy'
+          assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+          assign image_width = section.settings.image.width
+          assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+        -%}
+        {{
+          section.settings.image | image_url: width: 2500 | image_tag: loading: loading, fetchpriority: fetchpriority, width: image_width, height: image_height, class: image_class, widths: widths, sizes: '100vw', data-parallax-img: section.id
+        }}
+      {% else %}
+        {{ 'lifestyle-1' | placeholder_svg_tag: image_class }}
+      {% endif %}
+    </div>
+
+    <!-- Content -->
+    <div class="flex py-[54px] px-[32px] md:py-[110px] md:px-[64px] {{ content_position }}">
+      <div class="grid! items-center max-w-[450px] text-left!">
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'subtitle' %}
+              <span
+                class="text-[14px] md:text-[16px] leading-[130%] tracking-[-0.02em] font-light text-center! md:text-left! md:justify-start! w-full"
+                style="color: {{ block.settings.color }};"
+                {{ block.shopify_attributes }}>
+                {{ block.settings.subtitle }}
+              </span>
+            {% when 'title' %}
+              <h2
+                class="text-[30px] md:text-[38px] leading-[130%] tracking-[-0.02em] text-center! md:text-left! md:justify-start! w-full"
+                style="color: {{ block.settings.color }};"
+                {{ block.shopify_attributes }}>
+                {{ block.settings.title }}
+              </h2>
+            {% when 'description' %}
+              <div
+                class="text-[14px] md:text-[16px] tracking-[-0.02em] font-heading text-left! md:text-left!"
+                style="color: {{ block.settings.color }};"
+                {{ block.shopify_attributes }}>
+                {{ block.settings.description | newline_to_br }}
+              </div>
+            {% when 'button' %}
+              {% if block.settings.button_label != blank and block.settings.button_url != blank %}
+                <div class="flex md:justify-start! justify-center w-full" {{ block.shopify_attributes }}>
+                  <a href="{{ block.settings.button_url }}" class="btn {{ block.settings.button_style }}">
+                    {% if block.settings.button_label_mobile != blank %}
+                      <span class="hidden! md:block!">{{ block.settings.button_label }}</span>
+                      <span class="md:hidden!">{{ block.settings.button_label_mobile }}</span>
+                    {% else %}
+                      {{- block.settings.button_label -}}
+                    {% endif %}
+                  </a>
+                </div>
+              {% endif %}
+          {% endcase %}
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% if section.settings.parallax %}
+  <script>
+    (function() {
+      const container = document.querySelector('[data-parallax-container="{{ section.id }}"]');
+      const img = document.querySelector('[data-parallax-img="{{ section.id }}"]');
+      if (!container || !img) return;
+
+      function onScroll() {
+        const rect = container.getBoundingClientRect();
+        const windowH = window.innerHeight;
+        if (rect.bottom < 0 || rect.top > windowH) return;
+        const progress = (windowH - rect.top) / (windowH + rect.height);
+        const offset = (progress - 0.5) * 200;
+        img.style.transform = 'translateY(' + offset + 'px)';
+      }
+
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
+{% endif %}
+
+{% schema %}
+  {
+    "name": "Section Gauche Droite",
+    "class": "section-gauche-droite",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "select",
+        "id": "image_object_fit",
+        "label": "Fit de l'image",
+        "options": [
+          {
+            "value": "object-cover",
+            "label": "Cover"
+          },
+          {
+            "value": "object-contain",
+            "label": "Contain"
+          }
+        ],
+        "default": "object-cover"
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "label": "Position de l'image",
+        "options": [
+          {
+            "value": "left",
+            "label": "Gauche"
+          },
+          {
+            "value": "right",
+            "label": "Droite"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "color",
+        "id": "background_color",
+        "label": "Couleur de fond contenu",
+        "default": "#FBF8F5"
+      },
+      {
+        "type": "color",
+        "id": "background_color_image",
+        "label": "Couleur de fond image",
+        "default": "#FBF8F5"
+      },
+      {
+        "type": "checkbox",
+        "id": "parallax",
+        "label": "Effet parallax sur l'image",
+        "default": false
+      },
+      {
+        "type": "select",
+        "id": "padding_mobile",
+        "label": "Padding sur mobile",
+        "options": [
+          {
+            "value": "pt-[38px]! md:py-[32px]!",
+            "label": "Padding en haut"
+          },
+          {
+            "value": "pb-[38px]! md:py-[32px]!",
+            "label": "Padding en bas"
+          },
+          {
+            "value": "py-[38px]! md:py-[32px]!",
+            "label": "Padding en haut et en bas"
+          }
+        ],
+        "default": "py-[38px]! md:py-[32px]!"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "title",
+        "name": "Titre",
+        "settings": [
+          {
+            "type": "text",
+            "id": "title",
+            "label": "Title"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Couleur du titre",
+            "default": "#191918"
+          }
+        ]
+      },
+      {
+        "type": "subtitle",
+        "name": "Sous-titre",
+        "settings": [
+          {
+            "type": "text",
+            "id": "subtitle",
+            "label": "Sous-titre"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Couleur du sous-titre",
+            "default": "#C4664A"
+          }
+        ]
+      },
+      {
+        "type": "description",
+        "name": "Description",
+        "settings": [
+          {
+            "type": "richtext",
+            "id": "description",
+            "label": "Description"
+          },
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Couleur de la description",
+            "default": "#444441"
+          }
+        ]
+      },
+      {
+        "type": "button",
+        "name": "Bouton",
+        "settings": [
+          {
+            "type": "text",
+            "id": "button_label",
+            "label": "Label"
+          },
+          {
+            "type": "text",
+            "id": "button_label_mobile",
+            "label": "Label mobile"
+          },
+          {
+            "type": "url",
+            "id": "button_url",
+            "label": "URL"
+          },
+          {
+            "type": "select",
+            "id": "button_style",
+            "label": "Style du bouton",
+            "options": [
+              {
+                "value": "btn-primaire",
+                "label": "Primaire"
+              },
+              {
+                "value": "btn-secondaire",
+                "label": "Secondaire"
+              },
+              {
+                "value": "btn-tertiaire",
+                "label": "Tertiaire"
+              }
+            ],
+            "default": "btn-primaire"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Section Gauche Droite",
+        "blocks": [
+          {
+            "type": "title",
+            "settings": {
+              "title": "Anne Borde & <br> Charlotte Rey"
+            }
+          },
+          {
+            "type": "description",
+            "settings": {
+              "description": "<p>Deux expertes en joaillerie, avec chacune plus de 20 ans d'expérience, dénichent les trésors cachés dans les coffres des particuliers et des professionnels.<\/p>"
+            }
+          },
+          {
+            "type": "button",
+            "settings": {
+              "button_label": "Découvrir les fondatrices",
+              "button_label_mobile": "Découvrir",
+              "button_url": "shopify:\/\/collections",
+              "button_style": "btn-primaire"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

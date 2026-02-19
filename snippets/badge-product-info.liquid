@@ -1,0 +1,59 @@
+<section class="px-4 md:px-14">
+  <h1 class="text-[24px] text-black font-bold! leading-none tracking-tight lg:text-[34px] mx-0!">
+    {{ product.title | escape }}
+  </h1>
+
+  <section class="flex gap-4 text-black text-xl! mx-0!">
+    <div class="flex gap-[2px]">
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+      <span>★</span>
+    </div>
+    <div>
+      <p>
+        4.8/5 - 20 Avis
+      </p>
+    </div>
+  </section>
+
+  <ul class="mt-12 flex flex-wrap gap-6 lg:mt-12 text-sm! text-black">
+    <li>
+      <div class="flex w-fit items-center justify-center rounded-full border border-[#2E7D5A] bg-[#2E7D5A]/10 py-3 px-5 text-base/none font-bold uppercase leading-none ">
+        <span class="-mb-1 block">⚡️ Donne de l'énergie</span>
+      </div>
+    </li>
+    <li>
+      <div class="flex w-fit items-center justify-center rounded-full border border-[#2E7D5A] bg-[#2E7D5A]/10 py-3 px-5 text-base/none  font-bold uppercase leading-none ">
+        <span class="-mb-1 block">Antioxydant</span>
+      </div>
+    </li>
+    <li>
+      <div class="flex w-fit items-center justify-center rounded-full border border-[#2E7D5A] bg-[#2E7D5A]/10 py-3 px-5 text-base/none  font-bold uppercase leading-none ">
+        <span class="-mb-1 block">Renforce l'immunité</span>
+      </div>
+    </li>
+  </ul>
+  <section class="lg:order-1 text-black my-14!">
+    <div class="text-[18px]! leading-none text-black/80">
+      <p>{{ product.description }}</p>
+    </div>
+  </section>
+
+  {%- assign badge_product_form_id = 'badge-product-form-' | append: section.id -%}
+  <div class="w-full! bg-black! flex text-white items-center justify-between px-10 py-5">
+    {% render 'buy-buttons'
+      , block: block
+      , product: product
+      , product_form_id: product_form_id
+      , section_id: section.id
+      , show_pickup_availability: true %}
+    {% render 'price'
+      , product: product %}
+  </div>
+
+  <section class="my-10">
+    {% render 'time_livraison' %}
+  </section>
+</section>

@@ -1,0 +1,134 @@
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .upsell-swiper-{{ section.id }} .swiper-button-prev,
+  .upsell-swiper-{{ section.id }} .swiper-button-next {
+    --swiper-navigation-size: 14px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background-color: #fff;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    color: #000;
+  }
+  .upsell-swiper-{{ section.id }} .swiper-button-prev.swiper-button-disabled,
+  .upsell-swiper-{{ section.id }} .swiper-button-next.swiper-button-disabled {
+    opacity: 0.3;
+  }
+  .upsell-swiper-{{ section.id }} .swiper-pagination-bullet-active {
+    background-color: #000;
+  }
+{%- endstyle -%}
+
+<div class="{{ section.settings.padding_mobile }}">
+  <div class="page-width">
+    {% if section.settings.title != blank %}
+      <h2 class="text-[22px]! font-heading! tracking-[-0.2px]! mb-4!">{{ section.settings.title }}</h2>
+    {% endif %}
+
+    {% if section.blocks.size > 0 %}
+      <div class="upsell-swiper-{{ section.id }} relative!">
+        <div class="swiper" id="UpsellSwiper-{{ section.id }}">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              {% assign product = block.settings.product %}
+              {% if product != blank %}
+                <div class="swiper-slide" {{ block.shopify_attributes }}>
+                  <a href="{{ product.url }}" class="flex! flex-row! gap-4! items-center! no-underline! text-inherit! p-4! border! border-gray-200! rounded-lg!">
+                    {% if product.featured_media %}
+                      <div class="shrink-0! w-24! h-24! rounded-md!" style="overflow: hidden;">
+                        {{ product.featured_media | image_url: width: 200 | image_tag:
+                          loading: 'lazy',
+                          class: 'block! w-full! h-full! object-cover!',
+                          sizes: '96px'
+                        }}
+                      </div>
+                    {% endif %}
+                    <div class="flex-1! min-w-0!">
+                      <p class="text-[14px]! font-medium! leading-snug! m-0! mb-1!">{{ product.title | escape }}</p>
+                      {% render 'price', product: product, price_class: '', show_compare_at_price: true %}
+                    </div>
+                  </a>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          {% if section.blocks.size > 1 %}
+            <div class="swiper-pagination mt-3!"></div>
+          {% endif %}
+        </div>
+      </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          new Swiper('#UpsellSwiper-{{ section.id }}', {
+            slidesPerView: 1,
+            spaceBetween: 12,
+            pagination: {
+              el: '.upsell-swiper-{{ section.id }} .swiper-pagination',
+              clickable: true,
+            },
+          });
+        });
+      </script>
+    {% endif %}
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Upsell Produits",
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "default": "Vous aimerez aussi",
+        "label": "Titre"
+      },
+      {
+        "type": "select",
+        "id": "padding_mobile",
+        "label": "Padding",
+        "options": [
+          {
+            "value": "pt-[38px]! md:py-[32px]!",
+            "label": "Padding en haut"
+          },
+          {
+            "value": "pb-[38px]! md:py-[32px]!",
+            "label": "Padding en bas"
+          },
+          {
+            "value": "py-[38px]! md:py-[32px]!",
+            "label": "Padding en haut et en bas"
+          }
+        ],
+        "default": "py-[38px]! md:py-[32px]!"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "product",
+        "name": "Produit",
+        "limit": 4,
+        "settings": [
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Produit"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Upsell Produits",
+        "blocks": [
+          { "type": "product" },
+          { "type": "product" }
+        ]
+      }
+    ]
+  }
+{% endschema %}

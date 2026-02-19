@@ -1,0 +1,123 @@
+{% comment %}
+  Upsell snippet – rendered inside main-product.liquid
+  Expects: block (with settings product_1…product_4, title)
+{% endcomment %}
+
+{%- assign upsell_count = 0 -%}
+{%- if block.settings.product_1 != blank -%}
+  {%- assign upsell_count = upsell_count | plus: 1 -%}{%- endif -%}
+{%- if block.settings.product_2 != blank -%}
+  {%- assign upsell_count = upsell_count | plus: 1 -%}{%- endif -%}
+{%- if block.settings.product_3 != blank -%}
+  {%- assign upsell_count = upsell_count | plus: 1 -%}{%- endif -%}
+{%- if block.settings.product_4 != blank -%}
+  {%- assign upsell_count = upsell_count | plus: 1 -%}{%- endif -%}
+
+{%- if upsell_count > 0 -%}
+  {%- assign upsell_id = 'UpsellBlock-' | append: block.id -%}
+
+  {%- style -%}
+    .upsell-block-{{ block.id }} .swiper-pagination-bullet-active {
+      background-color: #000;
+    }
+  {%- endstyle -%}
+
+  {%- capture upsell_slides -%}
+    {%- if block.settings.product_1 != blank -%}
+      {%- assign p = block.settings.product_1 -%}
+      <div class="swiper-slide">
+        <a href="{{ p.url }}" class="flex! flex-row! gap-4! items-center! no-underline! text-inherit! p-3! border! border-gray-200! rounded-lg!">
+          {% if p.featured_media %}
+            <div class="shrink-0! w-30! h-30! rounded-md!" style="overflow: hidden;">
+              {{ p.featured_media | image_url: width: 200 | image_tag: loading: 'lazy', class: 'block! w-full! h-full! object-cover!', sizes: '80px' }}
+            </div>
+          {% endif %}
+          <div class="flex-1! min-w-0!">
+            <p class="text-[14px]! font-medium! leading-snug! m-0! mb-1!">{{ p.title | escape }}</p>
+            {% render 'price', product: p, price_class: '', show_compare_at_price: true %}
+          </div>
+        </a>
+      </div>
+    {%- endif -%}
+    {%- if block.settings.product_2 != blank -%}
+      {%- assign p = block.settings.product_2 -%}
+      <div class="swiper-slide">
+        <a href="{{ p.url }}" class="flex! flex-row! gap-4! items-center! no-underline! text-inherit! p-3! border! border-gray-200! rounded-lg!">
+          {% if p.featured_media %}
+            <div class="shrink-0! w-30! h-30! rounded-md!" style="overflow: hidden;">
+              {{ p.featured_media | image_url: width: 200 | image_tag: loading: 'lazy', class: 'block! w-full! h-full! object-cover!', sizes: '80px' }}
+            </div>
+          {% endif %}
+          <div class="flex-1! min-w-0!">
+            <p class="text-[14px]! font-medium! leading-snug! m-0! mb-1!">{{ p.title | escape }}</p>
+            {% render 'price', product: p, price_class: '', show_compare_at_price: true %}
+          </div>
+        </a>
+      </div>
+    {%- endif -%}
+    {%- if block.settings.product_3 != blank -%}
+      {%- assign p = block.settings.product_3 -%}
+      <div class="swiper-slide">
+        <a href="{{ p.url }}" class="flex! flex-row! gap-4! items-center! no-underline! text-inherit! p-3! border! border-gray-200! rounded-lg!">
+          {% if p.featured_media %}
+            <div class="shrink-0! w-30! h-30! rounded-md!" style="overflow: hidden;">
+              {{ p.featured_media | image_url: width: 200 | image_tag: loading: 'lazy', class: 'block! w-full! h-full! object-cover!', sizes: '80px' }}
+            </div>
+          {% endif %}
+          <div class="flex-1! min-w-0!">
+            <p class="text-[14px]! font-medium! leading-snug! m-0! mb-1!">{{ p.title | escape }}</p>
+            {% render 'price', product: p, price_class: '', show_compare_at_price: true %}
+          </div>
+        </a>
+      </div>
+    {%- endif -%}
+    {%- if block.settings.product_4 != blank -%}
+      {%- assign p = block.settings.product_4 -%}
+      <div class="swiper-slide">
+        <a href="{{ p.url }}" class="flex! flex-row! gap-4! items-center! no-underline! text-inherit! p-3! border! border-gray-200! rounded-lg!">
+          {% if p.featured_media %}
+            <div class="shrink-0! w-30! h-30! rounded-md!" style="overflow: hidden;">
+              {{ p.featured_media | image_url: width: 200 | image_tag: loading: 'lazy', class: 'block! w-full! h-full! object-cover!', sizes: '80px' }}
+            </div>
+          {% endif %}
+          <div class="flex-1! min-w-0!">
+            <p class="text-[14px]! font-medium! leading-snug! m-0! mb-1!">{{ p.title | escape }}</p>
+            {% render 'price', product: p, price_class: '', show_compare_at_price: true %}
+          </div>
+        </a>
+      </div>
+    {%- endif -%}
+  {%- endcapture -%}
+  <div class="upsell-block-{{ block.id }} mt-4!" {{ block.shopify_attributes }}>
+    {% if block.settings.title != blank %}
+      <p class="text-[15px]! font-bold! mb-3! m-0! text-black tracking-tight">{{ block.settings.title }}</p>
+    {% endif %}
+
+    {% if upsell_count > 1 %}
+      {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+      <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+
+      <div class="swiper" id="{{ upsell_id }}">
+        <div class="swiper-wrapper">
+          {{ upsell_slides }}
+        </div>
+        <div class="swiper-pagination mt-2!"></div>
+      </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          new Swiper('#{{ upsell_id }}', {
+            slidesPerView: 1,
+            spaceBetween: 12,
+            pagination: {
+              el: '.upsell-block-{{ block.id }} .swiper-pagination',
+              clickable: true,
+            },
+          });
+        });
+      </script>
+    {% else %}
+      {{ upsell_slides }}
+    {% endif %}
+  </div>
+{%- endif -%}

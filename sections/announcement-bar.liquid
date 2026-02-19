@@ -1,0 +1,64 @@
+<div class="py-3 px-24 text-white!" style="background-color: {{ section.settings.bg_color }};">
+  <div class="flex flex-row items-center justify-between text-[12px]!">
+
+    <!-- Gauche -->
+    <div class="flex-1 text-left hidden! md:block!">
+      <a href="tel:0673551150">Service client : +09 77 55 36 85</a>
+    </div>
+
+    <!-- Centre -->
+    <div class="flex-1">
+      {% for block in section.blocks %}
+        <div {{ block.shopify_attributes }}>
+          <p class="text-center">{{ block.settings.text }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- Droite -->
+    <div class="flex-1 text-right hidden! md:block!">
+      <a href="tel:0673551150">0673551150</a>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Barre d'annonce",
+    "class": "announcement-bar-section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Couleur de fond",
+        "default": "#FFEF00"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "annonce",
+        "name": "Annonce",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Texte",
+            "default": "Livraison gratuite a partir de 70€"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Barre d'annonce",
+        "blocks": [
+          {
+            "type": "annonce"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

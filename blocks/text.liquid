@@ -1,0 +1,27 @@
+{% doc %}
+  @example
+  {% content_for 'block', type: 'text', id: 'text' %}
+{% enddoc %}
+
+<p>{{ block.settings.text }}</p>
+
+{% content_for 'blocks' %}
+
+{% schema %}
+{
+  "name": "Texte",
+  "settings": [
+    {
+      "type": "richtext",
+      "id": "text",
+      "label": "Texte",
+      "default": "<p>Mon texte</p>"
+    }
+  ],
+  "presets": [
+    {
+        "name": "Texte"
+    }
+  ]
+}
+{% endschema %}

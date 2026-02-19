@@ -1,0 +1,124 @@
+{% comment %}
+  Renders quantity break radio buttons.
+  Accepts:
+  - block: {Object} block with settings (qty_1, price_1, label_1, etc.)
+  - product: {Object} product object
+
+  Usage:
+  {% render 'quantity-break', block: block, product: product %}
+{% endcomment %}
+
+{%- liquid
+  assign current_price = product.selected_or_first_available_variant.price
+  if settings.currency_code_enabled
+    assign money_1 = current_price | money_with_currency
+  else
+    assign money_1 = current_price | money
+  endif
+-%}
+
+<div class="w-full!" {{ block.shopify_attributes }}>
+  {% if block.settings.title != blank %}
+    <p class="text-[14px]! font-bold! uppercase tracking-[0.8px] mb-3!">{{ block.settings.title }}</p>
+  {% endif %}
+
+  <div class="flex! flex-col! gap-2!">
+    <!-- Palier 1 -->
+    <label class="quantity-break__option flex! items-center! justify-between! border! border-black/10 rounded-md! px-4! py-3! cursor-pointer transition-all duration-300 hover:border-black/30 has-checked:border-black has-checked:bg-black/5" data-qty="{{ block.settings.qty_1 | default: 1 }}">
+      <div class="flex! items-center! gap-3!">
+        <input
+          type="radio"
+          name="quantity-break-{{ block.id }}"
+          value="{{ block.settings.qty_1 | default: 1 }}"
+          class="w-4! h-4! accent-black"
+          checked>
+        <div>
+          <span class="text-[14px]! font-bold!">{{ block.settings.qty_1 | default: 1 }}x</span>
+          <span class="text-[14px]!">{{ block.settings.label_1 | default: '1 unité' }}</span>
+        </div>
+      </div>
+      <span class="text-[14px]! font-bold!">{{ money_1 }}</span>
+    </label>
+
+    <!-- Palier 2 -->
+    {% if block.settings.qty_2 > 0 and block.settings.discount_2 > 0 %}
+      {%- liquid
+        assign discount_2 = block.settings.discount_2 | times: 1.0 | divided_by: 100
+        assign price_2_unit = current_price | times: 1.0
+        assign reduction_2 = price_2_unit | times: discount_2
+        assign price_2_unit = price_2_unit | minus: reduction_2 | round
+        assign price_2_total = price_2_unit | times: block.settings.qty_2
+        if settings.currency_code_enabled
+          assign money_2_total = price_2_total | money_with_currency
+        else
+          assign money_2_total = price_2_total | money
+        endif
+      -%}
+      <label class="quantity-break__option flex! items-center! justify-between! border! border-black/10 rounded-md! px-4! py-3! cursor-pointer transition-all duration-300 hover:border-black/30 has-checked:border-black has-checked:bg-black/5" data-qty="{{ block.settings.qty_2 }}">
+        <div class="flex! items-center! gap-3!">
+          <input
+            type="radio"
+            name="quantity-break-{{ block.id }}"
+            value="{{ block.settings.qty_2 }}"
+            class="w-4! h-4! accent-black">
+          <div class="flex! items-center! gap-2!">
+            <span class="text-[14px]! font-bold!">{{ block.settings.qty_2 }}x</span>
+            <span class="text-[14px]!">{{ block.settings.label_2 | default: '2 unités' }}</span>
+            <span class="text-[11px]! font-bold! bg-black text-white! px-2! py-1! rounded-md! uppercase">-{{ block.settings.discount_2 }}%</span>
+          </div>
+        </div>
+        <span class="text-[14px]! font-bold!">{{ money_2_total }}</span>
+      </label>
+    {% endif %}
+
+    <!-- Palier 3 -->
+    {% if block.settings.qty_3 > 0 and block.settings.discount_3 > 0 %}
+      {%- liquid
+        assign discount_3 = block.settings.discount_3 | times: 1.0 | divided_by: 100
+        assign price_3_unit = current_price | times: 1.0
+        assign reduction_3 = price_3_unit | times: discount_3
+        assign price_3_unit = price_3_unit | minus: reduction_3 | round
+        assign price_3_total = price_3_unit | times: block.settings.qty_3
+        if settings.currency_code_enabled
+          assign money_3_total = price_3_total | money_with_currency
+        else
+          assign money_3_total = price_3_total | money
+        endif
+      -%}
+      <label class="quantity-break__option flex! items-center! justify-between! border! border-black/10 rounded-md! px-4! py-3! cursor-pointer transition-all duration-300 hover:border-black/30 has-checked:border-black has-checked:bg-black/5 relative!" data-qty="{{ block.settings.qty_3 }}">
+        {% if block.settings.best_deal_label != blank %}
+          <span class="absolute! top-0! left-1/2! -translate-x-1/2! -translate-y-1/2! bg-[#2E7D5A]! text-white! text-[10px]! font-bold! uppercase tracking-[0.8px] px-2! py-1! rounded-md! whitespace-nowrap!">{{ block.settings.best_deal_label }}</span>
+        {% endif %}
+        <div class="flex! items-center! gap-3!">
+          <input
+            type="radio"
+            name="quantity-break-{{ block.id }}"
+            value="{{ block.settings.qty_3 }}"
+            class="w-4! h-4! accent-black">
+          <div class="flex! items-center! gap-2!">
+            <span class="text-[14px]! font-bold!">{{ block.settings.qty_3 }}x</span>
+            <span class="text-[14px]!">{{ block.settings.label_3 | default: '3 unités' }}</span>
+            <span class="text-[11px]! font-bold! bg-black text-white! px-2! py-1! rounded-md! uppercase">-{{ block.settings.discount_3 }}%</span>
+          </div>
+        </div>
+        <span class="text-[14px]! font-bold!">{{ money_3_total }}</span>
+      </label>
+    {% endif %}
+  </div>
+</div>
+
+<script>
+  (function() {
+    const options = document.querySelectorAll('[name="quantity-break-{{ block.id }}"]');
+    const qtyInput = document.querySelector('#Quantity-{{ section_id }}') || document.querySelector('input[name="quantity"]');
+
+    options.forEach(function(radio) {
+      radio.addEventListener('change', function() {
+        if (qtyInput) {
+          qtyInput.value = radio.value;
+          qtyInput.dispatchEvent(new Event('change', { bubbles: true }));
+        }
+      });
+    });
+  })();
+</script>

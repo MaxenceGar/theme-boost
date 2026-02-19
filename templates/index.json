@@ -1,0 +1,497 @@
+/*
+ * ------------------------------------------------------------
+ * IMPORTANT: The contents of this file are auto-generated.
+ *
+ * This file may be updated by the Shopify admin theme editor
+ * or related systems. Please exercise caution as any changes
+ * made to this file may be overwritten.
+ * ------------------------------------------------------------
+ */
+{
+  "sections": {
+    "hero_img_yqDAAV": {
+      "type": "hero-img",
+      "name": "Hero Image",
+      "settings": {
+        "image": "shopify://shop_images/Banniere_desktop_copie_4186b6aa-6ed3-45ec-8373-b23d8b21429b.webp"
+      }
+    },
+    "hero_swiper_RRtcMX": {
+      "type": "hero-swiper",
+      "blocks": {
+        "slide_gt77Lz": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/Design_sans_titre_13.webp",
+            "overlay_opacity": 30,
+            "subtitle": "-20% sur toute la gamme teint* avec le code CLEANBEAUTY",
+            "title": "La Clean Beauty au quotidien",
+            "text_alignment": "left",
+            "button_label": "Maxence",
+            "button_url": "",
+            "button_style": "btn-primaire"
+          }
+        },
+        "slide_ebDWnA": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/HOMEPAGE_NEWIN.webp",
+            "overlay_opacity": 30,
+            "subtitle": "-20% sur toute la gamme teint* avec le code CLEANBEAUTY",
+            "title": "La Clean Beauty au quotidien",
+            "text_alignment": "left",
+            "button_label": "Maxence",
+            "button_url": "",
+            "button_style": "btn-primaire"
+          }
+        },
+        "slide_WUzn6J": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/HOMEPAGE_NEWIN.webp",
+            "overlay_opacity": 30,
+            "subtitle": "-20% sur toute la gamme teint* avec le code CLEANBEAUTY",
+            "title": "La Clean Beauty au quotidien",
+            "text_alignment": "left",
+            "button_label": "Maxence",
+            "button_url": "",
+            "button_style": "btn-primaire"
+          }
+        }
+      },
+      "block_order": [
+        "slide_gt77Lz",
+        "slide_ebDWnA",
+        "slide_WUzn6J"
+      ],
+      "disabled": true,
+      "name": "Hero Swiper",
+      "settings": {
+        "autoplay": true,
+        "autoplay_delay": 2500,
+        "transition_speed": 600,
+        "effect": "fade",
+        "loop": true,
+        "show_arrows": false,
+        "show_pagination": false
+      }
+    },
+    "rich_text_g3Wm87": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_UQHzxz": {
+          "type": "heading",
+          "settings": {
+            "heading": "<strong>LA BEAUTÉ NATURELLE SANS COMPROMIS</strong>",
+            "heading_size": "h1"
+          }
+        },
+        "text_KQiNbj": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Energie fruit & Energiqa : des soins naturels - français - experts, pour une beauté sans compromis entre plaisir, efficacité prouvée et respect de la peau et des cheveux.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_UQHzxz",
+        "text_KQiNbj"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
+    "round_section_home_ihf4Vp": {
+      "type": "round-section-home",
+      "blocks": {
+        "slide_Qqz8tq": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/character-mr_snooty.svg",
+            "title": "M. Malpoli",
+            "button_url": ""
+          }
+        },
+        "slide_Urf8Hn": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/character-mr_snooty.svg",
+            "title": "M. Malpoli",
+            "button_url": ""
+          }
+        },
+        "slide_U8cYVD": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/character-mr_snooty.svg",
+            "title": "M. Malpoli",
+            "button_url": ""
+          }
+        },
+        "slide_PLNmk6": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/character-mr_snooty.svg",
+            "title": "M. Malpoli",
+            "button_url": ""
+          }
+        },
+        "slide_pLPUak": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/character-mr_snooty.svg",
+            "title": "M. Malpoli",
+            "button_url": ""
+          }
+        },
+        "slide_8FJc7t": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/character-mr_snooty.svg",
+            "title": "M. Malpoli",
+            "button_url": ""
+          }
+        },
+        "slide_4c9mTL": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/character-mr_snooty.svg",
+            "title": "M. Malpoli",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_Qqz8tq",
+        "slide_Urf8Hn",
+        "slide_U8cYVD",
+        "slide_PLNmk6",
+        "slide_pLPUak",
+        "slide_8FJc7t",
+        "slide_4c9mTL"
+      ],
+      "disabled": true,
+      "name": "Round Collection",
+      "settings": {
+        "padding_mobile": "pt-[38px]! md:py-[32px]!"
+      }
+    },
+    "product_grid_home_Y7i6ed": {
+      "type": "product-grid-home",
+      "name": "Grille de produits",
+      "settings": {
+        "collection": "accueil-demo",
+        "products_to_show": 7,
+        "title": "Nos produits",
+        "subtitle": "",
+        "enable_btn": true,
+        "text_btn": "tout afficher",
+        "image_ratio": "square",
+        "show_secondary_image": false,
+        "show_vendor": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    },
+    "section_collection_T496NR": {
+      "type": "section-collection",
+      "blocks": {
+        "feature_UjFJxU": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Visuel_baume.png",
+            "text": "Les nouveautés",
+            "collection_title": "Les classiques",
+            "link": "/"
+          }
+        },
+        "feature_ETzHUa": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Visuel_baume.png",
+            "text": "",
+            "collection_title": "La broderie",
+            "link": "/"
+          }
+        },
+        "feature_AjTD9n": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Visuel_baume.png",
+            "text": "Les nouveautés",
+            "collection_title": "Les nouveautés",
+            "link": "/"
+          }
+        },
+        "feature_x7FHgc": {
+          "type": "feature",
+          "settings": {
+            "icon": "shopify://shop_images/Visuel_baume.png",
+            "text": "",
+            "collection_title": "Personnalise",
+            "link": "/"
+          }
+        }
+      },
+      "block_order": [
+        "feature_UjFJxU",
+        "feature_ETzHUa",
+        "feature_AjTD9n",
+        "feature_x7FHgc"
+      ],
+      "name": "Liste Collections",
+      "settings": {
+        "title": "Nos catégories",
+        "subtitle": "",
+        "padding_mobile": "py-[38px]! md:py-[32px]!",
+        "image_shape": "rounded-xl! aspect-9/12!"
+      }
+    },
+    "fixed_collection_NWAAU4": {
+      "type": "fixed-collection",
+      "name": "Fixed Collection",
+      "settings": {
+        "title": "Kits & routines",
+        "subtitle": "Bénéficiez de prix doux sur l’ensemble de nos routines de soins en exclusivité sur respire.co.",
+        "button_label": "Voir les offres",
+        "button_style": "btn-primaire",
+        "collection": "accueil-demo",
+        "products_to_show": 6,
+        "image_ratio": "adapt",
+        "show_secondary_image": false,
+        "show_vendor": false
+      }
+    },
+    "section_gauche_droite_waaAai": {
+      "type": "section-gauche-droite",
+      "blocks": {
+        "description_p6CnqG": {
+          "type": "description",
+          "settings": {
+            "description": "<p>Depuis 2013, nous avons pour objectif de devenir la reference en matiere de soins naturels pour la peau et les cheveux, en exploitant le pouvoir des ingredients d'origine vegetale.</p>",
+            "color": "#ffffff"
+          }
+        },
+        "button_cMLyiG": {
+          "type": "button",
+          "settings": {
+            "button_label": "Découvrir nos engagements",
+            "button_label_mobile": "Découvrir",
+            "button_url": "shopify://pages/contact",
+            "button_style": "btn-primaire"
+          }
+        }
+      },
+      "block_order": [
+        "description_p6CnqG",
+        "button_cMLyiG"
+      ],
+      "name": "Section Gauche Droite",
+      "settings": {
+        "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+        "image_object_fit": "object-cover",
+        "image_position": "left",
+        "background_color": "#ff98a6",
+        "background_color_image": "#fbf8f5",
+        "parallax": true,
+        "padding_mobile": "py-[38px]! md:py-[32px]!"
+      }
+    },
+    "custom_section_TrTTpy": {
+      "type": "custom-section",
+      "blocks": {
+        "trust_m9xKdL": {
+          "type": "trust",
+          "settings": {
+            "trust_text": "4.5/5 10298+ avis"
+          }
+        },
+        "title_yP9gKk": {
+          "type": "title",
+          "settings": {
+            "title": "Déjà un maté incontournable"
+          }
+        },
+        "benefit_7hQwNC": {
+          "type": "benefit",
+          "settings": {
+            "text": "Un bénéfice clair et orienté client"
+          }
+        },
+        "benefit_A8LNYd": {
+          "type": "benefit",
+          "settings": {
+            "text": "Un bénéfice clair et orienté client"
+          }
+        },
+        "benefit_mg6ghA": {
+          "type": "benefit",
+          "settings": {
+            "text": "Un bénéfice clair et orienté client"
+          }
+        },
+        "button_fCTUr3": {
+          "type": "button",
+          "settings": {
+            "button_label": "Découvrir les produits",
+            "button_label_mobile": "Découvrir",
+            "button_url": "",
+            "button_style": "btn-primaire"
+          }
+        },
+        "button_XRjqE9": {
+          "type": "button",
+          "settings": {
+            "button_label": "Lire les avis",
+            "button_label_mobile": "Lire les avis",
+            "button_url": "",
+            "button_style": "btn-secondaire"
+          }
+        }
+      },
+      "block_order": [
+        "trust_m9xKdL",
+        "title_yP9gKk",
+        "benefit_7hQwNC",
+        "benefit_A8LNYd",
+        "benefit_mg6ghA",
+        "button_fCTUr3",
+        "button_XRjqE9"
+      ],
+      "disabled": true,
+      "name": "Hero CRO",
+      "settings": {
+        "image": "shopify://shop_images/KevinTillie_277_bySemmyDemmou_1_1_1280x_01f90e2f-0fbe-49b1-9089-3bfa3c1c848f.jpg",
+        "image_position": "right"
+      }
+    },
+    "marquee_m9fzJn": {
+      "type": "marquee",
+      "blocks": {
+        "text_rGVB7L": {
+          "type": "text",
+          "settings": {
+            "text": "Livraison offerte dès 49€"
+          }
+        },
+        "text_aajNEF": {
+          "type": "text",
+          "settings": {
+            "text": "Livraison offerte dès 49€"
+          }
+        },
+        "text_DXGnfU": {
+          "type": "text",
+          "settings": {
+            "text": "Livraison offerte dès 49€"
+          }
+        },
+        "text_Ww7zJe": {
+          "type": "text",
+          "settings": {
+            "text": "Paiement sécurisé"
+          }
+        },
+        "text_xPHQNP": {
+          "type": "text",
+          "settings": {
+            "text": "Retours gratuits"
+          }
+        }
+      },
+      "block_order": [
+        "text_rGVB7L",
+        "text_aajNEF",
+        "text_DXGnfU",
+        "text_Ww7zJe",
+        "text_xPHQNP"
+      ],
+      "disabled": true,
+      "name": "Marquee",
+      "settings": {
+        "bg_color": "#2e7e5a",
+        "text_color": "#ffffff",
+        "speed": 20,
+        "font_size": "md:text-4xl!",
+        "icon_size": "w-32! h-32!",
+        "space_size": "py-16",
+        "font_weight": "font-bold!",
+        "border_color": ""
+      }
+    },
+    "product_home_BcLP4G": {
+      "type": "product-home",
+      "disabled": true,
+      "name": "Product home",
+      "settings": {
+        "button_style": "btn-primaire"
+      }
+    },
+    "faq_product_page_9RC7rB": {
+      "type": "faq-product-page",
+      "blocks": {
+        "faq_section_49YHVi": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Dans quelles conditions sont produits les textiles Monsieur Madame ?",
+            "reponse": "Nos vêtements sont certifiés commerce équitable et sont composés à 100% de coton biologique pour les t-shirts, et de 85% de coton biologique et 15% de polyester recyclé pour les sweatshirts. L’impression et l’envoi des commandes est gérée dans notre atelier basé en Normandie, près de Caen."
+          }
+        },
+        "faq_section_JaHcQg": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Quels sont les délais de livraison ?",
+            "reponse": "Une fois votre commande passée, celle-ci est traitée dans notre atelier. Le temps d’organiser la production de vos articles puis de les faire livrer, cela va prendre 5 à 10 jours ouvrés pour que vous la receviez directement chez vous. Vous recevrez entre temps un numéro de suivi qui vous permettra de suivre l’avancement de la livraison par Colissimo."
+          }
+        },
+        "faq_section_A3frix": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Dans quels pays livrez-vous ?",
+            "reponse": "Nous pouvons vous livrer en France et en Belgique !"
+          }
+        },
+        "faq_section_VGQddW": {
+          "type": "faq_section",
+          "settings": {
+            "question": "Comment entretenir mon article ?",
+            "reponse": "Pour que votre produit conserve tout son éclat pendant très longtemps, nous vous conseillons de :Le retourner au lavage.Le laver au maximum à 40°C.Ne pas le mettre au sèche-linge."
+          }
+        }
+      },
+      "block_order": [
+        "faq_section_49YHVi",
+        "faq_section_JaHcQg",
+        "faq_section_A3frix",
+        "faq_section_VGQddW"
+      ],
+      "name": "FAQ Produt Page",
+      "settings": {
+        "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+        "image_position": "right",
+        "padding_mobile": "py-[38px]! md:py-[32px]!",
+        "button_style": "btn-primaire"
+      }
+    }
+  },
+  "order": [
+    "hero_img_yqDAAV",
+    "hero_swiper_RRtcMX",
+    "rich_text_g3Wm87",
+    "round_section_home_ihf4Vp",
+    "product_grid_home_Y7i6ed",
+    "section_collection_T496NR",
+    "fixed_collection_NWAAU4",
+    "section_gauche_droite_waaAai",
+    "custom_section_TrTTpy",
+    "marquee_m9fzJn",
+    "product_home_BcLP4G",
+    "faq_product_page_9RC7rB"
+  ]
+}

@@ -1,0 +1,35 @@
+@import "tailwindcss";
+
+/* Sources pour la détection des classes Tailwind */
+@source "../layout/*.liquid";
+@source "../sections/*.liquid";
+@source "../snippets/*.liquid";
+@source "../templates/**/*.liquid";
+@source "../assets/*.js";
+
+/* Safelist — Classes dynamiques injectées via les settings Shopify ({% schema %})
+   Le scanner Tailwind ne détecte pas les classes dans le JSON du schema,
+   il faut les lister ici manuellement. */
+@source inline("pt-[38px]! pb-[38px]! py-[38px]! md:py-[32px]!");
+
+/* Marquee animation */
+@keyframes marquee {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.marquee {
+  display: flex;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.marquee > * {
+  display: flex;
+  flex-shrink: 0;
+  animation: marquee 10s linear infinite;
+}

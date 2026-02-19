@@ -1,0 +1,69 @@
+<style>
+  .notif-panel {
+    display: none;
+  }
+  .notif-panel.is-open {
+    display: block;
+  }
+</style>
+
+<div class="relative inline-block">
+  <button
+    class="flex items-center p-2 bg-transparent border-none cursor-pointer relative"
+    aria-expanded="false"
+    aria-controls="notif-max-panel"
+    id="notif-max-btn">
+
+    <div class="h-10 w-10 flex items-center justify-center text-black hover:scale-110 transition">
+      {{ 'notifications-outline.svg' | inline_asset_content }}
+    </div>
+    <span class="absolute top-1 right-1 w-7 h-7 bg-red-500 rounded-full border-2 border-white items-center justify-center text-center text-white text-base">2</span>
+  </button>
+
+  <div id="notif-max-panel" class="notif-panel absolute right-0 top-full mt-2 w-150 bg-white border border-gray-200 rounded-lg shadow-lg z-50 overflow-hidden">
+
+    <div class="flex gap-2.5 px-4 py-3 border-b border-gray-50 items-center hover:bg-gray-200 transition duration-300 ease-in-out cursor-pointer">
+      <img
+        src="https://dx4nr741tfc02.cloudfront.net/websites/15525/campaigns/47263/teaser/acd7d1f9-6718-4aec-85d0-de47f782bc46"
+        class="rounded-full w-30 h-30"
+        alt="">
+      <div>
+        <p class="text-xl text-black">
+          Notre
+          <strong>gamme de soins</strong>
+          est arrivée !</p>
+      </div>
+    </div>
+    <div class="flex gap-2.5 px-4 py-3 border-b border-gray-50 items-center hover:bg-gray-200 transition duration-300 ease-in-out cursor-pointer">
+      <img
+        src="https://dx4nr741tfc02.cloudfront.net/websites/15525/campaigns/35781/teaser/ab211f55-4323-4df9-b60e-53cf2d516fb2"
+        class="rounded-full w-30 h-30"
+        alt="">
+      <div>
+        <p class="text-xl text-black">
+          <strong>PASSEZ LE CAP DU SOLIDE !</strong>
+          Découvrez nos kits à prix tout doux</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  (function () {
+    const btn = document.getElementById('notif-max-btn');
+    const panel = document.getElementById('notif-max-panel');
+
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      const open = panel.classList.toggle('is-open');
+      btn.setAttribute('aria-expanded', open);
+    });
+
+    document.addEventListener('click', function (e) {
+      if (!e.target.closest('#notif-max-btn') && !e.target.closest('#notif-max-panel')) {
+        panel.classList.remove('is-open');
+        btn.setAttribute('aria-expanded', 'false');
+      }
+    });
+  })();
+</script>

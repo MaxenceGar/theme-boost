@@ -1,0 +1,36 @@
+MAJ
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# Date:      Thu Feb 19 22:05:31 2026 +0100
+#
+# On branch main
+# Your branch and 'origin/main' have diverged,
+# and have 1 and 1 different commits each, respectively.
+#
+# Last command done (1 command done):
+#    pick 024181a8 # MAJ
+# No commands remaining.
+# You are currently editing a commit while rebasing branch 'main' on '9121058f'.
+#
+# Changes to be committed:
+#	modified:   assets/base.css
+#	modified:   assets/tailwind.css
+#	new file:   blocks/group.liquid
+#	new file:   blocks/image.liquid
+#	new file:   blocks/text.liquid
+#	modified:   config/settings_data.json
+#	modified:   config/settings_schema.json
+#	new file:   sections/content.liquid
+#	modified:   sections/faq-product-page.liquid
+#	modified:   sections/fixed-collection.liquid
+#	modified:   sections/footer-group.json
+#	modified:   sections/product-grid-home.liquid
+#	modified:   sections/section-collection.liquid
+#	modified:   snippets/card-product.liquid
+#	new file:   snippets/css-variables.liquid
+#	modified:   snippets/typographie.liquid
+#	modified:   templates/index.json
+#	modified:   templates/product.json
+#

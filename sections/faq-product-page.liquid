@@ -1,0 +1,146 @@
+{% liquid
+  assign image_position = section.settings.image_position
+
+  if image_position == 'right'
+    assign image_position = 'lg:order-2'
+    assign content_position = 'lg:order-1'
+  endif
+%}
+
+<section class="{{ section.settings.padding_mobile }}">
+  <div class="flex flex-col md:flex-row gap-6 items-center page-width">
+    <div class="flex-1 {{ image_position }}">
+      <div class="relative!" style="overflow: hidden; border-radius: var(--rounded--size) !important;">
+        {% if section.settings.image %}
+          {{ section.settings.image | image_url: width: 1100 | image_tag: loading: 'lazy', class: 'block! w-full! object-cover! aspect-video', sizes: '(min-width: 750px) 50vw, 100vw'
+          }}
+        {% else %}
+          {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        {% endif %}
+        <a href="" class="absolute! bottom-4! left-1/2! -translate-x-1/2! whitespace-nowrap! btn {{ section.settings.button_style }}">Visiter la FAQ</a>
+      </div>
+    </div>
+    <div class="flex-1 pb-10 {{ content_position }}">
+      <h2 class="pb-[32px]!">Questions fréquemment posées :</h2>
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {%- when 'faq_section' -%}
+            <div class="w-full md:w-full mb-4">
+              <details class="group border border-gray-200 p-4" style="border-radius: var(--rounded--size) !important;">
+                <summary class="flex cursor-pointer items-center justify-between font-medium">
+                  <span>{{ block.settings.question }}</span>
+                  <span class="transition-transform group-open:rotate-45">+</span>
+                </summary>
+
+                <p class="mt-3 text-[14px]! text-gray-600">
+                  {{ block.settings.reponse }}
+                </p>
+              </details>
+            </div>
+        {% endcase %}
+      {% endfor %}
+
+    </div>
+  </div>
+</section>
+
+{% schema %}
+  {
+    "name": "FAQ Produt Page",
+    "settings": [
+      {
+        "type": "image_picker",
+        "id": "image",
+        "label": "Image"
+      },
+      {
+        "type": "select",
+        "id": "image_position",
+        "label": "Position de l'image",
+        "options": [
+          {
+            "value": "left",
+            "label": "Gauche"
+          },
+          {
+            "value": "right",
+            "label": "Droite"
+          }
+        ],
+        "default": "left"
+      },
+      {
+        "type": "select",
+        "id": "padding_mobile",
+        "label": "Padding sur mobile",
+        "options": [
+          {
+            "value": "pt-[38px]! md:py-[32px]!",
+            "label": "Padding en haut"
+          },
+          {
+            "value": "pb-[38px]! md:py-[32px]!",
+            "label": "Padding en bas"
+          },
+          {
+            "value": "py-[38px]! md:py-[32px]!",
+            "label": "Padding en haut et en bas"
+          }
+        ],
+        "default": "py-[38px]! md:py-[32px]!"
+      },
+      {
+        "type": "select",
+        "id": "button_style",
+        "label": "Style du bouton",
+        "options": [
+          {
+            "value": "btn-primaire",
+            "label": "Primaire"
+          },
+          {
+            "value": "btn-secondaire",
+            "label": "Secondaire"
+          },
+          {
+            "value": "btn-tertiaire",
+            "label": "Tertiaire"
+          }
+        ],
+        "default": "btn-primaire"
+      }
+    ],
+    "presets": [
+      {
+        "name": "FAQ Produt Page"
+      },
+      {
+        "name": "Question / Reponse"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "faq_section",
+        "name": "Question / Reponse",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Section Question / Réponse"
+          },
+          {
+            "type": "text",
+            "id": "question",
+            "default": "Question",
+            "label": "Question"
+          },
+          {
+            "type": "text",
+            "id": "reponse",
+            "default": "Réponse",
+            "label": "Réponse"
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

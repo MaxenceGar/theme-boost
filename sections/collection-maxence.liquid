@@ -1,0 +1,114 @@
+{{ 'tailwind.css' | asset_url | stylesheet_tag }}
+
+<section class="mx-9 my-9">
+<h2 class="font-bold! my-9">Nos lignes de produits</h2>
+<div class="flex flex-nowrap flex-col md:flex-row justify-between gap-4">
+<div>
+  <img src="https://eu.naak.com/cdn/shop/files/Ultra_420x.jpg?v=1768233853" alt="" class="hover:scale-105 transition-all hover:rounded-2xl">
+  <h2 class="uppercase font-bold! mt-6 {{ section.settings.font-size-mobile }} {{ section.settings.font-size }}">Ultra Energy <sup>TM</sup></h2>
+  <p>Va plus loin, plus longtemps.</p>
+</div>
+<div>
+  <img src="https://eu.naak.com/cdn/shop/files/Boost_420x.jpg?v=1768233882" alt="" class="hover:scale-110 overflow-hidden">
+  <h2 class="uppercase font-bold! mt-6 {{ section.settings.font-size-mobile }} {{ section.settings.font-size }}">Ultra Energy <sup>TM</sup></h2>
+  <p>Va plus loin, plus longtemps.</p>
+</div>
+<div>
+  <img src="https://eu.naak.com/cdn/shop/files/Recovery_3a97c1e2-3862-4e89-b398-57075a2d1a78_420x.jpg?v=1768233914" alt="" class="hover:scale-110 overflow-hidden">
+  <h2 class="uppercase font-bold! mt-6 {{ section.settings.font-size-mobile }} {{ section.settings.font-size }}">Ultra Energy <sup>TM</sup></h2>
+  <p>Va plus loin, plus longtemps.</p>
+</div>
+</div>
+</section>
+
+
+{% schema %}
+{
+  "name": "Collection Maxence",
+  "tag": "section",
+  "class": "section-image-text-tw",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section test by Maxence"
+    },
+    {
+        "type": "select",
+        "label": "Taille du texte",
+        "default": "md:text-5xl!",
+        "id": "font-size",
+        "options": [
+            {
+                "value": "md:text-xl!",
+                "label": "text-xl!"
+            },
+            {
+                "value": "md:text-2xl!",
+                "label": "text-2xl!"
+            },
+            {
+                "value": "md:text-3xl!",
+                "label": "text-3xl!"
+            },
+            {
+                "value": "md:text-4xl!",
+                "label": "text-4xl!"
+            },
+            {
+                "value": "md:text-5xl!",
+                "label": "text-5xl!"
+            },
+            {
+                "value": "md:text-6xl!",
+                "label": "text-6xl!"
+            },
+            {
+                "value": "md:text-7xl!",
+                "label": "text-7xl!"
+            }
+        ]
+    },
+    {
+        "type": "select",
+        "label": "Taille du texte (mobile)",
+        "default": "text-5xl!",
+        "id": "font-size-mobile",
+        "options": [
+            {
+                "value": "text-xl!",
+                "label": "text-xl!"
+            },
+            {
+                "value": "text-2xl!",
+                "label": "text-2xl!"
+            },
+            {
+                "value": "text-3xl!",
+                "label": "text-3xl!"
+            },
+            {
+                "value": "text-4xl!",
+                "label": "text-4xl!"
+            },
+            {
+                "value": "text-5xl!",
+                "label": "text-5xl!"
+            },
+            {
+                "value": "text-6xl!",
+                "label": "text-6xl!"
+            },
+            {
+                "value": "text-7xl!",
+                "label": "text-7xl!"
+            }
+        ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Collection Maxence"
+    }
+  ]
+}
+{% endschema %}
