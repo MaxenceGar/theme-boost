@@ -39,16 +39,17 @@
   .swiper-button-prev
   , .product-grid-swiper-{{ section.id }}
   .swiper-button-next {
-    --swiper-navigation-size: 16px;
-    width: 18px;
-    height: 18px;
-    border-radius: 50%;
-    color: #000;
+    --swiper-navigation-size: 14px;
+    width: 40px;
+    height: 40px;
     top: 40%;
+    padding: 10px !important;
   }
   .product-grid-swiper-{{ section.id }}.swiper-button-prev:hover,
   .product-grid-swiper-{{ section.id }}.swiper-button-next:hover {
     background-color: #f5f5f5;
+    width: 20px;
+    height: 20px;
   }
   .product-grid-swiper-{{ section.id }}
   .swiper-button-prev.swiper-button-disabled
@@ -63,12 +64,12 @@
     {% if section.settings.title != blank or section.settings.subtitle != blank %}
       <div class="mb-6!">
         {% if section.settings.title != blank %}
-          <div class="flex justify-between">
+          <div class="flex justify-between items-center">
             <h2 class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
               {{ section.settings.title }}
             </h2>
             {% if section.settings.enable_btn %}
-              <a href="{{ section.settings.collection.url }}" class="inline-block btn {{ section.settings.button_style }} hidden! md:block!">{{ section.settings.text_btn }}</a>
+              <a href="{{ section.settings.collection.url }}" class="btn {{ section.settings.button_style }} hidden! md:block!">{{ section.settings.text_btn }}</a>
             {% endif %}
           </div>
         {% endif %}
@@ -101,10 +102,10 @@
               {%- endfor -%}
             </div>
             {% if section.settings.enable_btn %}
-              <a href="{{ section.settings.collection.url }}" class="btn {{ section.settings.button_style }} md:hidden! block!">{{ section.settings.text_btn }}</a>
+              <a href="{{ section.settings.collection.url }}" class="flex mt-10! btn {{ section.settings.button_style }} md:hidden! block!">{{ section.settings.text_btn }}</a>
             {% endif %}
-            <div class="swiper-button-prev"></div>
-            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev btn btn-primaire"></div>
+            <div class="swiper-button-next btn btn-primaire"></div>
           </div>
         </div>
 
