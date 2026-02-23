@@ -65,8 +65,8 @@
         "icon_social_8DQFLp": {
           "type": "icon_social",
           "settings": {
-            "show_social": true,
-            "logo": "shopify://shop_images/monsieurmadame_logo.webp"
+            "show_social": false,
+            "logo": "shopify://shop_images/Logo_endro_noir.png"
           }
         },
         "footer-1": {
@@ -90,12 +90,12 @@
         "footer-0"
       ],
       "settings": {
-        "bg_color": "#4ea2de",
+        "bg_color": "#000000",
         "copyright": "© 2026 MAXENCE-GARANDEL",
         "navigation": "customer-account-main-menu",
         "color_scheme": "scheme-3",
         "newsletter_enable": true,
-        "bg_footer": "#4ea2de",
+        "bg_footer": "#000000",
         "color_text_footer": "#ffffff",
         "logo_enable": false,
         "newsletter_heading": "- 5% de réduction en vous abonnant à notre newsletter !",

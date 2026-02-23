@@ -117,11 +117,16 @@
                 </div>
               {%- # Prix du produit avec taille, couleur et paiement fractionné -%}
               {%- when 'price' -%}
+                {%- style -%}
+                  #price-{{ section.id }} .price-item {
+                    font-size: {{ block.settings.text_typo_price_size | divided_by: 10.0 }}rem !important;
+                  }
+                {%- endstyle -%}
                 <div
                   id="price-{{ section.id }}"
                   role="status"
                   style="
-                  font-size: {{ block.settings.text_typo_p_size | divided_by: 10.0 }}rem;
+                  font-size: {{ block.settings.text_typo_price_size | divided_by: 10.0 }}rem !important;
                   color: {{ block.settings.price_color }}; 
                   margin-top: {{ block.settings.margin_top }}px;
                   margin-bottom: {{ block.settings.margin_bottom }}px;"
@@ -977,8 +982,8 @@
       "settings": [
         {
         "type": "select",
-        "id": "typo_p_size",
-        "label": "H1 (desktop)",
+        "id": "text_typo_price_size",
+        "label": "Taille du prix",
         "options": [
           { "value": "10",  "label": "10px"  },
           { "value": "12",  "label": "12px"  },

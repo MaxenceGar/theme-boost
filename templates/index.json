@@ -9,71 +9,128 @@
  */
 {
   "sections": {
-    "hero_img_yqDAAV": {
-      "type": "hero-img",
-      "name": "Hero Image",
-      "settings": {
-        "image": "shopify://shop_images/Banniere_desktop_copie_4186b6aa-6ed3-45ec-8373-b23d8b21429b.webp"
-      }
-    },
-    "hero_swiper_RRtcMX": {
+    "hero_swiper_7T6Vgr": {
       "type": "hero-swiper",
       "blocks": {
-        "slide_gt77Lz": {
+        "slide_cHMyAN": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/Design_sans_titre_13.webp",
+            "image": "shopify://shop_images/141.png",
             "overlay_opacity": 30,
-            "subtitle": "-20% sur toute la gamme teint* avec le code CLEANBEAUTY",
-            "title": "La Clean Beauty au quotidien",
+            "subtitle": "Collection",
+            "title": "Titre de la slide",
             "text_alignment": "left",
-            "button_label": "Maxence",
+            "button_label": "Decouvrir",
             "button_url": "",
             "button_style": "btn-primaire"
           }
         },
-        "slide_ebDWnA": {
+        "slide_iH7pAL": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/HOMEPAGE_NEWIN.webp",
+            "image": "shopify://shop_images/136_5f2c3750-86dd-4b3b-a732-34dbcf3c809e.png",
             "overlay_opacity": 30,
-            "subtitle": "-20% sur toute la gamme teint* avec le code CLEANBEAUTY",
-            "title": "La Clean Beauty au quotidien",
+            "subtitle": "Collection",
+            "title": "Titre de la slide",
             "text_alignment": "left",
-            "button_label": "Maxence",
+            "button_label": "Decouvrir",
             "button_url": "",
             "button_style": "btn-primaire"
           }
         },
-        "slide_WUzn6J": {
+        "slide_7LUTfT": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/HOMEPAGE_NEWIN.webp",
+            "image": "shopify://shop_images/139.png",
             "overlay_opacity": 30,
-            "subtitle": "-20% sur toute la gamme teint* avec le code CLEANBEAUTY",
-            "title": "La Clean Beauty au quotidien",
+            "subtitle": "Collection",
+            "title": "Titre de la slide",
             "text_alignment": "left",
-            "button_label": "Maxence",
+            "button_label": "Decouvrir",
             "button_url": "",
             "button_style": "btn-primaire"
           }
         }
       },
       "block_order": [
-        "slide_gt77Lz",
-        "slide_ebDWnA",
-        "slide_WUzn6J"
+        "slide_cHMyAN",
+        "slide_iH7pAL",
+        "slide_7LUTfT"
       ],
-      "disabled": true,
       "name": "Hero Swiper",
       "settings": {
         "autoplay": true,
         "autoplay_delay": 2500,
         "transition_speed": 600,
-        "effect": "fade",
+        "effect": "slide",
         "loop": true,
-        "show_arrows": false,
-        "show_pagination": false
+        "show_arrows": true,
+        "show_pagination": true
+      }
+    },
+    "round_section_home_4b36ET": {
+      "type": "round-section-home",
+      "blocks": {
+        "slide_nD3CQb": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+            "title": "Titre de la slide",
+            "button_url": ""
+          }
+        },
+        "slide_8TKRLe": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+            "title": "Titre de la slide",
+            "button_url": ""
+          }
+        },
+        "slide_Waaa38": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+            "title": "Titre de la slide",
+            "button_url": ""
+          }
+        },
+        "slide_Rthgfq": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+            "title": "Titre de la slide",
+            "button_url": ""
+          }
+        },
+        "slide_DGxhNF": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+            "title": "Titre de la slide",
+            "button_url": ""
+          }
+        },
+        "slide_P3qFEN": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+            "title": "Titre de la slide",
+            "button_url": ""
+          }
+        }
+      },
+      "block_order": [
+        "slide_nD3CQb",
+        "slide_8TKRLe",
+        "slide_Waaa38",
+        "slide_Rthgfq",
+        "slide_DGxhNF",
+        "slide_P3qFEN"
+      ],
+      "name": "Round Collection",
+      "settings": {
+        "padding_mobile": "pt-[38px]! md:py-[32px]!"
       }
     },
     "rich_text_g3Wm87": {
@@ -83,7 +140,7 @@
           "type": "heading",
           "settings": {
             "heading": "<strong>LA BEAUTÉ NATURELLE SANS COMPROMIS</strong>",
-            "heading_size": "h1"
+            "heading_size": "h2"
           }
         },
         "text_KQiNbj": {
@@ -103,83 +160,8 @@
         "content_alignment": "center",
         "color_scheme": "",
         "full_width": true,
-        "padding_top": 40,
+        "padding_top": 52,
         "padding_bottom": 52
-      }
-    },
-    "round_section_home_ihf4Vp": {
-      "type": "round-section-home",
-      "blocks": {
-        "slide_Qqz8tq": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/character-mr_snooty.svg",
-            "title": "M. Malpoli",
-            "button_url": ""
-          }
-        },
-        "slide_Urf8Hn": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/character-mr_snooty.svg",
-            "title": "M. Malpoli",
-            "button_url": ""
-          }
-        },
-        "slide_U8cYVD": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/character-mr_snooty.svg",
-            "title": "M. Malpoli",
-            "button_url": ""
-          }
-        },
-        "slide_PLNmk6": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/character-mr_snooty.svg",
-            "title": "M. Malpoli",
-            "button_url": ""
-          }
-        },
-        "slide_pLPUak": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/character-mr_snooty.svg",
-            "title": "M. Malpoli",
-            "button_url": ""
-          }
-        },
-        "slide_8FJc7t": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/character-mr_snooty.svg",
-            "title": "M. Malpoli",
-            "button_url": ""
-          }
-        },
-        "slide_4c9mTL": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/character-mr_snooty.svg",
-            "title": "M. Malpoli",
-            "button_url": ""
-          }
-        }
-      },
-      "block_order": [
-        "slide_Qqz8tq",
-        "slide_Urf8Hn",
-        "slide_U8cYVD",
-        "slide_PLNmk6",
-        "slide_pLPUak",
-        "slide_8FJc7t",
-        "slide_4c9mTL"
-      ],
-      "disabled": true,
-      "name": "Round Collection",
-      "settings": {
-        "padding_mobile": "pt-[38px]! md:py-[32px]!"
       }
     },
     "product_grid_home_Y7i6ed": {
@@ -191,6 +173,7 @@
         "title": "Nos produits",
         "subtitle": "",
         "enable_btn": true,
+        "button_style": "btn-primaire",
         "text_btn": "tout afficher",
         "image_ratio": "square",
         "show_secondary_image": false,
@@ -271,6 +254,14 @@
     "section_gauche_droite_waaAai": {
       "type": "section-gauche-droite",
       "blocks": {
+        "title_DzDbtX": {
+          "type": "title",
+          "settings": {
+            "title": "Maxence Garandel",
+            "color": "#ffffff",
+            "div": "H3"
+          }
+        },
         "description_p6CnqG": {
           "type": "description",
           "settings": {
@@ -289,148 +280,22 @@
         }
       },
       "block_order": [
+        "title_DzDbtX",
         "description_p6CnqG",
         "button_cMLyiG"
       ],
       "name": "Section Gauche Droite",
       "settings": {
+        "enable_page_width": true,
+        "text-align-mobile": "left",
+        "alignment": "left",
         "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
         "image_object_fit": "object-cover",
         "image_position": "left",
-        "background_color": "#ff98a6",
+        "background_color": "#000000",
         "background_color_image": "#fbf8f5",
-        "parallax": true,
-        "padding_mobile": "py-[38px]! md:py-[32px]!"
-      }
-    },
-    "custom_section_TrTTpy": {
-      "type": "custom-section",
-      "blocks": {
-        "trust_m9xKdL": {
-          "type": "trust",
-          "settings": {
-            "trust_text": "4.5/5 10298+ avis"
-          }
-        },
-        "title_yP9gKk": {
-          "type": "title",
-          "settings": {
-            "title": "Déjà un maté incontournable"
-          }
-        },
-        "benefit_7hQwNC": {
-          "type": "benefit",
-          "settings": {
-            "text": "Un bénéfice clair et orienté client"
-          }
-        },
-        "benefit_A8LNYd": {
-          "type": "benefit",
-          "settings": {
-            "text": "Un bénéfice clair et orienté client"
-          }
-        },
-        "benefit_mg6ghA": {
-          "type": "benefit",
-          "settings": {
-            "text": "Un bénéfice clair et orienté client"
-          }
-        },
-        "button_fCTUr3": {
-          "type": "button",
-          "settings": {
-            "button_label": "Découvrir les produits",
-            "button_label_mobile": "Découvrir",
-            "button_url": "",
-            "button_style": "btn-primaire"
-          }
-        },
-        "button_XRjqE9": {
-          "type": "button",
-          "settings": {
-            "button_label": "Lire les avis",
-            "button_label_mobile": "Lire les avis",
-            "button_url": "",
-            "button_style": "btn-secondaire"
-          }
-        }
-      },
-      "block_order": [
-        "trust_m9xKdL",
-        "title_yP9gKk",
-        "benefit_7hQwNC",
-        "benefit_A8LNYd",
-        "benefit_mg6ghA",
-        "button_fCTUr3",
-        "button_XRjqE9"
-      ],
-      "disabled": true,
-      "name": "Hero CRO",
-      "settings": {
-        "image": "shopify://shop_images/KevinTillie_277_bySemmyDemmou_1_1_1280x_01f90e2f-0fbe-49b1-9089-3bfa3c1c848f.jpg",
-        "image_position": "right"
-      }
-    },
-    "marquee_m9fzJn": {
-      "type": "marquee",
-      "blocks": {
-        "text_rGVB7L": {
-          "type": "text",
-          "settings": {
-            "text": "Livraison offerte dès 49€"
-          }
-        },
-        "text_aajNEF": {
-          "type": "text",
-          "settings": {
-            "text": "Livraison offerte dès 49€"
-          }
-        },
-        "text_DXGnfU": {
-          "type": "text",
-          "settings": {
-            "text": "Livraison offerte dès 49€"
-          }
-        },
-        "text_Ww7zJe": {
-          "type": "text",
-          "settings": {
-            "text": "Paiement sécurisé"
-          }
-        },
-        "text_xPHQNP": {
-          "type": "text",
-          "settings": {
-            "text": "Retours gratuits"
-          }
-        }
-      },
-      "block_order": [
-        "text_rGVB7L",
-        "text_aajNEF",
-        "text_DXGnfU",
-        "text_Ww7zJe",
-        "text_xPHQNP"
-      ],
-      "disabled": true,
-      "name": "Marquee",
-      "settings": {
-        "bg_color": "#2e7e5a",
-        "text_color": "#ffffff",
-        "speed": 20,
-        "font_size": "md:text-4xl!",
-        "icon_size": "w-32! h-32!",
-        "space_size": "py-16",
-        "font_weight": "font-bold!",
-        "border_color": ""
-      }
-    },
-    "product_home_BcLP4G": {
-      "type": "product-home",
-      "disabled": true,
-      "name": "Product home",
-      "settings": {
-        "button_style": "btn-primaire"
+        "margin_top": 50,
+        "margin_bottom": 50
       }
     },
     "faq_product_page_9RC7rB": {
@@ -473,25 +338,22 @@
       ],
       "name": "FAQ Produt Page",
       "settings": {
+        "title": "",
         "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
         "image_position": "right",
-        "padding_mobile": "py-[38px]! md:py-[32px]!",
+        "padding_mobile": "pt-[38px]! md:py-[32px]!",
         "button_style": "btn-primaire"
       }
     }
   },
   "order": [
-    "hero_img_yqDAAV",
-    "hero_swiper_RRtcMX",
+    "hero_swiper_7T6Vgr",
+    "round_section_home_4b36ET",
     "rich_text_g3Wm87",
-    "round_section_home_ihf4Vp",
     "product_grid_home_Y7i6ed",
     "section_collection_T496NR",
     "fixed_collection_NWAAU4",
     "section_gauche_droite_waaAai",
-    "custom_section_TrTTpy",
-    "marquee_m9fzJn",
-    "product_home_BcLP4G",
     "faq_product_page_9RC7rB"
   ]
 }

@@ -47,7 +47,7 @@
               {{ block.settings.logo | image_url: width: 1000 | image_tag: class: img_classes, loading: 'lazy' }}
             </div>
             {%- if block.settings.show_social -%}
-                <span class="text-white">{%- render 'social-icons', class: 'footer__list-social' -%}</span>
+                <span class="text-white!">{%- render 'social-icons', class: 'footer__list-social' -%}</span>
             {% endif %}
             </div>
               {%- endcase -%}
@@ -64,7 +64,7 @@
           {%- if section.settings.newsletter_enable -%}
             <div class="w-full flex flex-col gap-4 text-white! p-10 relative rounded-lg lg:max-w-[524px] ml-auto order-1 lg:order-2 lg:row-span-2" style="color: {{ section.settings.color_text_footer }}; background-color: {{ section.settings.bg_footer }}">
               {%- if section.settings.newsletter_heading != blank -%}
-                <h2 class="lg:font-semibold text-[20px] mr-[103px] lg:mr-0" style="color: {{ section.settings.color_text_footer }};">{{ section.settings.newsletter_heading }}</h2>
+                <h2 class="text-[22px]!" style="color: {{ section.settings.color_text_footer }};">{{ section.settings.newsletter_heading }}</h2>
                 <p class="text-[14px]!" style="color: {{ section.settings.color_text_footer }};">{{ section.settings.newsletter_subheading }}</p>
               {%- endif -%}
               {%- form 'customer', id: 'ContactFooter', class: 'footer__newsletter rounded-lg!' -%}
@@ -144,24 +144,24 @@
                 {% endif %}
               >
                 {%- if block.settings.heading != blank -%}
-                  <h2 class="font-bold uppercase text-[12px]! tracking-[0.08px] text-ecru-2">{{- block.settings.heading -}}</h2>
+                  <h2 class="font-bold uppercase text-[12px]! tracking-[0.08px] text-white!">{{- block.settings.heading -}}</h2>
                 {%- endif -%}
 
                 {%- case block.type -%}
                   {%- when '@app' -%}
                     {% render block %}
                   {%- when 'text' -%}
-                    <div class="text-center lg:text-left text-[12px] uppercase tracking-[0.08px]">
+                    <div class="text-center lg:text-left text-[12px] uppercase tracking-[0.08px] text-white!">
                       {{ block.settings.subtext }}
                     </div>
                   {%- when 'link_list' -%}
                     {%- if block.settings.menu != blank -%}
-                      <ul class="footer-block__details-content list-unstyled">
+                      <ul class="footer-block__details-content list-unstyled text-white!">
                         {%- for link in block.settings.menu.links -%}
                           <li>
                             <a
                               href="{{ link.url }}"
-                              class="text-center lg:text-left text-[12px] uppercase tracking-[0.08px]"
+                              class="text-center lg:text-left text-[12px] uppercase tracking-[0.08px] text-white!"
                             >
                               {{ link.title | escape }}
                             </a>
@@ -228,9 +228,9 @@
                 {{ section.settings.logo_footer | image_url: width: 1000 | image_tag: class: img_classes, loading: 'lazy' }}
               </div>
             {% endif %}
-            <div class="border-t border-gris-2 pt-[24px]! mt-[24px]! flex flex-col lg:flex-row items-center justify-between gap-4 text-[12px] uppercase">
+            <div class="border-t border-white pt-[24px]! mt-[24px]! flex flex-col lg:flex-row items-center justify-between gap-4 text-[12px] uppercase">
               <div class="w-full flex justify-between">
-                 <ul class="flex space-x-10">
+                 <ul class="flex space-x-10 text-white!">
           {%- for link in section.settings.navigation.links -%}
             <li>
               <a href="{{ link.url }}" class="hover:underline">{{ link.title }}</a>

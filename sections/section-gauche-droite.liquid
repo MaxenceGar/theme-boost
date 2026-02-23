@@ -6,13 +6,12 @@
     assign content_position = 'lg:order-1'
   endif
 %}
-
+<section style="padding-top: {{ section.settings.margin_top }}px;
+      padding-bottom: {{ section.settings.margin_bottom }}px;">
 <div class="text-block {%- if section.settings.enable_page_width %} page-width {% endif -%}" 
 style="
       --text-align: {{ section.settings.alignment }}; 
-      --text-align-mobile: {{ section.settings.text-align-mobile }};
-      --margin-top: {{ block.settings.margin_top }}px;
-      --margin-bottom: {{ block.settings.margin_bottom }}px;"
+      --text-align-mobile: {{ section.settings.text-align-mobile }};"
 {{ section.shopify_attributes }}>
   <div class="grid! grid-cols-1! md:grid-cols-2! overflow-hidden lg:min-h-[466px]" style="background-color: {{ section.settings.background_color }}; border-radius: var(--rounded--size) !important;">
     <!-- Image -->
@@ -40,7 +39,6 @@ style="
     <!-- Content -->
     <div class="flex items-center px-[32px] py-10 md:py-0 md:px-[64px] {{ content_position }}">
       <div>
-        <p class="text-block w-full">Maxence Garandel</p>
         {% for block in section.blocks %}
           {% case block.type %}
             {% when 'subtitle' %}
@@ -51,15 +49,15 @@ style="
                 {{ block.settings.subtitle }}
               </p>
             {% when 'title' %}
-              <h2
-                class="text-block"
+              <{{ block.settings.div }}
+                class="text-block pb-5"
                 style="color: {{ block.settings.color }};"
                 {{ block.shopify_attributes }}>
                 {{ block.settings.title }}
-              </h2>
+              </{{ block.settings.div }}>
             {% when 'description' %}
               <div
-                class="font-heading text-block"
+                class="font-heading text-block pb-5"
                 style="color: {{ block.settings.color }};"
                 {{ block.shopify_attributes }}>
                 {{ block.settings.description | newline_to_br }}
@@ -83,7 +81,7 @@ style="
     </div>
   </div>
 </div>
-
+</section>
 {%  stylesheet %} 
 
 .text-block {
@@ -211,6 +209,26 @@ style="
             "id": "color",
             "label": "Couleur du titre",
             "default": "#191918"
+          },
+          {
+            "type": "select",
+            "id": "div",
+            "label": "Div",
+            "options": [
+              {
+                "label": "H1",
+                "value": "H1"
+              },
+              {
+                "label": "H2",
+                "value": "H2"
+              },
+              {
+                "label": "H3",
+                "value": "H3"
+              }
+            ],
+            "default": "H3"
           }
         ]
       },
@@ -293,6 +311,7 @@ style="
     "presets": [
       {
         "name": "Section Gauche Droite",
+        "category": "Maxence",
         "blocks": [
           {
             "type": "title",

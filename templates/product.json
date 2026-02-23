@@ -23,9 +23,9 @@
         "price_xGmqGm": {
           "type": "price",
           "settings": {
-            "typo_p_size": "24",
-            "font_weight": "font-medium",
-            "price_color": "#0f0219",
+            "text_typo_price_size": "24",
+            "font_weight": "font-extrabold",
+            "price_color": "#000000",
             "margin_top": 0,
             "margin_bottom": 0
           }
@@ -179,7 +179,8 @@
           "type": "title",
           "settings": {
             "title": "Anne Borde & <br> Charlotte Rey",
-            "color": "#191918"
+            "color": "#191918",
+            "div": "H3"
           }
         },
         "description_YXxgf4": {
@@ -206,12 +207,15 @@
       ],
       "name": "Section Gauche Droite",
       "settings": {
+        "enable_page_width": false,
+        "text-align-mobile": "left",
+        "alignment": "left",
         "image_object_fit": "object-cover",
         "image_position": "right",
         "background_color": "#fbf8f5",
         "background_color_image": "#fbf8f5",
-        "parallax": false,
-        "padding_mobile": "py-[38px]! md:py-[32px]!"
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "faq_product_page_eDmRRi": {
@@ -262,6 +266,7 @@
       ],
       "name": "FAQ Produt Page",
       "settings": {
+        "title": "Questions fréquemment posées :",
         "image": "shopify://shop_images/VENDRE_HOMEPAGE.webp",
         "image_position": "left",
         "padding_mobile": "py-[38px]! md:py-[32px]!",

@@ -21,7 +21,7 @@
       </div>
     </div>
     <div class="flex-1 pb-10 {{ content_position }}">
-      <h2 class="pb-[32px]!">Questions fréquemment posées :</h2>
+      <h2 class="pb-[32px]!">{{ section.settings.title }}</h2>
       {% for block in section.blocks %}
         {% case block.type %}
           {%- when 'faq_section' -%}
@@ -48,6 +48,12 @@
   {
     "name": "FAQ Produt Page",
     "settings": [
+      {
+        "type": "text",
+        "default": "Questions fréquemment posées :",
+        "id": "title",
+        "label": "Titre FAQ"
+      },
       {
         "type": "image_picker",
         "id": "image",

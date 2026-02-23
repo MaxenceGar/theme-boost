@@ -68,12 +68,20 @@
   }
   .hero-swiper--{{ section.id }}
   .swiper-pagination-bullet {
+    width: 8px;
+    height: 8px;
     background: white;
-    opacity: 0.5;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background 0.3s
+    , width 0.3s;
   }
   .hero-swiper--{{ section.id }}
   .swiper-pagination-bullet-active {
     opacity: 1;
+    width: 50px;
+    border-radius: 4px;
+    background-color: rgb(0, 0, 0);
   }
 </style>
 
@@ -84,11 +92,11 @@
     new Swiper('.hero-swiper--{{ section.id }}', {
       loop: {{ section.settings.loop }},
       speed: {{ section.settings.transition_speed }},
-      spaceBetween: 30,
+      spaceBetween: 10,
       slidesPerView: 1,
       breakpoints: {
-        768: { slidesPerView: 2 },
-        1024: { slidesPerView: 2.1 }
+        768: { slidesPerView: 1 },
+        1024: { slidesPerView: 1 }
       },
       effect: 'slide',
       {% if section.settings.autoplay %}
