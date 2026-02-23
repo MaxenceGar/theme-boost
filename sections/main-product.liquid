@@ -1,4 +1,4 @@
-<product-info
+"<product-info
   id="MainProduct-{{ section.id }}"
   class="section-{{ section.id }}-padding gradient color-{{ section.settings.color_scheme }}"
   data-section="{{ section.id }}"
@@ -87,50 +87,57 @@
 
           {%- for block in section.blocks -%}
             {%- case block.type -%}
+
+              {%- # Apps Shopify (reviews, etc.) -%}
               {%- when '@app' -%}
                 {% render block %}
+
+              {%- # Texte libre personnalisé avec taille, couleur et marges -%}
               {%- when 'text' -%}
-                <p
-                  class="product__text inline-richtext{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}"
+                <div
+                  class="product__text inline-richtext"
+                  style="
+                  font-size: {{ block.settings.typo_p_size | divided_by: 10.0 }}rem;
+                  color: {{ block.settings.text_color }}; 
+                  margin-top: {{ block.settings.margin_top }}px;
+                  margin-bottom: {{ block.settings.margin_bottom }}px;"
                   {{ block.shopify_attributes }}
                 >
                   {{- block.settings.text -}}
-                </p>
-              {%- when 'title' -%}
-                <div class="product__title text-8xl" {{ block.shopify_attributes }}>
-                  <h1 class="font-extrabold text-white">{{ product.title | escape }}</h1>
-                  <a href="{{ product.url }}" class="product__title">
-                    <h2 class="h1">
-                      {{ product.title | escape }}
-                    </h2>
-                  </a>
                 </div>
+              {%- # Titre H1 du produit avec taille et marges personnalisables -%}
+              {%- when 'title' -%}
+                <div class="product__title" {{ block.shopify_attributes }}>
+                  <h1 style="
+                  --typo-h1--size: {{ block.settings.typo_h1_size | divided_by: 10.0 }}rem;
+                  margin-top: {{ block.settings.margin_top }}px;
+                  margin-bottom: {{ block.settings.margin_bottom }}px;">
+                  {{ product.title | escape }}
+                  </h1>
+                </div>
+              {%- # Prix du produit avec taille, couleur et paiement fractionné -%}
               {%- when 'price' -%}
-                <div id="price-{{ section.id }}" role="status" {{ block.shopify_attributes }}>
+                <div
+                  id="price-{{ section.id }}"
+                  role="status"
+                  style="
+                  font-size: {{ block.settings.text_typo_p_size | divided_by: 10.0 }}rem;
+                  color: {{ block.settings.price_color }}; 
+                  margin-top: {{ block.settings.margin_top }}px;
+                  margin-bottom: {{ block.settings.margin_bottom }}px;"
+                  class="{{ block.settings.font_weight }}"
+                  {{ block.shopify_attributes }}
+                >
                   {%- render 'price',
                     product: product,
                     use_variant: true,
                     show_badges: true,
-                    price_class: 'price--on-sale'
+                    price_class: '{{ block.settings.font_weight }}'
                   -%}
                 </div>
                 {%- if product.quantity_price_breaks_configured? -%}
                   <div class="volume-pricing-note" id="Volume-Note-{{ section.id }}">
                     <span>{{ 'products.product.volume_pricing.note' | t }}</span>
-                  </div>
-                {%- endif -%}
-                {%- if cart.taxes_included or cart.duties_included or shop.shipping_policy.body != blank -%}
-                  <div class="product__tax caption rte">
-                    {%- if cart.duties_included and cart.taxes_included -%}
-                      {{ 'products.product.duties_and_taxes_included' | t }}
-                    {%- elsif cart.taxes_included -%}
-                      {{ 'products.product.taxes_included' | t }}
-                    {%- elsif cart.duties_included -%}
-                      {{ 'products.product.duties_included' | t }}
-                    {%- endif -%}
-                    {%- if shop.shipping_policy.body != blank -%}
-                      {{ 'products.product.shipping_policy_html' | t: link: shop.shipping_policy.url }}
-                    {%- endif -%}
                   </div>
                 {%- endif -%}
                 <div {{ block.shopify_attributes }}>
@@ -141,12 +148,14 @@
                   {%- endform -%}
                 </div>
 
+                {%- # Vidéo associée au produit -%}
                 {%- when 'product-video' -%}
             <div class="product__block--{{ block.type }} {{ block.settings.padding_mobile }} {{ block.settings.show_hide }}"
             {{ block.shopify_attributes }}>
               {% render 'product-video', product_block: block %}
             </div>
                 
+              {%- # Statut du stock (en stock / stock faible / épuisé) -%}
               {%- when 'inventory' -%}
                 <p
                   class="product__inventory{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.inventory_management != 'shopify' %} visibility-hidden{% endif %}"
@@ -198,6 +207,7 @@
                     {%- endif -%}
                   {%- endif -%}
                 </p>
+              {%- # Description courte du produit (version compacte) -%}
               {%- when 'description' -%}
                 {%- if product.description != blank -%}
                   <div class="product__description rte quick-add-hidden" {{ block.shopify_attributes }}>
@@ -205,6 +215,7 @@
                   </div>
                 {%- endif -%}
 
+                {%- # Description longue du produit (layout étendu) -%}
                 {%- when 'description_max' -%}
                 <div class="lg:order-1 text-black my-14!">
                   <div class="text-[18px]! leading-none text-black/80">
@@ -212,15 +223,19 @@
                   </div>
                 </div>
 
+                {%- # Texte riche (richtext) personnalisé via l'éditeur -%}
                 {%- when 'rich_text' -%}
                     <div>{{ block.settings.rich_text }}</div>
 
+                {%- # Badges d'information produit (snippet badge-product-info) -%}
                 {%- when 'maxence' -%}
                   {%- render 'badge-product-info'-%}
 
+                {%- # Délai de livraison estimé (snippet time_livraison) -%}
                 {%- when 'time_livraison' -%}
-                  {% render 'time_livraison' %}
+                  <div {{ block.shopify_attributes }}>{% render 'time_livraison' %}</div>
 
+              {%- # Référence SKU de la variante sélectionnée -%}
               {%- when 'sku' -%}
                 <p
                   class="product__sku{% if block.settings.text_style == 'uppercase' %} caption-with-letter-spacing{% elsif block.settings.text_style == 'subtitle' %} subtitle{% endif %}{% if product.selected_or_first_available_variant.sku.size == 0 %} visibility-hidden{% endif %}"
@@ -231,6 +246,7 @@
                   <span class="visually-hidden">{{ 'products.product.sku' | t }}:</span>
                   {{- product.selected_or_first_available_variant.sku -}}
                 </p>
+              {%- # Accordéon FAQ avec question/réponse -%}
               {%- when 'faq_section' -%}
                 {{ block.settings.custom_liquid }}
                 <div class="w-full space-y-4">
@@ -246,6 +262,7 @@
                         </details>
                       </div>
 
+              {%- # Sélecteur de quantité avec règles min/max et prix par palier -%}
               {%- when 'quantity_selector' -%}
                 <div
                   id="Quantity-Form-{{ section.id }}"
@@ -474,12 +491,15 @@
                   {%- endif -%}
                 </div>
                 
+                {%- # Paliers de remise selon la quantité achetée -%}
                 {%- when 'quantity-break' -%}
                   {%- render 'quantity-break', block: block, product: product -%}
 
+                {%- # Upsell : suggestion d'un produit complémentaire -%}
                 {%- when 'upsell-product-page' -%}
                   {%- render 'upsell-product-page', block: block -%}
-
+                  
+              {%- # Bouton qui ouvre une modal/popup -%}
               {%- when 'popup' -%}
                 <modal-opener
                   class="product-popup-modal__opener quick-add-hidden"
@@ -495,14 +515,17 @@
                     {{ block.settings.text | default: block.settings.page.title | escape }}
                   </button>
                 </modal-opener>
+              {%- # Bouton de partage sur les réseaux sociaux -%}
               {%- when 'share' -%}
                 {% liquid
                   assign share_url = product.selected_variant.url | default: product.url | prepend: request.origin
                   render 'share-button', block: block, share_link: share_url
                 %}
 
+              {%- # Sélecteur de variantes (couleur, taille, etc.) -%}
               {%- when 'variant_picker' -%}
                 {% render 'product-variant-picker', product: product, block: block, product_form_id: product_form_id %}
+              {%- # Boutons d'achat standards (Ajouter au panier + Acheter maintenant) -%}
               {%- when 'buy_buttons' -%}
                 {%- render 'buy-buttons',
                   block: block,
@@ -512,6 +535,7 @@
                   show_pickup_availability: true
                 -%}
 
+                {%- # Boutons d'achat version étendue (layout max) -%}
                 {%- when 'buy_buttons_max' -%}
                 <div class="w-full! btn {{ block.settings.button_style }}">
                   {% render 'buy-buttons-max'
@@ -522,8 +546,9 @@
                     , show_pickup_availability: true %}
                 </div>
 
+                {%- # 3 badges personnalisés (texte + style) -%}
                 {%- when 'badge_max' -%}
-                  <ul class="mt-12 flex flex-wrap gap-6 lg:mt-12 text-sm! text-black">
+                  <ul class="mt-12 flex flex-wrap gap-6 lg:mt-12 text-sm! text-black" {{ block.shopify_attributes }}>
                   <li>
                     <div class="flex w-fit items-center justify-center {{ block.settings.rounded }} border text-white bg-black py-3 px-5 text-base/none font-bold uppercase leading-none ">
                       <span class="-mb-1 block">{{ block.settings.badge_1 }}</span>
@@ -541,6 +566,7 @@
                   </li>
                 </ul>
 
+              {%- # Note et nombre d'avis (via metafields reviews.rating) -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
                   <div class="rating-wrapper">
@@ -579,6 +605,7 @@
                     </p>
                   </div>
                 {%- endif -%}
+              {%- # Carousel de produits complémentaires (recommandations Shopify) -%}
               {%- when 'complementary' -%}
                 <product-recommendations
                   class="complementary-products quick-add-hidden{% if block.settings.make_collapsible_row %} is-accordion{% endif %}{% if block.settings.enable_quick_add %} complementary-products-contains-quick-add{% endif %}"
@@ -728,6 +755,7 @@
                     <script src="{{ 'quick-add.js' | asset_url }}" defer="defer"></script>
                   {%- endif -%}
                 </product-recommendations>
+              {%- # Icône accompagnée d'un texte (snippet icon-with-text) -%}
               {%- when 'icon-with-text' -%}
                 {% render 'icon-with-text', block: block %}
             {%- endcase -%}
@@ -808,42 +836,223 @@
       "name": "t:sections.main-product.blocks.text.name",
       "settings": [
         {
-          "type": "inline_richtext",
+          "type": "richtext",
           "id": "text",
-          "default": "t:sections.main-product.blocks.text.settings.text.default",
-          "label": "t:sections.main-product.blocks.text.settings.text.label"
+          "label": "text"
         },
         {
-          "type": "select",
-          "id": "text_style",
-          "options": [
-            {
-              "value": "body",
-              "label": "t:sections.main-product.blocks.text.settings.text_style.options__1.label"
-            },
-            {
-              "value": "subtitle",
-              "label": "t:sections.main-product.blocks.text.settings.text_style.options__2.label"
-            },
-            {
-              "value": "uppercase",
-              "label": "t:sections.main-product.blocks.text.settings.text_style.options__3.label"
-            }
-          ],
-          "default": "body",
-          "label": "t:sections.main-product.blocks.text.settings.text_style.label"
-        }
+        "type": "select",
+        "id": "text_typo_p_size",
+        "label": "Taille du texte",
+        "options": [
+          { "value": "10",  "label": "10px"  },
+          { "value": "12",  "label": "12px"  },
+          { "value": "14",  "label": "14px"  },
+          { "value": "16",  "label": "16px"  },
+          { "value": "18",  "label": "18px"  },
+          { "value": "20",  "label": "20px"  },
+          { "value": "24",  "label": "24px"  },
+          { "value": "32",  "label": "32px"  },
+          { "value": "40",  "label": "40px"  },
+          { "value": "48",  "label": "48px"  },
+          { "value": "56",  "label": "56px"  },
+          { "value": "72",  "label": "72px"  },
+          { "value": "88",  "label": "88px"  },
+          { "value": "120", "label": "120px" },
+          { "value": "152", "label": "152px" },
+          { "value": "184", "label": "184px" }
+        ],
+        "default": "72"
+      },
+      {
+        "type": "select",
+        "id": "text_font_weight",
+        "label": "Font Weight",
+        "options": [
+          {
+            "value": "font-light",
+            "label": "Light"
+          },
+          {
+            "value": "font-normal",
+            "label": "Normal"
+          },
+          {
+            "value": "font-medium",
+            "label": "Medium"
+          },
+          {
+            "value": "font-bold",
+            "label": "Bold"
+          },
+          {
+            "value": "font-extrabold",
+            "label": "Extra Bold"
+          }
+        ],
+        "default": "font-extrabold"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Couleur du texte"
+      },
+      {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    }
       ]
     },
     {
       "type": "title",
       "name": "t:sections.main-product.blocks.title.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+        "type": "select",
+        "id": "typo_h1_size",
+        "label": "H1 (desktop)",
+        "options": [
+          { "value": "10",  "label": "10px"  },
+          { "value": "12",  "label": "12px"  },
+          { "value": "14",  "label": "14px"  },
+          { "value": "16",  "label": "16px"  },
+          { "value": "18",  "label": "18px"  },
+          { "value": "20",  "label": "20px"  },
+          { "value": "24",  "label": "24px"  },
+          { "value": "32",  "label": "32px"  },
+          { "value": "40",  "label": "40px"  },
+          { "value": "48",  "label": "48px"  },
+          { "value": "56",  "label": "56px"  },
+          { "value": "72",  "label": "72px"  },
+          { "value": "88",  "label": "88px"  },
+          { "value": "120", "label": "120px" },
+          { "value": "152", "label": "152px" },
+          { "value": "184", "label": "184px" }
+        ],
+        "default": "72"
+      },
+      {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    }
+      ]
     },
     {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
-      "limit": 1
+      "limit": 1,
+      "settings": [
+        {
+        "type": "select",
+        "id": "typo_p_size",
+        "label": "H1 (desktop)",
+        "options": [
+          { "value": "10",  "label": "10px"  },
+          { "value": "12",  "label": "12px"  },
+          { "value": "14",  "label": "14px"  },
+          { "value": "16",  "label": "16px"  },
+          { "value": "18",  "label": "18px"  },
+          { "value": "20",  "label": "20px"  },
+          { "value": "24",  "label": "24px"  },
+          { "value": "32",  "label": "32px"  },
+          { "value": "40",  "label": "40px"  },
+          { "value": "48",  "label": "48px"  },
+          { "value": "56",  "label": "56px"  },
+          { "value": "72",  "label": "72px"  },
+          { "value": "88",  "label": "88px"  },
+          { "value": "120", "label": "120px" },
+          { "value": "152", "label": "152px" },
+          { "value": "184", "label": "184px" }
+        ],
+        "default": "72"
+      },
+      {
+        "type": "select",
+        "id": "font_weight",
+        "label": "Font Weight",
+        "options": [
+          {
+            "value": "font-light",
+            "label": "Light"
+          },
+          {
+            "value": "font-normal",
+            "label": "Normal"
+          },
+          {
+            "value": "font-medium",
+            "label": "Medium"
+          },
+          {
+            "value": "font-bold",
+            "label": "Bold"
+          },
+          {
+            "value": "font-extrabold",
+            "label": "Extra Bold"
+          }
+        ],
+        "default": "font-extrabold"
+      },
+      {
+        "type": "color",
+        "id": "price_color",
+        "label": "Couleur du prix"
+      },
+      {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    }
+      ]
     },
     {
       "type": "sku",
@@ -2792,3 +3001,4 @@
   ]
 }
 {% endschema %}
+"

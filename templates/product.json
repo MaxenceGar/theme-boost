@@ -9,109 +9,52 @@
  */
 {
   "sections": {
-    "content_nTdVUV": {
-      "type": "content",
-      "blocks": {
-        "image_4bNTq6": {
-          "type": "image",
-          "name": "Image",
-          "settings": {
-            "img": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
-            "image_ratio": "aspect-video"
-          },
-          "blocks": {}
-        },
-        "group_gjRaCH": {
-          "type": "group",
-          "name": "group",
-          "settings": {
-            "direction": "column",
-            "align": "flex-start",
-            "gap": 16
-          },
-          "blocks": {
-            "text_iA8YtK": {
-              "type": "text",
-              "name": "Texte",
-              "settings": {
-                "text": "<p>Mon texte</p>"
-              },
-              "blocks": {}
-            },
-            "text_dMndBt": {
-              "type": "text",
-              "name": "Texte",
-              "settings": {
-                "text": "<p>Mon texte</p>"
-              },
-              "blocks": {}
-            }
-          },
-          "block_order": [
-            "text_iA8YtK",
-            "text_dMndBt"
-          ]
-        }
-      },
-      "block_order": [
-        "image_4bNTq6",
-        "group_gjRaCH"
-      ],
-      "name": "Contenu",
-      "settings": {
-        "layout": "grid",
-        "grid_columns": 2,
-        "grid_columns_mobile": 1,
-        "align_items": "center",
-        "justify_content": "center",
-        "gap": 0,
-        "gap_mobile": 16,
-        "padding_top": 40,
-        "padding_bottom": 40
-      }
-    },
     "main": {
       "type": "main-product",
       "blocks": {
+        "title_wjgMq3": {
+          "type": "title",
+          "settings": {
+            "typo_h1_size": "40",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "price_xGmqGm": {
+          "type": "price",
+          "settings": {
+            "typo_p_size": "24",
+            "font_weight": "font-medium",
+            "price_color": "#0f0219",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
         "badge_max_bRGcBD": {
           "type": "badge_max",
+          "disabled": true,
           "settings": {
             "badge_1": "Badge 1",
             "badge_2": "Badge 2",
             "badge_3": "Badge 3",
-            "rounded": "rounded-lg"
+            "rounded": "rounded-none"
           }
         },
-        "text_6dWypF": {
+        "text_DzNNBt": {
           "type": "text",
           "settings": {
-            "text": "{{ product.title }}",
-            "text_style": "uppercase"
+            "text": "{{ product.description }}",
+            "text_typo_p_size": "152",
+            "text_font_weight": "font-light",
+            "text_color": "#000000",
+            "margin_top": 0,
+            "margin_bottom": 0
           }
-        },
-        "description_max_qTkaCL": {
-          "type": "description_max",
-          "settings": {}
         },
         "buy_buttons_max_WTNj9H": {
           "type": "buy_buttons_max",
           "settings": {
             "button_style": "btn-primaire"
-          }
-        },
-        "quantity_break_qBmx7i": {
-          "type": "quantity-break",
-          "settings": {
-            "title": "Économisez plus",
-            "qty_1": 1,
-            "label_1": "1 unité",
-            "qty_2": 2,
-            "label_2": "2 unités",
-            "discount_2": 10,
-            "qty_3": 3,
-            "label_3": "3 unités",
-            "discount_3": 15,
-            "best_deal_label": "Meilleure offre"
           }
         },
         "time_livraison_fkJ6dY": {
@@ -151,11 +94,11 @@
         }
       },
       "block_order": [
+        "title_wjgMq3",
+        "price_xGmqGm",
         "badge_max_bRGcBD",
-        "text_6dWypF",
-        "description_max_qTkaCL",
+        "text_DzNNBt",
         "buy_buttons_max_WTNj9H",
-        "quantity_break_qBmx7i",
         "time_livraison_fkJ6dY",
         "faq_section_ywQckf",
         "faq_section_DQqUq3",
@@ -164,7 +107,7 @@
       ],
       "settings": {
         "enable_sticky_info": true,
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "media_size": "small",
         "constrain_to_viewport": true,
         "media_fit": "contain",
@@ -345,7 +288,6 @@
     }
   },
   "order": [
-    "content_nTdVUV",
     "main",
     "section_maxence_brouillon_HKzpfN",
     "section_gauche_droite_nU3hJz",

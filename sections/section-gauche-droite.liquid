@@ -7,22 +7,20 @@
   endif
 %}
 
-<div class="py-[54px]!" {{ section.shopify_attributes }}>
-  <div class="grid! grid-cols-1! md:grid-cols-2! overflow-hidden lg:min-h-[466px]" style="background-color: {{ section.settings.background_color }};">
+<div class="text-block {%- if section.settings.enable_page_width %} page-width {% endif -%}" 
+style="
+      --text-align: {{ section.settings.alignment }}; 
+      --text-align-mobile: {{ section.settings.text-align-mobile }};
+      --margin-top: {{ block.settings.margin_top }}px;
+      --margin-bottom: {{ block.settings.margin_bottom }}px;"
+{{ section.shopify_attributes }}>
+  <div class="grid! grid-cols-1! md:grid-cols-2! overflow-hidden lg:min-h-[466px]" style="background-color: {{ section.settings.background_color }}; border-radius: var(--rounded--size) !important;">
     <!-- Image -->
-    {%- assign parallax = section.settings.parallax -%}
     <div
       class="relative w-full h-[350px] md:h-full {{ image_position }} overflow-hidden!"
-      style="background-color: {{ section.settings.background_color_image }};"
-      {% if parallax %}
-      data-parallax-container="{{ section.id }}"
-      {% endif %}>
+      style="background-color: {{ section.settings.background_color_image }};">
       {% assign image_class = 'absolute w-full inset-0 ' | append: section.settings.image_object_fit %}
-      {% if parallax %}
-        {% assign image_class = image_class | append: ' h-[160%]! -top-[20%]!' %}
-      {% else %}
-        {% assign image_class = image_class | append: ' h-full' %}
-      {% endif %}
+      {% assign image_class = image_class | append: ' h-full' %}
       {% if section.settings.image %}
         {%- liquid
           assign fetchpriority = 'low'
@@ -32,7 +30,7 @@
           assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
         -%}
         {{
-          section.settings.image | image_url: width: 2500 | image_tag: loading: loading, fetchpriority: fetchpriority, width: image_width, height: image_height, class: image_class, widths: widths, sizes: '100vw', data-parallax-img: section.id
+          section.settings.image | image_url: width: 2500 | image_tag: loading: loading, fetchpriority: fetchpriority, width: image_width, height: image_height, class: image_class, widths: widths, sizes: '100vw'
         }}
       {% else %}
         {{ 'lifestyle-1' | placeholder_svg_tag: image_class }}
@@ -40,34 +38,35 @@
     </div>
 
     <!-- Content -->
-    <div class="flex py-[54px] px-[32px] md:py-[110px] md:px-[64px] {{ content_position }}">
-      <div class="grid! items-center max-w-[450px] text-left!">
+    <div class="flex items-center px-[32px] py-10 md:py-0 md:px-[64px] {{ content_position }}">
+      <div>
+        <p class="text-block w-full">Maxence Garandel</p>
         {% for block in section.blocks %}
           {% case block.type %}
             {% when 'subtitle' %}
-              <span
-                class="text-[14px] md:text-[16px] leading-[130%] tracking-[-0.02em] font-light text-center! md:text-left! md:justify-start! w-full"
+              <p
+                class="font-light text-block"
                 style="color: {{ block.settings.color }};"
                 {{ block.shopify_attributes }}>
                 {{ block.settings.subtitle }}
-              </span>
+              </p>
             {% when 'title' %}
               <h2
-                class="text-[30px] md:text-[38px] leading-[130%] tracking-[-0.02em] text-center! md:text-left! md:justify-start! w-full"
+                class="text-block"
                 style="color: {{ block.settings.color }};"
                 {{ block.shopify_attributes }}>
                 {{ block.settings.title }}
               </h2>
             {% when 'description' %}
               <div
-                class="text-[14px] md:text-[16px] tracking-[-0.02em] font-heading text-left! md:text-left!"
+                class="font-heading text-block"
                 style="color: {{ block.settings.color }};"
                 {{ block.shopify_attributes }}>
                 {{ block.settings.description | newline_to_br }}
               </div>
             {% when 'button' %}
               {% if block.settings.button_label != blank and block.settings.button_url != blank %}
-                <div class="flex md:justify-start! justify-center w-full" {{ block.shopify_attributes }}>
+                <div class="flex" {{ block.shopify_attributes }}>
                   <a href="{{ block.settings.button_url }}" class="btn {{ block.settings.button_style }}">
                     {% if block.settings.button_label_mobile != blank %}
                       <span class="hidden! md:block!">{{ block.settings.button_label }}</span>
@@ -85,33 +84,44 @@
   </div>
 </div>
 
-{% if section.settings.parallax %}
-  <script>
-    (function() {
-      const container = document.querySelector('[data-parallax-container="{{ section.id }}"]');
-      const img = document.querySelector('[data-parallax-img="{{ section.id }}"]');
-      if (!container || !img) return;
+{%  stylesheet %} 
 
-      function onScroll() {
-        const rect = container.getBoundingClientRect();
-        const windowH = window.innerHeight;
-        if (rect.bottom < 0 || rect.top > windowH) return;
-        const progress = (windowH - rect.top) / (windowH + rect.height);
-        const offset = (progress - 0.5) * 200;
-        img.style.transform = 'translateY(' + offset + 'px)';
-      }
+.text-block {
+    text-align: var(--text-align-mobile);
+    align-content: center;
+    margin-top: var(--margin-top);
+    margin-bottom: var(--margin-bottom);
+  }
 
-      window.addEventListener('scroll', onScroll, { passive: true });
-      onScroll();
-    })();
-  </script>
-{% endif %}
+  @media (width > 750px) {
+    .text-block {
+      text-align: var(--text-align);
+    }
+  }
+  {% endstylesheet %}
 
 {% schema %}
   {
     "name": "Section Gauche Droite",
     "class": "section-gauche-droite",
     "settings": [
+      {
+        "type": "checkbox",
+        "id": "enable_page_width",
+        "label": "Activer Page Width"
+      },
+      {
+        "type": "text_alignment",
+        "id": "text-align-mobile",          
+        "label": "Alignement sur mobile",     
+        "default": "left"           
+      },
+      {
+        "type": "text_alignment",
+        "id": "alignment",          
+        "label": "Alignement sur ordinateur",     
+        "default": "left"           
+      },
       {
         "type": "image_picker",
         "id": "image",
@@ -162,31 +172,29 @@
         "default": "#FBF8F5"
       },
       {
-        "type": "checkbox",
-        "id": "parallax",
-        "label": "Effet parallax sur l'image",
-        "default": false
-      },
-      {
-        "type": "select",
-        "id": "padding_mobile",
-        "label": "Padding sur mobile",
-        "options": [
-          {
-            "value": "pt-[38px]! md:py-[32px]!",
-            "label": "Padding en haut"
-          },
-          {
-            "value": "pb-[38px]! md:py-[32px]!",
-            "label": "Padding en bas"
-          },
-          {
-            "value": "py-[38px]! md:py-[32px]!",
-            "label": "Padding en haut et en bas"
-          }
-        ],
-        "default": "py-[38px]! md:py-[32px]!"
-      }
+      "type": "header",
+      "content": "Margin"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Margin Top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Margin Bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    }
     ],
     "blocks": [
       {

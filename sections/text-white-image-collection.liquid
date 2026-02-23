@@ -5,13 +5,14 @@
         <img
           src="{{ section.settings.image_banner | image_url }}"
           alt=""
-          class="aspect-3/2 {{ section.settings.aspect-ratio }} object-cover rounded-lg">
+          class="aspect-3/2 {{ section.settings.aspect-ratio }} object-cover"
+          style="border-radius: var(--rounded--size) !important;">
       {% else %}
         {{ 'hero-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
       {% endif %}
     </div>
     <div class="mx-10">
-      <h1 class="font-serif! font-bold!">{{- collection.title | escape -}}</h1>
+      <h1 style="--typo-h1--size: {{ block.settings.typo_h1_size | divided_by: 10.0 }}rem;">{{- collection.title | escape -}}</h1>
       <p>{{ section.settings.description }}</p>
     </div>
   </div>
@@ -70,6 +71,78 @@
         "type": "richtext",
         "id": "description",
         "label": "Description"
+      },
+      {
+        "type": "select",
+        "id": "typo_h1_size",
+        "label": "H1 (desktop)",
+        "options": [
+          {
+            "value": "10",
+            "label": "10px"
+          },
+          {
+            "value": "12",
+            "label": "12px"
+          },
+          {
+            "value": "14",
+            "label": "14px"
+          },
+          {
+            "value": "16",
+            "label": "16px"
+          },
+          {
+            "value": "18",
+            "label": "18px"
+          },
+          {
+            "value": "20",
+            "label": "20px"
+          },
+          {
+            "value": "24",
+            "label": "24px"
+          },
+          {
+            "value": "32",
+            "label": "32px"
+          },
+          {
+            "value": "40",
+            "label": "40px"
+          },
+          {
+            "value": "48",
+            "label": "48px"
+          },
+          {
+            "value": "56",
+            "label": "56px"
+          },
+          {
+            "value": "72",
+            "label": "72px"
+          },
+          {
+            "value": "88",
+            "label": "88px"
+          },
+          {
+            "value": "120",
+            "label": "120px"
+          },
+          {
+            "value": "152",
+            "label": "152px"
+          },
+          {
+            "value": "184",
+            "label": "184px"
+          }
+        ],
+        "default": "72"
       }
     ],
     "presets": [

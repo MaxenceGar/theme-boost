@@ -9,14 +9,58 @@
  */
 {
   "sections": {
-    "text_white_image_collection_ctpkWh": {
-      "type": "text-white-image-collection",
-      "name": "Image + Texte (Collection)",
+    "section_gauche_droite_cXMpDa": {
+      "type": "section-gauche-droite",
+      "blocks": {
+        "subtitle_KbE9qF": {
+          "type": "subtitle",
+          "settings": {
+            "subtitle": "zrteatretazetatre",
+            "color": "#ffffff"
+          }
+        },
+        "title_aeVCRe": {
+          "type": "title",
+          "settings": {
+            "title": "{{ collection.title }}",
+            "color": "#ffffff"
+          }
+        },
+        "description_bD9c9L": {
+          "type": "description",
+          "settings": {
+            "description": "<p>Chez Energie Fruit, tous nos soins du corps sont BIO certifiés par Ecocert et composés entre 98% et 100% d'ingrédients d'origine naturelle. Leur vertu : vous offrir des soins performants et efficaces, les plus doux pour votre peau.</p>",
+            "color": "#ffffff"
+          }
+        },
+        "button_etzY9W": {
+          "type": "button",
+          "settings": {
+            "button_label": "Bouton",
+            "button_label_mobile": "Bouton",
+            "button_url": "shopify://pages/contact",
+            "button_style": "btn-secondaire"
+          }
+        }
+      },
+      "block_order": [
+        "subtitle_KbE9qF",
+        "title_aeVCRe",
+        "description_bD9c9L",
+        "button_etzY9W"
+      ],
+      "name": "Section Gauche Droite",
       "settings": {
-        "padding_mobile": "pt-[38px]! md:py-[32px]!",
-        "image_banner": "shopify://shop_images/Visuel_baume.png",
-        "aspect-ratio": "aspect-video",
-        "description": "<p>Chez Energie Fruit, tous nos soins du corps sont BIO certifiés par Ecocert et composés entre 98% et 100% d'ingrédients d'origine naturelle. Leur vertu : vous offrir des soins performants et efficaces, les plus doux pour votre peau.</p>"
+        "enable_page_width": false,
+        "text-align-mobile": "right",
+        "alignment": "left",
+        "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+        "image_object_fit": "object-cover",
+        "image_position": "left",
+        "background_color": "#c09add",
+        "background_color_image": "#fbf8f5",
+        "margin_top": 100,
+        "margin_bottom": 100
       }
     },
     "marquee_hzb3C9": {
@@ -25,22 +69,19 @@
         "text_9rBFgc": {
           "type": "text",
           "settings": {
-            "text": "Livraison offerte dès 49€",
-            "image_banner": "shopify://shop_images/hot-deal.webp"
+            "text": "Livraison offerte dès 49€"
           }
         },
         "text_MwJQLT": {
           "type": "text",
           "settings": {
-            "text": "Paiement sécurisé",
-            "image_banner": "shopify://shop_images/easter-egg.webp"
+            "text": "Paiement sécurisé"
           }
         },
         "text_BxJpaE": {
           "type": "text",
           "settings": {
-            "text": "Retours gratuits",
-            "image_banner": "shopify://shop_images/flash.webp"
+            "text": "Retours gratuits"
           }
         }
       },
@@ -54,11 +95,11 @@
         "bg_color": "#ffffff",
         "text_color": "#4d4c47",
         "speed": 60,
-        "font_size": "md:text-4xl!",
+        "font_size": "md:text-2xl!",
         "icon_size": "w-16! h-16!",
-        "space_size": "py-8",
-        "font_weight": "font-bold!",
-        "border_color": "#4d4c47"
+        "space_size": "py-4",
+        "font_weight": "font-normal!",
+        "border_color": "rgba(0,0,0,0)"
       }
     },
     "filter_collection_TVQh6D": {
@@ -111,7 +152,7 @@
       "settings": {
         "padding_mobile": "pt-[38px]! md:py-[32px]!",
         "hover_color": "hover:bg-blue-200/20",
-        "font_size": "text-4xl!"
+        "font_size": "text-2xl!"
       }
     },
     "product-grid": {
@@ -173,7 +214,7 @@
     }
   },
   "order": [
-    "text_white_image_collection_ctpkWh",
+    "section_gauche_droite_cXMpDa",
     "marquee_hzb3C9",
     "filter_collection_TVQh6D",
     "product-grid",
