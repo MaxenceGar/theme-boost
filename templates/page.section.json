@@ -399,8 +399,7 @@
         "image_object_fit": "object-cover",
         "image_position": "left",
         "background_color": "#f8f8f8",
-        "background_color_image": "#FBF8F5",
-        "padding_mobile": "py-[38px]! md:py-[32px]!"
+        "background_color_image": "#FBF8F5"
       }
     }
   },

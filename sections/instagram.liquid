@@ -1,0 +1,189 @@
+<div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px; background-color: {{ section.settings.bg_color }}">
+  <div class="{%- if section.settings.enable_page_width %} page-width {% endif -%} relative overflow-hidden">
+    <div class="overflow-hidden flex w-full justify-between items-center mb-10">
+      <div>
+        <h1 class="h2" style="color: {{ section.settings.text_color }};">{{ section.settings.title }} </h1>
+        <p style="color: {{ section.settings.text_color }};">{{ section.settings.subtitle }} </p>
+      </div>
+      <div>
+        <a href="{{ section.settings.url }}">
+        <button class="btn {{ block.settings.button_style }}">{{ section.settings.insta }}</button>
+        </a>
+      </div>
+    </div>
+    <div class="flex w-full justify-between gap-4 overflow-x-auto scrollbar-hide {%- if section.settings.enable_marquee %} marquee {% endif -%}">
+      {% for block in section.blocks %}
+        {% assign img = block.settings.image %}
+        {% if img %}
+           <a href="{{ section.settings.url }}">
+          <img
+            class="{{ section.settings.border_size }} border-black aspect-square object-cover"
+            style="border-radius: var(--rounded--size) !important;"
+            src="{{ img | image_url: width: 1200 }}"
+            srcset="
+            {{ img | image_url: width: 400 }} 400w,
+            {{ img | image_url: width: 800 }} 800w,
+            {{ img | image_url: width: 1200 }} 1200w
+          "
+            sizes="(max-width: 768px) 100vw, 1200px"
+            alt="{{ img.alt | escape }}"
+            loading="lazy"
+            width="250"
+            height="250"
+            {{ block.shopify_attributes }}>
+           </a>
+        {% endif %}
+      {% endfor %}
+      </div>
+      <div class="h-350 w-350 absolute top-0 right-50 -z-1 animate-x" style="filter: blur(45px); background: radial-gradient(ellipse at center, #FA97A6 15%, #FEB084 75%);"> </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Instagram",
+    "tag": "section",
+    "class": "section",
+    "settings": [
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Couleur de fond"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Couleur du texte"
+      },
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Titre"
+      },
+      {
+        "type": "text",
+        "id": "subtitle",
+        "label": "Sous-titre"
+      },
+      {
+        "type": "text",
+        "id": "insta",
+        "label": "Nom du instagram (ex: @boostheme)"
+      },
+      {
+        "type": "url",
+        "id": "url",
+        "label": "Lien du Instagram"
+      },
+      {
+            "type": "select",
+            "id": "button_style",
+            "label": "Style du bouton",
+            "options": [
+              {
+                "value": "btn-primaire",
+                "label": "Primaire"
+              },
+              {
+                "value": "btn-secondaire",
+                "label": "Secondaire"
+              },
+              {
+                "value": "btn-tertiaire",
+                "label": "Tertiaire"
+              }
+            ],
+            "default": "btn-primaire"
+          },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "label": "Margin haut",
+        "default": 0,
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Margin bas",
+        "default": 0,
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_top",
+        "label": "Padding haut",
+        "default": 0,
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "padding_bottom",
+        "label": "Padding bas",
+        "default": 0,
+        "min": 0,
+        "max": 150,
+        "step": 5,
+        "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_marquee",
+        "label": "Activer le marquee"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_page_width",
+        "label": "Désactiver pleine page"
+      },
+      {
+        "type": "select",
+        "id": "border_size",
+        "label": "Taille de la bordure",
+        "options": [
+          {
+            "label": "1px",
+            "value": "border"
+          },
+          {
+            "label": "2px",
+            "value": "border-2"
+          },
+          {
+            "label": "3px",
+            "value": "border-3"
+          }
+        ],
+        "default": "border"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "img_insta",
+        "name": "Image",
+        "settings": [
+          {
+            "type": "image_picker",
+            "id": "image",
+            "label": "Image"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Instagram",
+        "category": "Maxence"
+      }
+    ]
+  }
+{% endschema %}

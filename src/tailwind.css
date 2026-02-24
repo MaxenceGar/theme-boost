@@ -33,3 +33,35 @@
   flex-shrink: 0;
   animation: marquee 10s linear infinite;
 }
+
+@keyframes progressss_hero_39_qx9qLk {
+  0% {
+    transform: translate(-5vmin, 10vmin) rotate(45deg) scale(.6);
+    border-radius: 60% 40% 50% 50% / 40% 60% 70% 30%;
+    opacity: .55;
+}
+25% {
+    transform: translate(25vmin, -20vmin) rotate(-120deg) scale(1.2);
+    border-radius: 30% 70% 50% 50% / 70% 30% 60% 40%;
+    opacity: .7;
+}
+50% {
+    transform: translate(-30vmin, 25vmin) rotate(200deg) scale(.75);
+    border-radius: 70% 30% 60% 40% / 50% 70% 30% 50%;
+    opacity: .6;
+}
+75% {
+    transform: translate(15vmin, -10vmin) rotate(-290deg) scale(1.1);
+    border-radius: 50% 50% 30% 70% / 30% 60% 40% 70%;
+    opacity: .65;
+}
+100% {
+    transform: translate(-5vmin, 10vmin) rotate(405deg) scale(.6);
+    border-radius: 60% 40% 50% 50% / 40% 60% 70% 30%;
+    opacity: .55;
+}
+}
+
+.animate-x {
+  animation: progressss_hero_39_qx9qLk 28s infinite ease-in-out alternate;
+}

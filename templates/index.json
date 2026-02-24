@@ -9,6 +9,64 @@
  */
 {
   "sections": {
+    "instagram_Aa8Tj6": {
+      "type": "instagram",
+      "blocks": {
+        "img_insta_yTcQJ8": {
+          "type": "img_insta",
+          "settings": {
+            "image": "shopify://shop_images/642490743_18525591736070446_660326186062895275_n.jpg"
+          }
+        },
+        "img_insta_EtEDBK": {
+          "type": "img_insta",
+          "settings": {
+            "image": "shopify://shop_images/636687643_18524445871070446_462304773560856735_n.jpg"
+          }
+        },
+        "img_insta_LbJFJj": {
+          "type": "img_insta",
+          "settings": {
+            "image": "shopify://shop_images/620488079_18516347809070446_863291849720690503_n.jpg"
+          }
+        },
+        "img_insta_FUBQUF": {
+          "type": "img_insta",
+          "settings": {
+            "image": "shopify://shop_images/620223319_18516347818070446_6934433274679179185_n.jpg"
+          }
+        },
+        "img_insta_kWndFm": {
+          "type": "img_insta",
+          "settings": {
+            "image": "shopify://shop_images/639486444_18524445175070446_6313720208069529943_n.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "img_insta_yTcQJ8",
+        "img_insta_EtEDBK",
+        "img_insta_LbJFJj",
+        "img_insta_FUBQUF",
+        "img_insta_kWndFm"
+      ],
+      "name": "Instagram",
+      "settings": {
+        "bg_color": "",
+        "text_color": "",
+        "title": "Suivez-nous sur Instagram",
+        "subtitle": "Suivez-nous sur Instagram",
+        "insta": "@boostheme",
+        "url": "https://instagram.com/boostheme",
+        "margin_top": 150,
+        "margin_bottom": 150,
+        "padding_top": 150,
+        "padding_bottom": 150,
+        "enable_marquee": false,
+        "enable_page_width": true,
+        "border_size": "border"
+      }
+    },
     "hero_swiper_7T6Vgr": {
       "type": "hero-swiper",
       "blocks": {
@@ -75,7 +133,7 @@
           "type": "slide",
           "settings": {
             "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
-            "title": "Titre de la slide",
+            "title": "Maxence",
             "button_url": ""
           }
         },
@@ -347,6 +405,7 @@
     }
   },
   "order": [
+    "instagram_Aa8Tj6",
     "hero_swiper_7T6Vgr",
     "round_section_home_4b36ET",
     "rich_text_g3Wm87",
