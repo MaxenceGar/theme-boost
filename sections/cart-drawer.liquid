@@ -58,7 +58,7 @@
 
       {%- comment -%} Header {%- endcomment -%}
       <div class="drawer__header mx-10">
-        <h2 class="drawer__heading">{{ 'sections.cart.title' | t }}</h2>
+        <h2 class="drawer__heading h4">{{ 'sections.cart.title' | t }}</h2>
         <button
           class="drawer__close"
           type="button"
@@ -68,8 +68,8 @@
         </button>
       </div>
 
-      <div class="drawer__header justify-center! bg-yellow-100 py-4 rounded-4xl mx-4">
-        <p class="text-[14px] text-center!">Livraison offerte dès 50€ d'achat en France avec Mondial Relay</p>
+      <div class="drawer__header justify-center! bg-black text-white">
+        <p class="text-center!">En ce moment 2 Achetées = 2 Offertes</p>
       </div>
 
       {%- comment -%} Blocks (timer, palier, texte) {%- endcomment -%}
@@ -172,8 +172,7 @@
                           class="cart-item__details"
                           role="cell"
                           headers="CartDrawer-ColumnProduct">
-                          <a href="{{ preview_product.url }}" class="cart-item__name h4 break">{{ preview_product.title | escape }}</a>
-                          <div class="product-option">{{ pv_price }}</div>
+                          <a href="{{ preview_product.url }}" class="cart-item__name p break">{{ preview_product.title | escape }}</a>
                           {%- if preview_product.has_only_default_variant == false -%}
                             <dl>
                               {%- for option in pv.options -%}
@@ -434,7 +433,7 @@
             form="CartDrawer-Form"
             {% unless cart_has_items %}
             disabled{% endunless %}>
-            {{ 'sections.cart.checkout' | t }} {{ display_total }}
+            {{ 'sections.cart.checkout' | t }}
           </button>
         </div>
       </div>

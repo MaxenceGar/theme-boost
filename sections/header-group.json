@@ -73,8 +73,8 @@
         "upsell_product_page_TUiphP"
       ],
       "settings": {
-        "preview_mode": false,
-        "preview_product": "creme-solaire-spf50"
+        "preview_mode": true,
+        "preview_product": "animaux-de-compagnie"
       }
     },
     "header": {

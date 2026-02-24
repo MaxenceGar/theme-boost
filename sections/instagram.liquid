@@ -1,3 +1,42 @@
+{% unless section.settings.enable_marquee %}
+  {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+{% endunless %}
+
+{%- style -%}
+  .instagram-swiper-{{ section.id }}
+  .swiper-button-prev,
+  .instagram-swiper-{{ section.id }}
+  .swiper-button-next {
+    --swiper-navigation-size: 14px;
+    width: 40px;
+    height: 40px;
+    top: 40%;
+    padding: 10px !important;
+  }
+  .instagram-swiper-{{ section.id }}
+  .swiper-button-prev.swiper-button-disabled,
+  .instagram-swiper-{{ section.id }}
+  .swiper-button-next.swiper-button-disabled {
+    opacity: 0.3;
+  }
+  @media screen and (min-width: 750px) {
+    .instagram-swiper-{{ section.id }} .swiper-wrapper {
+      display: flex !important;
+      transform: none !important;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .instagram-swiper-{{ section.id }} .swiper-slide {
+      width: auto !important;
+    }
+    .instagram-swiper-{{ section.id }} .swiper-button-prev,
+    .instagram-swiper-{{ section.id }} .swiper-button-next {
+      display: none !important;
+    }
+  }
+{%- endstyle -%}
+
 <div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px; background-color: {{ section.settings.bg_color }}">
   <div class="{%- if section.settings.enable_page_width %} page-width {% endif -%} relative overflow-hidden">
     <div class="overflow-hidden flex w-full justify-between items-center mb-10">
@@ -6,36 +45,67 @@
         <p style="color: {{ section.settings.text_color }};">{{ section.settings.subtitle }} </p>
       </div>
       <div>
-        <a href="{{ section.settings.url }}">
-        <button class="btn {{ block.settings.button_style }}">{{ section.settings.insta }}</button>
+        <a href="{{ section.settings.url }}" class="btn {{ section.settings.button_style }} hidden! md:block!">
+        {{ section.settings.insta }}
         </a>
       </div>
     </div>
-    <div class="flex w-full justify-between gap-4 overflow-x-auto scrollbar-hide {%- if section.settings.enable_marquee %} marquee {% endif -%}">
-      {% for block in section.blocks %}
-        {% assign img = block.settings.image %}
-        {% if img %}
-           <a href="{{ section.settings.url }}">
-          <img
-            class="{{ section.settings.border_size }} border-black aspect-square object-cover"
-            style="border-radius: var(--rounded--size) !important;"
-            src="{{ img | image_url: width: 1200 }}"
-            srcset="
-            {{ img | image_url: width: 400 }} 400w,
-            {{ img | image_url: width: 800 }} 800w,
-            {{ img | image_url: width: 1200 }} 1200w
-          "
-            sizes="(max-width: 768px) 100vw, 1200px"
-            alt="{{ img.alt | escape }}"
-            loading="lazy"
-            width="250"
-            height="250"
-            {{ block.shopify_attributes }}>
-           </a>
-        {% endif %}
-      {% endfor %}
+
+      <div class="instagram-swiper-{{ section.id }} relative!">
+        <div class="swiper" id="InstagramSwiper-{{ section.id }}">
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              {% assign img = block.settings.image %}
+              {% if img %}
+                <div class="swiper-slide" {{ block.shopify_attributes }}>
+                  <a href="{{ section.settings.url }}">
+                    <img
+                      class="{{ section.settings.border_size }} border-black aspect-square object-cover w-full"
+                      style="border-radius: var(--rounded--size) !important;"
+                      src="{{ img | image_url: width: 1200 }}"
+                      srcset="
+                        {{ img | image_url: width: 400 }} 400w,
+                        {{ img | image_url: width: 800 }} 800w,
+                        {{ img | image_url: width: 1200 }} 1200w
+                      "
+                      sizes="(max-width: 768px) 50vw, 250px"
+                      alt="{{ img.alt | escape }}"
+                      loading="lazy"
+                      width="250"
+                      height="250">
+                  </a>
+                </div>
+              {% endif %}
+            {% endfor %}
+          </div>
+          <div class="swiper-button-prev btn btn-primaire"></div>
+          <div class="swiper-button-next btn btn-primaire"></div>
+        </div>
+        <a href="{{ section.settings.url }}" class="flex mt-10! btn {{ section.settings.button_style }} md:hidden! block!">
+        {{ section.settings.insta }}
+        </a>
       </div>
-      <div class="h-350 w-350 absolute top-0 right-50 -z-1 animate-x" style="filter: blur(45px); background: radial-gradient(ellipse at center, #FA97A6 15%, #FEB084 75%);"> </div>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+          new Swiper('#InstagramSwiper-{{ section.id }}', {
+            slidesPerView: 2.2,
+            spaceBetween: 12,
+            navigation: {
+              prevEl: '.instagram-swiper-{{ section.id }} .swiper-button-prev',
+              nextEl: '.instagram-swiper-{{ section.id }} .swiper-button-next',
+            },
+            breakpoints: {
+              750: {
+                enabled: false,
+                slidesPerView: {{ section.blocks.size }},
+                spaceBetween: 16,
+              },
+            },
+          });
+        });
+      </script>
+
   </div>
 </div>
 

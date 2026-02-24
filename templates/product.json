@@ -121,57 +121,6 @@
         "padding_bottom": 12
       }
     },
-    "section_maxence_brouillon_HKzpfN": {
-      "type": "section-maxence-brouillon",
-      "blocks": {
-        "block_eFwkht": {
-          "type": "block",
-          "settings": {
-            "title": "Zéro Plastique",
-            "text": "Plus de plastique, moins de poissons. Euh non, le contraire..."
-          }
-        },
-        "block_jyE7Ma": {
-          "type": "block",
-          "settings": {
-            "title": "Zéro Plastique",
-            "text": "Plus de plastique, moins de poissons. Euh non, le contraire..."
-          }
-        },
-        "block_KaVAJN": {
-          "type": "block",
-          "settings": {
-            "title": "Zéro Plastique",
-            "text": "Plus de plastique, moins de poissons. Euh non, le contraire..."
-          }
-        },
-        "block_AtW9Hb": {
-          "type": "block",
-          "settings": {
-            "title": "Zéro Plastique",
-            "text": "Plus de plastique, moins de poissons. Euh non, le contraire..."
-          }
-        },
-        "block_xjbqtw": {
-          "type": "block",
-          "settings": {
-            "title": "Zéro Plastique",
-            "text": "Plus de plastique, moins de poissons. Euh non, le contraire..."
-          }
-        }
-      },
-      "block_order": [
-        "block_eFwkht",
-        "block_jyE7Ma",
-        "block_KaVAJN",
-        "block_AtW9Hb",
-        "block_xjbqtw"
-      ],
-      "name": "Reassurance Icons",
-      "settings": {
-        "padding_mobile": "py-[38px]! md:py-[32px]!"
-      }
-    },
     "section_gauche_droite_nU3hJz": {
       "type": "section-gauche-droite",
       "blocks": {
@@ -282,7 +231,7 @@
         "columns_desktop": 4,
         "columns_mobile": "2",
         "color_scheme": "scheme-1",
-        "image_ratio": "square",
+        "image_ratio": "portrait",
         "image_shape": "default",
         "show_secondary_image": true,
         "show_vendor": false,
@@ -294,7 +243,6 @@
   },
   "order": [
     "main",
-    "section_maxence_brouillon_HKzpfN",
     "section_gauche_droite_nU3hJz",
     "faq_product_page_eDmRRi",
     "related-products"
