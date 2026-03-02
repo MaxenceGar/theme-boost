@@ -65,3 +65,61 @@
 .animate-x {
   animation: progressss_hero_39_qx9qLk 28s infinite ease-in-out alternate;
 }
+
+/* Ivar Fine */
+@font-face {
+  font-family: 'IvarFine';
+  src: url('IvarFine-LightItalic.woff2') format('woff2');
+  font-weight: 300;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* Ivar Text Hydro */
+@font-face {
+  font-family: 'IvarTextHydro';
+  src: url('IvarTextHydro-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IvarTextHydro';
+  src: url('IvarTextHydro-Italic.woff2') format('woff2');
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'IvarTextHydro';
+  src: url('IvarTextHydro-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Ivar Display Hydro */
+@font-face {
+  font-family: 'IvarDisplayHydro';
+  src: url('IvarDisplayHydro-Regular.woff2') format('woff2');
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Utility classes */
+.font-ivar-fine {
+  font-family: 'IvarFine', serif !important;
+  font-weight: 300;
+  font-style: italic !important;
+}
+
+.font-ivar-text {
+  font-family: 'IvarTextHydro', serif;
+}
+
+.font-ivar-display {
+  font-family: 'IvarDisplayHydro', serif;
+}

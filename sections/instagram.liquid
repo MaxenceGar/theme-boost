@@ -4,9 +4,8 @@
 {% endunless %}
 
 {%- style -%}
-  .instagram-swiper-{{ section.id }}
-  .swiper-button-prev,
-  .instagram-swiper-{{ section.id }}
+  .instagram-swiper-{{ section.id }} .swiper-button-prev
+  , .instagram-swiper-{{ section.id }}
   .swiper-button-next {
     --swiper-navigation-size: 14px;
     width: 40px;
@@ -15,8 +14,8 @@
     padding: 10px !important;
   }
   .instagram-swiper-{{ section.id }}
-  .swiper-button-prev.swiper-button-disabled,
-  .instagram-swiper-{{ section.id }}
+  .swiper-button-prev.swiper-button-disabled
+  , .instagram-swiper-{{ section.id }}
   .swiper-button-next.swiper-button-disabled {
     opacity: 0.3;
   }
@@ -27,66 +26,67 @@
       justify-content: space-between;
       gap: 1rem;
     }
-    .instagram-swiper-{{ section.id }} .swiper-slide {
-      width: auto !important;
+    .instagram-swiper-{{ section.id }}
+    .swiper-slide {
+      width: 250px !important;
     }
-    .instagram-swiper-{{ section.id }} .swiper-button-prev,
-    .instagram-swiper-{{ section.id }} .swiper-button-next {
+    .instagram-swiper-{{ section.id }}
+    .swiper-button-prev
+    , .instagram-swiper-{{ section.id }}
+    .swiper-button-next {
       display: none !important;
     }
   }
 {%- endstyle -%}
 
 <div style="padding-top: {{ section.settings.padding_top }}px; padding-bottom: {{ section.settings.padding_bottom }}px; margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px; background-color: {{ section.settings.bg_color }}">
-  <div class="{%- if section.settings.enable_page_width %} page-width {% endif -%} relative overflow-hidden">
-    <div class="overflow-hidden flex w-full justify-between items-center mb-10">
+  <div class="{%- if section.settings.enable_page_width %} page-width {% endif -%}">
+    <div class="flex w-full justify-between items-center mb-10">
       <div>
-        <h1 class="h2" style="color: {{ section.settings.text_color }};">{{ section.settings.title }} </h1>
-        <p style="color: {{ section.settings.text_color }};">{{ section.settings.subtitle }} </p>
+        <h1 class="h2" style="color: {{ section.settings.text_color }};">{{ section.settings.title }}</h1>
+        <p style="color: {{ section.settings.text_color }};">{{ section.settings.subtitle }}</p>
       </div>
       <div>
         <a href="{{ section.settings.url }}" class="btn {{ section.settings.button_style }} hidden! md:block!">
-        {{ section.settings.insta }}
+          {{ section.settings.insta }}
         </a>
       </div>
     </div>
 
-      <div class="instagram-swiper-{{ section.id }} relative!">
-        <div class="swiper" id="InstagramSwiper-{{ section.id }}">
-          <div class="swiper-wrapper">
-            {% for block in section.blocks %}
-              {% assign img = block.settings.image %}
-              {% if img %}
-                <div class="swiper-slide" {{ block.shopify_attributes }}>
-                  <a href="{{ section.settings.url }}">
-                    <img
-                      class="{{ section.settings.border_size }} border-black aspect-square object-cover w-full"
-                      style="border-radius: var(--rounded--size) !important;"
-                      src="{{ img | image_url: width: 1200 }}"
-                      srcset="
+    <div class="instagram-swiper-{{ section.id }} relative!">
+      <div class="swiper" id="InstagramSwiper-{{ section.id }}">
+        <div class="swiper-wrapper">
+          {% for block in section.blocks %}
+            {% assign img = block.settings.image %}
+            {% if img %}
+              <div class="swiper-slide" {{ block.shopify_attributes }}>
+                <a href="{{ section.settings.url }}">
+                  <img
+                    class="{{ section.settings.border_size }} border-black aspect-square object-cover w-full!"
+                    style="border-radius: var(--rounded--size) !important;"
+                    src="{{ img | image_url: width: 1200 }}"
+                    srcset="
                         {{ img | image_url: width: 400 }} 400w,
                         {{ img | image_url: width: 800 }} 800w,
                         {{ img | image_url: width: 1200 }} 1200w
                       "
-                      sizes="(max-width: 768px) 50vw, 250px"
-                      alt="{{ img.alt | escape }}"
-                      loading="lazy"
-                      width="250"
-                      height="250">
-                  </a>
-                </div>
-              {% endif %}
-            {% endfor %}
-          </div>
-          <div class="swiper-button-prev btn btn-primaire"></div>
-          <div class="swiper-button-next btn btn-primaire"></div>
+                    sizes="(max-width: 768px) 50vw, 250px"
+                    alt="{{ img.alt | escape }}"
+                    loading="lazy">
+                </a>
+              </div>
+            {% endif %}
+          {% endfor %}
         </div>
-        <a href="{{ section.settings.url }}" class="flex mt-10! btn {{ section.settings.button_style }} md:hidden! block!">
-        {{ section.settings.insta }}
-        </a>
+        <div class="swiper-button-prev btn btn-primaire"></div>
+        <div class="swiper-button-next btn btn-primaire"></div>
       </div>
+      <a href="{{ section.settings.url }}" class="flex mt-10! btn {{ section.settings.button_style }} md:hidden! block!">
+        {{ section.settings.insta }}
+      </a>
+    </div>
 
-      <script>
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
           new Swiper('#InstagramSwiper-{{ section.id }}', {
             slidesPerView: 2.2,
@@ -104,7 +104,7 @@
             },
           });
         });
-      </script>
+    </script>
 
   </div>
 </div>
@@ -146,25 +146,25 @@
         "label": "Lien du Instagram"
       },
       {
-            "type": "select",
-            "id": "button_style",
-            "label": "Style du bouton",
-            "options": [
-              {
-                "value": "btn-primaire",
-                "label": "Primaire"
-              },
-              {
-                "value": "btn-secondaire",
-                "label": "Secondaire"
-              },
-              {
-                "value": "btn-tertiaire",
-                "label": "Tertiaire"
-              }
-            ],
-            "default": "btn-primaire"
+        "type": "select",
+        "id": "button_style",
+        "label": "Style du bouton",
+        "options": [
+          {
+            "value": "btn-primaire",
+            "label": "Primaire"
           },
+          {
+            "value": "btn-secondaire",
+            "label": "Secondaire"
+          },
+          {
+            "value": "btn-tertiaire",
+            "label": "Tertiaire"
+          }
+        ],
+        "default": "btn-primaire"
+      },
       {
         "type": "range",
         "id": "margin_top",

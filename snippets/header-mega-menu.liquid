@@ -24,13 +24,13 @@
                 id="MegaMenu-Content-{{ forloop.index }}"
                 class="bg-white rounded-lg! mega-menu__content motion-reduce global-settings-popup grid! grid-cols-2!"
                 tabindex="-1">
-                <ul class="grid! grid-cols-3! gap-10! page-width text-black!">
+                <ul class="flex flex-row justify-between! w-full gap-10! page-width text-black!">
                   {%- for childlink in link.links -%}
                     <li>
                       <a
                         id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}"
                         href="{{ childlink.url }}"
-                        class="text-[14px]! text-black! mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
+                        class="h5 text-black! mega-menu__link mega-menu__link--level-2 link{% if childlink.current %} mega-menu__link--active{% endif %}"
                         {% if childlink.current %}
                         aria-current="page"
                         {% endif %}>
@@ -43,7 +43,7 @@
                               <a
                                 id="HeaderMenu-{{ link.handle }}-{{ childlink.handle }}-{{ grandchildlink.handle }}"
                                 href="{{ grandchildlink.url }}"
-                                class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}  text-black! tracking-tight text-[12px]! font-light!"
+                                class="mega-menu__link link{% if grandchildlink.current %} mega-menu__link--active{% endif %}  text-black! tracking-tight"
                                 {% if grandchildlink.current %}
                                 aria-current="page"
                                 {% endif %}>
@@ -67,7 +67,8 @@
                   <div class="page-width grid! grid-cols-2! gap-4">
                     {%- for block in section.blocks -%}
                       {%- if block.type == 'megamenu_picture' and block.settings.menu_target == link.title -%}
-                        {% render 'megamenu-picture', block: block %}
+                        {% render 'megamenu-picture'
+                          , block: block %}
                       {%- endif -%}
                     {%- endfor -%}
                   </div>

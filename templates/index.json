@@ -12,50 +12,22 @@
     "hero_swiper_7T6Vgr": {
       "type": "hero-swiper",
       "blocks": {
-        "slide_cHMyAN": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/141.png",
-            "overlay_opacity": 30,
-            "subtitle": "Collection",
-            "title": "Titre de la slide",
-            "text_alignment": "left",
-            "button_label": "Decouvrir",
-            "button_url": "",
-            "button_style": "btn-primaire"
-          }
-        },
         "slide_iH7pAL": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/136_5f2c3750-86dd-4b3b-a732-34dbcf3c809e.png",
+            "image": "shopify://shop_images/evelyn-verdin-DXosgbPK_3I-unsplash_1.webp",
             "overlay_opacity": 30,
-            "subtitle": "Collection",
-            "title": "Titre de la slide",
+            "subtitle": "des bijoux qui racontent votre histoire",
+            "title": "Gravé à la main en 24h",
             "text_alignment": "left",
-            "button_label": "Decouvrir",
-            "button_url": "",
-            "button_style": "btn-primaire"
-          }
-        },
-        "slide_7LUTfT": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/139.png",
-            "overlay_opacity": 30,
-            "subtitle": "Collection",
-            "title": "Titre de la slide",
-            "text_alignment": "left",
-            "button_label": "Decouvrir",
+            "button_label": "Je personnalise",
             "button_url": "",
             "button_style": "btn-primaire"
           }
         }
       },
       "block_order": [
-        "slide_cHMyAN",
-        "slide_iH7pAL",
-        "slide_7LUTfT"
+        "slide_iH7pAL"
       ],
       "name": "Hero Swiper",
       "settings": {
@@ -71,97 +43,57 @@
     "round_section_home_4b36ET": {
       "type": "round-section-home",
       "blocks": {
+        "slide_GVH8Ch": {
+          "type": "slide",
+          "settings": {
+            "image": "shopify://shop_images/bijou-personnalise-tendance-nouvel-amour-bracelet-collier-gravure-coquette.webp",
+            "title": "Bagues",
+            "button_url": ""
+          }
+        },
         "slide_nD3CQb": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
-            "title": "Maxence",
+            "image": "shopify://shop_images/PagecollectionslesCharmselegance-raffinement-bijoux-personnalises-nouvel-amour-bracelets-colliers-collections-charms_3ed8c52f-c146-46b6-bdf3-2c447cc75038.webp",
+            "title": "Bracelets",
             "button_url": ""
           }
         },
         "slide_8TKRLe": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
-            "title": "Titre de la slide",
+            "image": "shopify://shop_images/O_Cfs_0V.webp",
+            "title": "Boucles d'oreilles",
             "button_url": ""
           }
         },
         "slide_Waaa38": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
-            "title": "Titre de la slide",
+            "image": "shopify://shop_images/mini_intertwined_br_worn_men_2.jpg",
+            "title": "Bracelets",
             "button_url": ""
           }
         },
         "slide_Rthgfq": {
           "type": "slide",
           "settings": {
-            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
-            "title": "Titre de la slide",
-            "button_url": ""
-          }
-        },
-        "slide_DGxhNF": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
-            "title": "Titre de la slide",
-            "button_url": ""
-          }
-        },
-        "slide_P3qFEN": {
-          "type": "slide",
-          "settings": {
-            "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
-            "title": "Titre de la slide",
+            "image": "shopify://shop_images/16602362_1114897658636328_3930162571338900056_o.jpg",
+            "title": "Personnalisation",
             "button_url": ""
           }
         }
       },
       "block_order": [
+        "slide_GVH8Ch",
         "slide_nD3CQb",
         "slide_8TKRLe",
         "slide_Waaa38",
-        "slide_Rthgfq",
-        "slide_DGxhNF",
-        "slide_P3qFEN"
+        "slide_Rthgfq"
       ],
       "name": "Round Collection",
       "settings": {
         "padding_mobile": "pt-[38px]! md:py-[32px]!"
-      }
-    },
-    "rich_text_g3Wm87": {
-      "type": "rich-text",
-      "blocks": {
-        "heading_UQHzxz": {
-          "type": "heading",
-          "settings": {
-            "heading": "<strong>LA BEAUTÉ NATURELLE SANS COMPROMIS</strong>",
-            "heading_size": "h2"
-          }
-        },
-        "text_KQiNbj": {
-          "type": "text",
-          "settings": {
-            "text": "<p>Energie fruit & Energiqa : des soins naturels - français - experts, pour une beauté sans compromis entre plaisir, efficacité prouvée et respect de la peau et des cheveux.</p>"
-          }
-        }
-      },
-      "block_order": [
-        "heading_UQHzxz",
-        "text_KQiNbj"
-      ],
-      "name": "t:sections.rich-text.presets.name",
-      "settings": {
-        "desktop_content_position": "center",
-        "content_alignment": "center",
-        "color_scheme": "",
-        "full_width": true,
-        "padding_top": 52,
-        "padding_bottom": 52
       }
     },
     "product_grid_home_Y7i6ed": {
@@ -170,8 +102,8 @@
       "settings": {
         "collection": "accueil-demo",
         "products_to_show": 7,
-        "title": "Nos produits",
-        "subtitle": "",
+        "title": "Nos bestsellers",
+        "subtitle": "Découvrez nos bests & futurs must-haves de notre collection.",
         "enable_btn": true,
         "button_style": "btn-primaire",
         "text_btn": "tout afficher",
@@ -188,36 +120,36 @@
         "feature_UjFJxU": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/Visuel_baume.png",
-            "text": "Les nouveautés",
-            "collection_title": "Les classiques",
+            "icon": "shopify://shop_images/bijou-personnalise-tendance-nouvel-amour-bracelet-collier-gravure-bague-couleur.webp",
+            "text": "Bagues",
+            "collection_title": "Bagues",
             "link": "/"
           }
         },
         "feature_ETzHUa": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/Visuel_baume.png",
-            "text": "",
-            "collection_title": "La broderie",
+            "icon": "shopify://shop_images/bijou-personnalise-tendance-nouvel-amour-bracelet-collier-gravure-magnifique.webp",
+            "text": "Boucles d'oreilles",
+            "collection_title": "Boucles d'oreilles",
             "link": "/"
           }
         },
         "feature_AjTD9n": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/Visuel_baume.png",
-            "text": "Les nouveautés",
-            "collection_title": "Les nouveautés",
+            "icon": "shopify://shop_images/mini_intertwined_br_worn_men_2.jpg",
+            "text": "Bracelets",
+            "collection_title": "Bracelets",
             "link": "/"
           }
         },
         "feature_x7FHgc": {
           "type": "feature",
           "settings": {
-            "icon": "shopify://shop_images/Visuel_baume.png",
-            "text": "",
-            "collection_title": "Personnalise",
+            "icon": "shopify://shop_images/bijou-personnalise-tendance-nouvel-amour-bracelet-collier-gravure-blanc.webp",
+            "text": "Personnalisation",
+            "collection_title": "Personnalisation",
             "link": "/"
           }
         }
@@ -240,9 +172,9 @@
       "type": "fixed-collection",
       "name": "Fixed Collection",
       "settings": {
-        "title": "Kits & routines",
-        "subtitle": "Bénéficiez de prix doux sur l’ensemble de nos routines de soins en exclusivité sur respire.co.",
-        "button_label": "Voir les offres",
+        "title": "Nos coups de coeur",
+        "subtitle": "Des incontournables bientôt essentiels dans votre collection.",
+        "button_label": "Découvrir",
         "button_style": "btn-primaire",
         "collection": "accueil-demo",
         "products_to_show": 6,
@@ -254,46 +186,28 @@
     "section_gauche_droite_waaAai": {
       "type": "section-gauche-droite",
       "blocks": {
-        "title_DzDbtX": {
-          "type": "title",
-          "settings": {
-            "title": "Maxence Garandel",
-            "color": "#ffffff",
-            "div": "H3"
-          }
-        },
         "description_p6CnqG": {
           "type": "description",
           "settings": {
-            "description": "<p>Depuis 2013, nous avons pour objectif de devenir la reference en matiere de soins naturels pour la peau et les cheveux, en exploitant le pouvoir des ingredients d'origine vegetale.</p>",
-            "color": "#ffffff"
-          }
-        },
-        "button_cMLyiG": {
-          "type": "button",
-          "settings": {
-            "button_label": "Découvrir nos engagements",
-            "button_label_mobile": "Découvrir",
-            "button_url": "shopify://pages/contact",
-            "button_style": "btn-primaire"
+            "description": "<p><strong>Chaque bijou est une histoire, chaque gravure une émotion.</strong></p><p>Gravez vos mots d'amour sur une médaille, une bague ou des boucles d'oreilles et transformez chaque instant en un précieux souvenir chargé d'émotion.</p><p>Depuis 2007, Nouvel Amour capture l'essence de vos histoires avec des bijoux personnalisés.</p><p>Que ce soit pour célébrer un moment spécial ou simplement pour exprimer vos sentiments, nos bijoux personnalisés sont conçus pour capturer l'essence de vos histoires.</p>",
+            "color": "#020202",
+            "font_size_p": "14"
           }
         }
       },
       "block_order": [
-        "title_DzDbtX",
-        "description_p6CnqG",
-        "button_cMLyiG"
+        "description_p6CnqG"
       ],
       "name": "Section Gauche Droite",
       "settings": {
         "enable_page_width": true,
-        "text-align-mobile": "left",
-        "alignment": "left",
-        "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+        "text-align-mobile": "center",
+        "alignment": "center",
+        "image": "shopify://shop_images/creation-unique-bijoux-personnalises-nouvel-amour-paris-personnalisation.webp",
         "image_object_fit": "object-cover",
         "image_position": "left",
-        "background_color": "#000000",
-        "background_color_image": "#fbf8f5",
+        "background_color": "#f5f2ec",
+        "background_color_image": "#f5f2ec",
         "margin_top": 50,
         "margin_bottom": 50
       }
@@ -304,31 +218,31 @@
         "img_insta_yTcQJ8": {
           "type": "img_insta",
           "settings": {
-            "image": "shopify://shop_images/642490743_18525591736070446_660326186062895275_n.jpg"
+            "image": "shopify://shop_images/Capture_d_ecran_2025-06-18_a_6.40.56_PM.png"
           }
         },
         "img_insta_EtEDBK": {
           "type": "img_insta",
           "settings": {
-            "image": "shopify://shop_images/636687643_18524445871070446_462304773560856735_n.jpg"
+            "image": "shopify://shop_images/IMG_8593.jpg"
           }
         },
         "img_insta_LbJFJj": {
           "type": "img_insta",
           "settings": {
-            "image": "shopify://shop_images/620488079_18516347809070446_863291849720690503_n.jpg"
+            "image": "shopify://shop_images/14425452_979467915512637_8804655680735393573_o.jpg"
           }
         },
         "img_insta_FUBQUF": {
           "type": "img_insta",
           "settings": {
-            "image": "shopify://shop_images/620223319_18516347818070446_6934433274679179185_n.jpg"
+            "image": "shopify://shop_images/IMG_3380.jpg"
           }
         },
         "img_insta_kWndFm": {
           "type": "img_insta",
           "settings": {
-            "image": "shopify://shop_images/639486444_18524445175070446_6313720208069529943_n.jpg"
+            "image": "shopify://shop_images/105.png"
           }
         }
       },
@@ -343,10 +257,10 @@
       "settings": {
         "bg_color": "",
         "text_color": "",
-        "title": "Suivez-nous sur Instagram",
-        "subtitle": "Suivez-nous sur Instagram",
-        "insta": "@boostheme",
-        "url": "https://instagram.com/boostheme",
+        "title": "Rejoignez-nous",
+        "subtitle": "",
+        "insta": "@instagram",
+        "url": "https://instagram.com/",
         "button_style": "btn-secondaire",
         "margin_top": 50,
         "margin_bottom": 50,
@@ -363,29 +277,29 @@
         "faq_section_49YHVi": {
           "type": "faq_section",
           "settings": {
-            "question": "Dans quelles conditions sont produits les textiles Monsieur Madame ?",
-            "reponse": "Nos vêtements sont certifiés commerce équitable et sont composés à 100% de coton biologique pour les t-shirts, et de 85% de coton biologique et 15% de polyester recyclé pour les sweatshirts. L’impression et l’envoi des commandes est gérée dans notre atelier basé en Normandie, près de Caen."
+            "question": "Comment puis-je personnaliser un bijou ?",
+            "reponse": "Vous pouvez personnaliser votre bijou en sélectionnant le modèle souhaité et en ajoutant une gravure de votre choix. Les options de personnalisation varient selon le type de bijou, comme des médailles, bagues et bracelets."
           }
         },
         "faq_section_JaHcQg": {
           "type": "faq_section",
           "settings": {
-            "question": "Quels sont les délais de livraison ?",
-            "reponse": "Une fois votre commande passée, celle-ci est traitée dans notre atelier. Le temps d’organiser la production de vos articles puis de les faire livrer, cela va prendre 5 à 10 jours ouvrés pour que vous la receviez directement chez vous. Vous recevrez entre temps un numéro de suivi qui vous permettra de suivre l’avancement de la livraison par Colissimo."
+            "question": "Offrez-vous la livraison gratuite ?",
+            "reponse": "La livraison est offerte en France pour toute commande à partir de 150€. Nous expédions également à l'international avec des frais de livraison calculés lors de la commande."
           }
         },
         "faq_section_A3frix": {
           "type": "faq_section",
           "settings": {
-            "question": "Dans quels pays livrez-vous ?",
-            "reponse": "Nous pouvons vous livrer en France et en Belgique !"
+            "question": "Comment entretenir mes bijoux personnalisés ?",
+            "reponse": "Pour préserver l'éclat de vos bijoux, nous vous recommandons de les nettoyer régulièrement avec un chiffon doux et de les ranger dans un pochon ou dans un endroit sec, à l'abri de la lumière directe, de l'humidité et des produits chimiques."
           }
         },
         "faq_section_VGQddW": {
           "type": "faq_section",
           "settings": {
-            "question": "Comment entretenir mon article ?",
-            "reponse": "Pour que votre produit conserve tout son éclat pendant très longtemps, nous vous conseillons de :Le retourner au lavage.Le laver au maximum à 40°C.Ne pas le mettre au sèche-linge."
+            "question": "Proposez-vous des emballages cadeaux ?",
+            "reponse": "Oui, tous nos bijoux sont livrés dans un pochon raffiné Nouvel Amour, prêt à offrir. Vous pouvez également ajouter un message personnalisé pour rendre votre cadeau encore plus spécial. Pour une présentation encore plus élégante, une boîte cadeau est également disponible à l'achat."
           }
         }
       },
@@ -398,22 +312,86 @@
       "name": "FAQ",
       "settings": {
         "title": "",
-        "image": "shopify://shop_images/placeholder-image_x1000_e2fade91-f2d2-4ecd-afc0-cf7bdbac5cd2.jpg",
+        "image": "shopify://shop_images/creation-unique-bijoux-personnalises-nouvel-amour-paris-personnalisation.webp",
         "image_position": "right",
         "padding_mobile": "pt-[38px]! md:py-[32px]!",
         "button_style": "btn-primaire"
+      }
+    },
+    "avis_client_NhydB8": {
+      "type": "avis-client",
+      "blocks": {
+        "avis_CVWpFM": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez",
+            "img": "shopify://shop_images/105.png",
+            "product": "bague-weekly-bijou-personnalise-unique-vintage-design"
+          }
+        },
+        "avis_KimdAT": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/IMG_8593.jpg",
+            "product": "chaines-forcat-en-plaque-or-3-microns"
+          }
+        },
+        "avis_rwKaw4": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/IMG_3380.jpg",
+            "product": "charms-mini-alphabet-strass"
+          }
+        },
+        "avis_G7BTRD": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/165.png",
+            "product": "medaille-plate-10mm"
+          }
+        },
+        "avis_DptMVJ": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/620223319_18516347818070446_6934433274679179185_n.jpg",
+            "product": "abonnement"
+          }
+        }
+      },
+      "block_order": [
+        "avis_CVWpFM",
+        "avis_KimdAT",
+        "avis_rwKaw4",
+        "avis_G7BTRD",
+        "avis_DptMVJ"
+      ],
+      "name": "Avis Client",
+      "settings": {
+        "section_title": "Ils en parlent mieux que nous.",
+        "section_subtitle": "4.44/5 sur 34165 avis",
+        "margin_top": 100,
+        "margin_bottom": 100
       }
     }
   },
   "order": [
     "hero_swiper_7T6Vgr",
     "round_section_home_4b36ET",
-    "rich_text_g3Wm87",
     "product_grid_home_Y7i6ed",
     "section_collection_T496NR",
     "fixed_collection_NWAAU4",
     "section_gauche_droite_waaAai",
     "instagram_Aa8Tj6",
-    "faq_product_page_9RC7rB"
+    "faq_product_page_9RC7rB",
+    "avis_client_NhydB8"
   ]
 }

@@ -1,0 +1,151 @@
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+
+{% capture star %}
+    <svg viewBox="0 0 10 9" fill="none" xmlns="http://www.w3.org/2000/svg" height="13.8" width="13.8"><path d="M4.20608 0.388707C4.31734 0.0462747 4.8018 0.0462739 4.91306 0.388706L5.72783 2.89632C5.77759 3.04946 5.9203 3.15315 6.08132 3.15315L8.71798 3.15315C9.07804 3.15315 9.22774 3.61389 8.93645 3.82552L6.80335 5.37531C6.67308 5.46996 6.61857 5.63772 6.66833 5.79086L7.4831 8.29848C7.59436 8.64091 7.20243 8.92566 6.91114 8.71403L4.77804 7.16424C4.64777 7.06959 4.47137 7.06959 4.3411 7.16424L2.208 8.71403C1.91671 8.92566 1.52478 8.64091 1.63604 8.29848L2.45081 5.79086C2.50057 5.63772 2.44606 5.46996 2.31579 5.37531L0.18269 3.82552C-0.108601 3.61389 0.0411019 3.15315 0.401157 3.15315L3.03782 3.15315C3.19884 3.15315 3.34155 3.04946 3.39131 2.89632L4.20608 0.388707Z" fill="currentColor"></path></svg>
+{% endcapture %}
+<section class="page-width" style="padding-top: {{ section.settings.margin_top }}px;
+      padding-bottom: {{ section.settings.margin_bottom }}px;">
+  <div class="pb-10">
+    <div class="flex justify-center items-center">
+      <div class="flex gap-1">{{ star }}{{ star }}{{ star }}{{ star }}{{ star }}</div>
+      <p>{{ section.settings.section_subtitle }}</p>
+    </div>
+    <h2 class="{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %} text-center uppercase">
+      {{ section.settings.section_title }}</h2>
+  </div>
+  <div class="swiper" id="AvisSwiper-{{ section.id }}">
+    <div class="swiper-wrapper">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'avis' %}
+            <div class="swiper-slide flex flex-col p-5" {{ block.shopify_attributes }}>
+              <div class="relative mb-5">
+                {%- liquid
+                  assign fetchpriority = 'low'
+                  assign loading = 'lazy'
+                  assign widths = '200, 400, 600'
+                -%}
+                {% assign image_class = 'aspect-square object-cover w-full' %}
+                {% if block.settings.img %}
+                  {{
+                    block.settings.img | image_url: width: 600 | image_tag: loading: loading, fetchpriority: fetchpriority, class: image_class, widths: widths, sizes: '200px', alt: block.settings.name
+                  }}
+                {% endif %}
+                {% if block.settings.product %}
+                  <a href="{{ block.settings.product.url }}">
+                    {{
+                      block.settings.product.featured_image | image_url: width: 300 | image_tag: loading: loading, fetchpriority: fetchpriority, class: 'absolute bottom-2 left-2 w-20 h-auto', widths: '100, 200, 300', sizes: '80px', alt: block.settings.product.title
+                    }}
+                  </a>
+                {% endif %}
+              </div>
+              <div>
+                <div class="flex gap-1 items-center">{{ star }}{{ star }}{{ star }}{{ star }}{{ star }}
+                  <span>4.9</span>
+                </div>
+                <p>{{ block.settings.name }}</p>
+                <p>{{ block.settings.avis }}</p>
+              </div>
+            </div>
+        {% endcase %}
+      {% endfor %}
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      new Swiper('#AvisSwiper-{{ section.id }}', {
+        slidesPerView: 1.2,
+        spaceBetween: 16,
+        breakpoints: {
+          750: { slidesPerView: 1.5, spaceBetween: 24 },
+          1100: { slidesPerView: 4, spaceBetween: 24 }
+        }
+      });
+    });
+  </script>
+</section>
+{% schema %}
+  {
+    "name": "Avis Client",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Avis Clients"
+      },
+      {
+        "type": "text",
+        "id": "section_title",
+        "label": "Titre"
+      },
+      {
+        "type": "text",
+        "id": "section_subtitle",
+        "label": "Sous-titre de la section"
+      },
+      {
+        "type": "header",
+        "content": "Margin"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "label": "Margin Top",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Margin Bottom",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "avis",
+        "name": "Avis",
+        "settings": [
+          {
+            "type": "header",
+            "content": "Avis client"
+          },
+          {
+            "type": "text",
+            "id": "name",
+            "label": "Prénom"
+          },
+          {
+            "type": "textarea",
+            "id": "avis",
+            "label": "Avis du client"
+          },
+          {
+            "type": "image_picker",
+            "id": "img",
+            "label": "Image de l'avis"
+          },
+          {
+            "type": "product",
+            "id": "product",
+            "label": "Produit"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Avis Client",
+        "category": "Maxence"
+      }
+    ]
+  }
+{% endschema %}

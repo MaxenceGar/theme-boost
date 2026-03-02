@@ -9,8 +9,8 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Mobile_V3_2.avif",
-    "logo_width": 280,
+    "logo": "shopify://shop_images/Aura_Cristalline.svg",
+    "logo_width": 80,
     "border_radius": "0",
     "bg_color_primaire": "#020202",
     "text_color_primaire": "#ffffff",
@@ -18,7 +18,7 @@
     "text_color_secondaire": "#ffffff",
     "bg_color_secondaire_hover": "#ffffff",
     "text_color_secondaire_hover": "#000000",
-    "type_header_font": "poppins_n7",
+    "type_header_font": "baskervville_n4",
     "heading_scale": 100,
     "type_body_font": "poppins_n4",
     "body_scale": 100,
@@ -28,8 +28,8 @@
     "typo_h1_mobile_size": "48",
     "typo_h6_size": "18",
     "typo_h6_mobile_size": "16",
-    "typo_heading_letter_spacing": "heading-tight",
-    "typo_body_letter_spacing": "body-tight",
+    "typo_heading_letter_spacing": "heading-normal",
+    "typo_body_letter_spacing": "body-normal",
     "page_width": 1600,
     "spacing_sections": 0,
     "spacing_grid_horizontal": 8,

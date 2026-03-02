@@ -25,35 +25,17 @@
         "annonce_wErYtg"
       ],
       "settings": {
-        "bg_color": "#ff98a6"
+        "bg_color": "#000000"
       }
     },
     "cart-drawer": {
       "type": "cart-drawer",
       "blocks": {
-        "palier_74Cwqc": {
-          "type": "palier",
-          "settings": {
-            "bar_color": "#000000",
-            "palier_1_amount": 30,
-            "palier_1_text": "Livraison offerte",
-            "palier_1_icon": "shopify://shop_images/truck.svg",
-            "palier_2_amount": 60,
-            "palier_2_text": "Cadeau offert",
-            "palier_2_icon": "shopify://shop_images/cadeau.svg"
-          }
-        },
         "text_f3LG3E": {
           "type": "text",
-          "disabled": true,
           "settings": {
-            "text": "Livraison offerte en France"
+            "text": "En ce moment 2 Achetées = 2 Offertes"
           }
-        },
-        "timer_6A3xNJ": {
-          "type": "timer",
-          "disabled": true,
-          "settings": {}
         },
         "upsell_product_page_TUiphP": {
           "type": "upsell-product-page",
@@ -67,14 +49,12 @@
         }
       },
       "block_order": [
-        "palier_74Cwqc",
         "text_f3LG3E",
-        "timer_6A3xNJ",
         "upsell_product_page_TUiphP"
       ],
       "settings": {
-        "preview_mode": true,
-        "preview_product": "animaux-de-compagnie"
+        "preview_mode": false,
+        "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
       }
     },
     "header": {
@@ -83,28 +63,28 @@
         "megamenu_picture_AcBnDF": {
           "type": "megamenu_picture",
           "settings": {
-            "menu_target": "No Soins",
-            "image": "shopify://shop_images/Design_sans_titre_-_2026-01-14T165928.984.webp",
-            "title": "",
+            "menu_target": "Bijoux",
+            "image": "shopify://shop_images/creation-unique-bijoux-personnalises-nouvel-amour-paris-personnalisation.webp",
+            "title": "Carte cadeau",
             "link": ""
           }
         },
-        "megamenu_picture_h3RLDF": {
+        "megamenu_picture_x4NxwR": {
           "type": "megamenu_picture",
           "settings": {
-            "menu_target": "No Soins",
-            "image": "shopify://shop_images/Plan_de_travail_1_826753573_760c25e6-a31e-490f-b86c-460bc3788867.webp",
-            "title": "",
+            "menu_target": "Bijoux",
+            "image": "shopify://shop_images/creation-unique-bijoux-personnalises-nouvel-amour-paris-personnalisation.webp",
+            "title": "Carte cadeau",
             "link": ""
           }
         }
       },
       "block_order": [
         "megamenu_picture_AcBnDF",
-        "megamenu_picture_h3RLDF"
+        "megamenu_picture_x4NxwR"
       ],
       "settings": {
-        "menu": "main-menu",
+        "menu": "ordinateur",
         "menu_mobile": "mobile",
         "megamenu": true,
         "sticky_header_type": "always",

@@ -6,6 +6,7 @@
     assign content_position = 'lg:order-1'
   endif
 %}
+
 <section style="padding-top: {{ section.settings.margin_top }}px;
       padding-bottom: {{ section.settings.margin_bottom }}px;">
 <div class="text-block {%- if section.settings.enable_page_width %} page-width {% endif -%}" 
@@ -263,6 +264,42 @@ style="
             "id": "color",
             "label": "Couleur de la description",
             "default": "#444441"
+          },
+          {
+        "type": "select",
+        "id": "font_size_p",
+        "label": "Taille du texte",
+        "options": [
+              {
+                "value": "12",
+                "label": "12px"
+              },
+              {
+                "value": "13",
+                "label": "13px"
+              },
+              {
+                "value": "14",
+                "label": "14px"
+              },
+              {
+                "value": "15",
+                "label": "15px"
+              },
+              {
+                "value": "16",
+                "label": "16px"
+              },
+              {
+                "value": "17",
+                "label": "17px"
+              },
+              {
+                "value": "18",
+                "label": "18px"
+              }
+            ],
+            "default": "14"
           }
         ]
       },
