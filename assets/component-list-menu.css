@@ -28,3 +28,8 @@
   width: 10rem;
   padding: 0.5rem;
 }
+
+.list-menu__first-link {
+  text-transform: uppercase;
+  font-weight: bolder !important;
+}

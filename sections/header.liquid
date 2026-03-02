@@ -96,12 +96,47 @@
     }
   }
 
+  /* Dropdown classique */
+  .simple-dropdown {
+    position: relative;
+  }
+
+  .simple-dropdown__content {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 8px 0;
+    min-width: 180px;
+    z-index: 100;
+    white-space: nowrap;
+  }
+
+  .simple-dropdown[open] .simple-dropdown__content {
+    display: block;
+  }
+
+  .simple-dropdown__link {
+    display: block;
+    padding: 8px 20px;
+    color: inherit;
+    text-decoration: none;
+  }
+
+  .simple-dropdown__link:hover,
+  .simple-dropdown__link--active {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
 </style>
 
 {%- comment -%} Mega menu : ouverture au hover via JS (le CSS seul ne peut pas overrider le masquage natif de <details>) {%- endcomment -%}
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    document.querySelectorAll('details.mega-menu').forEach(details => {
+    document.querySelectorAll('details.mega-menu, details.simple-dropdown').forEach(details => {
       let timeout;
       details.addEventListener('mouseenter', () => {
         clearTimeout(timeout);
@@ -130,15 +165,16 @@
 %}
 
 <{{ header_tag }}
-              {% if header_tag == 'sticky-header' %}data-sticky-type="{{ section.settings.sticky_header_type }}"{% endif %}
-              class="header-wrapper gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
+                                                  {% if header_tag == 'sticky-header' %}data-sticky-type="{{ section.settings.sticky_header_type }}"{% endif %}
+                                                  class="header-wrapper gradient{% if section.settings.show_line_separator %} header-wrapper--border-bottom{% endif %}"
   >
   <header class="flex flex-row justify-between items-center bg-white page-width py-2!">
     <div class="w-full flex items-center justify-start gap-4">
       {%- comment -%} -- 4a. Menu mobile (drawer / hamburger) -- {%- endcomment -%}
       {%- if section.settings.menu != blank -%}
         {%- assign drawer_menu = section.settings.menu_mobile | default: section.settings.menu -%}
-        {% render 'header-drawer', drawer_menu: drawer_menu %}
+        {% render 'header-drawer'
+          , drawer_menu: drawer_menu %}
       {%- endif -%}
 
       {%- comment -%} -- 4b. Logo -- {%- endcomment -%}
@@ -193,9 +229,6 @@
     {%- comment -%} -- 4d. Icônes header (notification, recherche, panier) -- {%- endcomment -%}
     <div class="flex gap-0 md:gap-4 items-center header__icons">
 
-      {%- comment -%} Notification personnalisée {%- endcomment -%}
-    {% render 'notif-max' %}
-
       {%- comment -%} Recherche {%- endcomment -%}
       {% render 'header-search'
         , input_id: 'Search-In-Modal' %}
@@ -206,9 +239,9 @@
         class="header__icon header__icon--cart link focus-inset"
         id="cart-icon-bubble">
         {% if cart == empty %}
-          <span class="h-10 w-10 flex items-center justify-center text-black hover:scale-110 transition">{{ 'bag-outline.svg' | inline_asset_content }}</span>
+          <span class="h-10 w-10 flex items-center justify-center text-black hover:scale-110 transition">{{ 'shopping_bag.svg' | inline_asset_content }}</span>
         {% else %}
-          <span class="h-10 w-10 flex items-center justify-center text-black hover:scale-110 transition">{{ 'bag-outline.svg' | inline_asset_content }}</span>
+          <span class="h-10 w-10 flex items-center justify-center text-black hover:scale-110 transition">{{ 'shopping_bag.svg' | inline_asset_content }}</span>
         {% endif %}
         <span class="visually-hidden">{{ 'templates.cart.cart' | t }}</span>
         {%- if cart != empty -%}

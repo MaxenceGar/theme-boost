@@ -315,9 +315,6 @@
   .m-4 {
     margin: calc(var(--spacing) * 4);
   }
-  .m-50 {
-    margin: calc(var(--spacing) * 50);
-  }
   .m-auto\! {
     margin: auto !important;
   }
@@ -687,9 +684,6 @@
   .grid-cols-3 {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
-  .grid-cols-3\! {
-    grid-template-columns: repeat(3, minmax(0, 1fr)) !important;
-  }
   .flex-col {
     flex-direction: column;
   }
@@ -785,13 +779,6 @@
   }
   .gap-\[2px\] {
     gap: 2px;
-  }
-  .space-y-3 {
-    :where(& > :not(:last-child)) {
-      --tw-space-y-reverse: 0;
-      margin-block-start: calc(calc(var(--spacing) * 3) * var(--tw-space-y-reverse));
-      margin-block-end: calc(calc(var(--spacing) * 3) * calc(1 - var(--tw-space-y-reverse)));
-    }
   }
   .space-y-4 {
     :where(& > :not(:last-child)) {
@@ -1024,17 +1011,8 @@
   .p-5 {
     padding: calc(var(--spacing) * 5);
   }
-  .p-6 {
-    padding: calc(var(--spacing) * 6);
-  }
   .p-10 {
     padding: calc(var(--spacing) * 10);
-  }
-  .p-50 {
-    padding: calc(var(--spacing) * 50);
-  }
-  .p-50\! {
-    padding: calc(var(--spacing) * 50) !important;
   }
   .px-2 {
     padding-inline: calc(var(--spacing) * 2);
@@ -1114,9 +1092,6 @@
   .pt-10 {
     padding-top: calc(var(--spacing) * 10);
   }
-  .pt-50 {
-    padding-top: calc(var(--spacing) * 50);
-  }
   .pt-\[20px\]\! {
     padding-top: 20px !important;
   }
@@ -1169,10 +1144,6 @@
   .text-4xl\! {
     font-size: var(--text-4xl) !important;
     line-height: var(--tw-leading, var(--text-4xl--line-height)) !important;
-  }
-  .text-4xl\/none {
-    font-size: var(--text-4xl);
-    line-height: 1;
   }
   .text-6xl {
     font-size: var(--text-6xl);
@@ -1378,9 +1349,6 @@
   .text-inherit\! {
     color: inherit !important;
   }
-  .text-stone-500 {
-    color: var(--color-stone-500);
-  }
   .text-stone-700 {
     color: var(--color-stone-700);
   }
@@ -1398,6 +1366,9 @@
   }
   .uppercase {
     text-transform: uppercase;
+  }
+  .uppercase\! {
+    text-transform: uppercase !important;
   }
   .italic {
     font-style: italic;

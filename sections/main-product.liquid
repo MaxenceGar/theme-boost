@@ -222,8 +222,8 @@
 
                 {%- # Description longue du produit (layout étendu) -%}
                 {%- when 'description_max' -%}
-                <div class="lg:order-1 text-black my-14!">
-                  <div class="text-[18px]! leading-none text-black/80">
+                <div class="lg:order-1 text-black my-14!" {{ block.shopify_attributes }}>
+                  <div class="leading-none text-black/80">
                     <p>{{ product.description }}</p>
                   </div>
                 </div>
@@ -255,13 +255,13 @@
               {%- when 'faq_section' -%}
                 {{ block.settings.custom_liquid }}
                 <div class="w-full space-y-4">
-                        <details class="group border border-gray-200 rounded-lg p-4">
+                        <details class="group border border-gray-200 p-4">
                           <summary class="flex cursor-pointer items-center justify-between font-medium">
                             <span>{{ block.settings.question }}</span>
                             <span class="transition-transform group-open:rotate-45">+</span>
                           </summary>
 
-                          <p class="mt-3 text-[14px]! text-gray-600">
+                          <p class="mt-3 text-gray-600">
                             {{ block.settings.reponse }}
                           </p>
                         </details>
@@ -550,6 +550,10 @@
                     , section_id: section.id
                     , show_pickup_availability: true %}
                 </div>
+
+                {%- # Faux avis clients -%}
+                {%- when 'rating_max' -%}
+                  {% render 'rating-main-product', block: block %}
 
                 {%- # 3 badges personnalisés (texte + style) -%}
                 {%- when 'badge_max' -%}
@@ -1308,6 +1312,10 @@
             "default": "btn-primaire"
           }
       ]
+    },
+    {
+      "type": "rating_max",
+      "name": "Faux avis clients"
     },
     {
       "type": "description_max",

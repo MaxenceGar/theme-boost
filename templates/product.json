@@ -12,6 +12,14 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "rating_max_cbxGJ4": {
+          "type": "rating_max",
+          "settings": {}
+        },
+        "rating_KLybDT": {
+          "type": "rating",
+          "settings": {}
+        },
         "title_wjgMq3": {
           "type": "title",
           "settings": {
@@ -94,6 +102,8 @@
         }
       },
       "block_order": [
+        "rating_max_cbxGJ4",
+        "rating_KLybDT",
         "title_wjgMq3",
         "price_xGmqGm",
         "badge_max_bRGcBD",
@@ -136,7 +146,8 @@
           "type": "description",
           "settings": {
             "description": "<p>Deux expertes en joaillerie, avec chacune plus de 20 ans d'expérience, dénichent les trésors cachés dans les coffres des particuliers et des professionnels.</p>",
-            "color": "#444441"
+            "color": "#444441",
+            "font_size_p": "14"
           }
         },
         "button_z8N9Y8": {
