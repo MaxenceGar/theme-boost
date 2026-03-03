@@ -74,14 +74,20 @@
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
   <div class="page-width justify-center mx-auto! items-center">
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} grid grid--1-col {% if product.media.size > 0 %}grid--2-col-tablet{% else %}product--no-media{% endif %}">
-      <div class="grid__item">
+    <div>
+      {% render 'breadcrumb' %}
+    </div>
+    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} flex flex-col md:flex-row gap-8 md:gap-8{% unless product.media.size > 0 %} product--no-media{% endunless %}">
+      {%- comment -%} ========== PHOTOS PRODUIT (colonne gauche) ========== {%- endcomment -%}
+      <div class="w-full md:flex-1 min-w-0">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
-      <div class="flex-1 product__info-wrapper grid__item{% if settings.page_width > 1400 and section.settings.media_size == "small" %} product__info-wrapper--extra-padding{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+
+      {%- comment -%} ========== INFOS PRODUIT (colonne droite) : titre, prix, variantes, CTA... ========== {%- endcomment -%}
+      <div class="flex-1 min-w-0 {% if settings.page_width > 1400 and section.settings.media_size == "small" %}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
           id="ProductInfo-{{ section.id }}"
-          class="product__info-container{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
+          class="{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
         >
           {%- assign product_form_id = 'product-form-' | append: section.id -%}
 
@@ -107,7 +113,7 @@
                 </div>
               {%- # Titre H1 du produit avec taille et marges personnalisables -%}
               {%- when 'title' -%}
-                <div class="product__title" {{ block.shopify_attributes }}>
+                <div class="" {{ block.shopify_attributes }}>
                   <h1 style="
                   --typo-h1--size: {{ block.settings.typo_h1_size | divided_by: 10.0 }}rem;
                   margin-top: {{ block.settings.margin_top }}px;
@@ -254,8 +260,10 @@
               {%- # Accordéon FAQ avec question/réponse -%}
               {%- when 'faq_section' -%}
                 {{ block.settings.custom_liquid }}
-                <div class="w-full space-y-4">
-                        <details class="group border border-gray-200 p-4">
+                <div class="w-full" 
+                      style="margin-top: {{ block.settings.margin_top }}px;
+                            margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
+                        <details class="group border border-gray-200 p-4" style="border-radius: var(--rounded--size);">
                           <summary class="flex cursor-pointer items-center justify-between font-medium">
                             <span>{{ block.settings.question }}</span>
                             <span class="transition-transform group-open:rotate-45">+</span>
@@ -542,7 +550,9 @@
 
                 {%- # Boutons d'achat version étendue (layout max) -%}
                 {%- when 'buy_buttons_max' -%}
-                <div class="w-full! btn {{ block.settings.button_style }}">
+                <div {{ block.shopify_attributes }}
+                style="margin-top: {{ block.settings.margin_top }}px;
+                       margin-bottom: {{ block.settings.margin_bottom }}px;">
                   {% render 'buy-buttons-max'
                     , block: block
                     , product: product
@@ -907,25 +917,25 @@
         "label": "Couleur du texte"
       },
       {
-      "type": "range",
-      "id": "margin_top",
-      "label": "Margin Top",
-      "default": 0,
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "margin_bottom",
-      "label": "Margin Top",
-      "default": 0,
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px"
-    }
+        "type": "range",
+        "id": "margin_top",
+        "label": "Margin Top",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Margin Top",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      }
       ]
     },
     {
@@ -1310,12 +1320,60 @@
               }
             ],
             "default": "btn-primaire"
-          }
+          },
+          {
+        "type": "range",
+        "id": "margin_top",
+        "label": "Margin Top",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Margin Bottom",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "checkbox",
+        "id": "price_enable",
+        "label": "Prix dans le btn"
+      }
       ]
     },
     {
       "type": "rating_max",
-      "name": "Faux avis clients"
+      "name": "Faux avis clients",
+      "settings": [
+        {
+              "type": "range",
+              "id": "nombre_etoiles",
+              "min": 0,
+              "max": 5,
+              "step": 1,
+              "label": "Nombre d'étoiles",
+              "default": 5
+            },
+            {
+              "type": "text",
+              "id": "note",
+              "label": "Note du produit",
+              "default": "4.7"
+            },
+            {
+              "type": "text",
+              "id": "number",
+              "label": "Nombre d'avis",
+              "default": "762"
+            }
+      ]
     },
     {
       "type": "description_max",
@@ -1435,7 +1493,27 @@
           "id": "reponse",
           "default": "Réponse",
           "label": "Réponse"
-        }
+        },
+        {
+        "type": "range",
+        "id": "margin_top",
+        "label": "Margin Top",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Margin Bottom",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      }
       ]
     },
     {
@@ -3014,4 +3092,3 @@
   ]
 }
 {% endschema %}
-"

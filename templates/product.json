@@ -14,7 +14,11 @@
       "blocks": {
         "rating_max_cbxGJ4": {
           "type": "rating_max",
-          "settings": {}
+          "settings": {
+            "nombre_etoiles": 5,
+            "note": "4.7",
+            "number": "762"
+          }
         },
         "rating_KLybDT": {
           "type": "rating",
@@ -23,15 +27,16 @@
         "title_wjgMq3": {
           "type": "title",
           "settings": {
-            "typo_h1_size": "40",
-            "margin_top": 0,
-            "margin_bottom": 0
+            "typo_h1_size": "32",
+            "margin_top": 5,
+            "margin_bottom": 5
           }
         },
         "price_xGmqGm": {
           "type": "price",
+          "disabled": true,
           "settings": {
-            "text_typo_price_size": "24",
+            "text_typo_price_size": "14",
             "font_weight": "font-extrabold",
             "price_color": "#000000",
             "margin_top": 0,
@@ -52,17 +57,27 @@
           "type": "text",
           "settings": {
             "text": "{{ product.description }}",
-            "text_typo_p_size": "152",
+            "text_typo_p_size": "14",
             "text_font_weight": "font-light",
             "text_color": "#000000",
-            "margin_top": 0,
-            "margin_bottom": 0
+            "margin_top": 15,
+            "margin_bottom": 15
+          }
+        },
+        "variant_picker_dRhy4i": {
+          "type": "variant_picker",
+          "settings": {
+            "picker_type": "dropdown",
+            "swatch_shape": "circle"
           }
         },
         "buy_buttons_max_WTNj9H": {
           "type": "buy_buttons_max",
           "settings": {
-            "button_style": "btn-primaire"
+            "button_style": "btn-secondaire",
+            "margin_top": 20,
+            "margin_bottom": 10,
+            "price_enable": true
           }
         },
         "time_livraison_fkJ6dY": {
@@ -73,31 +88,27 @@
           "type": "faq_section",
           "settings": {
             "question": "Ingrédients",
-            "reponse": "Réponse"
+            "reponse": "Réponse",
+            "margin_top": 6,
+            "margin_bottom": 5
           }
         },
         "faq_section_DQqUq3": {
           "type": "faq_section",
           "settings": {
             "question": "Recommandé pour",
-            "reponse": "Réponse"
+            "reponse": "Réponse",
+            "margin_top": 0,
+            "margin_bottom": 0
           }
         },
         "faq_section_7tajTz": {
           "type": "faq_section",
           "settings": {
             "question": "Conseils",
-            "reponse": "Réponse"
-          }
-        },
-        "upsell_product_page_kgtXRU": {
-          "type": "upsell-product-page",
-          "settings": {
-            "title": "Vous aimerez aussi",
-            "product_1": "creme-riche-hydratation-intense",
-            "product_2": "creme-solaire-spf50",
-            "product_3": "deodorant-stick-douceur-monoi-efficace-48h",
-            "product_4": "deodorant-naturel-stick-fleur-de-coton-50g"
+            "reponse": "Réponse",
+            "margin_top": 5,
+            "margin_bottom": 0
           }
         }
       },
@@ -108,74 +119,97 @@
         "price_xGmqGm",
         "badge_max_bRGcBD",
         "text_DzNNBt",
+        "variant_picker_dRhy4i",
         "buy_buttons_max_WTNj9H",
         "time_livraison_fkJ6dY",
         "faq_section_ywQckf",
         "faq_section_DQqUq3",
-        "faq_section_7tajTz",
-        "upsell_product_page_kgtXRU"
+        "faq_section_7tajTz"
       ],
       "settings": {
         "enable_sticky_info": true,
         "color_scheme": "scheme-1",
         "media_size": "small",
         "constrain_to_viewport": true,
-        "media_fit": "contain",
+        "media_fit": "cover",
         "gallery_layout": "thumbnail_slider",
         "mobile_thumbnails": "hide",
-        "media_position": "left",
+        "media_position": "right",
         "image_zoom": "lightbox",
-        "hide_variants": true,
+        "hide_variants": false,
         "enable_video_looping": false,
         "padding_top": 36,
         "padding_bottom": 12
       }
     },
-    "section_gauche_droite_nU3hJz": {
-      "type": "section-gauche-droite",
+    "marquee_dtRHhV": {
+      "type": "marquee",
       "blocks": {
-        "title_MyaWDq": {
-          "type": "title",
+        "text_zEqMdx": {
+          "type": "text",
           "settings": {
-            "title": "Anne Borde & <br> Charlotte Rey",
-            "color": "#191918",
-            "div": "H3"
+            "text": "Livraison offerte dès 49€"
           }
         },
-        "description_YXxgf4": {
-          "type": "description",
+        "text_UDYc4g": {
+          "type": "text",
           "settings": {
-            "description": "<p>Deux expertes en joaillerie, avec chacune plus de 20 ans d'expérience, dénichent les trésors cachés dans les coffres des particuliers et des professionnels.</p>",
-            "color": "#444441",
-            "font_size_p": "14"
+            "text": "Paiement sécurisé"
           }
         },
-        "button_z8N9Y8": {
-          "type": "button",
+        "text_aTDajn": {
+          "type": "text",
           "settings": {
-            "button_label": "Découvrir les fondatrices",
-            "button_label_mobile": "Découvrir",
-            "button_url": "shopify://collections",
-            "button_style": "btn-primaire"
+            "text": "Retours gratuits"
           }
         }
       },
       "block_order": [
-        "title_MyaWDq",
-        "description_YXxgf4",
-        "button_z8N9Y8"
+        "text_zEqMdx",
+        "text_UDYc4g",
+        "text_aTDajn"
+      ],
+      "name": "Marquee",
+      "settings": {
+        "bg_color": "#ffffff",
+        "text_color": "#000000",
+        "speed": 20,
+        "font_size": "md:text-2xl!",
+        "icon_size": "w-8! h-8!",
+        "space_size": "py-4",
+        "font_weight": "font-light!",
+        "border_color": "#020202",
+        "margin_top": 100,
+        "margin_bottom": 0
+      }
+    },
+    "section_gauche_droite_nU3hJz": {
+      "type": "section-gauche-droite",
+      "blocks": {
+        "description_YXxgf4": {
+          "type": "description",
+          "settings": {
+            "description": "<p><strong>Chaque bijou est une histoire, chaque gravure une émotion.</strong></p><p>Gravez vos mots d'amour sur une médaille, une bague ou des boucles d'oreilles et transformez chaque instant en un précieux souvenir chargé d'émotion.</p><p>Depuis 2007, Nouvel Amour capture l'essence de vos histoires avec des bijoux personnalisés.</p><p>Que ce soit pour célébrer un moment spécial ou simplement pour exprimer vos sentiments, nos bijoux personnalisés sont conçus pour capturer l'essence de vos histoires.</p>",
+            "color": "#020202",
+            "font_size_p": "14"
+          }
+        }
+      },
+      "block_order": [
+        "description_YXxgf4"
       ],
       "name": "Section Gauche Droite",
       "settings": {
-        "enable_page_width": false,
-        "text-align-mobile": "left",
-        "alignment": "left",
+        "enable_page_width": true,
+        "text-align-mobile": "center",
+        "alignment": "center",
+        "image": "shopify://shop_images/creation-unique-bijoux-personnalises-nouvel-amour-paris-personnalisation.webp",
         "image_object_fit": "object-cover",
         "image_position": "right",
         "background_color": "#fbf8f5",
         "background_color_image": "#fbf8f5",
-        "margin_top": 0,
-        "margin_bottom": 0
+        "margin_top": 100,
+        "margin_bottom": 100
       }
     },
     "faq_product_page_eDmRRi": {
@@ -227,7 +261,7 @@
       "name": "FAQ Produt Page",
       "settings": {
         "title": "Questions fréquemment posées :",
-        "image": "shopify://shop_images/VENDRE_HOMEPAGE.webp",
+        "image": "shopify://shop_images/IMG_3380.jpg",
         "image_position": "left",
         "padding_mobile": "py-[38px]! md:py-[32px]!",
         "button_style": "btn-primaire"
@@ -236,7 +270,7 @@
     "related-products": {
       "type": "related-products",
       "settings": {
-        "heading": "You may also like",
+        "heading": "Vous aimerez aussi",
         "heading_size": "h2",
         "products_to_show": 4,
         "columns_desktop": 4,
@@ -254,6 +288,7 @@
   },
   "order": [
     "main",
+    "marquee_dtRHhV",
     "section_gauche_droite_nU3hJz",
     "faq_product_page_eDmRRi",
     "related-products"

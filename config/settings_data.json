@@ -11,12 +11,12 @@
   "current": {
     "logo": "shopify://shop_images/Aura_Cristalline.svg",
     "logo_width": 80,
-    "border_radius": "0",
-    "bg_color_primaire": "#020202",
-    "text_color_primaire": "#ffffff",
-    "bg_color_secondaire": "#000000",
-    "text_color_secondaire": "#ffffff",
-    "bg_color_secondaire_hover": "#ffffff",
+    "border_radius": "0.6rem",
+    "bg_color_primaire": "#fbf8f5",
+    "text_color_primaire": "#121212",
+    "bg_color_secondaire": "#121212",
+    "text_color_secondaire": "#fbf8f5",
+    "bg_color_secondaire_hover": "#fbf8f5",
     "text_color_secondaire_hover": "#000000",
     "type_header_font": "baskervville_n4",
     "heading_scale": 100,
@@ -276,6 +276,28 @@
           "wishlist_mode": "PRODUCT",
           "wishlist_path": "/apps/wishlist",
           "money_show_currency_code": true
+        }
+      },
+      "7966273939722816136": {
+        "type": "shopify://apps/sample-products-try-buy/blocks/sample-embedded/3632215c-93d9-4dff-975f-c2aaaa474c03",
+        "disabled": true,
+        "settings": {
+          "redirect_event_eb": "no",
+          "btn_txt_eb": "Get Sample Products",
+          "btn_bgClr_eb": "",
+          "btn_txtClr_eb": "",
+          "msgWithBtn_eb": "1",
+          "getSelectMsg_eb": "Select Any",
+          "getSampleMsg_eb": "<p>Add items worth XX to get YY product sample(s)!</p>",
+          "show_custom_text_eb": "yes",
+          "custom_text_eb": "<p>🎁 Unlock <b>YY</b> free sample(s) with a purchase of <b>XX</b></p>",
+          "unlockedMsg_eb": "<p>🎉 Congratulations, <b>X</b> Sample(s) Unlocked!</p>",
+          "upsellMsg_eb": "<p>Add items worth <b>XX</b> to claim total <b>YY</b> samples!</p>",
+          "popupTitle_eb": "Select Sample Products",
+          "a2c_text_eb": "Select Sample Products",
+          "a2cBtn_bgClr_eb": "",
+          "a2cTxt_bgClr_eb": "",
+          "selectedText_eb": "<p>XX out of YY selected</p>"
         }
       }
     },

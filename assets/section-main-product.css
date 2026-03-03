@@ -172,7 +172,7 @@ product-info {
   flex: 0 0 100%;
   padding: 0;
   margin: 0 0 1.2rem 0;
-  max-width: 44rem;
+  max-width: 100%;
   min-width: fit-content;
   border: none;
 }
@@ -191,6 +191,7 @@ product-info {
 
 .product-form__submit {
   margin-bottom: 0rem;
+  border-radius: var(--rounded--size) !important;
 }
 
 .product-form__submit[aria-disabled='true'] + .shopify-payment-button .shopify-payment-button__button[disabled],
@@ -285,7 +286,7 @@ a.product__text {
 
 @media screen and (min-width: 750px) {
   .product__info-container {
-    max-width: 60rem;
+    max-width: 100%;
   }
 
   .product__info-container .price--on-sale .price-item--regular {

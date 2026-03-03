@@ -83,7 +83,9 @@
         "icon_size": "w-16! h-16!",
         "space_size": "py-4",
         "font_weight": "font-normal!",
-        "border_color": "rgba(0,0,0,0)"
+        "border_color": "rgba(0,0,0,0)",
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "filter_collection_TVQh6D": {
@@ -135,8 +137,8 @@
       "name": "Filtre Collection",
       "settings": {
         "padding_mobile": "pt-[38px]! md:py-[32px]!",
-        "hover_color": "hover:bg-blue-200/20",
-        "font_size": "text-2xl!"
+        "margin_top": 20,
+        "margin_bottom": 0
       }
     },
     "product-grid": {
@@ -158,51 +160,12 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
-    },
-    "faq_product_page_XbzXpA": {
-      "type": "faq-product-page",
-      "blocks": {
-        "faq_section_Fqn3RR": {
-          "type": "faq_section",
-          "settings": {
-            "question": "Question",
-            "reponse": "Réponse"
-          }
-        },
-        "faq_section_zmfMR4": {
-          "type": "faq_section",
-          "settings": {
-            "question": "Question",
-            "reponse": "Réponse"
-          }
-        },
-        "faq_section_RNRNFB": {
-          "type": "faq_section",
-          "settings": {
-            "question": "Question",
-            "reponse": "Réponse"
-          }
-        }
-      },
-      "block_order": [
-        "faq_section_Fqn3RR",
-        "faq_section_zmfMR4",
-        "faq_section_RNRNFB"
-      ],
-      "name": "FAQ Produt Page",
-      "settings": {
-        "title": "Questions fréquemment posées :",
-        "image_position": "left",
-        "padding_mobile": "py-[38px]! md:py-[32px]!",
-        "button_style": "btn-primaire"
-      }
     }
   },
   "order": [
     "section_gauche_droite_cXMpDa",
     "marquee_hzb3C9",
     "filter_collection_TVQh6D",
-    "product-grid",
-    "faq_product_page_XbzXpA"
+    "product-grid"
   ]
 }

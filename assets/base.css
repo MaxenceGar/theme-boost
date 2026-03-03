@@ -1257,11 +1257,6 @@ button.shopify-payment-button__button--unbranded {
   bottom: var(--buttons-border-width);
   left: var(--buttons-border-width);
   z-index: 1;
-  border-radius: var(--buttons-radius);
-  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
-      rgba(var(--color-button-text), var(--border-opacity)),
-    0 0 0 var(--buttons-border-width) rgba(var(--color-button), var(--alpha-button-background));
-  transition: box-shadow var(--duration-short) ease;
 }
 
 .button:not([disabled]):hover::after,
@@ -1269,9 +1264,6 @@ button.shopify-payment-button__button--unbranded {
 .customer button:hover::after,
 .shopify-payment-button__button--unbranded:hover::after {
   --border-offset: 0px;
-  box-shadow: 0 0 0 calc(var(--buttons-border-width) + var(--border-offset))
-      rgba(var(--color-button-text), var(--border-opacity)),
-    0 0 0 calc(var(--buttons-border-width) + 1px) rgba(var(--color-button), var(--alpha-button-background));
 }
 
 .button--secondary:after {
@@ -1620,7 +1612,7 @@ details[open] > .share-button__fallback {
   bottom: var(--inputs-border-width);
   left: var(--inputs-border-width);
   border: 0.1rem solid transparent;
-  border-radius: var(--inputs-radius);
+  border-radius: var(--rounded--size);
   box-shadow: 0 0 0 var(--inputs-border-width) rgba(var(--color-foreground), var(--inputs-border-opacity));
   transition: box-shadow var(--duration-short) ease;
   z-index: 1;
@@ -1643,7 +1635,7 @@ details[open] > .share-button__fallback {
   box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width))
     rgba(var(--color-foreground), var(--inputs-border-opacity));
   outline: 0;
-  border-radius: var(--inputs-radius);
+  border-radius: var(--rounded--size);
 }
 
 .field__input:focus-visible,
@@ -1653,7 +1645,7 @@ details[open] > .share-button__fallback {
 .localization-form__select:focus-visible.localization-form__select:after {
   box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground));
   outline: 0;
-  border-radius: var(--inputs-radius);
+  border-radius: var(--rounded--size);
 }
 
 .field__input:focus,
@@ -1663,7 +1655,7 @@ details[open] > .share-button__fallback {
 .localization-form__select:focus.localization-form__select:after {
   box-shadow: 0 0 0 calc(0.1rem + var(--inputs-border-width)) rgba(var(--color-foreground));
   outline: 0;
-  border-radius: var(--inputs-radius);
+  border-radius: var(--rounded--size);
 }
 
 .localization-form__select:focus {

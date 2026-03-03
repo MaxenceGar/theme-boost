@@ -1,0 +1,27 @@
+{%- liquid
+  assign breadcrumb_collection = collection | default: product.collections.first
+-%}
+
+<nav aria-label="Breadcrumb">
+  <ol class="flex flex-wrap items-center gap-4">
+    <li>
+      <a href="{{ routes.root_url }}" class="hover:text-black transition-colors">
+        <p>Accueil</p>
+      </a>
+    </li>
+
+    {%- if breadcrumb_collection != blank -%}
+      <li aria-hidden="true">›</li>
+      <li>
+        <a href="{{ breadcrumb_collection.url }}" class="hover:text-black transition-colors">
+          <p>{{ breadcrumb_collection.title | escape }}</p>
+        </a>
+      </li>
+    {%- endif -%}
+
+    <li aria-hidden="true">›</li>
+    <li aria-current="page" class="text-black font-medium truncate max-w-50">
+      <p>{{ product.title | escape }}</p>
+    </li>
+  </ol>
+</nav>
