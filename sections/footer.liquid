@@ -27,7 +27,7 @@
     or section.settings.enable_follow_on_shop
   -%}
     {%- unless only_empty_brand -%}
-      <div class="page-width pt-[56px]! pb-[130px]! lg:pb-[36px]! lg:pt-[58px]!">
+      <div class="page-width footer_container">
         {%- if section.blocks.size > 0 -%}
           {%- liquid
             if section.blocks.size == 9
@@ -101,7 +101,7 @@
                       id="Subscribe"
                       aria-label="{{ 'newsletter.button_label' | t }}"
                     >
-                      <span class="svg-wrapper">
+                      <span class="svg-wrapper text-black!">
                         {{- 'icon-arrow.svg' | inline_asset_content -}}
                       </span>
                     </button>
@@ -130,7 +130,6 @@
                   </h3>
                 {%- endif -%}
               {%- endform -%}
-              <p class="text-[10px]!" style="color: {{ section.settings.color_text_footer }};">Offre valable pour toute première commande après votre inscription à la newsletter, valable pour toute commande dès 1000€ d'achat, non cumulable avec les autres promotions en cours.</p>
             </div>
           {%- endif -%} 
           <!-- Fin Newsletter --->
@@ -144,7 +143,7 @@
                 {% endif %}
               >
                 {%- if block.settings.heading != blank -%}
-                  <h2 class="font-bold uppercase text-[12px]! tracking-[0.08px] text-white!">{{- block.settings.heading -}}</h2>
+                  <h2 class="font-bold uppercase text-[14px]! tracking-[0.08px] text-white!">{{- block.settings.heading -}}</h2>
                 {%- endif -%}
 
                 {%- case block.type -%}
@@ -237,7 +236,7 @@
             </li>
           {%- endfor -%}
         </ul>
-                 <div class="flex-1 text-center">
+                 <div class="flex-1 text-center text-white!">
                   <span>{{ section.settings.copyright }}</span>
                 </div>
                 <li class="list-payment__item">

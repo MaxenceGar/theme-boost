@@ -1,7 +1,6 @@
 quantity-popover {
   position: relative;
   display: block;
-  border-radius: 100px !important;
 }
 
 quantity-popover volume-pricing li:nth-child(odd) {

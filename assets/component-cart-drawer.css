@@ -69,7 +69,7 @@ cart-drawer:not(.is-empty) .cart-drawer__collection {
 
 .drawer__header {
   position: relative;
-  padding: 1.5rem 0;
+  padding: 1rem 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -179,7 +179,8 @@ cart-drawer {
 }
 
 .cart-drawer thead {
-  display: inline-table;
+  display: none;
+  background-color: red;
   width: 100%;
 }
 
@@ -277,6 +278,8 @@ cart-drawer-items {
   display: flex;
   align-items: flex-start;
   justify-content: flex-end;
+  font-weight: bold;
+  font-size: var(--color-button)
 }
 
 .cart-drawer.cart-drawer .cart-item__price-wrapper > *:only-child {
@@ -314,6 +317,8 @@ cart-drawer-items {
 
 .cart-drawer .price {
   line-height: 1;
+  font-size: var(--typo-p--size);
+  font-weight: bold;
 }
 
 .cart-drawer .tax-note {

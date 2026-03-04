@@ -68,6 +68,7 @@
       "blocks": {
         "icon_social_8DQFLp": {
           "type": "icon_social",
+          "disabled": true,
           "settings": {
             "show_social": false,
             "logo": "shopify://shop_images/Aura_Cristalline_White.svg"

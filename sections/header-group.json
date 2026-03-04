@@ -55,8 +55,9 @@
         "upsell_product_page_TUiphP"
       ],
       "settings": {
-        "preview_mode": true,
-        "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
+        "preview_mode": false,
+        "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design",
+        "enable_reassurance": false
       }
     },
     "header": {
@@ -87,7 +88,7 @@
       ],
       "settings": {
         "menu": "ordinateur",
-        "menu_mobile": "mobile",
+        "menu_mobile": "ordinateur",
         "megamenu": true,
         "sticky_header_type": "always",
         "show_line_separator": true,

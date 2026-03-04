@@ -395,7 +395,9 @@
                   , block: block -%}
             {%- endcase -%}
           {%- endfor -%}
-          {% render 'footer-rassurance' %}
+          {%- if section.settings.enable_reassurance -%}
+            {% render 'footer-rassurance' %}
+          {%- endif -%}
           {%- if cart.cart_level_discount_applications.size > 0 -%}
             <ul
               class="discounts list-unstyled"
@@ -470,6 +472,11 @@
         "type": "product",
         "id": "preview_product",
         "label": "Produit à afficher"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_reassurance",
+        "label": "Afficher le block de reassurance"
       }
     ],
     "blocks": [
