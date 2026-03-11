@@ -12,13 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "details_jJBXri": {
-          "type": "details",
-          "settings": {
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        },
         "rating_max_cbxGJ4": {
           "type": "rating_max",
           "settings": {
@@ -62,6 +55,7 @@
         },
         "text_DzNNBt": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ product.description }}",
             "text_typo_p_size": "14",
@@ -69,6 +63,13 @@
             "text_color": "#000000",
             "margin_top": 15,
             "margin_bottom": 15
+          }
+        },
+        "details_jJBXri": {
+          "type": "details",
+          "settings": {
+            "margin_top": 20,
+            "margin_bottom": 20
           }
         },
         "variant_picker_dRhy4i": {
@@ -146,13 +147,13 @@
         }
       },
       "block_order": [
-        "details_jJBXri",
         "rating_max_cbxGJ4",
         "rating_KLybDT",
         "title_wjgMq3",
         "price_xGmqGm",
         "badge_max_bRGcBD",
         "text_DzNNBt",
+        "details_jJBXri",
         "variant_picker_dRhy4i",
         "buy_buttons_max_WTNj9H",
         "time_livraison_fkJ6dY",
