@@ -12,6 +12,16 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "upsell_product_page_XfnKqB": {
+          "type": "upsell-product-page",
+          "settings": {
+            "title": "Vous aimerez aussi",
+            "product_1": "bague-weekly-bijou-personnalise-unique-vintage-design",
+            "product_2": "charms-mini-alphabet-strass",
+            "product_3": "mini-creole-colette-bijou-personnalise-unique-vintage-design",
+            "product_4": "medaille-plate-10mm"
+          }
+        },
         "rating_max_cbxGJ4": {
           "type": "rating_max",
           "settings": {
@@ -117,6 +127,7 @@
         }
       },
       "block_order": [
+        "upsell_product_page_XfnKqB",
         "rating_max_cbxGJ4",
         "rating_KLybDT",
         "title_wjgMq3",
