@@ -6,8 +6,8 @@
       {% case block.type %}
         {% when 'benefice' %}
           <div {{ block.shopify_attributes }}>
-            {% render 'citation'
-              , icon: 'arrow'
+            {% render 'icon'
+              , icon: 'energy'
               , height: '14px'
               , width: '14px' %}
             <p class="italic!">{{ block.settings.benefice }}</p>
