@@ -107,6 +107,7 @@
         },
         "faq_section_ywQckf": {
           "type": "faq_section",
+          "disabled": true,
           "settings": {
             "question": "Ingrédients",
             "reponse": "Réponse",
@@ -116,6 +117,7 @@
         },
         "faq_section_DQqUq3": {
           "type": "faq_section",
+          "disabled": true,
           "settings": {
             "question": "Recommandé pour",
             "reponse": "Réponse",
@@ -125,6 +127,7 @@
         },
         "faq_section_7tajTz": {
           "type": "faq_section",
+          "disabled": true,
           "settings": {
             "question": "Conseils",
             "reponse": "Réponse",
