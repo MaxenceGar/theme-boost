@@ -44,7 +44,10 @@
                 style="border-radius: var(--rounded--size);">
 
                 {%- if p.featured_media -%}
-                  <a href="{{ p.url }}" class="shrink-0! block!" style="width: 72px; height: 72px; border-radius: calc(var(--rounded--size) * 0.7); overflow: hidden;">
+                  <a
+                    href="{{ p.url }}"
+                    class="shrink-0! block!"
+                    style="width: 72px; height: 72px; border-radius: calc(var(--rounded--size) * 0.7); overflow: hidden;">
                     {{ p.featured_media | image_url: width: 200 | image_tag: loading: 'lazy', class: 'block! w-full! h-full! object-cover!', sizes: '72px' }}
                   </a>
                 {%- endif -%}
@@ -53,7 +56,10 @@
                   <a href="{{ p.url }}" class="no-underline! text-inherit!">
                     <p class="text-[13px]! font-medium! leading-snug! m-0! mb-1! truncate!">{{ p.title | escape }}</p>
                   </a>
-                  {% render 'price', product: p, price_class: '', show_compare_at_price: true %}
+                  {% render 'price'
+                    , product: p
+                    , price_class: ''
+                    , show_compare_at_price: true %}
                 </div>
 
                 {%- if variant_id != blank -%}
