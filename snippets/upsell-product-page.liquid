@@ -18,8 +18,8 @@
   <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
 
   {%- style -%}
-    #{{ upsell_id }} .swiper-pagination-bullet-active { background-color: #000; }
-    #{{ upsell_id }} .swiper-pagination { position: static; margin-top: 10px; }
+    .upsell-swiper .swiper-pagination-bullet-active { background-color: #000; }
+    .upsell-swiper .swiper-pagination { position: static; margin-top: 10px; }
   {%- endstyle -%}
 
   <div class="mt-4!" {{ block.shopify_attributes }}>
@@ -28,7 +28,7 @@
       <p class="text-[15px]! font-bold! mb-3! m-0! text-black tracking-tight">{{ block.settings.title }}</p>
     {% endif %}
 
-    <div class="swiper" id="{{ upsell_id }}">
+    <div class="swiper upsell-swiper" id="{{ upsell_id }}">
       <div class="swiper-wrapper">
 
         {%- for p_key in (1..4) -%}
@@ -40,7 +40,7 @@
             <div class="swiper-slide">
               <div
                 x-data="{ loading: false, added: false }"
-                class="flex! flex-row! gap-3! items-center! p-3! border! border-black/10!"
+                class="flex! flex-row! gap-3! items-center! p-3! border! border-black/10! bg-white"
                 style="border-radius: var(--rounded--size);">
 
                 {%- if p.featured_media -%}
