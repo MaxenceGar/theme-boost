@@ -106,11 +106,11 @@
           "type": "collab_tabs",
           "settings": {
             "tabs_title_1": "Description",
-            "tabs_content_1": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam necessitatibus et laboriosam rerum, iure minima, voluptate quaerat porro vel sapiente debitis culpa iste nulla cumque? Doloribus ducimus libero necessitatibus fuga.",
+            "tabs_content_1": "{{ product.description }}",
             "tabs_title_2": "Livraison",
-            "tabs_content_2": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam necessitatibus et laboriosam rerum, iure minima, voluptate quaerat porro vel sapiente debitis culpa iste nulla cumque? Doloribus ducimus libero necessitatibus fuga.",
+            "tabs_content_2": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam necessitatibus et laboriosam rerum, iure minima, voluptate quaerat porro vel sapiente debitis culpa iste nulla cumque? Doloribus ducimus libero necessitatibus fuga.</p>",
             "tabs_title_3": "Avis",
-            "tabs_content_3": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam necessitatibus et laboriosam rerum, iure minima, voluptate quaerat porro vel sapiente debitis culpa iste nulla cumque? Doloribus ducimus libero necessitatibus fuga.",
+            "tabs_content_3": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam necessitatibus et laboriosam rerum, iure minima, voluptate quaerat porro vel sapiente debitis culpa iste nulla cumque? Doloribus ducimus libero necessitatibus fuga.</p>",
             "margin_top": 15,
             "margin_bottom": 15
           }
