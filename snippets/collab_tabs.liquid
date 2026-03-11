@@ -1,11 +1,42 @@
-<!-- Boutons onglets -->
-<div>
-  <button @click="activeTab = " :class="activeTab === ? 'border-black' : 'border-transparent'">
-    Test
-  </button>
-</div>
+<div x-data="{ activeTab: 0 }" class="page-width py-10">
 
-<!-- Contenus -->
-<div x-show="activeTab ===">
-  Lorem
-</div></div>
+  <!-- Boutons onglets -->
+  <div class="flex gap-2 border-b border-black/10">
+
+    <button
+      @click="activeTab = 0"
+      :class="activeTab === 0 ? 'border-black text-black' : 'border-transparent text-black/40'"
+      class="px-6 py-3 text-sm font-bold uppercase tracking-widest border-b-2 transition-all duration-200 cursor-pointer">
+      Collab 1
+    </button>
+
+    <button
+      @click="activeTab = 1"
+      :class="activeTab === 1 ? 'border-black text-black' : 'border-transparent text-black/40'"
+      class="px-6 py-3 text-sm font-bold uppercase tracking-widest border-b-2 transition-all duration-200 cursor-pointer">
+      Collab 2
+    </button>
+
+    <button
+      @click="activeTab = 2"
+      :class="activeTab === 2 ? 'border-black text-black' : 'border-transparent text-black/40'"
+      class="px-6 py-3 text-sm font-bold uppercase tracking-widest border-b-2 transition-all duration-200 cursor-pointer">
+      Collab 3
+    </button>
+
+  </div>
+
+  <!-- Contenus -->
+  <div x-show="activeTab === 0" class="pt-8">
+    <p>Contenu de la collab 1</p>
+  </div>
+
+  <div x-show="activeTab === 1" class="pt-8">
+    <p>Contenu de la collab 2</p>
+  </div>
+
+  <div x-show="activeTab === 2" class="pt-8">
+    <p>Contenu de la collab 3</p>
+  </div>
+
+</div>

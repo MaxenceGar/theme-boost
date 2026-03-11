@@ -1088,6 +1088,9 @@
   .pt-3 {
     padding-top: calc(var(--spacing) * 3);
   }
+  .pt-8 {
+    padding-top: calc(var(--spacing) * 8);
+  }
   .pt-\[20px\]\! {
     padding-top: 20px !important;
   }
@@ -1150,6 +1153,10 @@
   .text-base\/none {
     font-size: var(--text-base);
     line-height: 1;
+  }
+  .text-sm {
+    font-size: var(--text-sm);
+    line-height: var(--tw-leading, var(--text-sm--line-height));
   }
   .text-sm\! {
     font-size: var(--text-sm) !important;
