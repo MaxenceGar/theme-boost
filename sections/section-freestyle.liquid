@@ -6,7 +6,10 @@
       {% case block.type %}
         {% when 'benefice' %}
           <div {{ block.shopify_attributes }}>
-            {% render 'icon', icon: 'arrow', height: '14px', width: '14px' %}
+            {% render 'citation'
+              , icon: 'arrow'
+              , height: '14px'
+              , width: '14px' %}
             <p class="italic!">{{ block.settings.benefice }}</p>
             <p class="h1">{{ block.settings.value }}</p>
           </div>
@@ -16,33 +19,33 @@
 </section>
 
 {% schema %}
-{
-  "name": "Section Freestyle",
-  "blocks": [
-    {
-      "name": "Bénéfice",
-      "type": "benefice",
-      "settings": [
-        {
-          "type": "text",
-          "id": "benefice",
-          "label": "Titre du bénéfice",
-          "default": "Bénéfice"
-        },
-        {
-          "type": "text",
-          "id": "value",
-          "label": "Valeur du bénéfice",
-          "default": "96%"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Section Freestyle",
-      "category": "Maxence"
-    }
-  ]
-}
+  {
+    "name": "Section Freestyle",
+    "blocks": [
+      {
+        "name": "Bénéfice",
+        "type": "benefice",
+        "settings": [
+          {
+            "type": "text",
+            "id": "benefice",
+            "label": "Titre du bénéfice",
+            "default": "Bénéfice"
+          },
+          {
+            "type": "text",
+            "id": "value",
+            "label": "Valeur du bénéfice",
+            "default": "96%"
+          }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Section Freestyle",
+        "category": "Maxence"
+      }
+    ]
+  }
 {% endschema %}
