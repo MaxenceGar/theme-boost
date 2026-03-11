@@ -8,8 +8,8 @@
           <div {{ block.shopify_attributes }}>
             {% render 'icon'
               , icon: 'energy'
-              , height: block.settings.height
-              , width: 'auto' %}
+              , height: block.settings.size
+              , width: block.settings.size %}
             <p class="italic!">{{ block.settings.benefice }}</p>
             <p class="h1">{{ block.settings.value }}</p>
           </div>
@@ -40,7 +40,7 @@
           },
           {
             "type": "range",
-            "id": "height",
+            "id": "size",
             "label": "Hauteur de l'icon",
             "default": 10,
             "max": 50,
