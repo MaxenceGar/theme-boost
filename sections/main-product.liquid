@@ -104,6 +104,13 @@
                   margin-bottom: {{ block.settings.margin_bottom }}px;">
                   {% render 'collab_tabs', block: block %}
                 </div>
+              
+              {%- # Détails -%}
+              {% when 'details' %}
+                <div {{ block.shopify_attributes }} style="margin-top: {{ block.settings.margin_top }}px;
+                  margin-bottom: {{ block.settings.margin_bottom }}px;">
+                  {% render 'details', block: block %}
+                </div>  
 
               {%- # Texte libre personnalisé avec taille, couleur et marges -%}
               {%- when 'text' -%}
@@ -1004,6 +1011,40 @@
         "max": 100,
         "step": 1,
         "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin Bottom",
+          "default": 0,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        }
+      ]
+    },
+    {
+      "type": "details",
+      "name": "Détails",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Contenue"
+        },
+        {
+          "type": "header",
+          "content": "Paramètre"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin Top",
+          "default": 0,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
         },
         {
           "type": "range",
