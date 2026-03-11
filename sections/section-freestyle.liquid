@@ -1,16 +1,22 @@
 <section class="page-width mb-10!">
   <h1 class="mb-[32px]">Résulats</h1>
   <div class="grid! grid-cols-2! md:grid-cols-4!">
-    <div>
-      {% render 'icon' icon: 'arrow'
-        , height: '14px'
-        , width: '14px' %}
-      <p class="italic!">
-        {{ section.settings.benefice }}
-      </p>
-      <p class="h1">
-        {{ section.settings.value }}
-      </p>
+    {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'benefice' %}
+      <div>
+        {% render 'icon' icon: 'arrow'
+          , height: '14px'
+          , width: '14px' %}
+        <p class="italic!">
+          {{ block.settings.benefice }}
+        </p>
+        <p class="h1">
+          {{ block.settings.value }}
+        </p>
+      </div>
+            {% endcase %}
+            {% endfor %}
     </div>
   </div>
 </section>
@@ -31,6 +37,26 @@
         "id": "value",
         "label": "Valeur du bénéfice",
         "default": "96%"
+      }
+    ],
+    "blocks": [
+      {
+        "name": "Bénéfice",
+        "type": "benefice",
+        "settings": [
+            {
+        "type": "text",
+        "id": "benefice",
+        "label": "Titre du bénéfice",
+        "default": "Bénéfice"
+      },
+      {
+        "type": "text",
+        "id": "value",
+        "label": "Valeur du bénéfice",
+        "default": "96%"
+      }
+        ]
       }
     ],
     "presets": [
