@@ -12,10 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "collab_tabs_74mwYD": {
-          "type": "collab_tabs",
-          "settings": {}
-        },
         "rating_max_cbxGJ4": {
           "type": "rating_max",
           "settings": {
@@ -88,6 +84,10 @@
           "type": "time_livraison",
           "settings": {}
         },
+        "collab_tabs_74mwYD": {
+          "type": "collab_tabs",
+          "settings": {}
+        },
         "faq_section_ywQckf": {
           "type": "faq_section",
           "settings": {
@@ -117,7 +117,6 @@
         }
       },
       "block_order": [
-        "collab_tabs_74mwYD",
         "rating_max_cbxGJ4",
         "rating_KLybDT",
         "title_wjgMq3",
@@ -127,6 +126,7 @@
         "variant_picker_dRhy4i",
         "buy_buttons_max_WTNj9H",
         "time_livraison_fkJ6dY",
+        "collab_tabs_74mwYD",
         "faq_section_ywQckf",
         "faq_section_DQqUq3",
         "faq_section_7tajTz"
