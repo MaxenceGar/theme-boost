@@ -3,11 +3,6 @@
   Expects: block (with settings product_1…product_4, title)
 {% endcomment %}
 
-{%- assign upsell_products = '' | split: '' -%}
-{%- if block.settings.product_1 != blank -%}
-  {%- assign upsell_products = upsell_products | concat: block.settings.product_1.variants -%}
-{%- endif -%}
-
 {%- assign upsell_count = 0 -%}
 {%- for p_key in (1..4) -%}
   {%- assign p_setting = 'product_' | append: p_key -%}
@@ -17,118 +12,110 @@
 {%- endfor -%}
 
 {%- if upsell_count > 0 -%}
+  {%- assign upsell_id = 'UpsellBlock-' | append: block.id -%}
 
-  <div
-    class="mt-4!"
-    {{ block.shopify_attributes }}
-    x-data="{
-      current: 0,
-      total: {{ upsell_count }},
-      touchStartX: 0,
-      swipeStart(e) { this.touchStartX = e.touches[0].clientX; },
-      swipeEnd(e) {
-        const diff = this.touchStartX - e.changedTouches[0].clientX;
-        if (Math.abs(diff) > 50) {
-          if (diff > 0) this.current = (this.current + 1) % this.total;
-          else this.current = (this.current - 1 + this.total) % this.total;
-        }
-      }
-    }">
+  {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+  <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+
+  {%- style -%}
+    #{{ upsell_id }} .swiper-pagination-bullet-active { background-color: #000; }
+    #{{ upsell_id }} .swiper-pagination { position: static; margin-top: 10px; }
+  {%- endstyle -%}
+
+  <div class="mt-4!" {{ block.shopify_attributes }}>
 
     {% if block.settings.title != blank %}
       <p class="text-[15px]! font-bold! mb-3! m-0! text-black tracking-tight">{{ block.settings.title }}</p>
     {% endif %}
 
-    {%- comment -%} Slides {%- endcomment -%}
-    <div @touchstart="swipeStart($event)" @touchend="swipeEnd($event)">
-    {%- assign slide_index = 0 -%}
-    {%- for p_key in (1..4) -%}
-      {%- assign p_setting = 'product_' | append: p_key -%}
-      {%- assign p = block.settings[p_setting] -%}
-      {%- if p != blank -%}
-        {%- assign variant_id = p.first_available_variant.id -%}
+    <div class="swiper" id="{{ upsell_id }}">
+      <div class="swiper-wrapper">
 
-        <div
-          x-show="current === {{ slide_index }}"
-          x-data="{ loading: false, added: false }"
-          x-transition
-          class="flex! flex-row! gap-3! items-center! p-3! border! border-black/10! no-underline! text-inherit!"
-          style="border-radius: var(--rounded--size);">
+        {%- for p_key in (1..4) -%}
+          {%- assign p_setting = 'product_' | append: p_key -%}
+          {%- assign p = block.settings[p_setting] -%}
+          {%- if p != blank -%}
+            {%- assign variant_id = p.first_available_variant.id -%}
 
-          {%- comment -%} Image {%- endcomment -%}
-          {%- if p.featured_media -%}
-            <a href="{{ p.url }}" class="shrink-0! block!" style="width: 72px; height: 72px; border-radius: calc(var(--rounded--size) * 0.7); overflow: hidden;">
-              {{ p.featured_media | image_url: width: 200 | image_tag: loading: 'lazy', class: 'block! w-full! h-full! object-cover!', sizes: '72px' }}
-            </a>
+            <div class="swiper-slide">
+              <div
+                x-data="{ loading: false, added: false }"
+                class="flex! flex-row! gap-3! items-center! p-3! border! border-black/10!"
+                style="border-radius: var(--rounded--size);">
+
+                {%- if p.featured_media -%}
+                  <a href="{{ p.url }}" class="shrink-0! block!" style="width: 72px; height: 72px; border-radius: calc(var(--rounded--size) * 0.7); overflow: hidden;">
+                    {{ p.featured_media | image_url: width: 200 | image_tag: loading: 'lazy', class: 'block! w-full! h-full! object-cover!', sizes: '72px' }}
+                  </a>
+                {%- endif -%}
+
+                <div class="flex-1! min-w-0!">
+                  <a href="{{ p.url }}" class="no-underline! text-inherit!">
+                    <p class="text-[13px]! font-medium! leading-snug! m-0! mb-1! truncate!">{{ p.title | escape }}</p>
+                  </a>
+                  {% render 'price', product: p, price_class: '', show_compare_at_price: true %}
+                </div>
+
+                {%- if variant_id != blank -%}
+                  <button
+                    class="shrink-0! w-9! h-9! flex! items-center! justify-center! border! border-black! transition-all! duration-200! cursor-pointer!"
+                    style="border-radius: calc(var(--rounded--size) * 0.7);"
+                    :class="added ? 'bg-black! text-white!' : 'bg-white! text-black! hover:bg-black! hover:text-white!'"
+                    :disabled="loading"
+                    @click="
+                      loading = true;
+                      fetch('/cart/add.js', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({ items: [{ id: {{ variant_id }}, quantity: 1 }] })
+                      })
+                      .then(r => r.json())
+                      .then(() => {
+                        loading = false;
+                        added = true;
+                        fetch('/?sections=cart-icon-bubble')
+                          .then(r => r.json())
+                          .then(data => {
+                            const parser = new DOMParser();
+                            const html = parser.parseFromString(data['cart-icon-bubble'], 'text/html');
+                            const newBubble = html.querySelector('.cart-count-bubble');
+                            const currentBubble = document.querySelector('.cart-count-bubble');
+                            if (newBubble && currentBubble) currentBubble.innerHTML = newBubble.innerHTML;
+                          });
+                        setTimeout(() => added = false, 2500);
+                      })
+                      .catch(() => { loading = false; })
+                    ">
+                    <span x-show="!loading && !added" class="text-[18px]! leading-none!">+</span>
+                    <span x-show="loading" class="text-[12px]!">…</span>
+                    <span x-show="added" class="text-[14px]!">✓</span>
+                  </button>
+                {%- endif -%}
+
+              </div>
+            </div>
+
           {%- endif -%}
+        {%- endfor -%}
 
-          {%- comment -%} Infos {%- endcomment -%}
-          <div class="flex-1! min-w-0!">
-            <a href="{{ p.url }}" class="no-underline! text-inherit!">
-              <p class="text-[13px]! font-medium! leading-snug! m-0! mb-1! truncate!">{{ p.title | escape }}</p>
-            </a>
-            {% render 'price', product: p, price_class: '', show_compare_at_price: true %}
-          </div>
-
-          {%- comment -%} Bouton Add to cart {%- endcomment -%}
-          {%- if variant_id != blank -%}
-            <button
-              class="shrink-0! w-9! h-9! flex! items-center! justify-center! border! border-black! transition-all! duration-200! cursor-pointer!"
-              style="border-radius: calc(var(--rounded--size) * 0.7);"
-              :class="added ? 'bg-black! text-white!' : 'bg-white! text-black! hover:bg-black! hover:text-white!'"
-              :disabled="loading"
-              @click="
-                loading = true;
-                fetch('/cart/add.js', {
-                  method: 'POST',
-                  headers: { 'Content-Type': 'application/json' },
-                  body: JSON.stringify({ items: [{ id: {{ variant_id }}, quantity: 1 }] })
-                })
-                .then(r => r.json())
-                .then(() => {
-                  loading = false;
-                  added = true;
-                  fetch('/?sections=cart-icon-bubble')
-                    .then(r => r.json())
-                    .then(data => {
-                      const parser = new DOMParser();
-                      const html = parser.parseFromString(data['cart-icon-bubble'], 'text/html');
-                      const newBubble = html.querySelector('.cart-count-bubble');
-                      const currentBubble = document.querySelector('.cart-count-bubble');
-                      if (newBubble && currentBubble) currentBubble.innerHTML = newBubble.innerHTML;
-                    });
-                  setTimeout(() => added = false, 2500);
-                })
-                .catch(() => { loading = false; })
-              ">
-              <span x-show="!loading && !added" class="text-[18px]! leading-none!">+</span>
-              <span x-show="loading" class="text-[12px]!">…</span>
-              <span x-show="added" class="text-[14px]!">✓</span>
-            </button>
-          {%- endif -%}
-
-        </div>
-
-        {%- assign slide_index = slide_index | plus: 1 -%}
-      {%- endif -%}
-    {%- endfor -%}
-
+      </div>
+      {% if upsell_count > 1 %}
+        <div class="swiper-pagination"></div>
+      {% endif %}
     </div>
 
-    {%- comment -%} Navigation dots (si plus d'un produit) {%- endcomment -%}
-    {%- if upsell_count > 1 -%}
-      <div class="flex! justify-center! gap-2! mt-3!">
-        {%- for i in (1..upsell_count) -%}
-          {%- assign dot_index = forloop.index0 -%}
-          <button
-            @click="current = {{ dot_index }}"
-            :class="current === {{ dot_index }} ? 'bg-black!' : 'bg-black/20!'"
-            class="w-2! h-2! rounded-full! border-none! p-0! cursor-pointer! transition-all! duration-200!">
-          </button>
-        {%- endfor -%}
-      </div>
-    {%- endif -%}
-
   </div>
+
+  {% if upsell_count > 1 %}
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        new Swiper('#{{ upsell_id }}', {
+          slidesPerView: 1,
+          spaceBetween: 12,
+          pagination: { el: '#{{ upsell_id }} .swiper-pagination', clickable: true },
+        });
+      });
+    </script>
+  {% endif %}
 
 {%- endif -%}
