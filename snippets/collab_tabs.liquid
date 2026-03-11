@@ -1,4 +1,4 @@
-<div x-data="{ activeTab: 0 }" class="page-width py-10">
+<div x-data="{ activeTab: 0 }">
 
   <!-- Boutons onglets -->
   <div class="flex gap-2 border-b border-black/10">
@@ -6,21 +6,21 @@
     <button
       @click="activeTab = 0"
       :class="activeTab === 0 ? 'border-black text-black' : 'border-transparent text-black/40'"
-      class="px-6 py-3 text-sm font-bold uppercase tracking-widest border-b-2 transition-all duration-200 cursor-pointer">
+      class="border-b-2 transition-all duration-200 cursor-pointer">
       Collab 1
     </button>
 
     <button
       @click="activeTab = 1"
       :class="activeTab === 1 ? 'border-black text-black' : 'border-transparent text-black/40'"
-      class="px-6 py-3 text-sm font-bold uppercase tracking-widest border-b-2 transition-all duration-200 cursor-pointer">
+      class="border-b-2 transition-all duration-200 cursor-pointer">
       Collab 2
     </button>
 
     <button
       @click="activeTab = 2"
       :class="activeTab === 2 ? 'border-black text-black' : 'border-transparent text-black/40'"
-      class="px-6 py-3 text-sm font-bold uppercase tracking-widest border-b-2 transition-all duration-200 cursor-pointer">
+      class="border-b-2 transition-all duration-200 cursor-pointer">
       Collab 3
     </button>
 
