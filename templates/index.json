@@ -390,7 +390,7 @@
           "settings": {
             "benefice": "Bénéfice",
             "value": "XX%",
-            "height": 50
+            "size": 50
           }
         },
         "benefice_XChztR": {
@@ -398,7 +398,7 @@
           "settings": {
             "benefice": "Bénéfice",
             "value": "96%",
-            "height": 50
+            "size": 50
           }
         },
         "benefice_9yA8gL": {
@@ -406,7 +406,7 @@
           "settings": {
             "benefice": "Bénéfice",
             "value": "96%",
-            "height": 10
+            "size": 10
           }
         },
         "benefice_xnPiyd": {
@@ -414,7 +414,7 @@
           "settings": {
             "benefice": "Bénéfice",
             "value": "96%",
-            "height": 10
+            "size": 10
           }
         }
       },
