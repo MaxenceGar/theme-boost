@@ -21,13 +21,26 @@
   <div
     class="mt-4!"
     {{ block.shopify_attributes }}
-    x-data="{ current: 0, total: {{ upsell_count }} }">
+    x-data="{
+      current: 0,
+      total: {{ upsell_count }},
+      touchStartX: 0,
+      swipeStart(e) { this.touchStartX = e.touches[0].clientX; },
+      swipeEnd(e) {
+        const diff = this.touchStartX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) {
+          if (diff > 0) this.current = (this.current + 1) % this.total;
+          else this.current = (this.current - 1 + this.total) % this.total;
+        }
+      }
+    }">
 
     {% if block.settings.title != blank %}
       <p class="text-[15px]! font-bold! mb-3! m-0! text-black tracking-tight">{{ block.settings.title }}</p>
     {% endif %}
 
     {%- comment -%} Slides {%- endcomment -%}
+    <div @touchstart="swipeStart($event)" @touchend="swipeEnd($event)">
     {%- assign slide_index = 0 -%}
     {%- for p_key in (1..4) -%}
       {%- assign p_setting = 'product_' | append: p_key -%}
@@ -99,6 +112,8 @@
         {%- assign slide_index = slide_index | plus: 1 -%}
       {%- endif -%}
     {%- endfor -%}
+
+    </div>
 
     {%- comment -%} Navigation dots (si plus d'un produit) {%- endcomment -%}
     {%- if upsell_count > 1 -%}
