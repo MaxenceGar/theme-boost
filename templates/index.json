@@ -394,39 +394,39 @@
             "size_width": 50
           }
         },
-        "benefice_XChztR": {
+        "benefice_6GxJGp": {
           "type": "benefice",
           "settings": {
             "benefice": "Bénéfice",
-            "value": "96%",
-            "size_height": 10,
-            "size_width": 10
+            "value": "XX%",
+            "size_height": 50,
+            "size_width": 50
           }
         },
-        "benefice_9yA8gL": {
+        "benefice_HXhVQM": {
           "type": "benefice",
           "settings": {
             "benefice": "Bénéfice",
-            "value": "96%",
-            "size_height": 10,
-            "size_width": 10
+            "value": "XX%",
+            "size_height": 50,
+            "size_width": 50
           }
         },
-        "benefice_xnPiyd": {
+        "benefice_cWgaaQ": {
           "type": "benefice",
           "settings": {
             "benefice": "Bénéfice",
-            "value": "96%",
-            "size_height": 10,
-            "size_width": 10
+            "value": "XX%",
+            "size_height": 50,
+            "size_width": 50
           }
         }
       },
       "block_order": [
         "benefice_CHUN7w",
-        "benefice_XChztR",
-        "benefice_9yA8gL",
-        "benefice_xnPiyd"
+        "benefice_6GxJGp",
+        "benefice_HXhVQM",
+        "benefice_cWgaaQ"
       ],
       "name": "Section Freestyle",
       "settings": {}
