@@ -17,16 +17,6 @@
   {{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
   <script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
 
-  {%- style -%}
-    .upsell-swiper .swiper-pagination-bullet-active {
-      background-color: #000;
-    }
-    .upsell-swiper .swiper-pagination {
-      position: static;
-      margin-top: 10px;
-    }
-  {%- endstyle -%}
-
   <div class="mt-4!" {{ block.shopify_attributes }}>
 
     {% if block.settings.title != blank %}
