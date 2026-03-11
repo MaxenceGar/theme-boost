@@ -100,7 +100,8 @@
 
               {%- # Collabs Tabs -%}
               {% when 'collab_tabs' %}
-                <div {{ block.shopify_attributes }}>
+                <div {{ block.shopify_attributes }} style="margin-top: {{ block.settings.margin_top }}px;
+                  margin-bottom: {{ block.settings.margin_bottom }}px;">
                   {% render 'collab_tabs', block: block %}
                 </div>
 
