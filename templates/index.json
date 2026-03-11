@@ -381,6 +381,11 @@
         "margin_top": 100,
         "margin_bottom": 100
       }
+    },
+    "section_freestyle_TBHn3V": {
+      "type": "section-freestyle",
+      "name": "Section Freestyle",
+      "settings": {}
     }
   },
   "order": [
@@ -392,6 +397,7 @@
     "section_gauche_droite_waaAai",
     "instagram_Aa8Tj6",
     "faq_product_page_9RC7rB",
-    "avis_client_NhydB8"
+    "avis_client_NhydB8",
+    "section_freestyle_TBHn3V"
   ]
 }
