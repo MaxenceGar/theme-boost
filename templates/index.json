@@ -390,7 +390,8 @@
           "settings": {
             "benefice": "Bénéfice",
             "value": "XX%",
-            "size": 50
+            "size_height": 50,
+            "size_width": 50
           }
         },
         "benefice_XChztR": {
@@ -398,7 +399,8 @@
           "settings": {
             "benefice": "Bénéfice",
             "value": "96%",
-            "size": 50
+            "size_height": 10,
+            "size_width": 10
           }
         },
         "benefice_9yA8gL": {
@@ -406,7 +408,8 @@
           "settings": {
             "benefice": "Bénéfice",
             "value": "96%",
-            "size": 10
+            "size_height": 10,
+            "size_width": 10
           }
         },
         "benefice_xnPiyd": {
@@ -414,7 +417,8 @@
           "settings": {
             "benefice": "Bénéfice",
             "value": "96%",
-            "size": 10
+            "size_height": 10,
+            "size_width": 10
           }
         }
       },
