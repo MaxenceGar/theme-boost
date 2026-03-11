@@ -98,6 +98,10 @@
               {%- when '@app' -%}
                 {% render block %}
 
+              {%- # Collabs Tabs -%}
+              {% when 'collab_tabs' %}
+                {% render 'collab_tabs' %}
+
               {%- # Texte libre personnalisé avec taille, couleur et marges -%}
               {%- when 'text' -%}
                 <div
