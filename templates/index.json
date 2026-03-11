@@ -389,28 +389,32 @@
           "type": "benefice",
           "settings": {
             "benefice": "Bénéfice",
-            "value": "XX%"
+            "value": "XX%",
+            "height": 50
           }
         },
         "benefice_XChztR": {
           "type": "benefice",
           "settings": {
             "benefice": "Bénéfice",
-            "value": "96%"
+            "value": "96%",
+            "height": 10
           }
         },
         "benefice_9yA8gL": {
           "type": "benefice",
           "settings": {
             "benefice": "Bénéfice",
-            "value": "96%"
+            "value": "96%",
+            "height": 10
           }
         },
         "benefice_xnPiyd": {
           "type": "benefice",
           "settings": {
             "benefice": "Bénéfice",
-            "value": "96%"
+            "value": "96%",
+            "height": 10
           }
         }
       },
