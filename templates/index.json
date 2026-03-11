@@ -384,8 +384,47 @@
     },
     "section_freestyle_TBHn3V": {
       "type": "section-freestyle",
+      "blocks": {
+        "benefice_CHUN7w": {
+          "type": "benefice",
+          "settings": {
+            "benefice": "Bénéfice",
+            "value": "96%"
+          }
+        },
+        "benefice_XChztR": {
+          "type": "benefice",
+          "settings": {
+            "benefice": "Bénéfice",
+            "value": "96%"
+          }
+        },
+        "benefice_9yA8gL": {
+          "type": "benefice",
+          "settings": {
+            "benefice": "Bénéfice",
+            "value": "96%"
+          }
+        },
+        "benefice_xnPiyd": {
+          "type": "benefice",
+          "settings": {
+            "benefice": "Bénéfice",
+            "value": "96%"
+          }
+        }
+      },
+      "block_order": [
+        "benefice_CHUN7w",
+        "benefice_XChztR",
+        "benefice_9yA8gL",
+        "benefice_xnPiyd"
+      ],
       "name": "Section Freestyle",
-      "settings": {}
+      "settings": {
+        "benefice": "Bénéfice",
+        "value": "96%"
+      }
     }
   },
   "order": [
