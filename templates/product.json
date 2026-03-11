@@ -300,6 +300,80 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "avis_client_W7qzEV": {
+      "type": "avis-client",
+      "blocks": {
+        "avis_tHpfYK": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez",
+            "img": "shopify://shop_images/105.png",
+            "product": "bague-weekly-bijou-personnalise-unique-vintage-design"
+          }
+        },
+        "avis_3EPYGd": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/IMG_8593.jpg",
+            "product": "chaines-forcat-en-plaque-or-3-microns"
+          }
+        },
+        "avis_eJ9QMf": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/IMG_3380.jpg",
+            "product": "charms-mini-alphabet-strass"
+          }
+        },
+        "avis_w3zKwR": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/165.png",
+            "product": "medaille-plate-10mm"
+          }
+        },
+        "avis_Y8bBaz": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/620223319_18516347818070446_6934433274679179185_n.jpg",
+            "product": "abonnement"
+          }
+        }
+      },
+      "block_order": [
+        "avis_tHpfYK",
+        "avis_3EPYGd",
+        "avis_eJ9QMf",
+        "avis_w3zKwR",
+        "avis_Y8bBaz"
+      ],
+      "name": "Avis Client",
+      "settings": {
+        "section_title": "Ils en parlent mieux que nous.",
+        "section_subtitle": "4.44/5 sur 34165 avis",
+        "margin_top": 100,
+        "margin_bottom": 100
+      }
+    },
+    "avis_client_WaHRXH": {
+      "type": "avis-client",
+      "name": "Avis Client",
+      "settings": {
+        "section_title": "",
+        "section_subtitle": "",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
     }
   },
   "order": [
@@ -307,6 +381,8 @@
     "marquee_dtRHhV",
     "section_gauche_droite_nU3hJz",
     "faq_product_page_eDmRRi",
-    "related-products"
+    "avis_client_W7qzEV",
+    "related-products",
+    "avis_client_WaHRXH"
   ]
 }
