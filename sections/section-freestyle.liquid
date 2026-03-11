@@ -1,18 +1,16 @@
-<section class="page-width">
+<section class="page-width m-10">
   <h1 class="mb-[32px]">Résulats</h1>
-  <div class="w-full!">
-    <div class="grid! grid-cols-2! md:grid-cols-4!">
-      <div>
-        {% render 'icon' icon: 'arrow'
-          , height: '14px'
-          , width: '14px' %}
-        <p class="italic!">
-          {{ section.settings.benefice }}
-        </p>
-        <p class="h1">
-          {{ section.settings.value }}
-        </p>
-      </div>
+  <div class="grid! grid-cols-2! md:grid-cols-4!">
+    <div>
+      {% render 'icon' icon: 'arrow'
+        , height: '14px'
+        , width: '14px' %}
+      <p class="italic!">
+        {{ section.settings.benefice }}
+      </p>
+      <p class="h1">
+        {{ section.settings.value }}
+      </p>
     </div>
   </div>
 </section>
