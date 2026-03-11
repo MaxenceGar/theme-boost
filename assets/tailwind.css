@@ -947,6 +947,12 @@
       border-color: color-mix(in oklab, var(--color-black) 10%, transparent) !important;
     }
   }
+  .border-black\/20 {
+    border-color: color-mix(in srgb, #000 20%, transparent);
+    @supports (color: color-mix(in lab, red, red)) {
+      border-color: color-mix(in oklab, var(--color-black) 20%, transparent);
+    }
+  }
   .border-gray-50 {
     border-color: var(--color-gray-50);
   }
