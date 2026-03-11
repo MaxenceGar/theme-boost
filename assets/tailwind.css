@@ -979,6 +979,9 @@
   .bg-\[\#2E7D5A\]\/20\! {
     background-color: color-mix(in oklab, #2E7D5A 20%, transparent) !important;
   }
+  .bg-\[\#FBF8F5\] {
+    background-color: #FBF8F5;
+  }
   .bg-\[\#d9d9d999\]\! {
     background-color: #d9d9d999 !important;
   }
