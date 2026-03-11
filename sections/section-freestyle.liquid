@@ -7,34 +7,10 @@
           , height: '14px'
           , width: '14px' %}
         <p class="italic!">
-          Bénéfice 1
+          {{ section.settings.benefice }}
         </p>
         <p class="h1">
-          96%
-        </p>
-      </div>
-      <div>
-        <p class="italic!">
-          Bénéfice 1
-        </p>
-        <p class="h1">
-          96%
-        </p>
-      </div>
-      <div>
-        <p class="italic!">
-          Bénéfice 1
-        </p>
-        <p class="h1">
-          96%
-        </p>
-      </div>
-      <div>
-        <p class="italic!">
-          Bénéfice 1
-        </p>
-        <p class="h1">
-          96%
+          {{ section.settings.value }}
         </p>
       </div>
     </div>
@@ -45,7 +21,20 @@
 
   {
     "name": "Section Freestyle",
-    "settings": [],
+    "settings": [
+      {
+        "type": "text",
+        "id": "benefice",
+        "label": "Titre du bénéfice",
+        "default": "Bénéfice"
+      },
+      {
+        "type": "text",
+        "id": "value",
+        "label": "Valeur du bénéfice",
+        "default": "96%"
+      }
+    ],
     "presets": [
       {
         "name": "Section Freestyle"
