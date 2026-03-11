@@ -97,12 +97,12 @@
         "collab_tabs_74mwYD": {
           "type": "collab_tabs",
           "settings": {
-            "tabs_title_1": "zarezr",
-            "tabs_content_1": "",
-            "tabs_title_2": "",
-            "tabs_content_2": "",
-            "tabs_title_3": "",
-            "tabs_content_3": ""
+            "tabs_title_1": "Description",
+            "tabs_content_1": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam necessitatibus et laboriosam rerum, iure minima, voluptate quaerat porro vel sapiente debitis culpa iste nulla cumque? Doloribus ducimus libero necessitatibus fuga.",
+            "tabs_title_2": "Livraison",
+            "tabs_content_2": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam necessitatibus et laboriosam rerum, iure minima, voluptate quaerat porro vel sapiente debitis culpa iste nulla cumque? Doloribus ducimus libero necessitatibus fuga.",
+            "tabs_title_3": "Avis",
+            "tabs_content_3": "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam necessitatibus et laboriosam rerum, iure minima, voluptate quaerat porro vel sapiente debitis culpa iste nulla cumque? Doloribus ducimus libero necessitatibus fuga."
           }
         },
         "faq_section_ywQckf": {
