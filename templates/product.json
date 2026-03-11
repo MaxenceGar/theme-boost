@@ -12,6 +12,13 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "details_jJBXri": {
+          "type": "details",
+          "settings": {
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
         "rating_max_cbxGJ4": {
           "type": "rating_max",
           "settings": {
@@ -139,6 +146,7 @@
         }
       },
       "block_order": [
+        "details_jJBXri",
         "rating_max_cbxGJ4",
         "rating_KLybDT",
         "title_wjgMq3",
