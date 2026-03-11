@@ -389,7 +389,7 @@
           "type": "benefice",
           "settings": {
             "benefice": "Bénéfice",
-            "value": "96%"
+            "value": "XX%"
           }
         },
         "benefice_XChztR": {
@@ -421,10 +421,7 @@
         "benefice_xnPiyd"
       ],
       "name": "Section Freestyle",
-      "settings": {
-        "benefice": "Bénéfice",
-        "value": "96%"
-      }
+      "settings": {}
     }
   },
   "order": [
