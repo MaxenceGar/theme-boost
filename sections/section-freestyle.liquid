@@ -1,5 +1,5 @@
 <section class="page-width mb-10!">
-  <h3 class="mb-[32px]">Résulats</h3>
+  <h3 class="mb-[32px] h1">Résulats</h3>
 
   <div class="grid! grid-cols-2! md:grid-cols-4! gap-6!">
     {% for block in section.blocks %}
@@ -8,8 +8,8 @@
           <div {{ block.shopify_attributes }}>
             {% render 'icon'
               , icon: 'energy'
-              , height: '18px'
-              , width: '18px' %}
+              , height: block.settings.height
+              , width: 'auto' %}
             <p class="italic!">{{ block.settings.benefice }}</p>
             <p class="h1">{{ block.settings.value }}</p>
           </div>
@@ -37,6 +37,16 @@
             "id": "value",
             "label": "Valeur du bénéfice",
             "default": "96%"
+          },
+          {
+            "type": "range",
+            "id": "height",
+            "label": "Hauteur de l'icon",
+            "default": 10,
+            "max": 50,
+            "min": 0,
+            "step": 1,
+            "unit": "px"
           }
         ]
       }
