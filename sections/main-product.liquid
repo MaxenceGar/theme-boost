@@ -100,7 +100,9 @@
 
               {%- # Collabs Tabs -%}
               {% when 'collab_tabs' %}
-                {% render 'collab_tabs', block: block %}
+                <div {{ block.shopify_attributes }}>
+                  {% render 'collab_tabs', block: block %}
+                </div>
 
               {%- # Texte libre personnalisé avec taille, couleur et marges -%}
               {%- when 'text' -%}
