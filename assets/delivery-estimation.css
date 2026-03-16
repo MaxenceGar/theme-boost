@@ -79,8 +79,8 @@
   transform: translate(-50%, -50%);
   width: 26px;
   height: 26px;
-  color: var(--color-foreground);
-  fill: var(--color-foreground);
+  color: var(--color-text-secondaire);
+  fill: var(--color-text-secondaire);
 }
 
 .delivery__icon>*:hover {

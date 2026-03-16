@@ -172,7 +172,7 @@
       "type": "fixed-collection",
       "name": "Fixed Collection",
       "settings": {
-        "title": "Nos coups de coeur",
+        "title": "<strong>Nos coups de coe</strong>ur",
         "subtitle": "Des incontournables bientôt essentiels dans votre collection.",
         "button_label": "Découvrir",
         "button_style": "btn-primaire",
@@ -430,6 +430,11 @@
       ],
       "name": "Section Freestyle",
       "settings": {}
+    },
+    "design_system_wCz3pF": {
+      "type": "design-system",
+      "name": "Design System",
+      "settings": {}
     }
   },
   "order": [
@@ -442,6 +447,7 @@
     "instagram_Aa8Tj6",
     "faq_product_page_9RC7rB",
     "avis_client_NhydB8",
-    "section_freestyle_TBHn3V"
+    "section_freestyle_TBHn3V",
+    "design_system_wCz3pF"
   ]
 }

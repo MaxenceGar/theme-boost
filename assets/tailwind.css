@@ -312,9 +312,6 @@
   .m-4 {
     margin: calc(var(--spacing) * 4);
   }
-  .m-10 {
-    margin: calc(var(--spacing) * 10);
-  }
   .m-auto\! {
     margin: auto !important;
   }
@@ -484,9 +481,6 @@
     width: calc(var(--spacing) * 5);
     height: calc(var(--spacing) * 5);
   }
-  .h-2\! {
-    height: calc(var(--spacing) * 2) !important;
-  }
   .h-4\! {
     height: calc(var(--spacing) * 4) !important;
   }
@@ -520,9 +514,6 @@
   .h-30 {
     height: calc(var(--spacing) * 30);
   }
-  .h-30\! {
-    height: calc(var(--spacing) * 30) !important;
-  }
   .h-32\! {
     height: calc(var(--spacing) * 32) !important;
   }
@@ -552,9 +543,6 @@
   }
   .h-full\! {
     height: 100% !important;
-  }
-  .w-2\! {
-    width: calc(var(--spacing) * 2) !important;
   }
   .w-4\! {
     width: calc(var(--spacing) * 4) !important;
@@ -588,9 +576,6 @@
   }
   .w-30 {
     width: calc(var(--spacing) * 30);
-  }
-  .w-30\! {
-    width: calc(var(--spacing) * 30) !important;
   }
   .w-32\! {
     width: calc(var(--spacing) * 32) !important;
@@ -1004,12 +989,6 @@
   .bg-black\! {
     background-color: var(--color-black) !important;
   }
-  .bg-black\/20\! {
-    background-color: color-mix(in srgb, #000 20%, transparent) !important;
-    @supports (color: color-mix(in lab, red, red)) {
-      background-color: color-mix(in oklab, var(--color-black) 20%, transparent) !important;
-    }
-  }
   .bg-gray-200 {
     background-color: var(--color-gray-200);
   }
@@ -1142,9 +1121,6 @@
   .pt-3 {
     padding-top: calc(var(--spacing) * 3);
   }
-  .pt-8 {
-    padding-top: calc(var(--spacing) * 8);
-  }
   .pt-\[20px\]\! {
     padding-top: 20px !important;
   }
@@ -1207,10 +1183,6 @@
   .text-base\/none {
     font-size: var(--text-base);
     line-height: 1;
-  }
-  .text-sm {
-    font-size: var(--text-sm);
-    line-height: var(--tw-leading, var(--text-sm--line-height));
   }
   .text-sm\! {
     font-size: var(--text-sm) !important;
@@ -1392,9 +1364,6 @@
   }
   .text-inherit\! {
     color: inherit !important;
-  }
-  .text-red-500 {
-    color: var(--color-red-500);
   }
   .text-stone-700 {
     color: var(--color-stone-700);

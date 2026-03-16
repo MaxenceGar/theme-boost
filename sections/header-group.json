@@ -11,21 +11,31 @@
   "name": "t:sections.header.name",
   "type": "header",
   "sections": {
-    "announcement-bar": {
+    "announcement_bar_gBqP7f": {
       "type": "announcement-bar",
       "blocks": {
-        "annonce_wErYtg": {
-          "type": "annonce",
+        "announcement_Eg69L6": {
+          "type": "announcement",
           "settings": {
-            "text": "Livraison offerte dès 40€ d'achat"
+            "text": "Livraison gratuite à partir de 70€"
+          }
+        },
+        "announcement_E3Eqxe": {
+          "type": "announcement",
+          "settings": {
+            "text": "Paiement sécurisé"
           }
         }
       },
       "block_order": [
-        "annonce_wErYtg"
+        "announcement_Eg69L6",
+        "announcement_E3Eqxe"
       ],
+      "name": "Barre d'annonce",
       "settings": {
-        "bg_color": "#000000"
+        "bg_color": "#000000",
+        "margin_top": 0,
+        "margin_bottom": 0
       }
     },
     "cart-drawer": {
@@ -100,7 +110,7 @@
     }
   },
   "order": [
-    "announcement-bar",
+    "announcement_bar_gBqP7f",
     "cart-drawer",
     "header"
   ]

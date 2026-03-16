@@ -1364,3 +1364,75 @@ if (!customElements.get('delivery-estimation')) {
     },
   );
 }
+
+// Announcement Bar Swiper
+function initAnnouncementBar() {
+  const announcementSwipers = document.querySelectorAll('[data-announcement-swiper]');
+
+  announcementSwipers.forEach(swiperEl => {
+    const wrapper = swiperEl.closest('.section-announcement-bar__wrapper');
+
+    new Swiper(swiperEl, {
+      loop: true,
+      autoplay: {
+        delay: 5000,
+        disableOnInteraction: false,
+      },
+      navigation: {
+        nextEl: wrapper ? wrapper.querySelector('[data-next-announcement]') : null,
+        prevEl: wrapper ? wrapper.querySelector('[data-prev-announcement]') : null,
+      },
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true,
+      },
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initAnnouncementBar);
+document.addEventListener('shopify:section:load', initAnnouncementBar);
+
+// Before After Slider
+function initBeforeAfter() {
+  const containers = document.querySelectorAll('[data-before-after]');
+
+  containers.forEach(container => {
+    const overlay = container.querySelector('[data-overlay]');
+    const handle = container.querySelector('[data-divider]');
+    let isActive = false;
+
+    function move(e) {
+      if (!isActive) return;
+
+      const rect = container.getBoundingClientRect();
+      let x = e.clientX - rect.left;
+
+      // Clamp x between 0 and container width
+      x = Math.max(0, Math.min(x, rect.width));
+
+      const percent = (x / rect.width) * 100;
+
+      overlay.style.width = percent + '%';
+    }
+
+    function startDrag() {
+      isActive = true;
+    }
+
+    function endDrag() {
+      isActive = false;
+    }
+
+    // Mouse events
+    handle.addEventListener('mousedown', startDrag);
+    document.addEventListener('mousemove', move);
+    document.addEventListener('mouseup', endDrag);
+
+    // Cleanup on leave
+    container.addEventListener('mouseleave', endDrag);
+  });
+}
+
+document.addEventListener('DOMContentLoaded', initBeforeAfter);
+document.addEventListener('shopify:section:load', initBeforeAfter);

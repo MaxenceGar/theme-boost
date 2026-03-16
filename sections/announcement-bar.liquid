@@ -1,51 +1,80 @@
-<div class="py-3 px-24 text-white!" style="background-color: {{ section.settings.bg_color }};">
-  <div class="flex flex-row items-center justify-between text-[12px]!">
+{{ 'section-announcement-bar.css' | asset_url | stylesheet_tag }}
 
-    <!-- Gauche -->
-    <div class="flex-1 text-left hidden! md:block!">
-      <a href="tel:0673551150"></a>
-    </div>
+<div
+  class="page-width section-announcement-bar"
+  style="background-color: {{ section.settings.bg_color }}; margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;"
+  {{ block.shopify_attributes }}>
 
-    <!-- Centre -->
-    <div class="flex-1">
-      {% for block in section.blocks %}
-        <div {{ block.shopify_attributes }}>
-          <p class="text-center">{{ block.settings.text }}</p>
+  {% if section.blocks.size > 0 %}
+    {% if section.blocks.size == 1 %}
+      <!-- Affichage simple si 1 seul block -->
+      <div class="section-announcement-bar__content">
+        <p class="section-announcement-bar__text">{{ section.blocks.first.settings.text }}</p>
+      </div>
+    {% else %}
+      <!-- Carousel Swiper si plusieurs blocks -->
+      <div class="section-announcement-bar__wrapper">
+        <button class="section-announcement-bar__btn section-announcement-bar__btn--prev" data-prev-announcement></button>
+
+        <div class="swiper section-announcement-bar__swiper" data-announcement-swiper>
+          <div class="swiper-wrapper">
+            {% for block in section.blocks %}
+              <div class="swiper-slide">
+                <div class="section-announcement-bar__content" {{ block.shopify_attributes }}>
+                  <p class="section-announcement-bar__text">{{ block.settings.text }}</p>
+                </div>
+              </div>
+            {% endfor %}
+          </div>
         </div>
-      {% endfor %}
-    </div>
 
-    <!-- Droite -->
-    <div class="flex-1 text-right hidden! md:block!">
-      <a href="tel:0673551150"></a>
-    </div>
-  </div>
+        <button class="section-announcement-bar__btn section-announcement-bar__btn--next" data-next-announcement></button>
+      </div>
+    {% endif %}
+  {% endif %}
 </div>
-
 
 {% schema %}
   {
     "name": "Barre d'annonce",
-    "class": "announcement-bar-section",
     "settings": [
       {
         "type": "color",
         "id": "bg_color",
         "label": "Couleur de fond",
-        "default": "#FFEF00"
+        "default": "#000000"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "label": "Marge top",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Marge bottom",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
       }
     ],
     "blocks": [
       {
-        "type": "annonce",
+        "type": "announcement",
         "name": "Annonce",
-        "limit": 1,
         "settings": [
           {
             "type": "text",
             "id": "text",
             "label": "Texte",
-            "default": "Livraison gratuite a partir de 70€"
+            "default": "Livraison gratuite à partir de 70€"
           }
         ]
       }
@@ -55,7 +84,7 @@
         "name": "Barre d'annonce",
         "blocks": [
           {
-            "type": "annonce"
+            "type": "announcement"
           }
         ]
       }
