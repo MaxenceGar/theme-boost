@@ -1070,9 +1070,6 @@
   .px-16 {
     padding-inline: calc(var(--spacing) * 16);
   }
-  .px-24 {
-    padding-inline: calc(var(--spacing) * 24);
-  }
   .px-\[32px\] {
     padding-inline: 32px;
   }
@@ -1156,9 +1153,6 @@
   }
   .text-left {
     text-align: left;
-  }
-  .text-right {
-    text-align: right;
   }
   .text-2xl\! {
     font-size: var(--text-2xl) !important;
