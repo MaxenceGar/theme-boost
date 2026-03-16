@@ -1,0 +1,42 @@
+<div x-data="{ activeTab: 0 }">
+
+  <!-- Boutons onglets -->
+  <div class="flex gap-2 border-b border-black/10 gap-10">
+
+    <button
+      @click="activeTab = 0"
+      :class="activeTab === 0 ? 'border-black text-black' : 'border-transparent text-black/40'"
+      class="border-b-2 transition-all duration-200 cursor-pointer">
+      {{ block.settings.tabs_title_1 }}
+    </button>
+
+    <button
+      @click="activeTab = 1"
+      :class="activeTab === 1 ? 'border-black text-black' : 'border-transparent text-black/40'"
+      class="border-b-2 transition-all duration-200 cursor-pointer">
+      {{ block.settings.tabs_title_2 }}
+    </button>
+
+    <button
+      @click="activeTab = 2"
+      :class="activeTab === 2 ? 'border-black text-black' : 'border-transparent text-black/40'"
+      class="border-b-2 transition-all duration-200 cursor-pointer">
+      {{ block.settings.tabs_title_3 }}
+    </button>
+
+  </div>
+
+  <!-- Contenus -->
+  <div x-show="activeTab === 0" class="pt-2">
+    {{ block.settings.tabs_content_1 }}
+  </div>
+
+  <div x-show="activeTab === 1" class="pt-2">
+    {{ block.settings.tabs_content_2 }}
+  </div>
+
+  <div x-show="activeTab === 2" class="pt-2">
+    {{ block.settings.tabs_content_3 }}
+  </div>
+
+</div>

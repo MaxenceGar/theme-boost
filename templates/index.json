@@ -381,6 +381,55 @@
         "margin_top": 100,
         "margin_bottom": 100
       }
+    },
+    "section_freestyle_TBHn3V": {
+      "type": "section-freestyle",
+      "blocks": {
+        "benefice_CHUN7w": {
+          "type": "benefice",
+          "settings": {
+            "benefice": "Bénéfice",
+            "value": "XX%",
+            "size_height": 50,
+            "size_width": 50
+          }
+        },
+        "benefice_6GxJGp": {
+          "type": "benefice",
+          "settings": {
+            "benefice": "Bénéfice",
+            "value": "XX%",
+            "size_height": 50,
+            "size_width": 50
+          }
+        },
+        "benefice_HXhVQM": {
+          "type": "benefice",
+          "settings": {
+            "benefice": "Bénéfice",
+            "value": "XX%",
+            "size_height": 50,
+            "size_width": 50
+          }
+        },
+        "benefice_cWgaaQ": {
+          "type": "benefice",
+          "settings": {
+            "benefice": "Bénéfice",
+            "value": "XX%",
+            "size_height": 50,
+            "size_width": 50
+          }
+        }
+      },
+      "block_order": [
+        "benefice_CHUN7w",
+        "benefice_6GxJGp",
+        "benefice_HXhVQM",
+        "benefice_cWgaaQ"
+      ],
+      "name": "Section Freestyle",
+      "settings": {}
     }
   },
   "order": [
@@ -392,6 +441,7 @@
     "section_gauche_droite_waaAai",
     "instagram_Aa8Tj6",
     "faq_product_page_9RC7rB",
-    "avis_client_NhydB8"
+    "avis_client_NhydB8",
+    "section_freestyle_TBHn3V"
   ]
 }

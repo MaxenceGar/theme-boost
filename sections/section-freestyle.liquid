@@ -1,51 +1,70 @@
-<section class="page-width">
-  <h1 class="mb-[32px]">Résulats</h1>
-  <div class="w-full!">
-    <div class="grid! grid-cols-2! md:grid-cols-4!">
-      <div>
-        <p class="italic!">
-          Bénéfice 1
-        </p>
-        <p class="h1">
-          96%
-        </p>
-      </div>
-      <div>
-        <p class="italic!">
-          Bénéfice 1
-        </p>
-        <p class="h1">
-          96%
-        </p>
-      </div>
-      <div>
-        <p class="italic!">
-          Bénéfice 1
-        </p>
-        <p class="h1">
-          96%
-        </p>
-      </div>
-      <div>
-        <p class="italic!">
-          Bénéfice 1
-        </p>
-        <p class="h1">
-          96%
-        </p>
-      </div>
-    </div>
+<section class="page-width mb-10!">
+  <h3 class="mb-[32px] h1">Résulats</h3>
+
+  <div class="grid! grid-cols-2! md:grid-cols-4! gap-6!">
+    {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'benefice' %}
+          <div {{ block.shopify_attributes }}>
+            {% render 'icon'
+              , icon: 'energy'
+              , height: block.settings.size_height
+              , width: block.settings.size_width %}
+            <p class="italic!">{{ block.settings.benefice }}</p>
+            <p class="h1">{{ block.settings.value }}</p>
+          </div>
+      {% endcase %}
+    {% endfor %}
   </div>
 </section>
 
 {% schema %}
-
   {
     "name": "Section Freestyle",
-    "settings": [],
+    "blocks": [
+      {
+        "name": "Bénéfice",
+        "type": "benefice",
+        "settings": [
+          {
+            "type": "text",
+            "id": "benefice",
+            "label": "Titre du bénéfice",
+            "default": "Bénéfice"
+          },
+          {
+            "type": "text",
+            "id": "value",
+            "label": "Valeur du bénéfice",
+            "default": "96%"
+          },
+          {
+            "type": "range",
+            "id": "size_height",
+            "label": "Hauteur de l'icon",
+            "default": 10,
+            "max": 50,
+            "min": 0,
+            "step": 1,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "size_width",
+            "label": "Hauteur de l'icon",
+            "default": 10,
+            "max": 50,
+            "min": 0,
+            "step": 1,
+            "unit": "px"
+          }
+        ]
+      }
+    ],
     "presets": [
       {
-        "name": "Section Freestyle"
+        "name": "Section Freestyle",
+        "category": "Maxence"
       }
     ]
   }

@@ -55,6 +55,7 @@
         },
         "text_DzNNBt": {
           "type": "text",
+          "disabled": true,
           "settings": {
             "text": "{{ product.description }}",
             "text_typo_p_size": "14",
@@ -62,6 +63,13 @@
             "text_color": "#000000",
             "margin_top": 15,
             "margin_bottom": 15
+          }
+        },
+        "details_jJBXri": {
+          "type": "details",
+          "settings": {
+            "margin_top": 20,
+            "margin_bottom": 20
           }
         },
         "variant_picker_dRhy4i": {
@@ -80,12 +88,49 @@
             "price_enable": true
           }
         },
+        "delivery_estimation_bUmQim": {
+          "type": "delivery_estimation",
+          "settings": {
+            "icons_color": "accent-1",
+            "format": "dd/MM",
+            "today_info": "Commandé",
+            "ready_info": "Commande prête",
+            "ready": 1,
+            "delivered_info": "Livré",
+            "delivered": 1,
+            "block_margin_bottom": 16
+          }
+        },
         "time_livraison_fkJ6dY": {
           "type": "time_livraison",
           "settings": {}
         },
+        "upsell_product_page_XfnKqB": {
+          "type": "upsell-product-page",
+          "settings": {
+            "title": "Vous aimerez aussi",
+            "product_1": "bague-weekly-bijou-personnalise-unique-vintage-design",
+            "product_2": "charms-mini-alphabet-strass",
+            "product_3": "mini-creole-colette-bijou-personnalise-unique-vintage-design",
+            "product_4": "medaille-plate-10mm"
+          }
+        },
+        "collab_tabs_74mwYD": {
+          "type": "collab_tabs",
+          "settings": {
+            "tabs_title_1": "Description",
+            "tabs_content_1": "{{ product.description }}",
+            "tabs_title_2": "Livraison",
+            "tabs_content_2": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam necessitatibus et laboriosam rerum, iure minima, voluptate quaerat porro vel sapiente debitis culpa iste nulla cumque? Doloribus ducimus libero necessitatibus fuga.</p>",
+            "tabs_title_3": "Avis",
+            "tabs_content_3": "<p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Veniam necessitatibus et laboriosam rerum, iure minima, voluptate quaerat porro vel sapiente debitis culpa iste nulla cumque? Doloribus ducimus libero necessitatibus fuga.</p>",
+            "margin_top": 15,
+            "margin_bottom": 15
+          }
+        },
         "faq_section_ywQckf": {
           "type": "faq_section",
+          "disabled": true,
           "settings": {
             "question": "Ingrédients",
             "reponse": "Réponse",
@@ -95,6 +140,7 @@
         },
         "faq_section_DQqUq3": {
           "type": "faq_section",
+          "disabled": true,
           "settings": {
             "question": "Recommandé pour",
             "reponse": "Réponse",
@@ -104,6 +150,7 @@
         },
         "faq_section_7tajTz": {
           "type": "faq_section",
+          "disabled": true,
           "settings": {
             "question": "Conseils",
             "reponse": "Réponse",
@@ -119,9 +166,13 @@
         "price_xGmqGm",
         "badge_max_bRGcBD",
         "text_DzNNBt",
+        "details_jJBXri",
         "variant_picker_dRhy4i",
         "buy_buttons_max_WTNj9H",
+        "delivery_estimation_bUmQim",
         "time_livraison_fkJ6dY",
+        "upsell_product_page_XfnKqB",
+        "collab_tabs_74mwYD",
         "faq_section_ywQckf",
         "faq_section_DQqUq3",
         "faq_section_7tajTz"
@@ -267,6 +318,70 @@
         "button_style": "btn-primaire"
       }
     },
+    "avis_client_W7qzEV": {
+      "type": "avis-client",
+      "blocks": {
+        "avis_tHpfYK": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez",
+            "img": "shopify://shop_images/105.png",
+            "product": "bague-weekly-bijou-personnalise-unique-vintage-design"
+          }
+        },
+        "avis_3EPYGd": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/IMG_8593.jpg",
+            "product": "chaines-forcat-en-plaque-or-3-microns"
+          }
+        },
+        "avis_eJ9QMf": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/IMG_3380.jpg",
+            "product": "charms-mini-alphabet-strass"
+          }
+        },
+        "avis_w3zKwR": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/165.png",
+            "product": "medaille-plate-10mm"
+          }
+        },
+        "avis_Y8bBaz": {
+          "type": "avis",
+          "settings": {
+            "name": "Léna",
+            "avis": "Ajoutez ici l'avis du client que vous souhaitez.",
+            "img": "shopify://shop_images/620223319_18516347818070446_6934433274679179185_n.jpg",
+            "product": "abonnement"
+          }
+        }
+      },
+      "block_order": [
+        "avis_tHpfYK",
+        "avis_3EPYGd",
+        "avis_eJ9QMf",
+        "avis_w3zKwR",
+        "avis_Y8bBaz"
+      ],
+      "name": "Avis Client",
+      "settings": {
+        "section_title": "Ils en parlent mieux que nous.",
+        "section_subtitle": "4.44/5 sur 34165 avis",
+        "margin_top": 100,
+        "margin_bottom": 100
+      }
+    },
     "related-products": {
       "type": "related-products",
       "settings": {
@@ -284,6 +399,16 @@
         "padding_top": 36,
         "padding_bottom": 28
       }
+    },
+    "avis_client_WaHRXH": {
+      "type": "avis-client",
+      "name": "Avis Client",
+      "settings": {
+        "section_title": "",
+        "section_subtitle": "",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
     }
   },
   "order": [
@@ -291,6 +416,8 @@
     "marquee_dtRHhV",
     "section_gauche_droite_nU3hJz",
     "faq_product_page_eDmRRi",
-    "related-products"
+    "avis_client_W7qzEV",
+    "related-products",
+    "avis_client_WaHRXH"
   ]
 }

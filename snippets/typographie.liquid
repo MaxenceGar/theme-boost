@@ -21,6 +21,14 @@
     /* Border Radius */
     --rounded--size: {{ settings.border_radius }};
 
+    /* Couleurs personnalisées */
+    --color-bg-primaire: {{ settings.bg_color_primaire }};
+    --color-text-primaire: {{ settings.text_color_primaire }};
+    --color-bg-secondaire: {{ settings.bg_color_secondaire }};
+    --color-text-secondaire: {{ settings.text_color_secondaire }};
+    --color-bg-secondaire-hover: {{ settings.bg_color_secondaire_hover }};
+    --color-text-secondaire-hover: {{ settings.text_color_secondaire_hover }};
+
     /* Tailles desktop */
     --typo-p--size: {{ p_size }}rem;
     --typo-h1--size: {{ h1_desk }}rem;
@@ -121,23 +129,20 @@
   }
 
   .btn-primaire {
-    background-color: {{ settings.bg_color_primaire }};
-    color: {{ settings.text_color_primaire }}
-     !important;
+    background-color: var(--color-bg-primaire);
+    color: var(--color-text-primaire) !important;
   }
 
   .btn-secondaire {
-    background-color: {{ settings.bg_color_secondaire }};
-    color: {{ settings.text_color_secondaire }}
-     !important;
+    background-color: var(--color-bg-secondaire);
+    color: var(--color-text-secondaire) !important;
     border: 1px solid black;
     transition: all 0.3s;
   }
 
   .btn-secondaire:hover {
-    background-color: {{ settings.bg_color_secondaire_hover }};
-    color: {{ settings.text_color_secondaire_hover }}
-     !important;
+    background-color: var(--color-bg-secondaire-hover);
+    color: var(--color-text-secondaire-hover) !important;
     border-color: black;
   }
 
