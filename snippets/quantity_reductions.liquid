@@ -1,0 +1,119 @@
+{{ 'section-quantity-reductions.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'quantity-reduction.js' | asset_url }}" defer="defer"></script>
+
+<quantity-reductions
+  data-section-id="{{ section.id }}"
+  class="product__content--block"
+  {{ block.shopify_attributes }}
+  style="margin-bottom: {{ block.settings.block_margin_bottom | divided_by: 10.0 }}rem;">
+  <div class="product-reductions__wrapper">
+    {%- if block.settings.heading1 != blank -%}
+      <div
+        class="product-reductions__item{% if block.settings.image1 != blank %} product-reductions__item--with_image{% endif %} active"
+        data-quantity="{{ block.settings.quantity1 }}"
+        data-compare-price="{{ block.settings.compare1 }}"
+        data-sale-price="{{ block.settings.sale1 }}"
+        data-sale-tag="{{ block.settings.label1 }}">
+        {%- if block.settings.label1 != blank -%}
+              <p class="product-reductions__label">
+                {{ block.settings.label1 }}
+              </p>
+        <div class="product-reductions__img_text">
+          <div class="product-reductions_img relative">
+            <p class="product-reduction_img_quantity absolute bg-black rounded-2xl bottom-0 text-white w-10 h-10 text-center">1x</p>
+          {%- if block.settings.image1 != blank -%}
+            {{
+              block.settings.image1 | image_url: width: 400 | image_tag: loading: 'lazy', class: 'product-reductions__image'
+            }}
+          {%- endif -%}
+          </div>
+          <div class="product-reductions__text">
+            {%- endif -%}
+            <h3 class="product-reductions__heading">{{ block.settings.heading1 }}</h3>
+          </div>
+          <p class="product-reductions__price">
+            <span class="product-reductions__sale">{{ block.settings.sale1 }}</span>
+            {%- if block.settings.compare1 != blank -%}
+              <span class="product-reductions__compare">
+                {{- block.settings.compare1 -}}
+              </span>
+            {%- endif -%}
+          </p>
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.heading2 != blank -%}
+      <div
+        class="product-reductions__item{% if block.settings.image2 != blank %} product-reductions__item--with_image{% endif %}"
+        data-quantity="{{ block.settings.quantity2 }}"
+        data-compare-price="{{ block.settings.compare2 }}"
+        data-sale-price="{{ block.settings.sale2 }}"
+        data-sale-tag="{{ block.settings.label2 }}">
+        <div class="product-reductions__img_text">
+          <div class="product-reductions__text">
+            {%- if block.settings.label2 != blank -%}
+              <p class="product-reductions__label">
+                {{ block.settings.label2 }}
+              </p>
+            {%- endif -%}
+            <h3 class="product-reductions__heading">{{ block.settings.heading2 }}</h3>
+            <p class="product-reductions__price">
+              {%- if block.settings.compare2 != blank -%}
+                <span class="product-reductions__compare">
+                  {{- block.settings.compare2 -}}
+                </span>
+              {%- endif -%}
+              <span class="product-reductions__sale">{{ block.settings.sale2 }}</span>
+            </p>
+          </div>
+          {%- if block.settings.image2 != blank -%}
+            {{
+              block.settings.image2 | image_url: width: 400 | image_tag: loading: 'lazy', class: 'product-reductions__image'
+            }}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    {%- if block.settings.heading3 != blank -%}
+      <div
+        class="product-reductions__item{% if block.settings.image3 != blank %} product-reductions__item--with_image{% endif %}"
+        data-quantity="{{ block.settings.quantity3 }}"
+        data-compare-price="{{ block.settings.compare3 }}"
+        data-sale-price="{{ block.settings.sale3 }}"
+        data-sale-tag="{{ block.settings.label3 }}">
+        <div class="product-reductions__img_text">
+          <div class="product-reductions__text">
+            {%- if block.settings.label3 != blank -%}
+              <p class="product-reductions__label">
+                {{ block.settings.label3 }}
+              </p>
+            {%- endif -%}
+            <h3 class="product-reductions__heading">{{ block.settings.heading3 }}</h3>
+            <p class="product-reductions__price">
+              {%- if block.settings.compare3 != blank -%}
+                <span class="product-reductions__compare">
+                  {{- block.settings.compare3 -}}
+                </span>
+              {%- endif -%}
+              <span class="product-reductions__sale">{{ block.settings.sale3 }}</span>
+            </p>
+          </div>
+          {%- if block.settings.image3 != blank -%}
+            {{
+              block.settings.image3 | image_url: width: 400 | image_tag: loading: 'lazy', class: 'product-reductions__image'
+            }}
+          {%- endif -%}
+        </div>
+      </div>
+    {%- endif -%}
+
+    <input
+      type="hidden"
+      name="quantity"
+      id="quantityReductions"
+      value="{{ block.settings.quantity1 }}"
+      form="{{ product_form_id }}">
+  </div>
+</quantity-reductions>

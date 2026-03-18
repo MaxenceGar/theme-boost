@@ -57,6 +57,9 @@
       {%- endunless -%}
 
       {%- comment -%} Header {%- endcomment -%}
+      <div class="justify-center! bg-black text-white">
+        <p class="text-center! text-[11px]!">En ce moment 2 Achetées = 2 Offertes</p>
+      </div>
       <div class="drawer__header mx-10">
         <h2 class="drawer__heading h4">{{ 'sections.cart.title' | t }}</h2>
         <button
@@ -66,10 +69,6 @@
           aria-label="{{ 'accessibility.close' | t }}">
           <span class="svg-wrapper">{{- 'icon-close.svg' | inline_asset_content -}}</span>
         </button>
-      </div>
-
-      <div class="drawer__header justify-center! bg-black text-white">
-        <p class="text-center!">En ce moment 2 Achetées = 2 Offertes</p>
       </div>
 
       {%- comment -%} Blocks (timer, palier, texte) {%- endcomment -%}
@@ -254,7 +253,7 @@
                           class="cart-item__details"
                           role="cell"
                           headers="CartDrawer-ColumnProduct">
-                          <a href="{{ item.url }}" class="cart-item__name h4 break">{{ item.product.title | escape }}</a>
+                          <a href="{{ item.url }}" class="cart-item__name break">{{ item.product.title | escape }}</a>
 
                           {%- if item.original_price != item.final_price -%}
                             <div class="cart-item__discounted-prices">

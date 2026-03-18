@@ -234,6 +234,9 @@
   .inset-0\! {
     inset: calc(var(--spacing) * 0) !important;
   }
+  .top-0 {
+    top: calc(var(--spacing) * 0);
+  }
   .top-0\! {
     top: calc(var(--spacing) * 0) !important;
   }
@@ -257,6 +260,9 @@
   }
   .right-1 {
     right: calc(var(--spacing) * 1);
+  }
+  .bottom-0 {
+    bottom: calc(var(--spacing) * 0);
   }
   .bottom-2 {
     bottom: calc(var(--spacing) * 2);
@@ -1433,6 +1439,10 @@
   }
   .blur {
     --tw-blur: blur(8px);
+    filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
+  }
+  .invert {
+    --tw-invert: invert(100%);
     filter: var(--tw-blur,) var(--tw-brightness,) var(--tw-contrast,) var(--tw-grayscale,) var(--tw-hue-rotate,) var(--tw-invert,) var(--tw-saturate,) var(--tw-sepia,) var(--tw-drop-shadow,);
   }
   .filter {

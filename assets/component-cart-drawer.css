@@ -318,7 +318,7 @@ cart-drawer-items {
 .cart-drawer .price {
   line-height: 1;
   font-size: var(--typo-p--size);
-  font-weight: bold;
+  font-weight: 400;
 }
 
 .cart-drawer .tax-note {

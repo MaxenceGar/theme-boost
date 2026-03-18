@@ -98,14 +98,15 @@
               {%- when '@app' -%}
                 {% render block %}
 
+                {%- # Estimation Livraison -%}
                {%- when 'delivery_estimation' -%}
-            <div
-              class="product__content--block"
-              {{ block.shopify_attributes }}
-              style="margin-bottom: {{ block.settings.block_margin_bottom | divided_by: 10.0 }}rem;"
-            >
-              {%- render 'block-delivery-estimation', block: block -%}
-            </div>
+                  <div
+                    class="product__content--block"
+                    {{ block.shopify_attributes }}
+                    style="margin-bottom: {{ block.settings.block_margin_bottom | divided_by: 10.0 }}rem;"
+                  >
+                    {%- render 'block-delivery-estimation', block: block -%}
+                  </div>
 
               {%- # Collabs Tabs -%}
               {% when 'collab_tabs' %}
@@ -248,6 +249,13 @@
                     {{ product.description }}
                   </div>
                 {%- endif -%}
+
+                {%- # Quantity Reduction  -%}
+                {%- when 'quantity_reductions' -%}
+                  <div style="margin-top : {{ block.settings.margin_top }}px;
+                            margin-bottom: {{ block.settings.margin_bottom }}px;">
+                    {%- render 'quantity_reductions', block: block, product: product, section_id: section.id, product_form_id: product_form_id, enable_animations: enable_animations, animation: animation -%}
+                  </div>
 
                 {%- # Description longue du produit (layout étendu) -%}
                 {%- when 'description_max' -%}
@@ -1226,6 +1234,167 @@
           ],
           "default": "body",
           "label": "t:sections.main-product.blocks.sku.settings.text_style.label"
+        }
+      ]
+    },
+    {
+      "type": "quantity_reductions",
+      "name": "Réduction Quantité",
+      "limit": 1,
+      "settings": [
+        {
+          "type": "paragraph",
+          "content": "Réduction"
+        },
+        {
+          "type": "header",
+          "content": "Header"
+        },
+        {
+          "type": "text",
+          "id": "label1",
+          "label": "Réduction 1"
+        },
+        {
+          "type": "image_picker",
+          "id": "image1",
+          "label": "Image"
+        },
+        {
+          "type": "text",
+          "id": "heading1",
+          "label": "Heading 1",
+          "default": "1 unit"
+        },
+        {
+          "type": "range",
+          "id": "quantity1",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "unit": "un",
+          "label": "Name",
+          "default": 1
+        },
+        {
+          "type": "text",
+          "id": "compare1",
+          "label": "Label 1",
+          "default": "19.99$"
+        },
+        {
+          "type": "text",
+          "id": "sale1",
+          "label": "Label",
+          "default": "14.99$"
+        },
+        {
+          "type": "header",
+          "content": "Reduction 2"
+        },
+        {
+          "type": "text",
+          "id": "label2",
+          "label": "Label 2"
+        },
+        {
+          "type": "image_picker",
+          "id": "image2",
+          "label": "Image 2"
+        },
+        {
+          "type": "text",
+          "id": "heading2",
+          "label": "Heading 2",
+          "default": "2 units"
+        },
+        {
+          "type": "range",
+          "id": "quantity2",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "unit": "un",
+          "label": "Quentité 2",
+          "default": 2
+        },
+        {
+          "type": "text",
+          "id": "compare2",
+          "label": "Compare 2",
+          "default": "39.99$"
+        },
+        {
+          "type": "text",
+          "id": "sale2",
+          "label": "Sale 2",
+          "default": "19.99$"
+        },
+        {
+          "type": "header",
+          "content": "Reduction 3"
+        },
+        {
+          "type": "text",
+          "id": "label3",
+          "label": "Label 3"
+        },
+        {
+          "type": "image_picker",
+          "id": "image3",
+          "label": "Sélection Image"
+        },
+        {
+          "type": "text",
+          "id": "heading3",
+          "label": "Heading 3",
+          "default": "3 units"
+        },
+        {
+          "type": "range",
+          "id": "quantity3",
+          "min": 1,
+          "max": 10,
+          "step": 1,
+          "unit": "un",
+          "label": "Quantité",
+          "default": 3
+        },
+        {
+          "type": "text",
+          "id": "compare3",
+          "label": "Prix comparaison",
+          "default": "59.99$"
+        },
+        {
+          "type": "text",
+          "id": "sale3",
+          "label": "Sale Label",
+          "default": "24.99$"
+        },
+        {
+          "type": "header",
+          "content": "Paramètre global"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "Margin Bottom",
+          "default": 16
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "min": 0,
+          "max": 100,
+          "step": 4,
+          "unit": "px",
+          "label": "Margin Top",
+          "default": 16
         }
       ]
     },

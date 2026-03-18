@@ -1,0 +1,128 @@
+/* Quantity Reductions Block */
+
+.product-reductions__wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+
+.product-reductions__item {
+  position: relative;
+  border: 1px solid black;
+  border-radius: var(--rounded--size);
+  cursor: pointer;
+  transition: border-color 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  background-color: white;
+}
+
+.product-reductions__item:hover {
+  border-color: black;
+}
+
+.product-reductions__item.active {
+  border-color: black;
+  background-color: rgba(0, 0, 0, 0.156);
+}
+
+.product-reductions__img_text {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+}
+
+.product-reductions__text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  flex: 1;
+}
+
+.product-reductions__image {
+  width: 80px;
+  height: 80px;
+  display: block;
+  border-radius: var(--rounded--size);
+  object-fit: cover;
+  flex-shrink: 0;
+}
+
+.product-reduction_img_quantity {
+  position: absolute;
+  bottom: -0px;
+  background-color: black;
+  color: white;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: var(--rounded--size);
+}
+
+.product-reductions__label {
+  font-size: 0.9rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin: 0;
+  color: white;
+  position: absolute;
+  top: -5px;
+  right: 1px;
+  background: red;
+  padding: 0 10px 0 10px;
+  border-radius: var(--rounded--size);
+}
+
+.product-reductions__heading {
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.3;
+  color: var(--color-foreground);
+  font-size: 1.9rem;
+}
+
+.product-reductions__price {
+  display: flex;
+  flex-direction: column;
+  text-align: right;
+  margin: 0;
+  font-weight: 600;
+  color: var(--color-foreground);
+  font-size: 1.9rem;
+}
+
+.product-reductions__compare {
+  text-decoration: line-through;
+  color: var(--color-foreground);
+  opacity: 0.5;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+.product-reductions__sale {
+  color: var(--color-bg-secondaire);
+  font-weight: 700;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-reductions__item {
+    padding: 1rem;
+  }
+
+  .product-reductions__img_text {
+    gap: 1rem;
+  }
+
+  .product-reductions__image {
+    width: 70px;
+    height: 70px;
+  }
+
+  .product-reductions__heading {
+    font-size: 1.9rem;
+  }
+}
