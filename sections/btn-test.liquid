@@ -1,8 +1,5 @@
 {{ 'section-btn-test.css' | asset_url | stylesheet_tag }}
 
-{% capture stars %}
-  <svg width="14px" height="14px" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><title>Trustpilot icon</title><path d="M12,17.964l5.214-1.321l2.179,6.714L12,17.964z M24,9.286h-9.179L12,0.643L9.179,9.286 H0l7.429,5.357l-2.821,8.643l7.429-5.357l4.571-3.286L24,9.286L24,9.286L24,9.286L24,9.286z"/></svg>
-{% endcapture %}
 {%- style -%}
   .btn-test {
     background-color: {{ settings.btn_test_bg_color }};
@@ -18,15 +15,15 @@
         opacity: {{ settings.btn_test_hover_opacity | divided_by: 100.0 }};
       }
     {% elsif settings.btn_test_hover_effect == 'background' %}
-    .btn-test:hover {
-      background-color: {{ settings.btn_test_hover_bg_color }};
-    }
-  {% elsif settings.btn_test_hover_effect == 'scale' %}
-  .btn-test:hover {
-    transform: scale({{ settings.btn_test_hover_scale | divided_by: 100.0 }});
-  }
-{% endif %}
-{% endif %}
+      .btn-test:hover {
+        background-color: {{ settings.btn_test_hover_bg_color }};
+      }
+    {% elsif settings.btn_test_hover_effect == 'scale' %}
+      .btn-test:hover {
+        transform: scale({{ settings.btn_test_hover_scale | divided_by: 100.0 }});
+      }
+    {% endif %}
+  {% endif %}
 {%- endstyle -%}
 
 <div class="btn-test-section">
@@ -34,108 +31,6 @@
     {{ settings.btn_test_text }}
   </button>
 </div>
-
-<div class="container-review page-width">
-  <div class="review_container">
-    <span class="rating-stars-container">
-      <div class="rating-stars">
-
-        {{ stars }}
-        {{ stars }}
-        {{ stars }}
-        {{ stars }}
-        {{ stars }}
-
-      </div>
-    </span>
-    <div>
-      <p class="rating-text">Rated 4.8/5 based on +10,839 Total Ratings</p>
-    </div>
-  </div>
-  <p class="rating-text">See what our customers are saying about our products</p>
-  <div class="img_review_container">
-    <div class="img_review_contain">
-      <img
-        class="img_review"
-        width="250px"
-        height="250px"
-        src="https://twbkwh-sw.myshopify.com/cdn/shop/files/user_1771250464631_tallow_ugc_01.png_1771250484963.jpg?v=1771269265&width=600"
-        alt="">
-      <p class="rating-text">Get Your Tallow</p>
-      <p>Nourishes deeply with fatty acids that help lock in moisture overnight.</p>
-    </div>
-    <div class="img_review_contain">
-      <img
-        class="img_review"
-        width="250px"
-        height="250px"
-        src="https://twbkwh-sw.myshopify.com/cdn/shop/files/user_1771250464631_tallow_ugc_01.png_1771250484963.jpg?v=1771269265&width=600"
-        alt="">
-      <p class="rating-text">Maxence</p>
-    </div>
-    <div class="img_review_contain">
-      <img
-        class="img_review"
-        width="250px"
-        height="250px"
-        src="https://twbkwh-sw.myshopify.com/cdn/shop/files/user_1771250464631_tallow_ugc_01.png_1771250484963.jpg?v=1771269265&width=600"
-        alt="">
-      <p class="rating-text">Maxence</p>
-    </div>
-  </div>
-</div>
-
-
-<style>
-
-  .img_review_contain {}
-
-.img_review_container {
-  display: flex;
-  white-space: inherit;
-  width: 100%;
-  justify-content: space-between;
-}
-
-.img_review {
-  border-radius: 10px;
-}
-
-.container-review {
-  padding-top: 50px;
-  padding-bottom: 50px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 10px;
-  background-color: #fffdf5;
-}
-
-.rating-text {
-  font-size: 13px !important;
-  letter-spacing: -0.6px;
-  color: black;
-  text-align: center;
-}
-
-.review_container {
-  border-radius: 999px;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  border: dashed black 1px;
-  padding: 5px 10px;
-  gap: 1rem;
-  width: fit-content;
-  margin: auto;
-}
-
-.rating-stars {
-  color: red;
-  display: flex;
-  gap: -100px;
-}
-</style>
 
 {% schema %}
   {
