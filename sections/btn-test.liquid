@@ -15,15 +15,15 @@
         opacity: {{ settings.btn_test_hover_opacity | divided_by: 100.0 }};
       }
     {% elsif settings.btn_test_hover_effect == 'background' %}
-      .btn-test:hover {
-        background-color: {{ settings.btn_test_hover_bg_color }};
-      }
-    {% elsif settings.btn_test_hover_effect == 'scale' %}
-      .btn-test:hover {
-        transform: scale({{ settings.btn_test_hover_scale | divided_by: 100.0 }});
-      }
-    {% endif %}
-  {% endif %}
+    .btn-test:hover {
+      background-color: {{ settings.btn_test_hover_bg_color }};
+    }
+  {% elsif settings.btn_test_hover_effect == 'scale' %}
+  .btn-test:hover {
+    transform: scale({{ settings.btn_test_hover_scale | divided_by: 100.0 }});
+  }
+{% endif %}
+{% endif %}
 {%- endstyle -%}
 
 <div class="btn-test-section">
@@ -32,14 +32,18 @@
   </button>
 </div>
 
+<div class="mx-10 my-100">
+  <p>Maxence Garandel</p>
+</div>
+
 {% schema %}
-{
-  "name": "Test Button",
-  "settings": [],
-  "presets": [
-    {
-      "name": "Test Button"
-    }
-  ]
-}
+  {
+    "name": "Test Button",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Test Button"
+      }
+    ]
+  }
 {% endschema %}

@@ -339,6 +339,9 @@
   .my-50\! {
     margin-block: calc(var(--spacing) * 50) !important;
   }
+  .my-100 {
+    margin-block: calc(var(--spacing) * 100);
+  }
   .mt-0\! {
     margin-top: calc(var(--spacing) * 0) !important;
   }
