@@ -77,6 +77,62 @@
         "unit": "px",
         "label": "Taille du texte",
         "default": 16
+      },
+      {
+        "type": "header",
+        "content": "Hover"
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_test_hover_enabled",
+        "label": "Activer l'effet hover",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "btn_test_hover_effect",
+        "label": "Type d'effet hover",
+        "default": "opacity",
+        "options": [
+          {
+            "label": "Opacité",
+            "value": "opacity"
+          },
+          {
+            "label": "Fond",
+            "value": "background"
+          },
+          {
+            "label": "Écaille (scale)",
+            "value": "scale"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "btn_test_hover_bg_color",
+        "label": "Couleur fond au hover",
+        "default": "#333333"
+      },
+      {
+        "type": "range",
+        "id": "btn_test_hover_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacité au hover",
+        "default": 90
+      },
+      {
+        "type": "range",
+        "id": "btn_test_hover_scale",
+        "min": 90,
+        "max": 110,
+        "step": 1,
+        "unit": "%",
+        "label": "Échelle au hover",
+        "default": 100
       }
     ]
   },

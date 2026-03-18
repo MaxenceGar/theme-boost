@@ -1,91 +1,41 @@
 {{ 'section-btn-test.css' | asset_url | stylesheet_tag }}
 
-<div class="btn-test-section">
+{%- style -%}
+  .btn-test {
+    background-color: {{ settings.btn_test_bg_color }};
+    color: {{ settings.btn_test_text_color }};
+    border-radius: var(--rounded--size);
+    padding: {{ settings.btn_test_padding }}px;
+    font-size: {{ settings.btn_test_font_size }}px;
+  }
 
-  <button class="btn btn-test"
-    style="
-      background-color: {{ settings.btn_test_bg_color }};
-      color: {{ settings.btn_test_text_color }};
-      border-radius: var(--rounded--size);
-      padding: {{ settings.btn_test_padding }}px;
-      font-size: {{ settings.btn_test_font_size }}px;
-    ">
+  {% if settings.btn_test_hover_enabled %}
+    {% if settings.btn_test_hover_effect == 'opacity' %}
+      .btn-test:hover {
+        opacity: {{ settings.btn_test_hover_opacity | divided_by: 100.0 }};
+      }
+    {% elsif settings.btn_test_hover_effect == 'background' %}
+      .btn-test:hover {
+        background-color: {{ settings.btn_test_hover_bg_color }};
+      }
+    {% elsif settings.btn_test_hover_effect == 'scale' %}
+      .btn-test:hover {
+        transform: scale({{ settings.btn_test_hover_scale | divided_by: 100.0 }});
+      }
+    {% endif %}
+  {% endif %}
+{%- endstyle -%}
+
+<div class="btn-test-section">
+  <button class="btn btn-test">
     {{ settings.btn_test_text }}
   </button>
-
 </div>
 
 {% schema %}
 {
   "name": "Test Button",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Bouton"
-    },
-    {
-      "type": "text",
-      "id": "btn_text",
-      "label": "Texte du bouton",
-      "default": "Test Button"
-    },
-    {
-      "type": "color",
-      "id": "btn_bg_color",
-      "label": "Couleur de fond",
-      "default": "#000000"
-    },
-    {
-      "type": "color",
-      "id": "btn_text_color",
-      "label": "Couleur du texte",
-      "default": "#ffffff"
-    },
-    {
-      "type": "range",
-      "id": "btn_padding",
-      "min": 5,
-      "max": 30,
-      "step": 1,
-      "unit": "px",
-      "label": "Padding",
-      "default": 15
-    },
-    {
-      "type": "range",
-      "id": "btn_font_size",
-      "min": 10,
-      "max": 24,
-      "step": 1,
-      "unit": "px",
-      "label": "Taille du texte",
-      "default": 16
-    },
-    {
-      "type": "header",
-      "content": "Paramètres"
-    },
-    {
-      "type": "range",
-      "id": "margin_top",
-      "label": "Marge top",
-      "default": 0,
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "margin_bottom",
-      "label": "Marge bottom",
-      "default": 0,
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px"
-    }
-  ],
+  "settings": [],
   "presets": [
     {
       "name": "Test Button"

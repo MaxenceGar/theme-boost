@@ -1,0 +1,15 @@
+.btn-test-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-test {
+  cursor: pointer;
+  border: none;
+  transition: all 0.2s ease;
+}
+
+.btn-test:active {
+  opacity: 0.8;
+}
