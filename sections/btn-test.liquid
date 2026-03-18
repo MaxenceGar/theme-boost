@@ -1,16 +1,95 @@
+{{ 'section-btn-test.css' | asset_url | stylesheet_tag }}
+
+<div class="btn-test-section" style="margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;">
+
+  <button class="btn btn-test"
+    style="
+      background-color: {{ section.settings.btn_bg_color }};
+      color: {{ section.settings.btn_text_color }};
+      border-radius: var(--rounded--size);
+      padding: {{ section.settings.btn_padding }}px;
+      font-size: {{ section.settings.btn_font_size }}px;
+    ">
+    {{ section.settings.btn_text }}
+  </button>
+
+</div>
+
 {% schema %}
-  {
-    "name": "Btn test",
-    "settings": [
-      {
-        "type": "header",
-        "content": "Btn test"
-      }
-    ],
-    "presets": [
-      {
-        "name": "Btn test"
-      }
-    ]
-  }
+{
+  "name": "Test Button",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Bouton"
+    },
+    {
+      "type": "text",
+      "id": "btn_text",
+      "label": "Texte du bouton",
+      "default": "Test Button"
+    },
+    {
+      "type": "color",
+      "id": "btn_bg_color",
+      "label": "Couleur de fond",
+      "default": "#000000"
+    },
+    {
+      "type": "color",
+      "id": "btn_text_color",
+      "label": "Couleur du texte",
+      "default": "#ffffff"
+    },
+    {
+      "type": "range",
+      "id": "btn_padding",
+      "min": 5,
+      "max": 30,
+      "step": 1,
+      "unit": "px",
+      "label": "Padding",
+      "default": 15
+    },
+    {
+      "type": "range",
+      "id": "btn_font_size",
+      "min": 10,
+      "max": 24,
+      "step": 1,
+      "unit": "px",
+      "label": "Taille du texte",
+      "default": 16
+    },
+    {
+      "type": "header",
+      "content": "Paramètres"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Marge top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Marge bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Test Button"
+    }
+  ]
+}
 {% endschema %}
