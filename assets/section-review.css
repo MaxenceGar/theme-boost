@@ -13,7 +13,7 @@
 }
 
 .img_review {
-  border-radius: 10px;
+  overflow: hidden;
 }
 
 .container-review {
