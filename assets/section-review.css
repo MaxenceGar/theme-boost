@@ -1,5 +1,7 @@
 .img_review_contain {
   border: 1px solid black;
+  display: flex;
+  flex-direction: column;
 }
 
 .img_review_container {
