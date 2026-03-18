@@ -7,7 +7,6 @@
 
 .img_review_container {
   display: flex;
-  white-space: inherit;
   width: 100%;
   justify-content: space-between;
 }
@@ -27,7 +26,7 @@
 }
 
 .rating-text {
-  font-size: 13px !important;
+  font-size: 13px;
   letter-spacing: -0.6px;
   color: black;
   text-align: center;
@@ -38,7 +37,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  border: dashed black 1px;
+  border: 1px dashed black;
   padding: 5px 10px;
   gap: 1rem;
   width: fit-content;
@@ -48,5 +47,5 @@
 .rating-stars {
   color: red;
   display: flex;
-  gap: -100px;
+  gap: 0;
 }
