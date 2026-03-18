@@ -9,6 +9,19 @@
  */
 {
   "sections": {
+    "btn_test_HXewag": {
+      "type": "btn-test",
+      "name": "Test Button",
+      "settings": {
+        "btn_text": "Test Button",
+        "btn_bg_color": "#000000",
+        "btn_text_color": "#ffffff",
+        "btn_padding": 15,
+        "btn_font_size": 16,
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
     "hero_swiper_7T6Vgr": {
       "type": "hero-swiper",
       "blocks": {
@@ -438,6 +451,7 @@
     }
   },
   "order": [
+    "btn_test_HXewag",
     "hero_swiper_7T6Vgr",
     "round_section_home_4b36ET",
     "product_grid_home_Y7i6ed",
