@@ -2,7 +2,7 @@
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  width: fit-content;
+  width: 250px;
 }
 
 .img_review_container {
