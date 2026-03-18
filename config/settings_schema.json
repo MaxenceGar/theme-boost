@@ -38,7 +38,45 @@
     "settings": [
       {
         "type": "header",
-        "content": "Bouton 1"
+        "content": "Bouton Test"
+      },
+      {
+        "type": "text",
+        "id": "btn_test_text",
+        "label": "Texte du bouton",
+        "default": "Test Button"
+      },
+      {
+        "type": "color",
+        "id": "btn_test_bg_color",
+        "label": "Couleur de fond",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "btn_test_text_color",
+        "label": "Couleur du texte",
+        "default": "#ffffff"
+      },
+      {
+        "type": "range",
+        "id": "btn_test_padding",
+        "min": 5,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding",
+        "default": 15
+      },
+      {
+        "type": "range",
+        "id": "btn_test_font_size",
+        "min": 10,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Taille du texte",
+        "default": 16
       }
     ]
   },

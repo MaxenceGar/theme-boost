@@ -1,16 +1,16 @@
 {{ 'section-btn-test.css' | asset_url | stylesheet_tag }}
 
-<div class="btn-test-section" style="margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;">
+<div class="btn-test-section">
 
   <button class="btn btn-test"
     style="
-      background-color: {{ section.settings.btn_bg_color }};
-      color: {{ section.settings.btn_text_color }};
+      background-color: {{ settings.btn_test_bg_color }};
+      color: {{ settings.btn_test_text_color }};
       border-radius: var(--rounded--size);
-      padding: {{ section.settings.btn_padding }}px;
-      font-size: {{ section.settings.btn_font_size }}px;
+      padding: {{ settings.btn_test_padding }}px;
+      font-size: {{ settings.btn_test_font_size }}px;
     ">
-    {{ section.settings.btn_text }}
+    {{ settings.btn_test_text }}
   </button>
 
 </div>
