@@ -4,16 +4,13 @@
   flex-direction: column;
   width: 250px;
   border-radius: 10px;
+  overflow: hidden;
 }
 
 .img_review_container {
   display: flex;
   width: 100%;
   justify-content: space-between;
-}
-
-.img_review {
-  border-radius: 10px;
 }
 
 .container-review {
