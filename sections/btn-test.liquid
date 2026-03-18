@@ -39,8 +39,8 @@
 
 <div class="my-100">
   <div class="review_container flex items-center justify-center w-fit border-dashed border-black rounded-full mx-auto">
-    <span class="rating-stars">
-      <div class="flex">
+    <span class="rating-stars-container">
+      <div class="rating-stars">
 
         {{ stars }}
         {{ stars }}
@@ -67,6 +67,11 @@
     border: dashed black 1px;
     padding: 5px 10px;
     gap: 1rem;
+  }
+
+  .rating-stars {
+    color: red;
+    display: flex;
   }
 </style>
 
