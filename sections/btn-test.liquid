@@ -56,12 +56,15 @@
   </div>
   <p class="rating-text">See what our customers are saying about our products</p>
   <div class="img_review_container">
-    <img
-      class="img_review"
-      width="250px"
-      height="250px"
-      src="https://twbkwh-sw.myshopify.com/cdn/shop/files/user_1771250464631_tallow_ugc_01.png_1771250484963.jpg?v=1771269265&width=600"
-      alt="">
+    <div class="img_review_contain">
+      <img
+        class="img_review"
+        width="250px"
+        height="250px"
+        src="https://twbkwh-sw.myshopify.com/cdn/shop/files/user_1771250464631_tallow_ugc_01.png_1771250484963.jpg?v=1771269265&width=600"
+        alt="">
+      <p class="rating-text">Maxence</p>
+    </div>
     <img
       class="img_review"
       width="250px"
@@ -80,50 +83,52 @@
 
 <style>
 
-  .img_review_container {
-    display: flex;
-    width: 100%;
-    justify-content: space-between;
-  }
+  .img_review_contain {}
 
-  .img_review {
-    border-radius: 10px;
-  }
+.img_review_container {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
 
-  .container-review {
-    padding-top: 50px;
-    padding-bottom: 50px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 10px;
-    background-color: #fffdf5;
-  }
+.img_review {
+  border-radius: 10px;
+}
 
-  .rating-text {
-    font-size: 13px !important;
-    letter-spacing: -0.6px;
-    color: black;
-    text-align: center;
-  }
+.container-review {
+  padding-top: 50px;
+  padding-bottom: 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 10px;
+  background-color: #fffdf5;
+}
 
-  .review_container {
-    border-radius: 999px;
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border: dashed black 1px;
-    padding: 5px 10px;
-    gap: 1rem;
-    width: fit-content;
-    margin: auto;
-  }
+.rating-text {
+  font-size: 13px !important;
+  letter-spacing: -0.6px;
+  color: black;
+  text-align: center;
+}
 
-  .rating-stars {
-    color: red;
-    display: flex;
-    gap: -100px;
-  }
+.review_container {
+  border-radius: 999px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border: dashed black 1px;
+  padding: 5px 10px;
+  gap: 1rem;
+  width: fit-content;
+  margin: auto;
+}
+
+.rating-stars {
+  color: red;
+  display: flex;
+  gap: -100px;
+}
 </style>
 
 {% schema %}
