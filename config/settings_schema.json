@@ -34,6 +34,15 @@
     ]
   },
   {
+    "name": "Paramètre btn",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Bouton 1"
+      }
+    ]
+  },
+  {
     "name": "Radius global (test)",
     "settings": [
       {
