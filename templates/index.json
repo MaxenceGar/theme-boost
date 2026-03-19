@@ -12,29 +12,35 @@
     "review_Vh9ipM": {
       "type": "review",
       "blocks": {
+        "review_n8Li7F": {
+          "type": "review",
+          "settings": {
+            "image": "shopify://shop_images/IMG_8593.jpg",
+            "rating": 5,
+            "author_name": "Sarah,28",
+            "review_text": "I wasn't sure what to expect, but this balm exceeded my expectations.",
+            "product": "",
+            "purchase_date": "Purchased on March 8th, 2025"
+          }
+        },
         "review_HP4W6z": {
           "type": "review",
           "settings": {
-            "author_name": "Client",
-            "rating": 5,
-            "review_text": "Excellent produit, très satisfait de mon achat!",
             "image": "shopify://shop_images/IMG_8593.jpg",
-            "product": "mini-creole-colette-bijou-personnalise-unique-vintage-design",
-            "purchase_date": "ezrezarez"
+            "rating": 5,
+            "author_name": "Marie",
+            "review_text": "Excellent produit, très satisfait de mon achat!",
+            "product": "medaille-plate-10mm",
+            "purchase_date": "Purchased on March 8th, 2025"
           }
         }
       },
       "block_order": [
+        "review_n8Li7F",
         "review_HP4W6z"
       ],
       "name": "Review Section",
-      "settings": {
-        "global_rating": 5,
-        "rating_text": "Rated 4.8/5 based on +10,839 Total Ratings",
-        "subtitle": "Découvrez ce que nos clients pensent",
-        "margin_top": 0,
-        "margin_bottom": 0
-      }
+      "settings": {}
     },
     "btn_test_HXewag": {
       "type": "btn-test",
