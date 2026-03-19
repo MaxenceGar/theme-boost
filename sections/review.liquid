@@ -1,6 +1,26 @@
 {{ 'section-review.css' | asset_url | stylesheet_tag }}
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+{{ 'swiper-bundle.min.css' | asset_url | stylesheet_tag }}
+<script src="{{ 'swiper-bundle.min.js' | asset_url }}" defer="defer"></script>
+
+{%- style -%}
+  .review-swiper-{{ section.id }} .swiper-button-prev,
+  .review-swiper-{{ section.id }} .swiper-button-next {
+    --swiper-navigation-size: 14px;
+    width: 40px;
+    height: 40px;
+    top: auto;
+    bottom: 0;
+    padding: 10px !important;
+  }
+  .review-swiper-{{ section.id }} .swiper-button-prev:hover,
+  .review-swiper-{{ section.id }} .swiper-button-next:hover {
+    background-color: #f5f5f5;
+  }
+  .review-swiper-{{ section.id }} .swiper-button-prev.swiper-button-disabled,
+  .review-swiper-{{ section.id }} .swiper-button-next.swiper-button-disabled {
+    opacity: 0.3;
+  }
+{%- endstyle -%}
 
 {% capture stars %}
   <svg width="16px" height="16px" fill="#ffc107" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><title>Trustpilot icon</title><path d="M12,17.964l5.214-1.321l2.179,6.714L12,17.964z M24,9.286h-9.179L12,0.643L9.179,9.286 H0l7.429,5.357l-2.821,8.643l7.429-5.357l4.571-3.286L24,9.286L24,9.286L24,9.286L24,9.286z"/></svg>
