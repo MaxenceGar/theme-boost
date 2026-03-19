@@ -1,0 +1,138 @@
+{{ 'section-proof-stats.css' | asset_url | stylesheet_tag }}
+
+<div class="proof-stats-section" style="margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;">
+  <div class="proof-stats-container">
+
+    <!-- Left Column -->
+    <div class="proof-stats-left">
+      <h2 class="proof-stats-title">
+        {{ section.settings.title_part_1 }}
+        <span class="italic">{{ section.settings.title_part_2 }}</span>
+      </h2>
+      <p class="proof-stats-description">{{ section.settings.description }}</p>
+    </div>
+
+    <!-- Right Column -->
+    <div class="proof-stats-right">
+      {% for block in section.blocks %}
+        {% if block.type == 'stat' %}
+          <div class="stat-item" {{ block.shopify_attributes }}>
+            <div class="stat-number">{{ block.settings.number }}</div>
+            <div class="stat-text">{{ block.settings.description }}</div>
+          </div>
+          {% unless forloop.last %}
+            <div class="stat-divider"></div>
+          {% endunless %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Proof / Stats",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Contenu"
+    },
+    {
+      "type": "text",
+      "id": "title_part_1",
+      "label": "Titre - Partie 1",
+      "default": "Satisfaction"
+    },
+    {
+      "type": "text",
+      "id": "title_part_2",
+      "label": "Titre - Partie 2 (italique)",
+      "default": "you can trust."
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Nos clients nous font confiance depuis des années. Découvrez ce qui nous rend unique."
+    },
+    {
+      "type": "header",
+      "content": "Paramètres"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Marge top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Marge bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Statistique",
+      "settings": [
+        {
+          "type": "text",
+          "id": "number",
+          "label": "Chiffre",
+          "default": "86k+"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description",
+          "default": "Clients satisfaits"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Proof / Stats",
+      "settings": {
+        "title_part_1": "Satisfaction",
+        "title_part_2": "you can trust.",
+        "description": "Nos clients nous font confiance depuis des années. Découvrez ce qui nous rend unique."
+      },
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "number": "86k+",
+            "description": "Clients satisfaits"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "4.8/5",
+            "description": "Évaluation moyenne"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "number": "99%",
+            "description": "Taux de recommandation"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
