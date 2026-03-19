@@ -5,9 +5,9 @@
 
     <!-- Left Column -->
     <div class="proof-stats-left">
-      <h2 class="proof-stats-title" style="color: {{ section.settings.title_color }};">
+      <h2 class="proof-stats-title" style="color: {{ section.settings.title_color }}; {% if section.settings.title_font %}font-family: {{ section.settings.title_font.family }}, {{ section.settings.title_font.fallback_families }};{% endif %} {% if section.settings.title_bold %}font-weight: 700;{% endif %}">
         {{ section.settings.title_part_1 }}
-        <span class="proof-stats-title" style="color: {{ section.settings.title_color_span }}">{{ section.settings.title_part_2 }}</span>
+        <span class="proof-stats-title" style="color: {{ section.settings.title_color_span }}; {% if section.settings.title_span_bold %}font-weight: 700;{% endif %}">{{ section.settings.title_part_2 }}</span>
       </h2>
       <p class="proof-stats-description" style="color: {{ section.settings.text_color }};">{{ section.settings.description }}</p>
     </div>
@@ -17,7 +17,7 @@
       {% for block in section.blocks %}
         {% if block.type == 'stat' %}
           <div class="stat-item" {{ block.shopify_attributes }}>
-            <div class="stat-number" style="color: {{ section.settings.stat_number_color }};">{{ block.settings.number }}</div>
+            <div class="stat-number" style="color: {{ section.settings.stat_number_color }}; {% if section.settings.title_font %}font-family: {{ section.settings.title_font.family }}, {{ section.settings.title_font.fallback_families }};{% endif %} {% if section.settings.stat_number_bold %}font-weight: 700;{% else %}font-weight: 600;{% endif %}">{{ block.settings.number }}</div>
             <div class="stat-text" style="color: {{ section.settings.text_color }};">{{ block.settings.description }}</div>
           </div>
           {% unless forloop.last %}
@@ -124,6 +124,34 @@
         "id": "divider_color",
         "label": "Couleur des dividers",
         "default": "#6B4A2B"
+      },
+      {
+        "type": "header",
+        "content": "Typographie"
+      },
+      {
+        "type": "font_picker",
+        "id": "title_font",
+        "label": "Police des titres",
+        "default": "serif"
+      },
+      {
+        "type": "checkbox",
+        "id": "title_bold",
+        "label": "Gras - Titre principal",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "title_span_bold",
+        "label": "Gras - Titre span",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "stat_number_bold",
+        "label": "Gras - Chiffres",
+        "default": true
       }
     ],
     "blocks": [
