@@ -58,6 +58,7 @@
         "margin_bottom": 0,
         "bg_color": "#202329",
         "title_color": "#ffffff",
+        "title_color_span": "#d7ed96",
         "stat_number_color": "#d7ed96",
         "text_color": "#ffffff",
         "divider_color": "#ffffff"
