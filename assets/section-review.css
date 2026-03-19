@@ -10,10 +10,11 @@
 .review-swiper {
   position: relative;
   padding-bottom: 60px;
+  width: 100%;
 }
 
-.img_review_container {
-  display: flex;
+.swiper-wrapper {
+  display: flex !important;
   gap: 20px;
   padding: 0 20px;
 }
