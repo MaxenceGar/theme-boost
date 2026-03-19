@@ -103,18 +103,20 @@
   <script>
     document.addEventListener('DOMContentLoaded', function() {
       new Swiper('#review-swiper-{{ section.id }}', {
-        slidesPerView: 1,
+        slidesPerView: 2.5,
         spaceBetween: 20,
         navigation: {
-          nextEl: '.review-button-next',
-          prevEl: '.review-button-prev'
+          nextEl: '.review-swiper-{{ section.id }} .swiper-button-next',
+          prevEl: '.review-swiper-{{ section.id }} .swiper-button-prev'
         },
         breakpoints: {
           768: {
-            slidesPerView: 4.5
+            slidesPerView: 2.5,
+            spaceBetween: 20
           },
           480: {
-            slidesPerView: 1
+            slidesPerView: 1.2,
+            spaceBetween: 10
           }
         }
       });
