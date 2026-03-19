@@ -9,6 +9,45 @@
  */
 {
   "sections": {
+    "proof_stats_i7BN9z": {
+      "type": "proof-stats",
+      "blocks": {
+        "stat_fFLyC6": {
+          "type": "stat",
+          "settings": {
+            "number": "86k+",
+            "description": "Clients satisfaits"
+          }
+        },
+        "stat_YKXFVG": {
+          "type": "stat",
+          "settings": {
+            "number": "4.8/5",
+            "description": "Évaluation moyenne"
+          }
+        },
+        "stat_M7pyU6": {
+          "type": "stat",
+          "settings": {
+            "number": "99%",
+            "description": "Taux de recommandation"
+          }
+        }
+      },
+      "block_order": [
+        "stat_fFLyC6",
+        "stat_YKXFVG",
+        "stat_M7pyU6"
+      ],
+      "name": "Proof / Stats",
+      "settings": {
+        "title_part_1": "Satisfaction",
+        "title_part_2": "you can trust.",
+        "description": "Nos clients nous font confiance depuis des années. Découvrez ce qui nous rend unique.",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
+    },
     "review_Vh9ipM": {
       "type": "review",
       "blocks": {
@@ -500,6 +539,7 @@
     }
   },
   "order": [
+    "proof_stats_i7BN9z",
     "review_Vh9ipM",
     "btn_test_HXewag",
     "hero_swiper_7T6Vgr",
