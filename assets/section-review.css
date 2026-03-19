@@ -9,7 +9,7 @@
 
 .img_review_container {
   display: flex;
-  width: 100%;
+  width: 450px;
   justify-content: space-between;
 }
 
@@ -27,7 +27,6 @@
   font-size: 13px;
   letter-spacing: -0.6px;
   color: black;
-  text-align: center;
 }
 
 .review_container {
