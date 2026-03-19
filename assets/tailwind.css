@@ -1206,6 +1206,9 @@
     font-size: var(--text-xl) !important;
     line-height: var(--tw-leading, var(--text-xl--line-height)) !important;
   }
+  .text-\[10px\] {
+    font-size: 10px;
+  }
   .text-\[10px\]\! {
     font-size: 10px !important;
   }
