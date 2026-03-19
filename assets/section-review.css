@@ -1,32 +1,11 @@
-.img_review_contain {
-  border: 1px solid black;
-  display: flex;
-  flex-direction: column;
-  width: 450px;
-  border-radius: 10px;
-  overflow: hidden;
-}
-
-.img_review_container {
-  display: flex;
-  width: 450px;
-  justify-content: space-between;
-}
-
 .container-review {
   padding-top: 50px;
   padding-bottom: 50px;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  gap: 10px;
+  gap: 30px;
   background-color: #fffdf5;
-}
-
-.rating-text {
-  font-size: 13px;
-  letter-spacing: -0.6px;
-  color: black;
 }
 
 .review_container {
@@ -42,7 +21,112 @@
 }
 
 .rating-stars {
-  color: red;
+  color: #ffc700;
   display: flex;
-  gap: 0;
+  gap: 5px;
+  font-size: 18px;
+}
+
+.star {
+  color: rgba(0, 0, 0, 0.2);
+}
+
+.star.active {
+  color: #ffc700;
+}
+
+.review-subtitle {
+  text-align: center;
+  font-size: 16px;
+  color: rgba(0, 0, 0, 0.7);
+  margin-bottom: 20px;
+}
+
+.img_review_container {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.img_review_contain {
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  width: 250px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.img_review {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.review-header {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 12px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.review-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.author-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.author-name {
+  font-weight: 600;
+  font-size: 13px !important;
+  color: black;
+}
+
+.verified {
+  font-size: 11px !important;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.review-text {
+  font-size: 13px !important;
+  line-height: 1.5;
+  color: black;
+  padding: 12px;
+  text-align: left !important;
+}
+
+.product-box {
+  background-color: #f9f9f9;
+  padding: 12px;
+  border-top: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.product-name {
+  font-weight: 600;
+  font-size: 13px !important;
+  color: black;
+}
+
+.product-price {
+  font-weight: 700;
+  font-size: 14px !important;
+  color: black;
+  margin: 4px 0;
+}
+
+.purchase-date {
+  font-size: 11px !important;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.rating-text {
+  margin: 0;
+  color: black;
 }
