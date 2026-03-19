@@ -7,7 +7,7 @@
     <div class="proof-stats-left">
       <h2 class="proof-stats-title">
         {{ section.settings.title_part_1 }}
-        <span class="italic">{{ section.settings.title_part_2 }}</span>
+        <span class="h2">{{ section.settings.title_part_2 }}</span>
       </h2>
       <p class="proof-stats-description">{{ section.settings.description }}</p>
     </div>
@@ -31,108 +31,108 @@
 </div>
 
 {% schema %}
-{
-  "name": "Proof / Stats",
-  "settings": [
-    {
-      "type": "header",
-      "content": "Contenu"
-    },
-    {
-      "type": "text",
-      "id": "title_part_1",
-      "label": "Titre - Partie 1",
-      "default": "Satisfaction"
-    },
-    {
-      "type": "text",
-      "id": "title_part_2",
-      "label": "Titre - Partie 2 (italique)",
-      "default": "you can trust."
-    },
-    {
-      "type": "textarea",
-      "id": "description",
-      "label": "Description",
-      "default": "Nos clients nous font confiance depuis des années. Découvrez ce qui nous rend unique."
-    },
-    {
-      "type": "header",
-      "content": "Paramètres"
-    },
-    {
-      "type": "range",
-      "id": "margin_top",
-      "label": "Marge top",
-      "default": 0,
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "margin_bottom",
-      "label": "Marge bottom",
-      "default": 0,
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px"
-    }
-  ],
-  "blocks": [
-    {
-      "type": "stat",
-      "name": "Statistique",
-      "settings": [
-        {
-          "type": "text",
-          "id": "number",
-          "label": "Chiffre",
-          "default": "86k+"
-        },
-        {
-          "type": "text",
-          "id": "description",
-          "label": "Description",
-          "default": "Clients satisfaits"
-        }
-      ]
-    }
-  ],
-  "presets": [
-    {
-      "name": "Proof / Stats",
-      "settings": {
-        "title_part_1": "Satisfaction",
-        "title_part_2": "you can trust.",
-        "description": "Nos clients nous font confiance depuis des années. Découvrez ce qui nous rend unique."
+  {
+    "name": "Proof / Stats",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Contenu"
       },
-      "blocks": [
-        {
-          "type": "stat",
-          "settings": {
-            "number": "86k+",
-            "description": "Clients satisfaits"
+      {
+        "type": "text",
+        "id": "title_part_1",
+        "label": "Titre - Partie 1",
+        "default": "Satisfaction"
+      },
+      {
+        "type": "text",
+        "id": "title_part_2",
+        "label": "Titre - Partie 2 (italique)",
+        "default": "you can trust."
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description",
+        "default": "Nos clients nous font confiance depuis des années. Découvrez ce qui nous rend unique."
+      },
+      {
+        "type": "header",
+        "content": "Paramètres"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "label": "Marge top",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Marge bottom",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "stat",
+        "name": "Statistique",
+        "settings": [
+          {
+            "type": "text",
+            "id": "number",
+            "label": "Chiffre",
+            "default": "86k+"
+          },
+          {
+            "type": "text",
+            "id": "description",
+            "label": "Description",
+            "default": "Clients satisfaits"
           }
+        ]
+      }
+    ],
+    "presets": [
+      {
+        "name": "Proof / Stats",
+        "settings": {
+          "title_part_1": "Satisfaction",
+          "title_part_2": "you can trust.",
+          "description": "Nos clients nous font confiance depuis des années. Découvrez ce qui nous rend unique."
         },
-        {
-          "type": "stat",
-          "settings": {
-            "number": "4.8/5",
-            "description": "Évaluation moyenne"
+        "blocks": [
+          {
+            "type": "stat",
+            "settings": {
+              "number": "86k+",
+              "description": "Clients satisfaits"
+            }
+          },
+          {
+            "type": "stat",
+            "settings": {
+              "number": "4.8/5",
+              "description": "Évaluation moyenne"
+            }
+          },
+          {
+            "type": "stat",
+            "settings": {
+              "number": "99%",
+              "description": "Taux de recommandation"
+            }
           }
-        },
-        {
-          "type": "stat",
-          "settings": {
-            "number": "99%",
-            "description": "Taux de recommandation"
-          }
-        }
-      ]
-    }
-  ]
-}
+        ]
+      }
+    ]
+  }
 {% endschema %}
