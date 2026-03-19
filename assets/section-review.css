@@ -19,6 +19,10 @@
   padding: 0 20px;
 }
 
+.swiper-slide {
+  background-color: red;
+}
+
 .review-button-prev,
 .review-button-next {
   position: absolute;
