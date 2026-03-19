@@ -2,7 +2,7 @@
   border: 1px solid black;
   display: flex;
   flex-direction: column;
-  width: 250px;
+  width: 450px;
   border-radius: 10px;
   overflow: hidden;
 }
