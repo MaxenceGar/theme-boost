@@ -9,7 +9,11 @@
                       </svg>
 {% endcapture %}
 {% capture purshare %}
-  
+  <svg class="purchase-date-icon" xmlns="http://www.w3.org/2000/svg" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display: block;">
+                            <path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path>
+                            <line x1="3" y1="6" x2="21" y2="6"></line>
+                            <path d="M16 10a4 4 0 0 1-8 0"></path>
+                          </svg>
 {% endcapture %}
 <div class="container-review page-width">
   <div class="review_container">
@@ -47,7 +51,7 @@
       <div class="m-4 p-4 bg-[#f9f9f9] rounded-md rating-text">
         <p class="rating-text">Product Name</p>
         <p class="rating-text">$29.99</p>
-        <p class="rating-text">Purchased on March 8th, 2025</p>
+        <p class="rating-text flex items-center">{{ purshare }}Purchased on March 8th, 2025</p>
       </div>
     </div>
   </div>
