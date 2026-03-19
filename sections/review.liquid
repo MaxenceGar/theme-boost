@@ -46,16 +46,18 @@
                 height="300px"
                 src="{{ block.settings.image | image_url: width: 600 }}"
                 alt="">
-              <div class="rating-text flex flex-row items-center gap-4 m-4">
-                <p class="rating-text flex">
-                  {% for i in (1..block.settings.rating) %}
-                    {{ stars }}
-                  {% endfor %}
-                </p>
-                <div class="border border-black rounded-md pl-4 pr-4 flex items-center gap-4">
-                  <p class="rating-text">{{ block.settings.author_name }}</p>
-                  {{ certif }}
-                  <p class="rating-text">Verified Buyer</p>
+              <div>
+                <div class="rating-text flex flex-row items-center gap-4 m-4">
+                  <p class="rating-text flex">
+                    {% for i in (1..block.settings.rating) %}
+                      {{ stars }}
+                    {% endfor %}
+                  </p>
+                  <div class="border border-black rounded-md pl-4 pr-4 flex items-center gap-4">
+                    <p class="rating-text">{{ block.settings.author_name }}</p>
+                    {{ certif }}
+                    <p class="rating-text">Verified Buyer</p>
+                  </div>
                 </div>
               </div>
               <p class="rating-text m-4 text-left!">{{ block.settings.review_text }}</p>
