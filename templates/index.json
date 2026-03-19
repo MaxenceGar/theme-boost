@@ -17,7 +17,7 @@
           "settings": {
             "image": "shopify://shop_images/IMG_8593.jpg",
             "rating": 5,
-            "author_name": "Marie,28",
+            "author_name": "Marie",
             "review_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "product": "medaille-plate-10mm",
             "purchase_date": "Purchased on March 8th, 2025"
@@ -29,7 +29,7 @@
             "image": "shopify://shop_images/IMG_8593.jpg",
             "rating": 5,
             "author_name": "Marie",
-            "review_text": "Excellent produit, très satisfait de mon achat!",
+            "review_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "product": "medaille-plate-10mm",
             "purchase_date": "Purchased on March 8th, 2025"
           }
@@ -40,7 +40,7 @@
             "image": "shopify://shop_images/IMG_8593.jpg",
             "rating": 5,
             "author_name": "Marie",
-            "review_text": "Excellent produit, très satisfait de mon achat!",
+            "review_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "product": "medaille-plate-10mm",
             "purchase_date": "Purchased on March 8th, 2025"
           }
@@ -51,7 +51,7 @@
             "image": "shopify://shop_images/IMG_8593.jpg",
             "rating": 5,
             "author_name": "Marie",
-            "review_text": "Excellent produit, très satisfait de mon achat!",
+            "review_text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
             "product": "medaille-plate-10mm",
             "purchase_date": "Purchased on March 8th, 2025"
           }
