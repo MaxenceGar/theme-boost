@@ -1,15 +1,15 @@
 {{ 'section-proof-stats.css' | asset_url | stylesheet_tag }}
 
-<div class="proof-stats-section" style="margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;">
+<div class="proof-stats-section" style="margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px; background-color: {{ section.settings.bg_color }};">
   <div class="proof-stats-container">
 
     <!-- Left Column -->
     <div class="proof-stats-left">
-      <h2 class="proof-stats-title">
+      <h2 class="proof-stats-title" style="color: {{ section.settings.title_color }};">
         {{ section.settings.title_part_1 }}
-        <span class="h2">{{ section.settings.title_part_2 }}</span>
+        <span class="proof-stats-title">{{ section.settings.title_part_2 }}</span>
       </h2>
-      <p class="proof-stats-description">{{ section.settings.description }}</p>
+      <p class="proof-stats-description" style="color: {{ section.settings.text_color }};">{{ section.settings.description }}</p>
     </div>
 
     <!-- Right Column -->
@@ -79,6 +79,40 @@
         "max": 100,
         "step": 1,
         "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Couleurs"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Couleur de fond",
+        "default": "#D9CBB8"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Couleur des titres",
+        "default": "#6B4A2B"
+      },
+      {
+        "type": "color",
+        "id": "stat_number_color",
+        "label": "Couleur des chiffres",
+        "default": "#B88A5A"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Couleur du texte",
+        "default": "#7A5C3E"
+      },
+      {
+        "type": "color",
+        "id": "divider_color",
+        "label": "Couleur des dividers",
+        "default": "#6B4A2B"
       }
     ],
     "blocks": [
