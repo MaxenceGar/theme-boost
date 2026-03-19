@@ -1009,6 +1009,9 @@
   .bg-\[\#d9d9d999\]\! {
     background-color: #d9d9d999 !important;
   }
+  .bg-\[\#f9f9f9\] {
+    background-color: #f9f9f9;
+  }
   .bg-black {
     background-color: var(--color-black);
   }
