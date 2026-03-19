@@ -49,12 +49,12 @@
               <div class="flex flex-col justify-between h-full">
                 <div>
                   <div class="rating-text flex flex-col gap-4 m-4">
-                    <p class="rating-text flex inline-block">
+                    <p class="rating-text flex">
                       {% for i in (1..block.settings.rating) %}
                         {{ stars }}
                       {% endfor %}
                     </p>
-                    <div class="border border-black rounded-md pl-4 pr-4 flex items-center gap-4">
+                    <div class="border border-black rounded-md pl-4 pr-4 flex items-center gap-4 w-fit">
                       <p class="rating-text">{{ block.settings.author_name }}</p>
                       {{ certif }}
                       <p class="rating-text">Verified Buyer</p>
