@@ -13,6 +13,13 @@
   width: 100%;
 }
 
+.review_container_text {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
 .review-swiper .swiper-wrapper {
   display: flex !important;
   gap: 20px;
