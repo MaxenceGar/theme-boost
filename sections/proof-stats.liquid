@@ -24,10 +24,7 @@
             <div class="stat-divider" style="background-color: {{ section.settings.divider_color }};"></div>
           {% endunless %}
         {% elsif block.type == 'separator' %}
-          <div
-            class="stat-divider"
-            style="background-color: {{ section.settings.divider_color }}; margin: 16px 0;"
-            {{ block.shopify_attributes }}>-</div>
+          <div class="stat-divider" {{ block.shopify_attributes }}>-</div>
         {% endif %}
       {% endfor %}
     </div>
