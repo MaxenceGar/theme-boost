@@ -61,7 +61,11 @@
         "title_color_span": "#d7ed96",
         "stat_number_color": "#d7ed96",
         "text_color": "#ffffff",
-        "divider_color": "#ffffff"
+        "divider_color": "#ffffff",
+        "title_font": "mono",
+        "title_bold": false,
+        "title_span_bold": false,
+        "stat_number_bold": true
       }
     },
     "review_Vh9ipM": {
