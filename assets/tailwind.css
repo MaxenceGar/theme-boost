@@ -804,6 +804,9 @@
   .gap-40\! {
     gap: calc(var(--spacing) * 40) !important;
   }
+  .gap-100 {
+    gap: calc(var(--spacing) * 100);
+  }
   .gap-\[2px\] {
     gap: 2px;
   }
