@@ -19,11 +19,6 @@
   padding: 0 20px;
 }
 
-.swiper-slide {
-  width: 300px !important;
-  height: 200px !important
-}
-
 .review-button-prev,
 .review-button-next {
   position: absolute;
