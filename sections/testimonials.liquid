@@ -1,0 +1,191 @@
+{{ 'section-testimonials.css' | asset_url | stylesheet_tag }}
+
+<div class="testimonials-section" style="margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;">
+
+  <!-- Header -->
+  <div class="testimonials-header">
+    {% if section.settings.title != blank %}
+      <h2 class="testimonials-title">{{ section.settings.title }}</h2>
+    {% endif %}
+    {% if section.settings.subtitle != blank %}
+      <p class="testimonials-subtitle">{{ section.settings.subtitle }}</p>
+    {% endif %}
+  </div>
+
+  <!-- Testimonials Container -->
+  <div class="testimonials-container">
+    {% for block in section.blocks %}
+      {% if block.type == 'testimonial' %}
+        <div class="testimonial-card" {{ block.shopify_attributes }}>
+
+          <!-- Rating Stars -->
+          {% if block.settings.rating > 0 %}
+            <div class="testimonial-stars">
+              {% for i in (1..5) %}
+                <span class="star{% if i <= block.settings.rating %} active{% endif %}">★</span>
+              {% endfor %}
+            </div>
+          {% endif %}
+
+          <!-- Review Text -->
+          {% if block.settings.review_text != blank %}
+            <p class="testimonial-text">{{ block.settings.review_text }}</p>
+          {% endif %}
+
+          <!-- Author Name -->
+          {% if block.settings.author_name != blank %}
+            <p class="testimonial-author">— {{ block.settings.author_name }}</p>
+          {% endif %}
+
+          <!-- Product Info -->
+          {% if block.settings.product != blank %}
+            <div class="testimonial-product">
+              <div class="product-details">
+                <p class="product-title">{{ block.settings.product.title }}</p>
+                <p class="product-price">{{ block.settings.product.price | money }}</p>
+                {% if block.settings.purchase_date != blank %}
+                  <p class="purchase-date">{{ block.settings.purchase_date }}</p>
+                {% endif %}
+              </div>
+            </div>
+          {% endif %}
+
+          <!-- Review Image -->
+          {% if block.settings.image != blank %}
+            <div class="testimonial-image">
+              {{ block.settings.image | image_url: width: 250 | image_tag: loading: 'lazy' }}
+            </div>
+          {% endif %}
+
+        </div>
+      {% endif %}
+    {% endfor %}
+  </div>
+
+</div>
+
+{% schema %}
+{
+  "name": "Testimonials",
+  "settings": [
+    {
+      "type": "header",
+      "content": "Section"
+    },
+    {
+      "type": "text",
+      "id": "title",
+      "label": "Titre de la section",
+      "default": "Avis clients"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "label": "Sous-titre",
+      "default": "Découvrez ce que nos clients pensent de nos produits"
+    },
+    {
+      "type": "range",
+      "id": "margin_top",
+      "label": "Marge top",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    },
+    {
+      "type": "range",
+      "id": "margin_bottom",
+      "label": "Marge bottom",
+      "default": 0,
+      "min": 0,
+      "max": 100,
+      "step": 1,
+      "unit": "px"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "testimonial",
+      "name": "Avis",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Avis"
+        },
+        {
+          "type": "text",
+          "id": "author_name",
+          "label": "Prénom du client",
+          "default": "Client"
+        },
+        {
+          "type": "range",
+          "id": "rating",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "label": "Nombre d'étoiles",
+          "default": 5
+        },
+        {
+          "type": "textarea",
+          "id": "review_text",
+          "label": "Texte de l'avis",
+          "default": "Excellent produit, très satisfait de mon achat!"
+        },
+        {
+          "type": "header",
+          "content": "Produit associé"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Produit"
+        },
+        {
+          "type": "text",
+          "id": "purchase_date",
+          "label": "Date d'achat",
+          "placeholder": "Ex: Acheté en mars 2026"
+        },
+        {
+          "type": "header",
+          "content": "Image"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Photo du client"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Testimonials",
+      "blocks": [
+        {
+          "type": "testimonial",
+          "settings": {
+            "author_name": "Marie",
+            "rating": 5,
+            "review_text": "Produit de très haute qualité! Livraison rapide et emballage soigné.",
+            "purchase_date": "Acheté en février 2026"
+          }
+        },
+        {
+          "type": "testimonial",
+          "settings": {
+            "author_name": "Jean",
+            "rating": 5,
+            "review_text": "Je recommande vivement! Excellent rapport qualité-prix.",
+            "purchase_date": "Acheté en janvier 2026"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
