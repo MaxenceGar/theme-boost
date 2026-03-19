@@ -20,7 +20,7 @@
 }
 
 .swiper-slide {
-  background-color: red;
+  width: 300px !important;
 }
 
 .review-button-prev,
