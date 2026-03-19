@@ -38,9 +38,11 @@
 
 .stat-item {
   display: flex;
-  align-items: end;
+  align-items: flex-start;
   flex-direction: row;
   gap: 12px;
+  flex-wrap: wrap;
+  width: 100%;
 }
 
 .stat-number {
