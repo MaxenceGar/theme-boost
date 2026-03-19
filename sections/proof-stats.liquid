@@ -17,11 +17,11 @@
       {% for block in section.blocks %}
         {% if block.type == 'stat' %}
           <div class="stat-item" {{ block.shopify_attributes }}>
-            <div class="stat-number">{{ block.settings.number }}</div>
-            <div class="stat-text">{{ block.settings.description }}</div>
+            <div class="stat-number" style="color: {{ section.settings.stat_number_color }};">{{ block.settings.number }}</div>
+            <div class="stat-text" style="color: {{ section.settings.text_color }};">{{ block.settings.description }}</div>
           </div>
           {% unless forloop.last %}
-            <div class="stat-divider"></div>
+            <div class="stat-divider" style="background-color: {{ section.settings.divider_color }};"></div>
           {% endunless %}
         {% endif %}
       {% endfor %}
