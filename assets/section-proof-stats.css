@@ -4,6 +4,8 @@
 }
 
 .proof-stats-container {
+  max-width: 1300px;
+  margin: 0 auto;
   padding: 0 20px;
   display: grid;
   grid-template-columns: 50% 50%;
