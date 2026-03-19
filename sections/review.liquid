@@ -1,4 +1,6 @@
 {{ 'section-review.css' | asset_url | stylesheet_tag }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
 
 {% capture stars %}
   <svg width="16px" height="16px" fill="#ffc107" viewBox="0 0 24 24" role="img" xmlns="http://www.w3.org/2000/svg"><title>Trustpilot icon</title><path d="M12,17.964l5.214-1.321l2.179,6.714L12,17.964z M24,9.286h-9.179L12,0.643L9.179,9.286 H0l7.429,5.357l-2.821,8.643l7.429-5.357l4.571-3.286L24,9.286L24,9.286L24,9.286L24,9.286z"/></svg>
@@ -32,38 +34,67 @@
   </div>
   <h3 class="text-center">Real People Real Skin Wins</h3>
   <p class="rating-text text-center">See what our customers are saying about our products</p>
-  <div class="img_review_container">
-    {% for block in section.blocks %}
-      {% if block.type == 'review' %}
-        <div class="img_review_contain m-10" {{ block.shopify_attributes }}>
-          <img
-            class="img_review"
-            width="100%"
-            height="300px"
-            src="{{ block.settings.image | image_url: width: 600 }}"
-            alt="">
-          <div class="rating-text flex flex-row items-center gap-4 m-4">
-            <p class="rating-text flex">
-              {% for i in (1..block.settings.rating) %}
-                {{ stars }}
-              {% endfor %}
-            </p>
-            <div class="border border-black rounded-md pl-4 pr-4 flex items-center gap-4">
-              <p class="rating-text">{{ block.settings.author_name }}</p>
-              {{ certif }}
-              <p class="rating-text">Verified Buyer</p>
+  <div class="swiper review-swiper" id="review-swiper-{{ section.id }}">
+    <div class="swiper-wrapper img_review_container">
+      {% for block in section.blocks %}
+        {% if block.type == 'review' %}
+          <div class="swiper-slide" {{ block.shopify_attributes }}>
+            <div class="img_review_contain m-10">
+              <img
+                class="img_review"
+                width="100%"
+                height="300px"
+                src="{{ block.settings.image | image_url: width: 600 }}"
+                alt="">
+              <div class="rating-text flex flex-row items-center gap-4 m-4">
+                <p class="rating-text flex">
+                  {% for i in (1..block.settings.rating) %}
+                    {{ stars }}
+                  {% endfor %}
+                </p>
+                <div class="border border-black rounded-md pl-4 pr-4 flex items-center gap-4">
+                  <p class="rating-text">{{ block.settings.author_name }}</p>
+                  {{ certif }}
+                  <p class="rating-text">Verified Buyer</p>
+                </div>
+              </div>
+              <p class="rating-text m-4 text-left!">{{ block.settings.review_text }}</p>
+              <div class="m-4 p-4 bg-[#f9f9f9] rounded-md rating-text">
+                <p class="rating-text">{{ block.settings.product.title }}</p>
+                <p class="rating-text">{{ block.settings.product.price | money }}</p>
+                <p class="rating-text text-[11px]! flex items-center gap-2">{{ purshare }}{{ block.settings.purchase_date }}</p>
+              </div>
             </div>
           </div>
-          <p class="rating-text m-4 text-left!">{{ block.settings.review_text }}</p>
-          <div class="m-4 p-4 bg-[#f9f9f9] rounded-md rating-text">
-            <p class="rating-text">{{ block.settings.product.title }}</p>
-            <p class="rating-text">{{ block.settings.product.price | money }}</p>
-            <p class="rating-text text-[11px]! flex items-center gap-2">{{ purshare }}{{ block.settings.purchase_date }}</p>
-          </div>
-        </div>
-      {% endif %}
-    {% endfor %}
+        {% endif %}
+      {% endfor %}
+    </div>
+
+    <!-- Navigation arrows -->
+    <div class="swiper-button-prev review-button-prev"></div>
+    <div class="swiper-button-next review-button-next"></div>
   </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      new Swiper('#review-swiper-{{ section.id }}', {
+        slidesPerView: 2.5,
+        spaceBetween: 20,
+        navigation: {
+          nextEl: '.review-button-next',
+          prevEl: '.review-button-prev'
+        },
+        breakpoints: {
+          768: {
+            slidesPerView: 2.5
+          },
+          480: {
+            slidesPerView: 1.2
+          }
+        }
+      });
+    });
+  </script>
 </div>
 
 {% schema %}
