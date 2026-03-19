@@ -11,8 +11,30 @@
   "sections": {
     "review_Vh9ipM": {
       "type": "review",
+      "blocks": {
+        "review_HP4W6z": {
+          "type": "review",
+          "settings": {
+            "author_name": "Client",
+            "rating": 5,
+            "review_text": "Excellent produit, très satisfait de mon achat!",
+            "image": "shopify://shop_images/IMG_8593.jpg",
+            "product": "mini-creole-colette-bijou-personnalise-unique-vintage-design",
+            "purchase_date": "ezrezarez"
+          }
+        }
+      },
+      "block_order": [
+        "review_HP4W6z"
+      ],
       "name": "Review Section",
-      "settings": {}
+      "settings": {
+        "global_rating": 5,
+        "rating_text": "Rated 4.8/5 based on +10,839 Total Ratings",
+        "subtitle": "Découvrez ce que nos clients pensent",
+        "margin_top": 0,
+        "margin_bottom": 0
+      }
     },
     "btn_test_HXewag": {
       "type": "btn-test",
