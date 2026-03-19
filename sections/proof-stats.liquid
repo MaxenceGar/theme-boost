@@ -7,7 +7,7 @@
     <div class="proof-stats-left">
       <h2 class="proof-stats-title" style="color: {{ section.settings.title_color }};">
         {{ section.settings.title_part_1 }}
-        <span class="proof-stats-title" style="color: {{ section.settings.title_color }}">{{ section.settings.title_part_2 }}</span>
+        <span class="proof-stats-title" style="color: {{ section.settings.title_color_span }}">{{ section.settings.title_part_2 }}</span>
       </h2>
       <p class="proof-stats-description" style="color: {{ section.settings.text_color }};">{{ section.settings.description }}</p>
     </div>
@@ -98,6 +98,12 @@
       {
         "type": "color",
         "id": "title_color",
+        "label": "Couleur des titres",
+        "default": "#6B4A2B"
+      },
+      {
+        "type": "color",
+        "id": "title_color_span",
         "label": "Couleur des titres",
         "default": "#6B4A2B"
       },
