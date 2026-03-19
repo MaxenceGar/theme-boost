@@ -30,6 +30,10 @@
             "description": "Évaluation moyenne"
           }
         },
+        "separator_VHewxN": {
+          "type": "separator",
+          "settings": {}
+        },
         "stat_M7pyU6": {
           "type": "stat",
           "settings": {
@@ -42,6 +46,7 @@
         "stat_fFLyC6",
         "separator_FLmmdA",
         "stat_YKXFVG",
+        "separator_VHewxN",
         "stat_M7pyU6"
       ],
       "name": "Proof / Stats",
