@@ -41,6 +41,16 @@
     "cart-drawer": {
       "type": "cart-drawer",
       "blocks": {
+        "timer_w39tkF": {
+          "type": "timer",
+          "settings": {
+            "duration_minutes": 10,
+            "text_before": "Vos produits sont réservés pendant",
+            "text_after": "minutes !",
+            "bg_color": "#e5e7eb",
+            "text_color": "#121212"
+          }
+        },
         "reassurance_bBWziL": {
           "type": "reassurance",
           "settings": {
@@ -72,6 +82,7 @@
         }
       },
       "block_order": [
+        "timer_w39tkF",
         "reassurance_bBWziL",
         "text_f3LG3E",
         "upsell_product_page_TUiphP"
