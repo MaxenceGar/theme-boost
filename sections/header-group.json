@@ -41,6 +41,16 @@
     "cart-drawer": {
       "type": "cart-drawer",
       "blocks": {
+        "palier_kTWFTY": {
+          "type": "palier",
+          "settings": {
+            "bar_color": "#000000",
+            "palier_1_amount": 30,
+            "palier_1_text": "Livraison offerte",
+            "palier_2_amount": 60,
+            "palier_2_text": "Cadeau offert"
+          }
+        },
         "timer_w39tkF": {
           "type": "timer",
           "settings": {
@@ -82,6 +92,7 @@
         }
       },
       "block_order": [
+        "palier_kTWFTY",
         "timer_w39tkF",
         "reassurance_bBWziL",
         "text_f3LG3E",
