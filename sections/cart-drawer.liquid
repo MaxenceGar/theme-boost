@@ -121,6 +121,8 @@
 
       {%- comment -%} ZONE HEADER : Blocks avant les articles {%- endcomment -%}
       <div data-blocks-wrapper>
+        {% render 'palier-cart-drawer'
+          , block: block %}
         {% for block in section.blocks %}
           {% case block.type %}
 
@@ -142,10 +144,6 @@
                 {{ block.shopify_attributes }}>
                 {{ block.settings.text }}
               </div>
-
-            {% when 'palier' %}
-              {% render 'palier-cart-drawer'
-                , block: block %}
 
             {% when 'divider' %}
               <div
