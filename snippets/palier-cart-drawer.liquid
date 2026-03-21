@@ -38,7 +38,7 @@
   endif
 -%}
 
-{%- if palier_count > 0 and cart != empty -%}
+{%- if palier_count > 0 and cart.item_count > 0 -%}
   {%- liquid
     # Calcul du pourcentage de progression
     if cart_total >= max_amount
