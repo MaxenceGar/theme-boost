@@ -41,11 +41,32 @@
     "cart-drawer": {
       "type": "cart-drawer",
       "blocks": {
+        "divider_nePtBC": {
+          "type": "divider",
+          "settings": {
+            "color": "#e5e7eb",
+            "thickness": 4,
+            "margin_y": 8
+          }
+        },
+        "palier_GpM3Lz": {
+          "type": "palier",
+          "settings": {
+            "bar_color": "#000000",
+            "palier_1_amount": 30,
+            "palier_1_text": "Livraison offerte",
+            "palier_2_amount": 60,
+            "palier_2_text": "Cadeau offert"
+          }
+        },
         "text_f3LG3E": {
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "En ce moment 2 Achetées = 2 Offertes"
+            "text": "<p>En ce moment 2 Achetées = 2 Offertes</p>",
+            "bg_color": "#e5e7eb",
+            "text_color": "#121212",
+            "padding_y": 12
           }
         },
         "upsell_product_page_TUiphP": {
@@ -61,13 +82,18 @@
         }
       },
       "block_order": [
+        "divider_nePtBC",
+        "palier_GpM3Lz",
         "text_f3LG3E",
         "upsell_product_page_TUiphP"
       ],
       "settings": {
+        "drawer_width": 50,
+        "checkout_btn_bg": "#121212",
+        "checkout_btn_text": "#ffffff",
+        "checkout_btn_radius": 50,
         "preview_mode": false,
-        "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design",
-        "enable_reassurance": false
+        "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
       }
     },
     "header": {
