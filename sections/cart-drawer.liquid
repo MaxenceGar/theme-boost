@@ -617,6 +617,64 @@
       },
       {
         "type": "header",
+        "content": "Palier d'avantages"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_palier",
+        "label": "Activer le palier d'avantages",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "palier_bar_color",
+        "label": "Couleur de la barre",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "Palier 1"
+      },
+      {
+        "type": "number",
+        "id": "palier_1_amount",
+        "label": "Montant (€)",
+        "default": 30
+      },
+      {
+        "type": "text",
+        "id": "palier_1_text",
+        "label": "Texte",
+        "default": "Livraison offerte"
+      },
+      {
+        "type": "image_picker",
+        "id": "palier_1_icon",
+        "label": "Icône (optionnel)"
+      },
+      {
+        "type": "header",
+        "content": "Palier 2"
+      },
+      {
+        "type": "number",
+        "id": "palier_2_amount",
+        "label": "Montant (€)",
+        "default": 60
+      },
+      {
+        "type": "text",
+        "id": "palier_2_text",
+        "label": "Texte",
+        "default": "Cadeau offert"
+      },
+      {
+        "type": "image_picker",
+        "id": "palier_2_icon",
+        "label": "Icône (optionnel)"
+      },
+      {
+        "type": "header",
         "content": "Mode Preview (dev)"
       },
       {
@@ -760,61 +818,6 @@
             "step": 4,
             "default": 12,
             "unit": "px"
-          }
-        ]
-      },
-      {
-        "type": "palier",
-        "name": "Paliers avantages",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "color",
-            "id": "bar_color",
-            "label": "Couleur de la barre",
-            "default": "#000000"
-          },
-          {
-            "type": "header",
-            "content": "Palier 1"
-          },
-          {
-            "type": "number",
-            "id": "palier_1_amount",
-            "label": "Montant (€)",
-            "default": 30
-          },
-          {
-            "type": "text",
-            "id": "palier_1_text",
-            "label": "Texte",
-            "default": "Livraison offerte"
-          },
-          {
-            "type": "image_picker",
-            "id": "palier_1_icon",
-            "label": "Icône (optionnel)"
-          },
-          {
-            "type": "header",
-            "content": "Palier 2"
-          },
-          {
-            "type": "number",
-            "id": "palier_2_amount",
-            "label": "Montant (€)",
-            "default": 60
-          },
-          {
-            "type": "text",
-            "id": "palier_2_text",
-            "label": "Texte",
-            "default": "Cadeau offert"
-          },
-          {
-            "type": "image_picker",
-            "id": "palier_2_icon",
-            "label": "Icône (optionnel)"
           }
         ]
       },
