@@ -118,6 +118,7 @@
       </div>
 
       {%- comment -%} ZONE HEADER : Blocks avant les articles {%- endcomment -%}
+      <div data-blocks-wrapper>
       {% for block in section.blocks %}
         {% case block.type %}
 
@@ -152,6 +153,7 @@
 
         {% endcase %}
       {% endfor %}
+      </div>
 
       {%- comment -%} Cart items {%- endcomment -%}
       <cart-drawer-items

@@ -80,7 +80,24 @@ class CartDrawer extends HTMLElement {
         : document.getElementById(section.id);
 
       if (!sectionElement) return;
-      sectionElement.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
+
+      // 🔧 FIX: Préserver les blocks (palier, timer, text, divider) lors du refetch
+      if (section.id === 'cart-drawer') {
+        const blocksContainer = sectionElement.querySelector('[data-blocks-wrapper]');
+        const savedBlocks = blocksContainer ? blocksContainer.innerHTML : null;
+
+        sectionElement.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
+
+        // Réinsérer les blocks dans le nouveau HTML
+        if (savedBlocks) {
+          const newBlocksContainer = sectionElement.querySelector('[data-blocks-wrapper]');
+          if (newBlocksContainer) {
+            newBlocksContainer.innerHTML = savedBlocks;
+          }
+        }
+      } else {
+        sectionElement.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
+      }
     });
 
     setTimeout(() => {
