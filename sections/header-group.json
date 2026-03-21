@@ -50,53 +50,10 @@
             "palier_2_amount": 60,
             "palier_2_text": "Cadeau offert"
           }
-        },
-        "timer_w39tkF": {
-          "type": "timer",
-          "settings": {
-            "duration_minutes": 10,
-            "text_before": "Vos produits sont réservés pendant",
-            "text_after": "minutes !",
-            "bg_color": "#e5e7eb",
-            "text_color": "#121212"
-          }
-        },
-        "reassurance_bBWziL": {
-          "type": "reassurance",
-          "settings": {
-            "item_1": "Livraison sécurisée",
-            "item_2": "Paiement 100% sécurisé",
-            "item_3": "Retour gratuit",
-            "item_4": "",
-            "border_color": "#000000"
-          }
-        },
-        "text_f3LG3E": {
-          "type": "text",
-          "settings": {
-            "text": "<p>En ce moment 2 Achetées = 2 Offertes</p>",
-            "bg_color": "#e5e7eb",
-            "text_color": "#121212",
-            "padding_y": 12
-          }
-        },
-        "upsell_product_page_TUiphP": {
-          "type": "upsell-product-page",
-          "settings": {
-            "title": "Vous aimerez aussi",
-            "product_1": "creme-riche-hydratation-intense",
-            "product_2": "creme-solaire-spf50",
-            "product_3": "creme-solaire-spf50",
-            "product_4": "dentifrice-blancheur-naturelle-tmp"
-          }
         }
       },
       "block_order": [
-        "palier_kTWFTY",
-        "timer_w39tkF",
-        "reassurance_bBWziL",
-        "text_f3LG3E",
-        "upsell_product_page_TUiphP"
+        "palier_kTWFTY"
       ],
       "settings": {
         "cart_bg": "#ffffff",
@@ -108,7 +65,7 @@
         "checkout_btn_radius": 8,
         "cart_image_size": 90,
         "cart_item_gap": 12,
-        "preview_mode": true,
+        "preview_mode": false,
         "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
       }
     },
