@@ -79,7 +79,12 @@
     endif
   -%}
 
-  <div class="palier-cart-drawer" style="--palier-color: {{ bar_color }};" {{ block.shopify_attributes }}>
+  <palier-cart-drawer
+    data-cart-total="{{ cart_total | times: 100 | round }}"
+    data-max-amount="{{ max_amount | times: 100 | round }}"
+    class="palier-cart-drawer"
+    style="--palier-color: {{ bar_color }};"
+    {{ block.shopify_attributes }}>
     {%- comment -%} Message principal {%- endcomment -%}
     <p class="palier-message">
       {%- if all_reached -%}
@@ -136,5 +141,5 @@
         {%- endif -%}
       </div>
     </div>
-  </div>
+  </palier-cart-drawer>
 {%- endif -%}
