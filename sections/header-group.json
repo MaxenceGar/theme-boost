@@ -40,21 +40,6 @@
     },
     "cart-drawer": {
       "type": "cart-drawer",
-      "blocks": {
-        "palier_kTWFTY": {
-          "type": "palier",
-          "settings": {
-            "bar_color": "#000000",
-            "palier_1_amount": 30,
-            "palier_1_text": "Livraison offerte",
-            "palier_2_amount": 60,
-            "palier_2_text": "Cadeau offert"
-          }
-        }
-      },
-      "block_order": [
-        "palier_kTWFTY"
-      ],
       "settings": {
         "cart_bg": "#ffffff",
         "cart_padding": 32,
@@ -65,6 +50,14 @@
         "checkout_btn_radius": 8,
         "cart_image_size": 90,
         "cart_item_gap": 12,
+        "enable_palier": true,
+        "palier_bar_color": "#000000",
+        "palier_1_amount": 30,
+        "palier_1_text": "Livraison offerte",
+        "palier_1_icon": "shopify://shop_images/creation-unique-bijoux-personnalises-nouvel-amour-paris-personnalisation.webp",
+        "palier_2_amount": 60,
+        "palier_2_text": "Cadeau offert",
+        "palier_2_icon": "shopify://shop_images/IMG_8593.jpg",
         "preview_mode": false,
         "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
       }
