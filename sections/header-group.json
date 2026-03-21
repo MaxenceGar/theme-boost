@@ -99,11 +99,16 @@
         "upsell_product_page_TUiphP"
       ],
       "settings": {
+        "cart_bg": "#ffffff",
+        "cart_padding": 32,
+        "cart_radius": 12,
         "drawer_width": 50,
         "checkout_btn_bg": "#121212",
         "checkout_btn_text": "#ffffff",
-        "checkout_btn_radius": 50,
-        "preview_mode": false,
+        "checkout_btn_radius": 8,
+        "cart_image_size": 60,
+        "cart_item_gap": 24,
+        "preview_mode": true,
         "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
       }
     },
