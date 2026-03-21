@@ -1,0 +1,213 @@
+{{ 'section-proof-stats.css' | asset_url | stylesheet_tag }}
+
+<div class="proof-stats-section" style="margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px; background-color: {{ section.settings.bg_color }};">
+  <div class="proof-stats-container page-width">
+
+    <!-- Left Column -->
+    <div class="proof-stats-left">
+      <h2 class="proof-stats-title" style="color: {{ section.settings.title_color }}; {% if section.settings.title_font %}font-family: {{ section.settings.title_font.family }}, {{ section.settings.title_font.fallback_families }};{% endif %} {% if section.settings.title_bold %}font-weight: 700;{% endif %}">
+        {{ section.settings.title_part_1 }}
+        <span class="proof-stats-title" style="color: {{ section.settings.title_color_span }}; {% if section.settings.title_span_bold %}font-weight: 700;{% endif %}">{{ section.settings.title_part_2 }}</span>
+      </h2>
+      <p class="proof-stats-description" style="color: {{ section.settings.text_color }};">{{ section.settings.description }}</p>
+    </div>
+
+    <!-- Right Column -->
+    <div class="proof-stats-right">
+      {% for block in section.blocks %}
+        {% if block.type == 'stat' %}
+          <div class="stat-item" {{ block.shopify_attributes }}>
+            <div class="stat-number" style="color: {{ section.settings.stat_number_color }}; {% if section.settings.title_font %}font-family: {{ section.settings.title_font.family }}, {{ section.settings.title_font.fallback_families }};{% endif %} {% if section.settings.stat_number_bold %}font-weight: 700;{% else %}font-weight: 600;{% endif %}">{{ block.settings.number }}</div>
+            <div class="stat-text" style="color: {{ section.settings.text_color }};">{{ block.settings.description }}</div>
+          </div>
+          {% unless forloop.last %}
+            <div class="stat-divider" style="background-color: {{ section.settings.divider_color }};"></div>
+          {% endunless %}
+        {% elsif block.type == 'separator' %}
+          <div class="stat-divider" {{ block.shopify_attributes }}></div>
+        {% endif %}
+      {% endfor %}
+    </div>
+
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Proof / Stats",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Contenu"
+      },
+      {
+        "type": "text",
+        "id": "title_part_1",
+        "label": "Titre - Partie 1",
+        "default": "Satisfaction"
+      },
+      {
+        "type": "text",
+        "id": "title_part_2",
+        "label": "Titre - Partie 2 (italique)",
+        "default": "you can trust."
+      },
+      {
+        "type": "textarea",
+        "id": "description",
+        "label": "Description",
+        "default": "Nos clients nous font confiance depuis des années. Découvrez ce qui nous rend unique."
+      },
+      {
+        "type": "header",
+        "content": "Paramètres"
+      },
+      {
+        "type": "range",
+        "id": "margin_top",
+        "label": "Marge top",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "margin_bottom",
+        "label": "Marge bottom",
+        "default": 0,
+        "min": 0,
+        "max": 100,
+        "step": 1,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Couleurs"
+      },
+      {
+        "type": "color",
+        "id": "bg_color",
+        "label": "Couleur de fond",
+        "default": "#D9CBB8"
+      },
+      {
+        "type": "color",
+        "id": "title_color",
+        "label": "Couleur des titres",
+        "default": "#6B4A2B"
+      },
+      {
+        "type": "color",
+        "id": "title_color_span",
+        "label": "Couleur des titres",
+        "default": "#6B4A2B"
+      },
+      {
+        "type": "color",
+        "id": "stat_number_color",
+        "label": "Couleur des chiffres",
+        "default": "#B88A5A"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Couleur du texte",
+        "default": "#7A5C3E"
+      },
+      {
+        "type": "color",
+        "id": "divider_color",
+        "label": "Couleur des dividers",
+        "default": "#6B4A2B"
+      },
+      {
+        "type": "header",
+        "content": "Typographie"
+      },
+      {
+        "type": "font_picker",
+        "id": "title_font",
+        "label": "Police des titres",
+        "default": "serif"
+      },
+      {
+        "type": "checkbox",
+        "id": "title_bold",
+        "label": "Gras - Titre principal",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "title_span_bold",
+        "label": "Gras - Titre span",
+        "default": false
+      },
+      {
+        "type": "checkbox",
+        "id": "stat_number_bold",
+        "label": "Gras - Chiffres",
+        "default": true
+      }
+    ],
+    "blocks": [
+      {
+        "type": "stat",
+        "name": "Statistique",
+        "settings": [
+          {
+            "type": "text",
+            "id": "number",
+            "label": "Chiffre",
+            "default": "86k+"
+          },
+          {
+            "type": "text",
+            "id": "description",
+            "label": "Description",
+            "default": "Clients satisfaits"
+          }
+        ]
+      },
+      {
+        "type": "separator",
+        "name": "Séparateur",
+        "settings": []
+      }
+    ],
+    "presets": [
+      {
+        "name": "Proof / Stats",
+        "settings": {
+          "title_part_1": "Satisfaction",
+          "title_part_2": "you can trust.",
+          "description": "Nos clients nous font confiance depuis des années. Découvrez ce qui nous rend unique."
+        },
+        "blocks": [
+          {
+            "type": "stat",
+            "settings": {
+              "number": "86k+",
+              "description": "Clients satisfaits"
+            }
+          },
+          {
+            "type": "stat",
+            "settings": {
+              "number": "4.8/5",
+              "description": "Évaluation moyenne"
+            }
+          },
+          {
+            "type": "stat",
+            "settings": {
+              "number": "99%",
+              "description": "Taux de recommandation"
+            }
+          }
+        ]
+      }
+    ]
+  }
+{% endschema %}

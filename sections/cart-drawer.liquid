@@ -20,6 +20,43 @@
   .drawer {
     visibility: hidden;
   }
+
+  #CartDrawer .drawer__inner {
+    width: {{ section.settings.drawer_width }}rem;
+    max-width: calc(100vw - 3rem);
+  }
+
+  #CartDrawer .cart__checkout-button {
+    background-color: {{ section.settings.checkout_btn_bg }} !important;
+    color: {{ section.settings.checkout_btn_text }} !important;
+    border-radius: {{ section.settings.checkout_btn_radius }}px !important;
+    border: none !important;
+  }
+
+  .cart-drawer-announcement {
+    text-align: center;
+  }
+
+  .cart-drawer-text-block {
+    text-align: left;
+  }
+
+  .cart-drawer-divider {
+    border: 0;
+    background: none;
+  }
+
+  .cart-drawer-reassurance {
+    border-top: 1px solid;
+    border-bottom: 1px solid;
+  }
+
+  .cart-drawer-reassurance-items {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding: 0.5rem 0;
+  }
 </style>
 
 <cart-drawer
@@ -57,9 +94,14 @@
       {%- endunless -%}
 
       {%- comment -%} Header {%- endcomment -%}
-      <div class="justify-center! bg-black text-white">
-        <p class="text-center! text-[11px]!">En ce moment 2 Achetées = 2 Offertes</p>
-      </div>
+      {%- for block in section.blocks -%}
+        {%- if block.type == 'announcement_bar' -%}
+          <div class="cart-drawer-announcement" style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: {{ block.settings.padding_y }}px 1rem; font-size: {{ block.settings.font_size }};" {{ block.shopify_attributes }}>
+            <p class="m-0!">{{ block.settings.text }}</p>
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+
       <div class="drawer__header mx-10">
         <h2 class="drawer__heading h4">{{ 'sections.cart.title' | t }}</h2>
         <button
@@ -71,27 +113,30 @@
         </button>
       </div>
 
-      {%- comment -%} Blocks (timer, palier, texte) {%- endcomment -%}
+      {%- comment -%} ZONE HEADER : Blocks avant les articles {%- endcomment -%}
       {% for block in section.blocks %}
         {% case block.type %}
 
           {% when 'timer' %}
             {% if cart_has_items %}
-              <div class="bg-gray-200! text-center py-8 text-black!" {{ block.shopify_attributes }}>
-                Vos produits sont réservés<br>pendant
-                <span id="cart-timer" class="font-bold!">10:00</span>
-                minutes !
+              <div style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: 2rem 1rem; text-align: center;" {{ block.shopify_attributes }}>
+                <p style="margin: 0 0 0.5rem 0;">{{ block.settings.text_before }}</p>
+                <p style="margin: 0; font-weight: bold;"><span id="cart-timer" data-duration="{{ block.settings.duration_minutes }}">10:00</span></p>
+                <p style="margin: 0.5rem 0 0 0;">{{ block.settings.text_after }}</p>
               </div>
             {% endif %}
 
           {% when 'text' %}
-            <div class="bg-gray-200! text-center text-black! text-[14px]" {{ block.shopify_attributes }}>
+            <div class="cart-drawer-text-block" style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: {{ block.settings.padding_y }}px 1rem;" {{ block.shopify_attributes }}>
               {{ block.settings.text }}
             </div>
 
           {% when 'palier' %}
-            {% render 'palier-cart-drawer'
-              , block: block %}
+            {% render 'palier-cart-drawer', block: block %}
+
+          {% when 'divider' %}
+            <div class="cart-drawer-divider" style="background-color: {{ block.settings.color }}; height: {{ block.settings.thickness }}px; margin: {{ block.settings.margin_y }}px 0;" {{ block.shopify_attributes }}></div>
+
         {% endcase %}
       {% endfor %}
 
@@ -384,19 +429,22 @@
         </form>
       </cart-drawer-items>
 
-      {%- comment -%} Footer {%- endcomment -%}
+      {%- comment -%} ZONE FOOTER : Blocks après les articles {%- endcomment -%}
       <div class="drawer__footer m-4">
         <div class="cart-drawer__footer">
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'upsell-product-page' -%}
-                {%- render 'upsell-product-page'
-                  , block: block -%}
+                {%- render 'upsell-product-page', block: block -%}
+
+              {%- when 'reassurance' -%}
+                {%- render 'footer-rassurance', block: block -%}
+
+              {%- when 'divider' -%}
+                <div class="cart-drawer-divider" style="background-color: {{ block.settings.color }}; height: {{ block.settings.thickness }}px; margin: {{ block.settings.margin_y }}px 0;" {{ block.shopify_attributes }}></div>
+
             {%- endcase -%}
           {%- endfor -%}
-          {%- if section.settings.enable_reassurance -%}
-            {% render 'footer-rassurance' %}
-          {%- endif -%}
           {%- if cart.cart_level_discount_applications.size > 0 -%}
             <ul
               class="discounts list-unstyled"
@@ -458,6 +506,42 @@
     "settings": [
       {
         "type": "header",
+        "content": "Style du drawer"
+      },
+      {
+        "type": "range",
+        "id": "drawer_width",
+        "label": "Largeur (rem)",
+        "min": 40,
+        "max": 90,
+        "step": 5,
+        "default": 60,
+        "unit": "rem"
+      },
+      {
+        "type": "color",
+        "id": "checkout_btn_bg",
+        "label": "Fond bouton checkout",
+        "default": "#121212"
+      },
+      {
+        "type": "color",
+        "id": "checkout_btn_text",
+        "label": "Texte bouton checkout",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "range",
+        "id": "checkout_btn_radius",
+        "label": "Border radius bouton",
+        "min": 0,
+        "max": 50,
+        "step": 2,
+        "default": 4,
+        "unit": "px"
+      },
+      {
+        "type": "header",
         "content": "Mode Preview (dev)"
       },
       {
@@ -471,67 +555,124 @@
         "type": "product",
         "id": "preview_product",
         "label": "Produit à afficher"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_reassurance",
-        "label": "Afficher le block de reassurance"
       }
     ],
     "blocks": [
       {
+        "type": "announcement_bar",
+        "name": "Barre d'annonce",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Texte",
+            "default": "En ce moment 2 Achetées = 2 Offertes"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Couleur de fond",
+            "default": "#000000"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Couleur du texte",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "select",
+            "id": "font_size",
+            "label": "Taille du texte",
+            "options": [
+              { "value": "10px", "label": "XS" },
+              { "value": "11px", "label": "S" },
+              { "value": "12px", "label": "M" },
+              { "value": "14px", "label": "L" }
+            ],
+            "default": "11px"
+          },
+          {
+            "type": "range",
+            "id": "padding_y",
+            "label": "Padding vertical",
+            "min": 4,
+            "max": 20,
+            "step": 2,
+            "default": 8,
+            "unit": "px"
+          }
+        ]
+      },
+      {
         "type": "timer",
         "name": "Timer réservation",
         "limit": 1,
-        "settings": []
-      },
-      {
-        "type": "upsell-product-page",
-        "name": "UpSell",
-        "limit": 1,
         "settings": [
           {
-            "type": "header",
-            "content": "Upsell Product Page"
+            "type": "number",
+            "id": "duration_minutes",
+            "label": "Durée (minutes)",
+            "default": 10
           },
           {
             "type": "text",
-            "id": "title",
-            "default": "Vous aimerez aussi",
-            "label": "Titre"
+            "id": "text_before",
+            "label": "Texte avant le timer",
+            "default": "Vos produits sont réservés pendant"
           },
           {
-            "type": "product",
-            "id": "product_1",
-            "label": "Produit 1"
+            "type": "text",
+            "id": "text_after",
+            "label": "Texte après le timer",
+            "default": "minutes !"
           },
           {
-            "type": "product",
-            "id": "product_2",
-            "label": "Produit 2"
+            "type": "color",
+            "id": "bg_color",
+            "label": "Couleur de fond",
+            "default": "#e5e7eb"
           },
           {
-            "type": "product",
-            "id": "product_3",
-            "label": "Produit 3"
-          },
-          {
-            "type": "product",
-            "id": "product_4",
-            "label": "Produit 4"
+            "type": "color",
+            "id": "text_color",
+            "label": "Couleur du texte",
+            "default": "#121212"
           }
         ]
       },
       {
         "type": "text",
         "name": "Texte",
-        "limit": 1,
+        "limit": 5,
         "settings": [
           {
-            "type": "text",
-            "default": "Texte",
+            "type": "richtext",
             "id": "text",
-            "label": "Texte"
+            "label": "Texte",
+            "default": "<p>Votre message ici</p>"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Couleur de fond",
+            "default": "#e5e7eb"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Couleur du texte",
+            "default": "#121212"
+          },
+          {
+            "type": "range",
+            "id": "padding_y",
+            "label": "Padding vertical",
+            "min": 4,
+            "max": 32,
+            "step": 4,
+            "default": 12,
+            "unit": "px"
           }
         ]
       },
@@ -587,6 +728,112 @@
             "type": "image_picker",
             "id": "palier_2_icon",
             "label": "Icône (optionnel)"
+          }
+        ]
+      },
+      {
+        "type": "upsell-product-page",
+        "name": "UpSell",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "header",
+            "content": "Upsell Product Page"
+          },
+          {
+            "type": "text",
+            "id": "title",
+            "default": "Vous aimerez aussi",
+            "label": "Titre"
+          },
+          {
+            "type": "product",
+            "id": "product_1",
+            "label": "Produit 1"
+          },
+          {
+            "type": "product",
+            "id": "product_2",
+            "label": "Produit 2"
+          },
+          {
+            "type": "product",
+            "id": "product_3",
+            "label": "Produit 3"
+          },
+          {
+            "type": "product",
+            "id": "product_4",
+            "label": "Produit 4"
+          }
+        ]
+      },
+      {
+        "type": "reassurance",
+        "name": "Réassurance",
+        "limit": 1,
+        "settings": [
+          {
+            "type": "text",
+            "id": "item_1",
+            "label": "Item 1",
+            "default": "Livraison sécurisée"
+          },
+          {
+            "type": "text",
+            "id": "item_2",
+            "label": "Item 2",
+            "default": "Paiement 100% sécurisé"
+          },
+          {
+            "type": "text",
+            "id": "item_3",
+            "label": "Item 3",
+            "default": "Retour gratuit"
+          },
+          {
+            "type": "text",
+            "id": "item_4",
+            "label": "Item 4 (optionnel)",
+            "default": ""
+          },
+          {
+            "type": "color",
+            "id": "border_color",
+            "label": "Couleur bordure",
+            "default": "#000000"
+          }
+        ]
+      },
+      {
+        "type": "divider",
+        "name": "Séparateur",
+        "settings": [
+          {
+            "type": "color",
+            "id": "color",
+            "label": "Couleur",
+            "default": "#e5e7eb"
+          },
+          {
+            "type": "range",
+            "id": "thickness",
+            "label": "Épaisseur (px)",
+            "min": 1,
+            "max": 4,
+            "step": 1,
+            "default": 1,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "margin_y",
+            "label": "Espacement vertical",
+            "min": 0,
+            "max": 32,
+            "step": 4,
+            "default": 8,
+            "unit": "px"
           }
         ]
       }

@@ -34,6 +34,109 @@
     ]
   },
   {
+    "name": "Paramètre btn",
+    "settings": [
+      {
+        "type": "header",
+        "content": "Bouton Test"
+      },
+      {
+        "type": "text",
+        "id": "btn_test_text",
+        "label": "Texte du bouton",
+        "default": "Test Button"
+      },
+      {
+        "type": "color",
+        "id": "btn_test_bg_color",
+        "label": "Couleur de fond",
+        "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "btn_test_text_color",
+        "label": "Couleur du texte",
+        "default": "#ffffff"
+      },
+      {
+        "type": "range",
+        "id": "btn_test_padding",
+        "min": 5,
+        "max": 30,
+        "step": 1,
+        "unit": "px",
+        "label": "Padding",
+        "default": 15
+      },
+      {
+        "type": "range",
+        "id": "btn_test_font_size",
+        "min": 10,
+        "max": 24,
+        "step": 1,
+        "unit": "px",
+        "label": "Taille du texte",
+        "default": 16
+      },
+      {
+        "type": "header",
+        "content": "Hover"
+      },
+      {
+        "type": "checkbox",
+        "id": "btn_test_hover_enabled",
+        "label": "Activer l'effet hover",
+        "default": true
+      },
+      {
+        "type": "select",
+        "id": "btn_test_hover_effect",
+        "label": "Type d'effet hover",
+        "default": "opacity",
+        "options": [
+          {
+            "label": "Opacité",
+            "value": "opacity"
+          },
+          {
+            "label": "Fond",
+            "value": "background"
+          },
+          {
+            "label": "Écaille (scale)",
+            "value": "scale"
+          }
+        ]
+      },
+      {
+        "type": "color",
+        "id": "btn_test_hover_bg_color",
+        "label": "Couleur fond au hover",
+        "default": "#333333"
+      },
+      {
+        "type": "range",
+        "id": "btn_test_hover_opacity",
+        "min": 0,
+        "max": 100,
+        "step": 5,
+        "unit": "%",
+        "label": "Opacité au hover",
+        "default": 90
+      },
+      {
+        "type": "range",
+        "id": "btn_test_hover_scale",
+        "min": 90,
+        "max": 110,
+        "step": 1,
+        "unit": "%",
+        "label": "Échelle au hover",
+        "default": 100
+      }
+    ]
+  },
+  {
     "name": "Radius global (test)",
     "settings": [
       {

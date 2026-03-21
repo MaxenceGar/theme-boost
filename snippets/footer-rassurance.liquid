@@ -1,19 +1,39 @@
-<div id="footer-cart-drawer-reinsurance" class="footer-cart-drawer w-full border border-t border-b border-black">
-  <ul class="flex items-center justify-start lg:justify-between gap-4 w-full snap-x snap-mandatory overflow-x-auto no-scrollbar">
-    <li class="shrink-0 snap-start scroll-mx-4">
-      <span class="whitespace-nowrap">
-        Livraison sécurisée
-      </span>
-    </li>
-    <li class="shrink-0 snap-start scroll-mx-4">
-      <span class="whitespace-nowrap">
-        Paiement 100% sécurisé
-      </span>
-    </li>
-    <li class="shrink-0 snap-start scroll-mx-4">
-      <span class="whitespace-nowrap">
-        Retour gratuit
-      </span>
-    </li>
+{% comment %} Affiche les items de réassurance de manière dynamique {% endcomment %}
+
+{%- assign border_color = block.settings.border_color | default: '#000000' -%}
+
+<div id="footer-cart-drawer-reinsurance" class="footer-cart-drawer w-full cart-drawer-reassurance" style="border-color: {{ border_color }};" {{ block.shopify_attributes }}>
+  <ul class="flex items-center justify-start lg:justify-between gap-4 w-full snap-x snap-mandatory overflow-x-auto no-scrollbar cart-drawer-reassurance-items">
+    {%- if block.settings.item_1 != blank -%}
+      <li class="shrink-0 snap-start scroll-mx-4">
+        <span class="whitespace-nowrap">
+          {{ block.settings.item_1 }}
+        </span>
+      </li>
+    {%- endif -%}
+
+    {%- if block.settings.item_2 != blank -%}
+      <li class="shrink-0 snap-start scroll-mx-4">
+        <span class="whitespace-nowrap">
+          {{ block.settings.item_2 }}
+        </span>
+      </li>
+    {%- endif -%}
+
+    {%- if block.settings.item_3 != blank -%}
+      <li class="shrink-0 snap-start scroll-mx-4">
+        <span class="whitespace-nowrap">
+          {{ block.settings.item_3 }}
+        </span>
+      </li>
+    {%- endif -%}
+
+    {%- if block.settings.item_4 != blank -%}
+      <li class="shrink-0 snap-start scroll-mx-4">
+        <span class="whitespace-nowrap">
+          {{ block.settings.item_4 }}
+        </span>
+      </li>
+    {%- endif -%}
   </ul>
 </div>

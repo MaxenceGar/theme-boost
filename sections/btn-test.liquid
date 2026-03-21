@@ -1,0 +1,45 @@
+{{ 'section-btn-test.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .btn-test {
+    background-color: {{ settings.btn_test_bg_color }};
+    color: {{ settings.btn_test_text_color }};
+    border-radius: var(--rounded--size);
+    padding: {{ settings.btn_test_padding }}px;
+    font-size: {{ settings.btn_test_font_size }}px;
+  }
+
+  {% if settings.btn_test_hover_enabled %}
+    {% if settings.btn_test_hover_effect == 'opacity' %}
+      .btn-test:hover {
+        opacity: {{ settings.btn_test_hover_opacity | divided_by: 100.0 }};
+      }
+    {% elsif settings.btn_test_hover_effect == 'background' %}
+      .btn-test:hover {
+        background-color: {{ settings.btn_test_hover_bg_color }};
+      }
+    {% elsif settings.btn_test_hover_effect == 'scale' %}
+      .btn-test:hover {
+        transform: scale({{ settings.btn_test_hover_scale | divided_by: 100.0 }});
+      }
+    {% endif %}
+  {% endif %}
+{%- endstyle -%}
+
+<div class="btn-test-section">
+  <button class="btn btn-test">
+    {{ settings.btn_test_text }}
+  </button>
+</div>
+
+{% schema %}
+  {
+    "name": "Test Button",
+    "settings": [],
+    "presets": [
+      {
+        "name": "Test Button"
+      }
+    ]
+  }
+{% endschema %}
