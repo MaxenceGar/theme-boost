@@ -122,7 +122,9 @@ class CartTimer {
     this.timerEl = document.getElementById('cart-timer');
     if (!this.timerEl) return;
 
-    this.TIMER_DURATION = 10 * 60; // 10 minutes en secondes
+    // Lire durée depuis data-duration ou défaut 10 minutes
+    const durationMinutes = parseInt(this.timerEl.dataset.duration) || 10;
+    this.TIMER_DURATION = durationMinutes * 60; // en secondes
     this.STORAGE_KEY = 'cart_timer_end';
     this.init();
   }
