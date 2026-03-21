@@ -1,0 +1,163 @@
+/* Palier d'avantages - Cart Drawer */
+
+.palier-cart-drawer {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  padding: 1.5rem 1.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.06);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* Message principal */
+.palier-message {
+  text-align: center;
+  margin: 0;
+}
+
+.palier-message__text {
+  display: block;
+  margin-bottom: 0.25rem;
+}
+
+.palier-message__highlight {
+  font-weight: 600;
+  color: rgb(var(--color-foreground));
+}
+
+/* Conteneur de la barre */
+.palier-bar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+/* Barre de progression */
+.palier-bar {
+  position: relative;
+  height: 10px;
+  background-color: rgba(0, 0, 0, 0.08);
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.palier-bar__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  border-radius: 100px;
+  transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: width;
+}
+
+/* Étapes de la barre */
+.palier-steps {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  height: 48px;
+}
+
+.palier-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.75rem;
+  flex: 0 0 auto;
+  position: relative;
+  z-index: 2;
+}
+
+/* Cercle de l'étape */
+.palier-step__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 2px solid;
+  background-color: #fff;
+  transition: all 0.3s ease;
+  flex-shrink: 0;
+}
+
+.palier-step__circle--active {
+  background-color: currentColor;
+  border-color: currentColor;
+}
+
+/* Icône à l'intérieur du cercle */
+.palier-step__circle-icon {
+  width: 14px;
+  height: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Label sous l'étape */
+.palier-step__label {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  text-align: center;
+  min-width: 90px;
+  margin-top: 0.5rem;
+}
+
+.palier-step__icon {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.palier-step__text {
+  display: block;
+  line-height: 1.2;
+  transition: font-weight 0.3s ease, color 0.3s ease;
+}
+
+.palier-step--completed .palier-step__text {
+  font-weight: 600;
+  color: rgb(var(--color-foreground));
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .palier-cart-drawer {
+    padding: 1.25rem 1rem;
+    gap: 1.25rem;
+  }
+
+  .palier-bar-container {
+    gap: 0.75rem;
+  }
+
+  .palier-steps {
+    height: 64px;
+  }
+
+  .palier-step {
+    gap: 0.5rem;
+  }
+
+  .palier-step__label {
+    min-width: 70px;
+    margin-top: 0.25rem;
+  }
+
+  .palier-step__circle {
+    width: 24px;
+    height: 24px;
+    border-width: 1.5px;
+  }
+
+  .palier-step__icon {
+    width: 14px;
+    height: 14px;
+  }
+}
