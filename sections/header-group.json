@@ -41,6 +41,16 @@
     "cart-drawer": {
       "type": "cart-drawer",
       "blocks": {
+        "reassurance_bBWziL": {
+          "type": "reassurance",
+          "settings": {
+            "item_1": "Livraison sécurisée",
+            "item_2": "Paiement 100% sécurisé",
+            "item_3": "Retour gratuit",
+            "item_4": "",
+            "border_color": "#000000"
+          }
+        },
         "divider_nePtBC": {
           "type": "divider",
           "settings": {
@@ -82,6 +92,7 @@
         }
       },
       "block_order": [
+        "reassurance_bBWziL",
         "divider_nePtBC",
         "palier_GpM3Lz",
         "text_f3LG3E",
