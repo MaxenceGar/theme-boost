@@ -120,6 +120,128 @@
 
       {%- comment -%} ZONE HEADER : Blocks avant les articles {%- endcomment -%}
       <div data-blocks-wrapper>
+        {%- comment -%} Palier d'avantages (section setting, pas block) {%- endcomment -%}
+        {%- if section.settings.enable_palier -%}
+          {%- assign cart_total = cart.total_price | divided_by: 100.0 -%}
+          {%- assign p1_amount = section.settings.palier_1_amount | times: 1.0 -%}
+          {%- assign p1_text = section.settings.palier_1_text -%}
+          {%- assign p1_icon = section.settings.palier_1_icon -%}
+          {%- assign p2_amount = section.settings.palier_2_amount | times: 1.0 -%}
+          {%- assign p2_text = section.settings.palier_2_text -%}
+          {%- assign p2_icon = section.settings.palier_2_icon -%}
+          {%- assign bar_color = section.settings.palier_bar_color -%}
+
+          {%- assign palier_count = 0 -%}
+          {%- assign max_amount = 0 -%}
+          {%- if p1_amount > 0 and p1_text != blank -%}
+            {%- assign palier_count = 1 -%}
+            {%- assign max_amount = p1_amount -%}
+          {%- endif -%}
+          {%- if p2_amount > 0 and p2_text != blank -%}
+            {%- assign palier_count = 2 -%}
+            {%- assign max_amount = p2_amount -%}
+          {%- endif -%}
+
+          {%- if palier_count > 0 and cart.item_count > 0 -%}
+            {%- liquid
+              if cart_total >= max_amount
+                assign progress_pct = 100
+              else
+                assign progress_pct = cart_total | divided_by: max_amount | times: 100.0 | round
+              endif
+
+              if palier_count == 1
+                assign p1_pos = 100
+              else
+                assign p1_pos = p1_amount | divided_by: max_amount | times: 100.0 | round
+              endif
+
+              assign next_text = ''
+              assign remaining = 0
+              assign all_reached = false
+
+              if palier_count == 1
+                if cart_total < p1_amount
+                  assign remaining = p1_amount | minus: cart_total
+                  assign next_text = p1_text
+                else
+                  assign all_reached = true
+                endif
+              elsif palier_count == 2
+                if cart_total < p1_amount
+                  assign remaining = p1_amount | minus: cart_total
+                  assign next_text = p1_text
+                elsif cart_total < p2_amount
+                  assign remaining = p2_amount | minus: cart_total
+                  assign next_text = p2_text
+                else
+                  assign all_reached = true
+                endif
+              endif
+            -%}
+
+            <palier-cart-drawer
+              data-cart-total="{{ cart_total | times: 100 | round }}"
+              data-max-amount="{{ max_amount | times: 100 | round }}"
+              class="palier-cart-drawer"
+              style="--palier-color: {{ bar_color }};">
+              <p class="palier-message">
+                {%- if all_reached -%}
+                  <span class="palier-message__highlight">Félicitations !</span>
+                  <span class="palier-message__text">Tous les avantages sont débloqués</span>
+                {%- else -%}
+                  <span class="palier-message__text">Plus que <span class="palier-message__highlight">{{ remaining | ceil }}€</span> pour :</span>
+                  <span class="palier-message__text">{{ next_text }}</span>
+                {%- endif -%}
+              </p>
+
+              <div class="palier-bar-container">
+                <div class="palier-bar">
+                  <div class="palier-bar__fill" style="width: {{ progress_pct }}%; background-color: {{ bar_color }};"></div>
+                </div>
+
+                <div class="palier-steps">
+                  {%- if palier_count >= 1 -%}
+                    <div class="palier-step {% if cart_total >= p1_amount %}palier-step--completed{% endif %}" style="color: {{ bar_color }};">
+                      <div class="palier-step__circle {% if cart_total >= p1_amount %}palier-step__circle--active{% endif %}">
+                        {%- if cart_total >= p1_amount -%}
+                          <svg class="palier-step__circle-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                        {%- endif -%}
+                      </div>
+                      <div class="palier-step__label">
+                        {%- if p1_icon != blank -%}
+                          <img src="{{ p1_icon | image_url: width: 20 }}" alt="" class="palier-step__icon" loading="lazy" />
+                        {%- endif -%}
+                        <span class="palier-step__text">{{ p1_text }}</span>
+                      </div>
+                    </div>
+                  {%- endif -%}
+
+                  {%- if palier_count >= 2 -%}
+                    <div class="palier-step {% if cart_total >= p2_amount %}palier-step--completed{% endif %}" style="color: {{ bar_color }};">
+                      <div class="palier-step__circle {% if cart_total >= p2_amount %}palier-step__circle--active{% endif %}">
+                        {%- if cart_total >= p2_amount -%}
+                          <svg class="palier-step__circle-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"></polyline>
+                          </svg>
+                        {%- endif -%}
+                      </div>
+                      <div class="palier-step__label">
+                        {%- if p2_icon != blank -%}
+                          <img src="{{ p2_icon | image_url: width: 20 }}" alt="" class="palier-step__icon" loading="lazy" />
+                        {%- endif -%}
+                        <span class="palier-step__text">{{ p2_text }}</span>
+                      </div>
+                    </div>
+                  {%- endif -%}
+                </div>
+              </div>
+            </palier-cart-drawer>
+          {%- endif -%}
+        {%- endif -%}
+
         {% for block in section.blocks %}
           {% case block.type %}
 
