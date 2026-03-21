@@ -51,24 +51,6 @@
             "border_color": "#000000"
           }
         },
-        "divider_nePtBC": {
-          "type": "divider",
-          "settings": {
-            "color": "#e5e7eb",
-            "thickness": 4,
-            "margin_y": 8
-          }
-        },
-        "palier_GpM3Lz": {
-          "type": "palier",
-          "settings": {
-            "bar_color": "#000000",
-            "palier_1_amount": 30,
-            "palier_1_text": "Livraison offerte",
-            "palier_2_amount": 60,
-            "palier_2_text": "Cadeau offert"
-          }
-        },
         "text_f3LG3E": {
           "type": "text",
           "settings": {
@@ -91,8 +73,6 @@
       },
       "block_order": [
         "reassurance_bBWziL",
-        "divider_nePtBC",
-        "palier_GpM3Lz",
         "text_f3LG3E",
         "upsell_product_page_TUiphP"
       ],
