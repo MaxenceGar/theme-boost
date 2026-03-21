@@ -16,24 +16,22 @@
   endif
 -%}
 
-<style>
+{%- style -%}
   .drawer {
     visibility: hidden;
   }
 
-  #CartDrawer .drawer__inner {
-    width: {{ section.settings.drawer_width }}rem;
-    max-width: calc(100vw - 3rem);
-  }
-
-  #CartDrawer .cart__checkout-button {
-    background-color: {{ section.settings.checkout_btn_bg }}
-     !important;
-    color: {{ section.settings.checkout_btn_text }}
-     !important;
-    border-radius: {{ section.settings.checkout_btn_radius }}
-    px !important;
-    border: none !important;
+  #CartDrawer {
+    --cd-bg: {{ section.settings.cart_bg }};
+    --cd-width: {{ section.settings.drawer_width }}rem;
+    --cd-padding: {{ section.settings.cart_padding }}px;
+    --cd-radius: {{ section.settings.cart_radius }}px;
+    --cd-separator-color: rgba(0, 0, 0, 0.06);
+    --cd-btn-bg: {{ section.settings.checkout_btn_bg }};
+    --cd-btn-text: {{ section.settings.checkout_btn_text }};
+    --cd-btn-radius: {{ section.settings.checkout_btn_radius }}px;
+    --cd-item-img-size: {{ section.settings.cart_image_size }}px;
+    --cd-item-gap: {{ section.settings.cart_item_gap }}px;
   }
 
   .cart-drawer-announcement {
@@ -50,8 +48,7 @@
   }
 
   .cart-drawer-reassurance {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+    border-color: var(--cd-separator-color);
   }
 
   .cart-drawer-reassurance-items {
@@ -60,7 +57,7 @@
     gap: 0.5rem;
     padding: 0.5rem 0;
   }
-</style>
+{%- endstyle -%}
 
 <cart-drawer
   class="drawer{% unless cart_has_items %} is-empty{% endunless %}"
