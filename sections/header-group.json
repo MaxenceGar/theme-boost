@@ -71,7 +71,6 @@
         },
         "text_f3LG3E": {
           "type": "text",
-          "disabled": true,
           "settings": {
             "text": "<p>En ce moment 2 Achetées = 2 Offertes</p>",
             "bg_color": "#e5e7eb",
@@ -81,7 +80,6 @@
         },
         "upsell_product_page_TUiphP": {
           "type": "upsell-product-page",
-          "disabled": true,
           "settings": {
             "title": "Vous aimerez aussi",
             "product_1": "creme-riche-hydratation-intense",
