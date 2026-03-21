@@ -10,8 +10,6 @@
     - palier_2_amount, palier_2_text, palier_2_icon
 {% endcomment %}
 
-{{ 'component-palier-cart-drawer.css' | asset_url | stylesheet_tag }}
-
 {%- liquid
   assign cart_total = cart.total_price | divided_by: 100.0
 
