@@ -768,7 +768,7 @@
         "min": 1000,
         "max": 1600,
         "step": 100,
-        "default": 1200,
+        "default": 1400,
         "unit": "px",
         "label": "t:settings_schema.layout.settings.page_width.label"
       },
@@ -1859,11 +1859,11 @@
         "type": "range",
         "id": "badge_corner_radius",
         "min": 0,
-        "max": 40,
+        "max": 50,
         "step": 1,
         "unit": "px",
         "label": "t:settings_schema.global.settings.corner_radius.label",
-        "default": 40
+        "default": 20
       },
       {
         "type": "color_scheme",
