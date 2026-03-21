@@ -80,24 +80,7 @@ class CartDrawer extends HTMLElement {
         : document.getElementById(section.id);
 
       if (!sectionElement) return;
-
-      // 🔧 FIX: Préserver les blocks (palier, timer, text, divider) lors du refetch
-      if (section.id === 'cart-drawer') {
-        const blocksContainer = sectionElement.querySelector('[data-blocks-wrapper]');
-        const savedBlocks = blocksContainer ? blocksContainer.innerHTML : null;
-
-        sectionElement.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
-
-        // Réinsérer les blocks dans le nouveau HTML
-        if (savedBlocks) {
-          const newBlocksContainer = sectionElement.querySelector('[data-blocks-wrapper]');
-          if (newBlocksContainer) {
-            newBlocksContainer.innerHTML = savedBlocks;
-          }
-        }
-      } else {
-        sectionElement.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
-      }
+      sectionElement.innerHTML = this.getSectionInnerHTML(parsedState.sections[section.id], section.selector);
     });
 
     setTimeout(() => {
@@ -132,50 +115,6 @@ class CartDrawer extends HTMLElement {
 }
 
 customElements.define('cart-drawer', CartDrawer);
-
-// Cart Timer - Réservation des produits
-class CartTimer {
-  constructor() {
-    this.timerEl = document.getElementById('cart-timer');
-    if (!this.timerEl) return;
-
-    // Lire durée depuis data-duration ou défaut 10 minutes
-    const durationMinutes = parseInt(this.timerEl.dataset.duration) || 10;
-    this.TIMER_DURATION = durationMinutes * 60; // en secondes
-    this.STORAGE_KEY = 'cart_timer_end';
-    this.init();
-  }
-
-  init() {
-    let endTime = localStorage.getItem(this.STORAGE_KEY);
-
-    if (!endTime || parseInt(endTime) < Date.now()) {
-      endTime = Date.now() + this.TIMER_DURATION * 1000;
-      localStorage.setItem(this.STORAGE_KEY, endTime);
-    }
-
-    this.endTime = parseInt(endTime);
-    this.updateTimer();
-    this.interval = setInterval(() => this.updateTimer(), 1000);
-  }
-
-  updateTimer() {
-    const remaining = Math.max(0, Math.floor((this.endTime - Date.now()) / 1000));
-    const minutes = Math.floor(remaining / 60);
-    const seconds = remaining % 60;
-
-    this.timerEl.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
-
-    if (remaining <= 0) {
-      this.timerEl.textContent = '00:00';
-      localStorage.removeItem(this.STORAGE_KEY);
-      clearInterval(this.interval);
-    }
-  }
-}
-
-// Initialiser le timer quand le DOM est prêt
-document.addEventListener('DOMContentLoaded', () => new CartTimer());
 
 class CartDrawerItems extends CartItems {
   getSectionsToRender() {
