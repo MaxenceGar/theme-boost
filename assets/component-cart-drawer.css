@@ -416,3 +416,124 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
     margin-left: 0;
   }
 }
+
+/* === DESIGN SYSTEM PREMIUM === */
+
+#CartDrawer .drawer__inner {
+  width: var(--cd-width, 44rem);
+  max-width: calc(100vw - 3rem);
+  background-color: var(--cd-bg, #fff);
+  border: none;
+  box-shadow: -4px 0 40px rgba(0, 0, 0, 0.08);
+}
+
+#CartDrawer .drawer__header {
+  padding: var(--cd-padding, 32px) var(--cd-padding, 32px) 0;
+  border-bottom: 1px solid var(--cd-separator-color);
+  margin-bottom: 0;
+}
+
+#CartDrawer .drawer__heading {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.6rem;
+}
+
+#CartDrawer .drawer__contents {
+  padding: 0 var(--cd-padding, 32px);
+}
+
+#CartDrawer .cart-items {
+  gap: var(--cd-item-gap, 24px);
+}
+
+#CartDrawer .cart-item__media {
+  flex-shrink: 0;
+}
+
+#CartDrawer .cart-item__image {
+  width: var(--cd-item-img-size, 80px);
+  height: var(--cd-item-img-size, 80px);
+  border-radius: var(--cd-radius, 12px);
+  object-fit: cover;
+}
+
+#CartDrawer .cart-item__name {
+  font-size: 0.875rem;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+#CartDrawer .product-option,
+#CartDrawer .price {
+  font-size: 0.8125rem;
+  opacity: 0.6;
+  font-weight: 400;
+}
+
+#CartDrawer .cart-items th {
+  border-bottom: 1px solid var(--cd-separator-color);
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 600;
+  opacity: 0.5;
+}
+
+#CartDrawer .drawer__footer {
+  border-top: 1px solid var(--cd-separator-color);
+  padding: calc(var(--cd-padding, 32px) * 0.75) var(--cd-padding, 32px) var(--cd-padding, 32px);
+}
+
+#CartDrawer .totals {
+  font-size: 0.9375rem;
+  margin-bottom: 1.5rem;
+}
+
+#CartDrawer .totals__total {
+  font-size: 0.8125rem;
+  opacity: 0.6;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+#CartDrawer .totals__total-value {
+  font-size: 1.5rem;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+}
+
+#CartDrawer .cart__checkout-button {
+  background-color: var(--cd-btn-bg, #121212) !important;
+  color: var(--cd-btn-text, #fff) !important;
+  border-radius: var(--cd-btn-radius, 12px) !important;
+  border: none !important;
+  height: 48px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  transition: opacity 0.2s ease;
+  width: 100%;
+}
+
+#CartDrawer .cart__checkout-button:hover:not(:disabled) {
+  opacity: 0.88;
+}
+
+#CartDrawer .cart__checkout-button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#CartDrawer .tax-note {
+  font-size: 0.75rem;
+  opacity: 0.6;
+}
+
+#CartDrawer .discounts__discount {
+  font-size: 0.8125rem;
+  padding: 0.5rem 0;
+}

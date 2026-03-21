@@ -16,21 +16,22 @@
   endif
 -%}
 
-<style>
+{%- style -%}
   .drawer {
     visibility: hidden;
   }
 
-  #CartDrawer .drawer__inner {
-    width: {{ section.settings.drawer_width }}rem;
-    max-width: calc(100vw - 3rem);
-  }
-
-  #CartDrawer .cart__checkout-button {
-    background-color: {{ section.settings.checkout_btn_bg }} !important;
-    color: {{ section.settings.checkout_btn_text }} !important;
-    border-radius: {{ section.settings.checkout_btn_radius }}px !important;
-    border: none !important;
+  #CartDrawer {
+    --cd-bg: {{ section.settings.cart_bg }};
+    --cd-width: {{ section.settings.drawer_width }}rem;
+    --cd-padding: {{ section.settings.cart_padding }}px;
+    --cd-radius: {{ section.settings.cart_radius }}px;
+    --cd-separator-color: rgba(0, 0, 0, 0.06);
+    --cd-btn-bg: {{ section.settings.checkout_btn_bg }};
+    --cd-btn-text: {{ section.settings.checkout_btn_text }};
+    --cd-btn-radius: {{ section.settings.checkout_btn_radius }}px;
+    --cd-item-img-size: {{ section.settings.cart_image_size }}px;
+    --cd-item-gap: {{ section.settings.cart_item_gap }}px;
   }
 
   .cart-drawer-announcement {
@@ -47,8 +48,7 @@
   }
 
   .cart-drawer-reassurance {
-    border-top: 1px solid;
-    border-bottom: 1px solid;
+    border-color: var(--cd-separator-color);
   }
 
   .cart-drawer-reassurance-items {
@@ -57,7 +57,7 @@
     gap: 0.5rem;
     padding: 0.5rem 0;
   }
-</style>
+{%- endstyle -%}
 
 <cart-drawer
   class="drawer{% unless cart_has_items %} is-empty{% endunless %}"
@@ -96,7 +96,10 @@
       {%- comment -%} Header {%- endcomment -%}
       {%- for block in section.blocks -%}
         {%- if block.type == 'announcement_bar' -%}
-          <div class="cart-drawer-announcement" style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: {{ block.settings.padding_y }}px 1rem; font-size: {{ block.settings.font_size }};" {{ block.shopify_attributes }}>
+          <div
+            class="cart-drawer-announcement"
+            style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: {{ block.settings.padding_y }}px 1rem; font-size: {{ block.settings.font_size }};"
+            {{ block.shopify_attributes }}>
             <p class="m-0!">{{ block.settings.text }}</p>
           </div>
         {%- endif -%}
@@ -121,21 +124,30 @@
             {% if cart_has_items %}
               <div style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: 2rem 1rem; text-align: center;" {{ block.shopify_attributes }}>
                 <p style="margin: 0 0 0.5rem 0;">{{ block.settings.text_before }}</p>
-                <p style="margin: 0; font-weight: bold;"><span id="cart-timer" data-duration="{{ block.settings.duration_minutes }}">10:00</span></p>
+                <p style="margin: 0; font-weight: bold;">
+                  <span id="cart-timer" data-duration="{{ block.settings.duration_minutes }}">10:00</span>
+                </p>
                 <p style="margin: 0.5rem 0 0 0;">{{ block.settings.text_after }}</p>
               </div>
             {% endif %}
 
           {% when 'text' %}
-            <div class="cart-drawer-text-block" style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: {{ block.settings.padding_y }}px 1rem;" {{ block.shopify_attributes }}>
+            <div
+              class="cart-drawer-text-block"
+              style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: {{ block.settings.padding_y }}px 1rem;"
+              {{ block.shopify_attributes }}>
               {{ block.settings.text }}
             </div>
 
           {% when 'palier' %}
-            {% render 'palier-cart-drawer', block: block %}
+            {% render 'palier-cart-drawer'
+              , block: block %}
 
           {% when 'divider' %}
-            <div class="cart-drawer-divider" style="background-color: {{ block.settings.color }}; height: {{ block.settings.thickness }}px; margin: {{ block.settings.margin_y }}px 0;" {{ block.shopify_attributes }}></div>
+            <div
+              class="cart-drawer-divider"
+              style="background-color: {{ block.settings.color }}; height: {{ block.settings.thickness }}px; margin: {{ block.settings.margin_y }}px 0;"
+              {{ block.shopify_attributes }}></div>
 
         {% endcase %}
       {% endfor %}
@@ -435,13 +447,18 @@
           {%- for block in section.blocks -%}
             {%- case block.type -%}
               {%- when 'upsell-product-page' -%}
-                {%- render 'upsell-product-page', block: block -%}
+                {%- render 'upsell-product-page'
+                  , block: block -%}
 
               {%- when 'reassurance' -%}
-                {%- render 'footer-rassurance', block: block -%}
+                {%- render 'footer-rassurance'
+                  , block: block -%}
 
               {%- when 'divider' -%}
-                <div class="cart-drawer-divider" style="background-color: {{ block.settings.color }}; height: {{ block.settings.thickness }}px; margin: {{ block.settings.margin_y }}px 0;" {{ block.shopify_attributes }}></div>
+                <div
+                  class="cart-drawer-divider"
+                  style="background-color: {{ block.settings.color }}; height: {{ block.settings.thickness }}px; margin: {{ block.settings.margin_y }}px 0;"
+                  {{ block.shopify_attributes }}></div>
 
             {%- endcase -%}
           {%- endfor -%}
@@ -506,38 +523,92 @@
     "settings": [
       {
         "type": "header",
-        "content": "Style du drawer"
+        "content": "Apparence"
+      },
+      {
+        "type": "color",
+        "id": "cart_bg",
+        "label": "Fond du drawer",
+        "default": "#FFFFFF"
+      },
+      {
+        "type": "range",
+        "id": "cart_padding",
+        "label": "Padding interne",
+        "min": 16,
+        "max": 48,
+        "step": 4,
+        "default": 32,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "cart_radius",
+        "label": "Border radius items",
+        "min": 0,
+        "max": 24,
+        "step": 2,
+        "default": 12,
+        "unit": "px"
       },
       {
         "type": "range",
         "id": "drawer_width",
         "label": "Largeur (rem)",
-        "min": 40,
-        "max": 90,
+        "min": 35,
+        "max": 70,
         "step": 5,
-        "default": 60,
+        "default": 44,
         "unit": "rem"
+      },
+      {
+        "type": "header",
+        "content": "Bouton Checkout"
       },
       {
         "type": "color",
         "id": "checkout_btn_bg",
-        "label": "Fond bouton checkout",
+        "label": "Fond",
         "default": "#121212"
       },
       {
         "type": "color",
         "id": "checkout_btn_text",
-        "label": "Texte bouton checkout",
+        "label": "Texte",
         "default": "#FFFFFF"
       },
       {
         "type": "range",
         "id": "checkout_btn_radius",
-        "label": "Border radius bouton",
+        "label": "Border radius",
         "min": 0,
-        "max": 50,
+        "max": 30,
         "step": 2,
-        "default": 4,
+        "default": 12,
+        "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Items panier"
+      },
+      {
+        "type": "range",
+        "id": "cart_image_size",
+        "label": "Taille image produit",
+        "min": 60,
+        "max": 120,
+        "step": 8,
+        "default": 80,
+        "unit": "px"
+      },
+      {
+        "type": "range",
+        "id": "cart_item_gap",
+        "label": "Espace entre items",
+        "min": 12,
+        "max": 36,
+        "step": 4,
+        "default": 24,
         "unit": "px"
       },
       {
@@ -585,10 +656,22 @@
             "id": "font_size",
             "label": "Taille du texte",
             "options": [
-              { "value": "10px", "label": "XS" },
-              { "value": "11px", "label": "S" },
-              { "value": "12px", "label": "M" },
-              { "value": "14px", "label": "L" }
+              {
+                "value": "10px",
+                "label": "XS"
+              },
+              {
+                "value": "11px",
+                "label": "S"
+              },
+              {
+                "value": "12px",
+                "label": "M"
+              },
+              {
+                "value": "14px",
+                "label": "L"
+              }
             ],
             "default": "11px"
           },
@@ -795,7 +878,7 @@
             "type": "text",
             "id": "item_4",
             "label": "Item 4 (optionnel)",
-            "default": ""
+            "default": "Retour gratuit"
           },
           {
             "type": "color",
