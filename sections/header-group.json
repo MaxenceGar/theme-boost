@@ -40,24 +40,31 @@
     },
     "cart-drawer": {
       "type": "cart-drawer",
+      "blocks": {
+        "text_f3LG3E": {
+          "type": "text",
+          "disabled": true,
+          "settings": {
+            "text": "<p>En ce moment 2 Achetées = 2 Offertes</p>"
+          }
+        },
+        "upsell_product_page_TUiphP": {
+          "type": "upsell-product-page",
+          "disabled": true,
+          "settings": {
+            "title": "Vous aimerez aussi",
+            "product_1": "creme-riche-hydratation-intense",
+            "product_2": "creme-solaire-spf50",
+            "product_3": "creme-solaire-spf50",
+            "product_4": "dentifrice-blancheur-naturelle-tmp"
+          }
+        }
+      },
+      "block_order": [
+        "text_f3LG3E",
+        "upsell_product_page_TUiphP"
+      ],
       "settings": {
-        "cart_bg": "#ffffff",
-        "cart_padding": 32,
-        "cart_radius": 12,
-        "drawer_width": 50,
-        "checkout_btn_bg": "#121212",
-        "checkout_btn_text": "#ffffff",
-        "checkout_btn_radius": 8,
-        "cart_image_size": 90,
-        "cart_item_gap": 12,
-        "enable_palier": true,
-        "palier_bar_color": "#000000",
-        "palier_1_amount": 30,
-        "palier_1_text": "Livraison offerte",
-        "palier_1_icon": "shopify://shop_images/creation-unique-bijoux-personnalises-nouvel-amour-paris-personnalisation.webp",
-        "palier_2_amount": 60,
-        "palier_2_text": "Cadeau offert",
-        "palier_2_icon": "shopify://shop_images/IMG_8593.jpg",
         "preview_mode": false,
         "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
       }
