@@ -45,7 +45,10 @@
           "type": "text",
           "disabled": true,
           "settings": {
-            "text": "<p>En ce moment 2 Achetées = 2 Offertes</p>"
+            "text": "<p>En ce moment 2 Achetées = 2 Offertes</p>",
+            "bg_color": "#e5e7eb",
+            "text_color": "#121212",
+            "padding_y": 12
           }
         },
         "upsell_product_page_TUiphP": {
@@ -65,6 +68,21 @@
         "upsell_product_page_TUiphP"
       ],
       "settings": {
+        "cart_bg": "#ffffff",
+        "cart_padding": 32,
+        "cart_radius": 12,
+        "drawer_width": 70,
+        "checkout_btn_bg": "#121212",
+        "checkout_btn_text": "#ffffff",
+        "checkout_btn_radius": 12,
+        "cart_image_size": 60,
+        "cart_item_gap": 24,
+        "enable_palier": true,
+        "palier_bar_color": "#000000",
+        "palier_1_amount": 30,
+        "palier_1_text": "Livraison offerte",
+        "palier_2_amount": 60,
+        "palier_2_text": "Cadeau offert",
         "preview_mode": false,
         "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
       }
