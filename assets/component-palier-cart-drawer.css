@@ -13,6 +13,9 @@
 .palier-message {
   text-align: center;
   margin: 0;
+  display: flex;
+  gap: 4px;
+  margin: auto
 }
 
 .palier-message__text {
