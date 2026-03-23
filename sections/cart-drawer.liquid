@@ -87,15 +87,22 @@
       {%- comment -%} ZONE HEADER : Blocks avant les articles {%- endcomment -%}
       <div data-blocks-wrapper>
         {%- comment -%} Palier d'avantages {%- endcomment -%}
-        {% render 'cart-drawer-palier',
-          enable: section.settings.enable_palier,
-          p1_amount: section.settings.palier_1_amount,
-          p1_text: section.settings.palier_1_text,
-          p1_icon: section.settings.palier_1_icon,
-          p2_amount: section.settings.palier_2_amount,
-          p2_text: section.settings.palier_2_text,
-          p2_icon: section.settings.palier_2_icon,
-          bar_color: section.settings.palier_bar_color
+        {% render 'cart-drawer-palier'
+          , enable: section.settings.enable_palier
+          , p1_amount: section.settings.palier_1_amount
+          , p1_text: section.settings.palier_1_text
+          , p1_icon: section.settings.palier_1_icon
+          , p1_message: section.settings.palier_1_message
+          , p2_amount: section.settings.palier_2_amount
+          , p2_text: section.settings.palier_2_text
+          , p2_icon: section.settings.palier_2_icon
+          , p2_message: section.settings.palier_2_message
+          , p3_amount: section.settings.palier_3_amount
+          , p3_text: section.settings.palier_3_text
+          , p3_icon: section.settings.palier_3_icon
+          , p3_message: section.settings.palier_3_message
+          , all_reached_message: section.settings.palier_all_reached_message
+          , bar_color: section.settings.palier_bar_color
         %}
       </div>
 
@@ -576,7 +583,7 @@
       },
       {
         "type": "header",
-        "content": "Palier 1"
+        "content": "Objectif 1"
       },
       {
         "type": "number",
@@ -596,25 +603,75 @@
         "label": "Icône (optionnel)"
       },
       {
+        "type": "text",
+        "id": "palier_1_message",
+        "label": "Message (utilisez # pour le prix)",
+        "default": "Plus que # pour livraison offerte",
+        "info": "Exemple: 'Plus que # pour livraison offerte' → 'Plus que 10€ pour livraison offerte'"
+      },
+      {
         "type": "header",
-        "content": "Palier 2"
+        "content": "Objectif 2 (optionnel)"
       },
       {
         "type": "number",
         "id": "palier_2_amount",
         "label": "Montant (€)",
-        "default": 60
+        "default": 0
       },
       {
         "type": "text",
         "id": "palier_2_text",
         "label": "Texte",
-        "default": "Cadeau offert"
+        "default": "Livraison Offerte"
       },
       {
         "type": "image_picker",
         "id": "palier_2_icon",
         "label": "Icône (optionnel)"
+      },
+      {
+        "type": "text",
+        "id": "palier_2_message",
+        "label": "Message (utilisez # pour le prix)",
+        "default": "Plus que # pour cadeau offert"
+      },
+      {
+        "type": "header",
+        "content": "Objectif 3 (optionnel)"
+      },
+      {
+        "type": "number",
+        "id": "palier_3_amount",
+        "label": "Montant (€)",
+        "default": 0
+      },
+      {
+        "type": "text",
+        "id": "palier_3_text",
+        "label": "Texte",
+        "default": "Livraison Offerte"
+      },
+      {
+        "type": "image_picker",
+        "id": "palier_3_icon",
+        "label": "Icône (optionnel)"
+      },
+      {
+        "type": "text",
+        "id": "palier_3_message",
+        "label": "Message (utilisez # pour le prix)",
+        "default": "Plus que # pour surprise offerte"
+      },
+      {
+        "type": "header",
+        "content": "Message final"
+      },
+      {
+        "type": "text",
+        "id": "palier_all_reached_message",
+        "label": "Affiché quand tous les objectifs sont atteints",
+        "default": "🎉 Félicitations ! Tous les avantages sont débloqués !"
       },
       {
         "type": "header",
