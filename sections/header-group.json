@@ -41,6 +41,21 @@
     "cart-drawer": {
       "type": "cart-drawer",
       "settings": {
+        "cart_bg": "#ffffff",
+        "cart_padding": 32,
+        "cart_radius": 12,
+        "drawer_width": 50,
+        "checkout_btn_bg": "#121212",
+        "checkout_btn_text": "#ffffff",
+        "checkout_btn_radius": 12,
+        "cart_image_size": 60,
+        "cart_item_gap": 24,
+        "enable_palier": true,
+        "palier_bar_color": "#000000",
+        "palier_1_amount": 30,
+        "palier_1_text": "Livraison offerte",
+        "palier_2_amount": 60,
+        "palier_2_text": "Cadeau offert",
         "preview_mode": false,
         "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
       }
