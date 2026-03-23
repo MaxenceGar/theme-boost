@@ -1,145 +1,149 @@
-{% comment %}
-  Snippet: Palier d'avantages - Cart Drawer
+{%- comment -%}
+  Snippet: Palier d'Avantages Séquentiel (3 objectifs)
 
-  Affiche une barre de progression avec étapes (paliers).
-  Responsive, clean, premium.
+  Affiche une seule barre de progression à la fois.
+  Quand l'objectif est atteint, affiche le suivant.
+  Repart de 0% à chaque objectif.
 
-  Expects: block (with settings)
-    - bar_color: couleur de la barre
-    - palier_1_amount, palier_1_text, palier_1_icon
-    - palier_2_amount, palier_2_text, palier_2_icon
-{% endcomment %}
+  Paramètres (via section.settings):
+  - enable: booléen
+  - p1_amount, p1_text, p1_icon, p1_message
+  - p2_amount, p2_text, p2_icon, p2_message
+  - p3_amount, p3_text, p3_icon, p3_message
+  - all_reached_message: message quand tous les objectifs sont atteints
+  - bar_color: couleur de la barre
+{%- endcomment -%}
 
-{%- liquid
-  assign cart_total = cart.total_price | divided_by: 100.0
-
-  assign p1_amount = block.settings.palier_1_amount | times: 1.0
-  assign p1_text = block.settings.palier_1_text
-  assign p1_icon = block.settings.palier_1_icon
-
-  assign p2_amount = block.settings.palier_2_amount | times: 1.0
-  assign p2_text = block.settings.palier_2_text
-  assign p2_icon = block.settings.palier_2_icon
-
-  assign bar_color = block.settings.bar_color | default: '#000000'
-
-  # Déterminer le nombre de paliers actifs et le maximum
-  assign palier_count = 0
-  assign max_amount = 0
-
-  if p1_amount > 0 and p1_text != blank
-    assign palier_count = 1
-    assign max_amount = p1_amount
-  endif
-
-  if p2_amount > 0 and p2_text != blank
-    assign palier_count = 2
-    assign max_amount = p2_amount
-  endif
--%}
-
-{%- if palier_count > 0 and cart.item_count > 0 -%}
+{%- unless enable -%}
+  {%- comment -%} Palier désactivé {%- endcomment -%}
+{%- else -%}
   {%- liquid
-    # Calcul du pourcentage de progression
-    if cart_total >= max_amount
-      assign progress_pct = 100
-    else
-      assign progress_pct = cart_total | divided_by: max_amount | times: 100.0 | round
+    assign cart_total = cart.total_price | divided_by: 100.0
+
+    # Récupérer les 3 objectifs
+    assign p1_amount = p1_amount | times: 1.0
+    assign p2_amount = p2_amount | times: 1.0
+    assign p3_amount = p3_amount | times: 1.0
+
+    # Construire un array des objectifs actifs (non vides)
+    assign active_goals = ''
+    assign goal_count = 0
+
+    if p1_amount > 0 and p1_text != blank
+      assign active_goals = active_goals | append: '1,'
+      assign goal_count = goal_count | plus: 1
     endif
 
-    # Position du premier palier
-    if palier_count == 1
-      assign p1_pos = 100
-    else
-      assign p1_pos = p1_amount | divided_by: max_amount | times: 100.0 | round
+    if p2_amount > 0 and p2_text != blank
+      assign active_goals = active_goals | append: '2,'
+      assign goal_count = goal_count | plus: 1
     endif
 
-    # Déterminer le prochain palier à atteindre
-    assign next_text = ''
-    assign remaining = 0
+    if p3_amount > 0 and p3_text != blank
+      assign active_goals = active_goals | append: '3,'
+      assign goal_count = goal_count | plus: 1
+    endif
+
+    # Déterminer quel objectif afficher
+    assign current_goal = nil
+    assign current_amount = 0
+    assign current_text = ''
+    assign current_icon = ''
+    assign current_message = ''
     assign all_reached = false
 
-    if palier_count == 1
-      if cart_total < p1_amount
-        assign remaining = p1_amount | minus: cart_total
-        assign next_text = p1_text
-      else
-        assign all_reached = true
-      endif
-    elsif palier_count == 2
-      if cart_total < p1_amount
-        assign remaining = p1_amount | minus: cart_total
-        assign next_text = p1_text
-      elsif cart_total < p2_amount
-        assign remaining = p2_amount | minus: cart_total
-        assign next_text = p2_text
+    if goal_count > 0
+      # Objectif 1
+      if cart_total < p1_amount and p1_amount > 0 and p1_text != blank
+        assign current_goal = 1
+        assign current_amount = p1_amount
+        assign current_text = p1_text
+        assign current_icon = p1_icon
+        assign current_message = p1_message
+
+      # Objectif 2
+      elsif cart_total < p2_amount and p2_amount > 0 and p2_text != blank
+        assign current_goal = 2
+        assign current_amount = p2_amount
+        assign current_text = p2_text
+        assign current_icon = p2_icon
+        assign current_message = p2_message
+
+      # Objectif 3
+      elsif cart_total < p3_amount and p3_amount > 0 and p3_text != blank
+        assign current_goal = 3
+        assign current_amount = p3_amount
+        assign current_text = p3_text
+        assign current_icon = p3_icon
+        assign current_message = p3_message
+
+      # Tous les objectifs atteints
       else
         assign all_reached = true
       endif
     endif
   -%}
 
-  <palier-cart-drawer
-    data-cart-total="{{ cart_total | times: 100 | round }}"
-    data-max-amount="{{ max_amount | times: 100 | round }}"
-    class="palier-cart-drawer"
-    style="--palier-color: {{ bar_color }};"
-    {{ block.shopify_attributes }}>
-    {%- comment -%} Message principal {%- endcomment -%}
-    <p class="palier-message">
-      {%- if all_reached -%}
-        <span class="palier-message__highlight">Félicitations !</span>
-        <span class="palier-message__text">Tous les avantages sont débloqués</span>
-      {%- else -%}
-        <span class="palier-message__text">Plus que <span class="palier-message__highlight">{{ remaining | ceil }}€</span> pour :</span>
-        <span class="palier-message__text">{{ next_text }}</span>
-      {%- endif -%}
-    </p>
-
-    {%- comment -%} Barre et étapes {%- endcomment -%}
-    <div class="palier-bar-container">
-      <div class="palier-bar">
-        <div class="palier-bar__fill" style="width: {{ progress_pct }}%; background-color: {{ bar_color }};"></div>
-      </div>
-
-      {%- comment -%} Étapes {%- endcomment -%}
-      <div class="palier-steps">
-        {%- if palier_count >= 1 -%}
-          <div class="palier-step {% if cart_total >= p1_amount %}palier-step--completed{% endif %}" style="color: {{ bar_color }};">
-            <div class="palier-step__circle {% if cart_total >= p1_amount %}palier-step__circle--active{% endif %}">
-              {%- if cart_total >= p1_amount -%}
-                <svg class="palier-step__circle-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              {%- endif -%}
-            </div>
-            <div class="palier-step__label">
-              {%- if p1_icon != blank -%}
-                <img src="{{ p1_icon | image_url: width: 20 }}" alt="" class="palier-step__icon" loading="lazy" />
-              {%- endif -%}
-              <span class="palier-step__text">{{ p1_text }}</span>
-            </div>
-          </div>
-        {%- endif -%}
-
-        {%- if palier_count >= 2 -%}
-          <div class="palier-step {% if cart_total >= p2_amount %}palier-step--completed{% endif %}" style="color: {{ bar_color }};">
-            <div class="palier-step__circle {% if cart_total >= p2_amount %}palier-step__circle--active{% endif %}">
-              {%- if cart_total >= p2_amount -%}
-                <svg class="palier-step__circle-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              {%- endif -%}
-            </div>
-            <div class="palier-step__label">
-              {%- if p2_icon != blank -%}
-                <img src="{{ p2_icon | image_url: width: 20 }}" alt="" class="palier-step__icon" loading="lazy" />
-              {%- endif -%}
-              <span class="palier-step__text">{{ p2_text }}</span>
-            </div>
-          </div>
-        {%- endif -%}
-      </div>
+  {%- if all_reached -%}
+    {%- comment -%} Afficher le message final {%- endcomment -%}
+    <div class="palier-cart-drawer palier-cart-drawer--completed">
+      <p class="palier-message palier-message--final">
+        {{ all_reached_message }}
+      </p>
     </div>
-  </palier-cart-drawer>
-{%- endif -%}
+
+  {%- elsif current_goal -%}
+    {%- comment -%} Afficher la barre de l'objectif actuel {%- endcomment -%}
+    {%- liquid
+      # Calcul de la progression (repart de 0)
+      if cart_total >= current_amount
+        assign progress_pct = 100
+      else
+        assign progress_pct = cart_total | divided_by: current_amount | times: 100.0 | round
+      endif
+
+      # Montant restant
+      assign remaining = current_amount | minus: cart_total
+    -%}
+
+    <palier-cart-drawer
+      data-cart-total="{{ cart_total | times: 100 | round }}"
+      data-max-amount="{{ current_amount | times: 100 | round }}"
+      data-message="{{ current_message }}"
+      class="palier-cart-drawer"
+      style="--palier-color: {{ bar_color }};">
+
+      {%- comment -%} Message avec placeholder # {%- endcomment -%}
+      <p class="palier-message" data-message-template="{{ current_message }}">
+        {{ current_message | replace: '#', remaining | ceil }}
+      </p>
+
+      {%- comment -%} Barre de progression {%- endcomment -%}
+      <div class="palier-bar-container">
+        <div class="palier-bar">
+          <div class="palier-bar__fill" style="width: {{ progress_pct }}%; background-color: {{ bar_color }};"></div>
+        </div>
+
+        {%- comment -%} Étape {%- endcomment -%}
+        <div class="palier-steps">
+          <div class="palier-step" style="color: {{ bar_color }};">
+            <div class="palier-step__circle {% if progress_pct >= 100 %}palier-step__circle--active{% endif %}">
+              {%- if progress_pct >= 100 -%}
+                <svg class="palier-step__circle-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="20 6 9 17 4 12"></polyline>
+                </svg>
+              {%- endif -%}
+            </div>
+            <div class="palier-step__label">
+              {%- if current_icon != blank -%}
+                <img src="{{ current_icon | image_url: width: 20 }}" alt="" class="palier-step__icon" loading="lazy" />
+              {%- endif -%}
+              <span class="palier-step__text">{{ current_text }}</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </palier-cart-drawer>
+
+  {%- endif -%}
+{%- endunless -%}
