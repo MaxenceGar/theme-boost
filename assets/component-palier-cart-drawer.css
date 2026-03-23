@@ -35,7 +35,7 @@
 /* Barre de progression */
 .palier-bar {
   position: relative;
-  height: 10px;
+  height: 5px;
   background-color: rgba(0, 0, 0, 0.08);
   border-radius: 100px;
   overflow: hidden;
