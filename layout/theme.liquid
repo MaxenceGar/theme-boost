@@ -381,10 +381,6 @@
       <script src="{{ 'predictive-search.js' | asset_url }}" defer="defer"></script>
     {%- endif -%}
 
-    {% comment %} Cart drawer JS is now loaded in sections/cart-drawer.liquid {% endcomment %}
-
-    {{ 'palier-cart-drawer.js' | asset_url | script_tag }}
-
     {%- capture productTemplate -%}{% render 'globo.filter.product', themeTranslation: shop.metafields.globoFilter.themeTranslation.value[request.locale.iso_code] %}{%- endcapture -%}{%- unless productTemplate contains 'Liquid error' -%}<script id="gspfProduct" type="template/html">{{- productTemplate | replace: "script>", "scripttag>" -}}</script>{%- endunless -%}
   </body>
 </html>
