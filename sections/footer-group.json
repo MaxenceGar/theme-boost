@@ -57,7 +57,6 @@
         "feature_iR4a4i",
         "feature_THFg9J"
       ],
-      "disabled": true,
       "name": "Reassurance Footer",
       "settings": {
         "bg_color": "#fbf8f5",
@@ -95,7 +94,6 @@
         "footer-1",
         "footer-0"
       ],
-      "disabled": true,
       "settings": {
         "bg_color": "#000000",
         "copyright": "© 2026 MAXENCE-GARANDEL",
