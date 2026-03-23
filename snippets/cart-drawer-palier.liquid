@@ -25,22 +25,15 @@
     assign p2_amount = p2_amount | times: 1.0
     assign p3_amount = p3_amount | times: 1.0
 
-    # Construire un array des objectifs actifs (non vides)
-    assign active_goals = ''
+    # Compter les objectifs actifs
     assign goal_count = 0
-
     if p1_amount > 0 and p1_text != blank
-      assign active_goals = active_goals | append: '1,'
       assign goal_count = goal_count | plus: 1
     endif
-
     if p2_amount > 0 and p2_text != blank
-      assign active_goals = active_goals | append: '2,'
       assign goal_count = goal_count | plus: 1
     endif
-
     if p3_amount > 0 and p3_text != blank
-      assign active_goals = active_goals | append: '3,'
       assign goal_count = goal_count | plus: 1
     endif
 
@@ -109,13 +102,13 @@
     <palier-cart-drawer
       data-cart-total="{{ cart_total | times: 100 | round }}"
       data-max-amount="{{ current_amount | times: 100 | round }}"
-      data-message="{{ current_message }}"
+      data-message="{{ current_message | escape }}"
       class="palier-cart-drawer"
       style="--palier-color: {{ bar_color }};">
 
       {%- comment -%} Message avec placeholder # {%- endcomment -%}
       <p class="palier-message" data-message-template="{{ current_message }}">
-        {{ current_message | replace: '#', remaining | ceil }}
+        {{ current_message | replace: '#', remaining | ceil | append: '€' }}
       </p>
 
       {%- comment -%} Barre de progression {%- endcomment -%}
