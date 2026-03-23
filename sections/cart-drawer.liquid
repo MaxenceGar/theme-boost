@@ -91,25 +91,24 @@
         {% endunless %}>
 
         {%- comment -%} Palier d'avantages : doit être dans cart-drawer-items pour être re-rendu lors des updates AJAX {%- endcomment -%}
-        {% if cart != empty %}
-          {% render 'cart-drawer-palier'
-            , enable: section.settings.enable_palier
-            , p1_amount: section.settings.palier_1_amount
-            , p1_text: section.settings.palier_1_text
-            , p1_icon: section.settings.palier_1_icon
-            , p1_message: section.settings.palier_1_message
-            , p2_amount: section.settings.palier_2_amount
-            , p2_text: section.settings.palier_2_text
-            , p2_icon: section.settings.palier_2_icon
-            , p2_message: section.settings.palier_2_message
-            , p3_amount: section.settings.palier_3_amount
-            , p3_text: section.settings.palier_3_text
-            , p3_icon: section.settings.palier_3_icon
-            , p3_message: section.settings.palier_3_message
-            , all_reached_message: section.settings.palier_all_reached_message
-            , bar_color: section.settings.palier_bar_color
-          %}
-        {% endif %}
+        {% render 'cart-drawer-palier'
+          , enable: section.settings.enable_palier
+          , p1_amount: section.settings.palier_1_amount
+          , p1_text: section.settings.palier_1_text
+          , p1_icon: section.settings.palier_1_icon
+          , p1_message: section.settings.palier_1_message
+          , p2_amount: section.settings.palier_2_amount
+          , p2_text: section.settings.palier_2_text
+          , p2_icon: section.settings.palier_2_icon
+          , p2_message: section.settings.palier_2_message
+          , p3_amount: section.settings.palier_3_amount
+          , p3_text: section.settings.palier_3_text
+          , p3_icon: section.settings.palier_3_icon
+          , p3_message: section.settings.palier_3_message
+          , all_reached_message: section.settings.palier_all_reached_message
+          , bar_color: section.settings.palier_bar_color
+        %}
+
         <form
           action="{{ routes.cart_url }}"
           id="CartDrawer-Form"
