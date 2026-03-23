@@ -54,8 +54,14 @@
         "palier_bar_color": "#000000",
         "palier_1_amount": 30,
         "palier_1_text": "Livraison offerte",
+        "palier_1_message": "Plus que # pour livraison offerte",
         "palier_2_amount": 60,
         "palier_2_text": "Cadeau offert",
+        "palier_2_message": "Plus que # pour cadeau offert",
+        "palier_3_amount": 120,
+        "palier_3_text": "Livraison Offerte",
+        "palier_3_message": "Plus que # pour surprise offerte",
+        "palier_all_reached_message": "🎉 Félicitations ! Tous les avantages sont débloqués !",
         "preview_mode": false,
         "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
       }
