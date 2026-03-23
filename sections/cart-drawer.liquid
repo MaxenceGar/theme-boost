@@ -36,29 +36,6 @@
     --cd-item-gap: {{ section.settings.cart_item_gap }}px;
   }
 
-  .cart-drawer-announcement {
-    text-align: center;
-  }
-
-  .cart-drawer-text-block {
-    text-align: left;
-  }
-
-  .cart-drawer-divider {
-    border: 0;
-    background: none;
-  }
-
-  .cart-drawer-reassurance {
-    border-color: var(--cd-separator-color);
-  }
-
-  .cart-drawer-reassurance-items {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.5rem 0;
-  }
 {%- endstyle -%}
 
 <cart-drawer
@@ -120,37 +97,6 @@
           p2_icon: section.settings.palier_2_icon,
           bar_color: section.settings.palier_bar_color
         %}
-
-        {% for block in section.blocks %}
-          {% case block.type %}
-
-            {% when 'timer' %}
-              {% if cart_has_items %}
-                <div style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: 2rem 1rem; text-align: center;" {{ block.shopify_attributes }}>
-                  <p style="margin: 0 0 0.5rem 0;">{{ block.settings.text_before }}</p>
-                  <p style="margin: 0; font-weight: bold;">
-                    <span id="cart-timer" data-duration="{{ block.settings.duration_minutes }}">10:00</span>
-                  </p>
-                  <p style="margin: 0.5rem 0 0 0;">{{ block.settings.text_after }}</p>
-                </div>
-              {% endif %}
-
-            {% when 'text' %}
-              <div
-                class="cart-drawer-text-block"
-                style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: {{ block.settings.padding_y }}px 1rem;"
-                {{ block.shopify_attributes }}>
-                {{ block.settings.text }}
-              </div>
-
-            {% when 'divider' %}
-              <div
-                class="cart-drawer-divider"
-                style="background-color: {{ block.settings.color }}; height: {{ block.settings.thickness }}px; margin: {{ block.settings.margin_y }}px 0;"
-                {{ block.shopify_attributes }}></div>
-
-          {% endcase %}
-        {% endfor %}
       </div>
 
       {%- comment -%} Cart items {%- endcomment -%}
