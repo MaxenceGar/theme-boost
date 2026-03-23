@@ -40,34 +40,30 @@
     },
     "cart-drawer": {
       "type": "cart-drawer",
-      "blocks": {
-        "text_f3LG3E": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "En ce moment 2 Achetées = 2 Offertes"
-          }
-        },
-        "upsell_product_page_TUiphP": {
-          "type": "upsell-product-page",
-          "disabled": true,
-          "settings": {
-            "title": "Vous aimerez aussi",
-            "product_1": "creme-riche-hydratation-intense",
-            "product_2": "creme-solaire-spf50",
-            "product_3": "creme-solaire-spf50",
-            "product_4": "dentifrice-blancheur-naturelle-tmp"
-          }
-        }
-      },
-      "block_order": [
-        "text_f3LG3E",
-        "upsell_product_page_TUiphP"
-      ],
       "settings": {
         "preview_mode": false,
         "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design",
-        "enable_reassurance": false
+        "cart_bg": "#FFFFFF",
+        "cart_padding": 32,
+        "cart_radius": 12,
+        "drawer_width": 35,
+        "checkout_btn_bg": "#121212",
+        "checkout_btn_text": "#FFFFFF",
+        "checkout_btn_radius": 12,
+        "cart_image_size": 60,
+        "cart_item_gap": 24,
+        "enable_palier": true,
+        "palier_bar_color": "#000000",
+        "palier_1_amount": 70,
+        "palier_1_text": "Livraison offerte",
+        "palier_1_message": "Plus que # pour la livraison offerte",
+        "palier_2_amount": 0,
+        "palier_2_text": "",
+        "palier_2_message": "",
+        "palier_3_amount": 0,
+        "palier_3_text": "",
+        "palier_3_message": "",
+        "palier_all_reached_message": "Livraison offerte !"
       }
     },
     "header": {

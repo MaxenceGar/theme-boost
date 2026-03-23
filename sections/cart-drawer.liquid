@@ -3,9 +3,11 @@
 {{ 'component-totals.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+{{ 'component-palier-cart-drawer.css' | asset_url | stylesheet_tag }}
 
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'palier-cart-drawer.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign preview_mode = section.settings.preview_mode
@@ -34,29 +36,6 @@
     --cd-item-gap: {{ section.settings.cart_item_gap }}px;
   }
 
-  .cart-drawer-announcement {
-    text-align: center;
-  }
-
-  .cart-drawer-text-block {
-    text-align: left;
-  }
-
-  .cart-drawer-divider {
-    border: 0;
-    background: none;
-  }
-
-  .cart-drawer-reassurance {
-    border-color: var(--cd-separator-color);
-  }
-
-  .cart-drawer-reassurance-items {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5rem;
-    padding: 0.5rem 0;
-  }
 {%- endstyle -%}
 
 <cart-drawer
@@ -94,17 +73,6 @@
       {%- endunless -%}
 
       {%- comment -%} Header {%- endcomment -%}
-      {%- for block in section.blocks -%}
-        {%- if block.type == 'announcement_bar' -%}
-          <div
-            class="cart-drawer-announcement"
-            style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: {{ block.settings.padding_y }}px 1rem; font-size: {{ block.settings.font_size }};"
-            {{ block.shopify_attributes }}>
-            <p class="m-0!">{{ block.settings.text }}</p>
-          </div>
-        {%- endif -%}
-      {%- endfor -%}
-
       <div class="drawer__header mx-10">
         <h2 class="drawer__heading h4">{{ 'sections.cart.title' | t }}</h2>
         <button
@@ -116,47 +84,31 @@
         </button>
       </div>
 
-      {%- comment -%} ZONE HEADER : Blocks avant les articles {%- endcomment -%}
-      {% for block in section.blocks %}
-        {% case block.type %}
-
-          {% when 'timer' %}
-            {% if cart_has_items %}
-              <div style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: 2rem 1rem; text-align: center;" {{ block.shopify_attributes }}>
-                <p style="margin: 0 0 0.5rem 0;">{{ block.settings.text_before }}</p>
-                <p style="margin: 0; font-weight: bold;">
-                  <span id="cart-timer" data-duration="{{ block.settings.duration_minutes }}">10:00</span>
-                </p>
-                <p style="margin: 0.5rem 0 0 0;">{{ block.settings.text_after }}</p>
-              </div>
-            {% endif %}
-
-          {% when 'text' %}
-            <div
-              class="cart-drawer-text-block"
-              style="background-color: {{ block.settings.bg_color }}; color: {{ block.settings.text_color }}; padding: {{ block.settings.padding_y }}px 1rem;"
-              {{ block.shopify_attributes }}>
-              {{ block.settings.text }}
-            </div>
-
-          {% when 'palier' %}
-            {% render 'palier-cart-drawer'
-              , block: block %}
-
-          {% when 'divider' %}
-            <div
-              class="cart-drawer-divider"
-              style="background-color: {{ block.settings.color }}; height: {{ block.settings.thickness }}px; margin: {{ block.settings.margin_y }}px 0;"
-              {{ block.shopify_attributes }}></div>
-
-        {% endcase %}
-      {% endfor %}
-
-      {%- comment -%} Cart items {%- endcomment -%}
+      {%- comment -%} Cart items — le palier est à l'intérieur pour être mis à jour par onCartUpdate() {%- endcomment -%}
       <cart-drawer-items
         {% unless cart_has_items %}
         class="is-empty"
         {% endunless %}>
+
+        {%- comment -%} Palier d'avantages : doit être dans cart-drawer-items pour être re-rendu lors des updates AJAX {%- endcomment -%}
+        {% render 'cart-drawer-palier'
+          , enable: section.settings.enable_palier
+          , p1_amount: section.settings.palier_1_amount
+          , p1_text: section.settings.palier_1_text
+          , p1_icon: section.settings.palier_1_icon
+          , p1_message: section.settings.palier_1_message
+          , p2_amount: section.settings.palier_2_amount
+          , p2_text: section.settings.palier_2_text
+          , p2_icon: section.settings.palier_2_icon
+          , p2_message: section.settings.palier_2_message
+          , p3_amount: section.settings.palier_3_amount
+          , p3_text: section.settings.palier_3_text
+          , p3_icon: section.settings.palier_3_icon
+          , p3_message: section.settings.palier_3_message
+          , all_reached_message: section.settings.palier_all_reached_message
+          , bar_color: section.settings.palier_bar_color
+        %}
+
         <form
           action="{{ routes.cart_url }}"
           id="CartDrawer-Form"
@@ -558,7 +510,7 @@
         "min": 35,
         "max": 70,
         "step": 5,
-        "default": 44,
+        "default": 35,
         "unit": "rem"
       },
       {
@@ -597,8 +549,8 @@
         "label": "Taille image produit",
         "min": 60,
         "max": 120,
-        "step": 8,
-        "default": 80,
+        "step": 10,
+        "default": 60,
         "unit": "px"
       },
       {
@@ -610,6 +562,114 @@
         "step": 4,
         "default": 24,
         "unit": "px"
+      },
+      {
+        "type": "header",
+        "content": "Palier d'avantages"
+      },
+      {
+        "type": "checkbox",
+        "id": "enable_palier",
+        "label": "Activer le palier d'avantages",
+        "default": true
+      },
+      {
+        "type": "color",
+        "id": "palier_bar_color",
+        "label": "Couleur de la barre",
+        "default": "#000000"
+      },
+      {
+        "type": "header",
+        "content": "Objectif 1"
+      },
+      {
+        "type": "number",
+        "id": "palier_1_amount",
+        "label": "Montant (€)",
+        "default": 0
+      },
+      {
+        "type": "text",
+        "id": "palier_1_text",
+        "label": "Texte",
+        "default": ""
+      },
+      {
+        "type": "image_picker",
+        "id": "palier_1_icon",
+        "label": "Icône (optionnel)"
+      },
+      {
+        "type": "text",
+        "id": "palier_1_message",
+        "label": "Message (utilisez # pour le prix)",
+        "default": "Plus que # pour la livraison offerte",
+        "info": "Exemple: 'Plus que # pour livraison offerte' → 'Plus que 10€ pour livraison offerte'"
+      },
+      {
+        "type": "header",
+        "content": "Objectif 2 (optionnel)"
+      },
+      {
+        "type": "number",
+        "id": "palier_2_amount",
+        "label": "Montant (€)",
+        "default": 0
+      },
+      {
+        "type": "text",
+        "id": "palier_2_text",
+        "label": "Texte",
+        "default": ""
+      },
+      {
+        "type": "image_picker",
+        "id": "palier_2_icon",
+        "label": "Icône (optionnel)"
+      },
+      {
+        "type": "text",
+        "id": "palier_2_message",
+        "label": "Message (utilisez # pour le prix)",
+        "default": "Plus que # pour le cadeau offert"
+      },
+      {
+        "type": "header",
+        "content": "Objectif 3 (optionnel)"
+      },
+      {
+        "type": "number",
+        "id": "palier_3_amount",
+        "label": "Montant (€)",
+        "default": 0
+      },
+      {
+        "type": "text",
+        "id": "palier_3_text",
+        "label": "Texte",
+        "default": ""
+      },
+      {
+        "type": "image_picker",
+        "id": "palier_3_icon",
+        "label": "Icône (optionnel)"
+      },
+      {
+        "type": "text",
+        "id": "palier_3_message",
+        "label": "Message (utilisez # pour le prix)",
+        "default": "Plus que # pour la surprise offerte"
+      },
+      {
+        "type": "header",
+        "content": "Message final"
+      },
+      {
+        "type": "text",
+        "id": "palier_all_reached_message",
+        "label": "Affiché quand tous les objectifs sont atteints",
+        "default": "🎉 Félicitations ! Tous les avantages sont débloqués !"
       },
       {
         "type": "header",
@@ -626,299 +686,6 @@
         "type": "product",
         "id": "preview_product",
         "label": "Produit à afficher"
-      }
-    ],
-    "blocks": [
-      {
-        "type": "announcement_bar",
-        "name": "Barre d'annonce",
-        "settings": [
-          {
-            "type": "text",
-            "id": "text",
-            "label": "Texte",
-            "default": "En ce moment 2 Achetées = 2 Offertes"
-          },
-          {
-            "type": "color",
-            "id": "bg_color",
-            "label": "Couleur de fond",
-            "default": "#000000"
-          },
-          {
-            "type": "color",
-            "id": "text_color",
-            "label": "Couleur du texte",
-            "default": "#FFFFFF"
-          },
-          {
-            "type": "select",
-            "id": "font_size",
-            "label": "Taille du texte",
-            "options": [
-              {
-                "value": "10px",
-                "label": "XS"
-              },
-              {
-                "value": "11px",
-                "label": "S"
-              },
-              {
-                "value": "12px",
-                "label": "M"
-              },
-              {
-                "value": "14px",
-                "label": "L"
-              }
-            ],
-            "default": "11px"
-          },
-          {
-            "type": "range",
-            "id": "padding_y",
-            "label": "Padding vertical",
-            "min": 4,
-            "max": 20,
-            "step": 2,
-            "default": 8,
-            "unit": "px"
-          }
-        ]
-      },
-      {
-        "type": "timer",
-        "name": "Timer réservation",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "number",
-            "id": "duration_minutes",
-            "label": "Durée (minutes)",
-            "default": 10
-          },
-          {
-            "type": "text",
-            "id": "text_before",
-            "label": "Texte avant le timer",
-            "default": "Vos produits sont réservés pendant"
-          },
-          {
-            "type": "text",
-            "id": "text_after",
-            "label": "Texte après le timer",
-            "default": "minutes !"
-          },
-          {
-            "type": "color",
-            "id": "bg_color",
-            "label": "Couleur de fond",
-            "default": "#e5e7eb"
-          },
-          {
-            "type": "color",
-            "id": "text_color",
-            "label": "Couleur du texte",
-            "default": "#121212"
-          }
-        ]
-      },
-      {
-        "type": "text",
-        "name": "Texte",
-        "limit": 5,
-        "settings": [
-          {
-            "type": "richtext",
-            "id": "text",
-            "label": "Texte",
-            "default": "<p>Votre message ici</p>"
-          },
-          {
-            "type": "color",
-            "id": "bg_color",
-            "label": "Couleur de fond",
-            "default": "#e5e7eb"
-          },
-          {
-            "type": "color",
-            "id": "text_color",
-            "label": "Couleur du texte",
-            "default": "#121212"
-          },
-          {
-            "type": "range",
-            "id": "padding_y",
-            "label": "Padding vertical",
-            "min": 4,
-            "max": 32,
-            "step": 4,
-            "default": 12,
-            "unit": "px"
-          }
-        ]
-      },
-      {
-        "type": "palier",
-        "name": "Paliers avantages",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "color",
-            "id": "bar_color",
-            "label": "Couleur de la barre",
-            "default": "#000000"
-          },
-          {
-            "type": "header",
-            "content": "Palier 1"
-          },
-          {
-            "type": "number",
-            "id": "palier_1_amount",
-            "label": "Montant (€)",
-            "default": 30
-          },
-          {
-            "type": "text",
-            "id": "palier_1_text",
-            "label": "Texte",
-            "default": "Livraison offerte"
-          },
-          {
-            "type": "image_picker",
-            "id": "palier_1_icon",
-            "label": "Icône (optionnel)"
-          },
-          {
-            "type": "header",
-            "content": "Palier 2"
-          },
-          {
-            "type": "number",
-            "id": "palier_2_amount",
-            "label": "Montant (€)",
-            "default": 60
-          },
-          {
-            "type": "text",
-            "id": "palier_2_text",
-            "label": "Texte",
-            "default": "Cadeau offert"
-          },
-          {
-            "type": "image_picker",
-            "id": "palier_2_icon",
-            "label": "Icône (optionnel)"
-          }
-        ]
-      },
-      {
-        "type": "upsell-product-page",
-        "name": "UpSell",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "header",
-            "content": "Upsell Product Page"
-          },
-          {
-            "type": "text",
-            "id": "title",
-            "default": "Vous aimerez aussi",
-            "label": "Titre"
-          },
-          {
-            "type": "product",
-            "id": "product_1",
-            "label": "Produit 1"
-          },
-          {
-            "type": "product",
-            "id": "product_2",
-            "label": "Produit 2"
-          },
-          {
-            "type": "product",
-            "id": "product_3",
-            "label": "Produit 3"
-          },
-          {
-            "type": "product",
-            "id": "product_4",
-            "label": "Produit 4"
-          }
-        ]
-      },
-      {
-        "type": "reassurance",
-        "name": "Réassurance",
-        "limit": 1,
-        "settings": [
-          {
-            "type": "text",
-            "id": "item_1",
-            "label": "Item 1",
-            "default": "Livraison sécurisée"
-          },
-          {
-            "type": "text",
-            "id": "item_2",
-            "label": "Item 2",
-            "default": "Paiement 100% sécurisé"
-          },
-          {
-            "type": "text",
-            "id": "item_3",
-            "label": "Item 3",
-            "default": "Retour gratuit"
-          },
-          {
-            "type": "text",
-            "id": "item_4",
-            "label": "Item 4 (optionnel)",
-            "default": "Retour gratuit"
-          },
-          {
-            "type": "color",
-            "id": "border_color",
-            "label": "Couleur bordure",
-            "default": "#000000"
-          }
-        ]
-      },
-      {
-        "type": "divider",
-        "name": "Séparateur",
-        "settings": [
-          {
-            "type": "color",
-            "id": "color",
-            "label": "Couleur",
-            "default": "#e5e7eb"
-          },
-          {
-            "type": "range",
-            "id": "thickness",
-            "label": "Épaisseur (px)",
-            "min": 1,
-            "max": 4,
-            "step": 1,
-            "default": 1,
-            "unit": "px"
-          },
-          {
-            "type": "range",
-            "id": "margin_y",
-            "label": "Espacement vertical",
-            "min": 0,
-            "max": 32,
-            "step": 4,
-            "default": 8,
-            "unit": "px"
-          }
-        ]
       }
     ],
     "enabled_on": {
