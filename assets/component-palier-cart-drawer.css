@@ -118,13 +118,13 @@
 
 .palier-step__text {
   display: block;
+  font-size: 1.2rem;
   line-height: 1.2;
   transition: font-weight 0.3s ease, color 0.3s ease;
 }
 
 .palier-step--completed .palier-step__text {
   font-weight: 600;
-  font-size: 1.2rem;
   color: rgb(var(--color-foreground));
 }
 
