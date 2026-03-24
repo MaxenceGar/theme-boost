@@ -19,7 +19,7 @@
 }
 
 .section-announcement-bar__text {
-  color: white;
+  color: var(--ab-text-color, white);
   margin: 0;
   padding: 0;
   line-height: 1.4;
@@ -55,8 +55,8 @@
   display: block;
   width: 8px;
   height: 8px;
-  border-top: 2px solid white;
-  border-right: 2px solid white;
+  border-top: 2px solid var(--ab-text-color, white);
+  border-right: 2px solid var(--ab-text-color, white);
 }
 
 .section-announcement-bar__btn--prev::after {
