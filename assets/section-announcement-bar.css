@@ -18,7 +18,8 @@
   flex: 1;
 }
 
-.section-announcement-bar__text {
+.section-announcement-bar__text,
+.section-announcement-bar__text p {
   color: var(--ab-text-color, white);
   margin: 0;
   padding: 0;
