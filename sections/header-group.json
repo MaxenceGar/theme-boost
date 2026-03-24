@@ -34,7 +34,7 @@
       "name": "Barre d'annonce",
       "settings": {
         "bg_color": "#c6fa53",
-        "text_color": "#000000",
+        "text_color": "#17433c",
         "margin_top": 0,
         "margin_bottom": 0
       }
