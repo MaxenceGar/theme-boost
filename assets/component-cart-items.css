@@ -126,7 +126,12 @@ cart-items .title-wrapper-with-link {
 }
 
 .product-option {
-  font-size: 1.4rem;
+  font-size: var(--typo-p--size);
+    line-height: 1.6;
+    letter-spacing: var(--typo-body--letter-spacing);
+    font-family: var(--font-body-family);
+    font-style: var(--font-body-style);
+    font-weight: var(--font-body-weight);
   word-break: break-word;
   line-height: calc(1 + 0.5 / var(--font-body-scale));
 }
