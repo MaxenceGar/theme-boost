@@ -102,7 +102,7 @@
       "settings": {
         "collection": "accueil-demo",
         "products_to_show": 7,
-        "title": "Nos bestsellers",
+        "title": "<strong>Nos bestsellers</strong>",
         "subtitle": "Découvrez nos bests & futurs must-haves de notre collection.",
         "enable_btn": true,
         "button_style": "btn-primaire",
@@ -190,6 +190,8 @@
           "type": "description",
           "settings": {
             "description": "<p><strong>Chaque bijou est une histoire, chaque gravure une émotion.</strong></p><p>Gravez vos mots d'amour sur une médaille, une bague ou des boucles d'oreilles et transformez chaque instant en un précieux souvenir chargé d'émotion.</p><p>Depuis 2007, Nouvel Amour capture l'essence de vos histoires avec des bijoux personnalisés.</p><p>Que ce soit pour célébrer un moment spécial ou simplement pour exprimer vos sentiments, nos bijoux personnalisés sont conçus pour capturer l'essence de vos histoires.</p>",
+            "use_custom_color": false,
+            "custom_color": "#444441",
             "font_size_p": "14"
           }
         }
