@@ -71,7 +71,9 @@
 
       {%- comment -%} Header {%- endcomment -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading h4">{{ 'sections.cart.title' | t }} {{ cart.item_count }}</h2>
+        <h2 class="drawer__heading h4">{{ 'sections.cart.title' | t }}
+          <div>{{ cart.item_count }}</div>
+        </h2>
         <button
           class="drawer__close"
           type="button"
