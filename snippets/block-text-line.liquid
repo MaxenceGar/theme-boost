@@ -34,7 +34,7 @@
         loading="lazy">
     {%- endif -%}
 
-    <span class="text-line__text">{{ block.settings.text | escape }}</span>
+    <span class="text-line__text" style="font-weight: {{ block.settings.font_weight }} !important;">{{ block.settings.text | escape }}</span>
 
     {%- if has_icon and block.settings.icon_position == 'after' -%}
       <img
