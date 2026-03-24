@@ -476,12 +476,15 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 }
 
 #CartDrawer .quantity {
-  height: 15px; /* réduire la hauteur */
+  height: 32px;
 }
 #CartDrawer .quantity__button {
-  min-width: Xrem;
-  min-height: Xrem;
+  width: 28px;
+  min-width: 28px;
+  min-height: 32px;
+  padding: 0;
 }
 #CartDrawer .quantity__input {
-  width: 15px;
+  width: 32px;
+  padding: 0;
 }
