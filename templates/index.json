@@ -383,59 +383,28 @@
         "margin_bottom": 100
       }
     },
-    "section_freestyle_TBHn3V": {
-      "type": "section-freestyle",
-      "blocks": {
-        "benefice_CHUN7w": {
-          "type": "benefice",
-          "settings": {
-            "benefice": "Bénéfice",
-            "value": "XX%",
-            "size_height": 50,
-            "size_width": 50
-          }
-        },
-        "benefice_6GxJGp": {
-          "type": "benefice",
-          "settings": {
-            "benefice": "Bénéfice",
-            "value": "XX%",
-            "size_height": 50,
-            "size_width": 50
-          }
-        },
-        "benefice_HXhVQM": {
-          "type": "benefice",
-          "settings": {
-            "benefice": "Bénéfice",
-            "value": "XX%",
-            "size_height": 50,
-            "size_width": 50
-          }
-        },
-        "benefice_cWgaaQ": {
-          "type": "benefice",
-          "settings": {
-            "benefice": "Bénéfice",
-            "value": "XX%",
-            "size_height": 50,
-            "size_width": 50
-          }
-        }
-      },
-      "block_order": [
-        "benefice_CHUN7w",
-        "benefice_6GxJGp",
-        "benefice_HXhVQM",
-        "benefice_cWgaaQ"
-      ],
-      "name": "Section Freestyle",
-      "settings": {}
-    },
-    "design_system_wCz3pF": {
-      "type": "design-system",
-      "name": "Design System",
-      "settings": {}
+    "black_friday_highlight_banner_DiAXEH": {
+      "type": "black-friday-highlight-banner",
+      "name": "BF Highlight Banner",
+      "settings": {
+        "banner_text": "BLACK FRIDAY SALE IS LIVE",
+        "additional_text": "<p><strong>BIGGEST SALE OF THE YEAR</strong></p>",
+        "highlight_richtext": "<p><strong>BIGGEST SALE OF THE YEAR</strong></p>",
+        "show_tape": true,
+        "tape_text": "SALE SALE SALE SALE",
+        "tape_background": "#c6fa53",
+        "tape_text_color": "#17433c",
+        "background_color": "#17433c",
+        "text_color": "#FFFFFF",
+        "highlighter_style": "background",
+        "highlighter_color_1": "#FF0080",
+        "highlighter_color_2": "#7928CA",
+        "end_year": 2026,
+        "end_month": 5,
+        "end_day": 29,
+        "end_hour": 23,
+        "end_minute": 59
+      }
     }
   },
   "order": [
@@ -448,7 +417,6 @@
     "instagram_Aa8Tj6",
     "faq_product_page_9RC7rB",
     "avis_client_NhydB8",
-    "section_freestyle_TBHn3V",
-    "design_system_wCz3pF"
+    "black_friday_highlight_banner_DiAXEH"
   ]
 }
