@@ -80,7 +80,8 @@
           <span class="svg-wrapper">{{- 'icon-close.svg' | inline_asset_content -}}</span>
         </button>
       </div>
-      {% render 'annonce-bar-cart-drawer' %}
+
+      {% render 'annonce-bar-cart-drawer' section: block %}
 
       {%- comment -%} Cart items — le palier est à l'intérieur pour être mis à jour par onCartUpdate() {%- endcomment -%}
       <cart-drawer-items
