@@ -477,14 +477,14 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 
 #CartDrawer .quantity {
   height: 32px;
+  width: calc(9rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
 }
 #CartDrawer .quantity__button {
-  width: 28px;
-  min-width: 28px;
+  width: calc(3rem / var(--font-body-scale));
+  min-width: unset;
   min-height: 32px;
   padding: 0;
 }
 #CartDrawer .quantity__input {
-  width: 32px;
   padding: 0;
 }
