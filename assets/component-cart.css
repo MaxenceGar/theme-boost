@@ -220,3 +220,9 @@ cart-items {
     gap: 1rem;
   }
 }
+
+.compteur-produits {
+  background-color: black;
+  display: inline-block;
+  border-radius: 999px;
+}
