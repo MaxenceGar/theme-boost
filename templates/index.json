@@ -190,7 +190,8 @@
           "type": "description",
           "settings": {
             "description": "<p><strong>Chaque bijou est une histoire, chaque gravure une émotion.</strong></p><p>Gravez vos mots d'amour sur une médaille, une bague ou des boucles d'oreilles et transformez chaque instant en un précieux souvenir chargé d'émotion.</p><p>Depuis 2007, Nouvel Amour capture l'essence de vos histoires avec des bijoux personnalisés.</p><p>Que ce soit pour célébrer un moment spécial ou simplement pour exprimer vos sentiments, nos bijoux personnalisés sont conçus pour capturer l'essence de vos histoires.</p>",
-            "color": "#c6fa53",
+            "use_custom_color": true,
+            "custom_color": "#c6fa53",
             "font_size_p": "14"
           }
         }
@@ -381,60 +382,6 @@
         "margin_top": 100,
         "margin_bottom": 100
       }
-    },
-    "section_freestyle_TBHn3V": {
-      "type": "section-freestyle",
-      "blocks": {
-        "benefice_CHUN7w": {
-          "type": "benefice",
-          "settings": {
-            "benefice": "Bénéfice",
-            "value": "XX%",
-            "size_height": 50,
-            "size_width": 50
-          }
-        },
-        "benefice_6GxJGp": {
-          "type": "benefice",
-          "settings": {
-            "benefice": "Bénéfice",
-            "value": "XX%",
-            "size_height": 50,
-            "size_width": 50
-          }
-        },
-        "benefice_HXhVQM": {
-          "type": "benefice",
-          "settings": {
-            "benefice": "Bénéfice",
-            "value": "XX%",
-            "size_height": 50,
-            "size_width": 50
-          }
-        },
-        "benefice_cWgaaQ": {
-          "type": "benefice",
-          "settings": {
-            "benefice": "Bénéfice",
-            "value": "XX%",
-            "size_height": 50,
-            "size_width": 50
-          }
-        }
-      },
-      "block_order": [
-        "benefice_CHUN7w",
-        "benefice_6GxJGp",
-        "benefice_HXhVQM",
-        "benefice_cWgaaQ"
-      ],
-      "name": "Section Freestyle",
-      "settings": {}
-    },
-    "design_system_wCz3pF": {
-      "type": "design-system",
-      "name": "Design System",
-      "settings": {}
     }
   },
   "order": [
@@ -446,8 +393,6 @@
     "section_gauche_droite_waaAai",
     "instagram_Aa8Tj6",
     "faq_product_page_9RC7rB",
-    "avis_client_NhydB8",
-    "section_freestyle_TBHn3V",
-    "design_system_wCz3pF"
+    "avis_client_NhydB8"
   ]
 }
