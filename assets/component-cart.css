@@ -220,3 +220,14 @@ cart-items {
     gap: 1rem;
   }
 }
+
+.compteur-produits {
+  background-color: black;
+  display: inline-block;
+  border-radius: 999px;
+  color: white;
+  width: 20px;
+  height: 20px;
+  font-size: 1.4rem;
+  text-align: center;
+}

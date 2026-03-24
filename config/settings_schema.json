@@ -420,6 +420,12 @@
         "default": "14"
       },
       {
+        "type": "color",
+        "id": "typo_p_color",
+        "label": "Couleur des paragraphes",
+        "default": "#121212"
+      },
+      {
         "type": "header",
         "content": "Taille des H1"
       },

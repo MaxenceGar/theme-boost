@@ -1,0 +1,44 @@
+.insta__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+.insta__heading,
+.insta__subtitle {
+  color: var(--insta-text-color);
+}
+
+.insta__cta-desktop {
+  display: none;
+}
+
+@media screen and (min-width: 750px) {
+  .insta__cta-desktop {
+    display: block;
+  }
+}
+
+.insta__slider {
+  position: relative;
+}
+
+.insta__cta-mobile {
+  display: flex;
+  margin-top: 40px;
+}
+
+@media screen and (min-width: 750px) {
+  .insta__cta-mobile {
+    display: none;
+  }
+}
+
+.insta__image {
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  width: 100%;
+  border-radius: var(--rounded--size);
+  border: var(--insta-img-border-width, 1px) solid #000;
+}

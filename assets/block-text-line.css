@@ -1,0 +1,10 @@
+.text-line__inner {
+  display: inline-flex;
+  align-items: center;
+}
+
+.text-line__icon {
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}

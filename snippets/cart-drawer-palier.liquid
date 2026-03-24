@@ -1,142 +1,20 @@
-{%- comment -%}
-  Snippet: Palier d'Avantages Séquentiel (3 objectifs)
+{%- liquid
+  assign goal = 20000
+  assign cart_total = cart.total_price
+  assign progress = cart_total | times: 100 | divided_by: goal
+  if progress > 100
+    assign progress = 100
+  endif
+  assign remaining = goal | minus: cart_total
+-%}
 
-  Affiche une seule barre de progression à la fois.
-  Quand l'objectif est atteint, affiche le suivant.
-  Repart de 0% à chaque objectif.
-
-  Paramètres (via section.settings):
-  - enable: booléen
-  - p1_amount, p1_text, p1_icon, p1_message
-  - p2_amount, p2_text, p2_icon, p2_message
-  - p3_amount, p3_text, p3_icon, p3_message
-  - all_reached_message: message quand tous les objectifs sont atteints
-  - bar_color: couleur de la barre
-{%- endcomment -%}
-
-{%- unless enable -%}
-  {%- comment -%} Palier désactivé {%- endcomment -%}
-{%- else -%}
-  {%- liquid
-    assign cart_total = cart.total_price | divided_by: 100.0
-
-    # Récupérer les 3 objectifs
-    assign p1_amount = p1_amount | times: 1.0
-    assign p2_amount = p2_amount | times: 1.0
-    assign p3_amount = p3_amount | times: 1.0
-
-    # Compter les objectifs actifs
-    assign goal_count = 0
-    if p1_amount > 0 and p1_text != blank
-      assign goal_count = goal_count | plus: 1
-    endif
-    if p2_amount > 0 and p2_text != blank
-      assign goal_count = goal_count | plus: 1
-    endif
-    if p3_amount > 0 and p3_text != blank
-      assign goal_count = goal_count | plus: 1
-    endif
-
-    # Déterminer quel objectif afficher
-    assign current_goal = nil
-    assign current_amount = 0
-    assign current_text = ''
-    assign current_icon = ''
-    assign current_message = ''
-    assign all_reached = false
-
-    if goal_count > 0
-      # Objectif 1
-      if cart_total < p1_amount and p1_amount > 0 and p1_text != blank
-        assign current_goal = 1
-        assign current_amount = p1_amount
-        assign current_text = p1_text
-        assign current_icon = p1_icon
-        assign current_message = p1_message
-
-      # Objectif 2
-      elsif cart_total < p2_amount and p2_amount > 0 and p2_text != blank
-        assign current_goal = 2
-        assign current_amount = p2_amount
-        assign current_text = p2_text
-        assign current_icon = p2_icon
-        assign current_message = p2_message
-
-      # Objectif 3
-      elsif cart_total < p3_amount and p3_amount > 0 and p3_text != blank
-        assign current_goal = 3
-        assign current_amount = p3_amount
-        assign current_text = p3_text
-        assign current_icon = p3_icon
-        assign current_message = p3_message
-
-      # Tous les objectifs atteints
-      else
-        assign all_reached = true
-      endif
-    endif
-  -%}
-
-  {%- if all_reached -%}
-    {%- comment -%} Afficher le message final {%- endcomment -%}
-    <div class="palier-cart-drawer palier-cart-drawer--completed">
-      <p class="palier-message palier-message--final">
-        {{ all_reached_message }}
-      </p>
-    </div>
-
-  {%- elsif current_goal -%}
-    {%- comment -%} Afficher la barre de l'objectif actuel {%- endcomment -%}
-    {%- liquid
-      # Calcul de la progression (repart de 0)
-      if cart_total >= current_amount
-        assign progress_pct = 100
-      else
-        assign progress_pct = cart_total | divided_by: current_amount | times: 100.0 | round
-      endif
-
-      # Montant restant
-      assign remaining = current_amount | minus: cart_total
-    -%}
-
-    <palier-cart-drawer
-      data-cart-total="{{ cart_total | times: 100 | round }}"
-      data-max-amount="{{ current_amount | times: 100 | round }}"
-      data-message="{{ current_message | escape }}"
-      class="palier-cart-drawer"
-      style="--palier-color: {{ bar_color }};">
-
-      {%- comment -%} Message avec placeholder # {%- endcomment -%}
-      <p class="palier-message" data-message-template="{{ current_message }}">
-        {{ current_message | replace: '#', remaining | ceil | append: '€' }}
-      </p>
-
-      {%- comment -%} Barre de progression {%- endcomment -%}
-      <div class="palier-bar-container">
-        <div class="palier-bar">
-          <div class="palier-bar__fill" style="width: {{ progress_pct }}%; background-color: {{ bar_color }};"></div>
-        </div>
-
-        {%- comment -%} Étape {%- endcomment -%}
-        <div class="palier-steps">
-          <div class="palier-step" style="color: {{ bar_color }};">
-            <div class="palier-step__circle {% if progress_pct >= 100 %}palier-step__circle--active{% endif %}">
-              {%- if progress_pct >= 100 -%}
-                <svg class="palier-step__circle-icon" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              {%- endif -%}
-            </div>
-            <div class="palier-step__label">
-              {%- if current_icon != blank -%}
-                <img src="{{ current_icon | image_url: width: 20 }}" alt="{{ current_text | escape }}" class="palier-step__icon" loading="lazy" />
-              {%- endif -%}
-              <span class="palier-step__text">{{ current_text }}</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </palier-cart-drawer>
-
-  {%- endif -%}
-{%- endunless -%}
+<div style="padding: 16px 20px;">
+  {% if cart_total >= goal %}
+    <p>Livraison offerte !</p>
+  {% else %}
+    <p>Plus que {{ remaining | money }} pour la livraison offerte</p>
+  {% endif %}
+  <div style="height: 6px; background-color: #e5e5e5; border-radius: 999px; overflow: hidden;">
+    <div style="display: block; height: 6px; width: {{ progress }}%; background-color: #000; border-radius: 999px; transition: width 400ms ease;"></div>
+  </div>
+</div>

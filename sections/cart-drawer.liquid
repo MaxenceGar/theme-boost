@@ -3,11 +3,8 @@
 {{ 'component-totals.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
-{{ 'component-palier-cart-drawer.css' | asset_url | stylesheet_tag }}
-
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
-<script src="{{ 'palier-cart-drawer.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign preview_mode = section.settings.preview_mode
@@ -73,8 +70,10 @@
       {%- endunless -%}
 
       {%- comment -%} Header {%- endcomment -%}
-      <div class="drawer__header mx-10">
-        <h2 class="drawer__heading h4">{{ 'sections.cart.title' | t }}</h2>
+      <div class="drawer__header">
+        <h2 class="drawer__heading h4 items-center">{{ 'sections.cart.title' | t }}
+          <div class="compteur-produits">{{ cart.item_count }}</div>
+        </h2>
         <button
           class="drawer__close"
           type="button"
@@ -84,30 +83,15 @@
         </button>
       </div>
 
+      {% render 'annonce-bar-cart-drawer' section: block %}
+
       {%- comment -%} Cart items — le palier est à l'intérieur pour être mis à jour par onCartUpdate() {%- endcomment -%}
       <cart-drawer-items
         {% unless cart_has_items %}
         class="is-empty"
         {% endunless %}>
 
-        {%- comment -%} Palier d'avantages : doit être dans cart-drawer-items pour être re-rendu lors des updates AJAX {%- endcomment -%}
-        {% render 'cart-drawer-palier'
-          , enable: section.settings.enable_palier
-          , p1_amount: section.settings.palier_1_amount
-          , p1_text: section.settings.palier_1_text
-          , p1_icon: section.settings.palier_1_icon
-          , p1_message: section.settings.palier_1_message
-          , p2_amount: section.settings.palier_2_amount
-          , p2_text: section.settings.palier_2_text
-          , p2_icon: section.settings.palier_2_icon
-          , p2_message: section.settings.palier_2_message
-          , p3_amount: section.settings.palier_3_amount
-          , p3_text: section.settings.palier_3_text
-          , p3_icon: section.settings.palier_3_icon
-          , p3_message: section.settings.palier_3_message
-          , all_reached_message: section.settings.palier_all_reached_message
-          , bar_color: section.settings.palier_bar_color
-        %}
+        {% render 'cart-drawer-palier' %}
 
         <form
           action="{{ routes.cart_url }}"
@@ -264,14 +248,6 @@
                           headers="CartDrawer-ColumnProduct">
                           <a href="{{ item.url }}" class="cart-item__name break">{{ item.product.title | escape }}</a>
 
-                          {%- if item.original_price != item.final_price -%}
-                            <div class="cart-item__discounted-prices">
-                              <s class="cart-item__old-price product-option">{{ item.original_price | money }}</s>
-                              <strong class="cart-item__final-price product-option">{{ item.final_price | money }}</strong>
-                            </div>
-                          {%- else -%}
-                            <div class="product-option">{{ item.original_price | money }}</div>
-                          {%- endif -%}
 
                           {%- if item.product.has_only_default_variant == false -%}
                             <dl>
@@ -454,6 +430,7 @@
             {{ 'sections.cart.checkout' | t }}
           </button>
         </div>
+        {% render 'footer-cart-drawer.liquid' %}
       </div>
     </div>
   </div>
@@ -562,114 +539,6 @@
         "step": 4,
         "default": 24,
         "unit": "px"
-      },
-      {
-        "type": "header",
-        "content": "Palier d'avantages"
-      },
-      {
-        "type": "checkbox",
-        "id": "enable_palier",
-        "label": "Activer le palier d'avantages",
-        "default": true
-      },
-      {
-        "type": "color",
-        "id": "palier_bar_color",
-        "label": "Couleur de la barre",
-        "default": "#000000"
-      },
-      {
-        "type": "header",
-        "content": "Objectif 1"
-      },
-      {
-        "type": "number",
-        "id": "palier_1_amount",
-        "label": "Montant (€)",
-        "default": 0
-      },
-      {
-        "type": "text",
-        "id": "palier_1_text",
-        "label": "Texte",
-        "default": ""
-      },
-      {
-        "type": "image_picker",
-        "id": "palier_1_icon",
-        "label": "Icône (optionnel)"
-      },
-      {
-        "type": "text",
-        "id": "palier_1_message",
-        "label": "Message (utilisez # pour le prix)",
-        "default": "Plus que # pour la livraison offerte",
-        "info": "Exemple: 'Plus que # pour livraison offerte' → 'Plus que 10€ pour livraison offerte'"
-      },
-      {
-        "type": "header",
-        "content": "Objectif 2 (optionnel)"
-      },
-      {
-        "type": "number",
-        "id": "palier_2_amount",
-        "label": "Montant (€)",
-        "default": 0
-      },
-      {
-        "type": "text",
-        "id": "palier_2_text",
-        "label": "Texte",
-        "default": ""
-      },
-      {
-        "type": "image_picker",
-        "id": "palier_2_icon",
-        "label": "Icône (optionnel)"
-      },
-      {
-        "type": "text",
-        "id": "palier_2_message",
-        "label": "Message (utilisez # pour le prix)",
-        "default": "Plus que # pour le cadeau offert"
-      },
-      {
-        "type": "header",
-        "content": "Objectif 3 (optionnel)"
-      },
-      {
-        "type": "number",
-        "id": "palier_3_amount",
-        "label": "Montant (€)",
-        "default": 0
-      },
-      {
-        "type": "text",
-        "id": "palier_3_text",
-        "label": "Texte",
-        "default": ""
-      },
-      {
-        "type": "image_picker",
-        "id": "palier_3_icon",
-        "label": "Icône (optionnel)"
-      },
-      {
-        "type": "text",
-        "id": "palier_3_message",
-        "label": "Message (utilisez # pour le prix)",
-        "default": "Plus que # pour la surprise offerte"
-      },
-      {
-        "type": "header",
-        "content": "Message final"
-      },
-      {
-        "type": "text",
-        "id": "palier_all_reached_message",
-        "label": "Affiché quand tous les objectifs sont atteints",
-        "default": "🎉 Félicitations ! Tous les avantages sont débloqués !"
       },
       {
         "type": "header",

@@ -1,15 +1,23 @@
 {{ 'section-announcement-bar.css' | asset_url | stylesheet_tag }}
 
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    --ab-text-color: {{ section.settings.text_color }};
+  }
+{%- endstyle -%}
+
 <div
   class="page-width section-announcement-bar"
-  style="background-color: {{ section.settings.bg_color }}; margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;"
-  {{ block.shopify_attributes }}>
+  {{ section.shopify_attributes }}>
 
   {% if section.blocks.size > 0 %}
     {% if section.blocks.size == 1 %}
       <!-- Affichage simple si 1 seul block -->
       <div class="section-announcement-bar__content">
-        <p class="section-announcement-bar__text">{{ section.blocks.first.settings.text }}</p>
+        <div class="section-announcement-bar__text">{{ section.blocks.first.settings.text }}</div>
       </div>
     {% else %}
       <!-- Carousel Swiper si plusieurs blocks -->
@@ -21,7 +29,7 @@
             {% for block in section.blocks %}
               <div class="swiper-slide">
                 <div class="section-announcement-bar__content" {{ block.shopify_attributes }}>
-                  <p class="section-announcement-bar__text">{{ block.settings.text }}</p>
+                  <div class="section-announcement-bar__text">{{ block.settings.text }}</div>
                 </div>
               </div>
             {% endfor %}
@@ -43,6 +51,12 @@
         "id": "bg_color",
         "label": "Couleur de fond",
         "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Couleur du texte",
+        "default": "#FFFFFF"
       },
       {
         "type": "range",
@@ -71,10 +85,10 @@
         "name": "Annonce",
         "settings": [
           {
-            "type": "text",
+            "type": "richtext",
             "id": "text",
             "label": "Texte",
-            "default": "Livraison gratuite à partir de 70€"
+            "default": "<p>Livraison gratuite à partir de 70€</p>"
           }
         ]
       }

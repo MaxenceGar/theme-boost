@@ -1,378 +1,418 @@
-{% liquid
-  assign image_position = section.settings.image_position
+{{ 'section-gauche-droite.css' | asset_url | stylesheet_tag }}
 
-  if image_position == 'right'
-    assign image_position = 'lg:order-2'
-    assign content_position = 'lg:order-1'
+{%- liquid
+  assign img_fit = 'cover'
+  if section.settings.image_object_fit == 'object-contain'
+    assign img_fit = 'contain'
   endif
-%}
 
-<section style="padding-top: {{ section.settings.margin_top }}px;
-      padding-bottom: {{ section.settings.margin_bottom }}px;">
-<div class="text-block {%- if section.settings.enable_page_width %} page-width {% endif -%}" 
-style="
-      --text-align: {{ section.settings.alignment }}; 
-      --text-align-mobile: {{ section.settings.text-align-mobile }};"
-{{ section.shopify_attributes }}>
-  <div class="grid! grid-cols-1! md:grid-cols-2! overflow-hidden lg:min-h-[466px]" style="background-color: {{ section.settings.background_color }}; border-radius: var(--rounded--size) !important;">
+  assign grid_class = 'sgd__grid'
+  if section.settings.image_position == 'right'
+    assign grid_class = 'sgd__grid sgd__grid--image-right'
+  endif
+-%}
+
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    padding-top: {{ section.settings.margin_top }}px;
+    padding-bottom: {{ section.settings.margin_bottom }}px;
+  }
+  #shopify-section-{{ section.id }}
+  .sgd {
+    --sgd-text-align: {{ section.settings.alignment }};
+    --sgd-text-align-mobile: {{ section.settings.text-align-mobile }};
+  }
+  #shopify-section-{{ section.id }}
+  .sgd__grid {
+    background-color: {{ section.settings.background_color }};
+  }
+  #shopify-section-{{ section.id }}
+  .sgd__image-col {
+    background-color: {{ section.settings.background_color_image }};
+    --sgd-img-fit: {{ img_fit }};
+  }
+{%- endstyle -%}
+
+<div class="sgd{%- if section.settings.enable_page_width %} page-width{% endif -%}" {{ section.shopify_attributes }}>
+  <div class="{{ grid_class }}">
+
     <!-- Image -->
-    <div
-      class="relative w-full h-[350px] md:h-full {{ image_position }} overflow-hidden!"
-      style="background-color: {{ section.settings.background_color_image }};">
-      {% assign image_class = 'absolute w-full inset-0 ' | append: section.settings.image_object_fit %}
-      {% assign image_class = image_class | append: ' h-full' %}
+    <div class="sgd__image-col">
+      {%- liquid
+        assign fetchpriority = 'low'
+        assign loading = 'lazy'
+        assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+        assign image_width = section.settings.image.width
+        assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
+      -%}
       {% if section.settings.image %}
-        {%- liquid
-          assign fetchpriority = 'low'
-          assign loading = 'lazy'
-          assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
-          assign image_width = section.settings.image.width
-          assign widths = '375, 550, 750, 1100, 1500, 1780, 2000, 3000, 3840'
-        -%}
         {{
-          section.settings.image | image_url: width: 2500 | image_tag: loading: loading, fetchpriority: fetchpriority, width: image_width, height: image_height, class: image_class, widths: widths, sizes: '100vw'
+          section.settings.image | image_url: width: 2500 | image_tag: loading: loading, fetchpriority: fetchpriority, width: image_width, height: image_height, class: 'sgd__image', widths: widths, sizes: '(min-width: 750px) 50vw, 100vw'
         }}
       {% else %}
-        {{ 'lifestyle-1' | placeholder_svg_tag: image_class }}
+        {{ 'lifestyle-1' | placeholder_svg_tag: 'sgd__image' }}
       {% endif %}
     </div>
 
     <!-- Content -->
-    <div class="flex items-center px-[32px] py-10 md:py-0 md:px-[64px] {{ content_position }}">
+    <div class="sgd__content-col">
       <div>
         {% for block in section.blocks %}
           {% case block.type %}
             {% when 'subtitle' %}
               <p
-                class="font-light text-block"
+                class="sgd__subtitle"
                 style="color: {{ block.settings.color }};"
                 {{ block.shopify_attributes }}>
                 {{ block.settings.subtitle }}
               </p>
+
             {% when 'title' %}
-              <{{ block.settings.div }}
-                class="text-block pb-5"
-                style="color: {{ block.settings.color }};"
-                {{ block.shopify_attributes }}>
+              <{{ block.settings.div | downcase }}
+                                class="sgd__title"
+                                style="color: {{ block.settings.color }};"
+                                {{ block.shopify_attributes }}>
                 {{ block.settings.title }}
-              </{{ block.settings.div }}>
-            {% when 'description' %}
-              <div
-                class="font-heading text-block pb-5"
-                style="color: {{ block.settings.color }};"
-                {{ block.shopify_attributes }}>
-                {{ block.settings.description | newline_to_br }}
-              </div>
-            {% when 'button' %}
-              {% if block.settings.button_label != blank and block.settings.button_url != blank %}
-                <div class="flex" {{ block.shopify_attributes }}>
-                  <a href="{{ block.settings.button_url }}" class="btn {{ block.settings.button_style }}">
-                    {% if block.settings.button_label_mobile != blank %}
-                      <span class="hidden! md:block!">{{ block.settings.button_label }}</span>
-                      <span class="md:hidden!">{{ block.settings.button_label_mobile }}</span>
-                    {% else %}
-                      {{- block.settings.button_label -}}
-                    {% endif %}
-                  </a>
+                </{{ block.settings.div | downcase }}>
+
+              {% when 'description' %}
+                <div
+                  class="sgd__description"
+                  style="{% if block.settings.use_custom_color %}--typo-p--color: {{ block.settings.custom_color }};{% endif %} font-size: {{ block.settings.font_size_p }}px;"
+                  {{ block.shopify_attributes }}>
+                  {{ block.settings.description }}
                 </div>
-              {% endif %}
-          {% endcase %}
-        {% endfor %}
+
+              {% when 'button' %}
+                {% if block.settings.button_label != blank and block.settings.button_url != blank %}
+                  <div class="sgd__button-wrapper" {{ block.shopify_attributes }}>
+                    <a href="{{ block.settings.button_url }}" class="btn {{ block.settings.button_style }}">
+                      {% if block.settings.button_label_mobile != blank %}
+                        <span class="sgd__button-label--desktop">{{ block.settings.button_label }}</span>
+                        <span class="sgd__button-label--mobile">{{ block.settings.button_label_mobile }}</span>
+                      {% else %}
+                        {{- block.settings.button_label -}}
+                      {% endif %}
+                    </a>
+                  </div>
+                {% endif %}
+
+            {% endcase %}
+          {% endfor %}
+        </div>
       </div>
+
     </div>
   </div>
-</div>
-</section>
-{%  stylesheet %} 
 
-.text-block {
-    text-align: var(--text-align-mobile);
-    align-content: center;
-    margin-top: var(--margin-top);
-    margin-bottom: var(--margin-bottom);
-  }
-
-  @media (width > 750px) {
-    .text-block {
-      text-align: var(--text-align);
-    }
-  }
-  {% endstylesheet %}
-
-{% schema %}
-  {
-    "name": "Section Gauche Droite",
-    "class": "section-gauche-droite",
-    "settings": [
-      {
-        "type": "checkbox",
-        "id": "enable_page_width",
-        "label": "Activer Page Width"
-      },
-      {
-        "type": "text_alignment",
-        "id": "text-align-mobile",          
-        "label": "Alignement sur mobile",     
-        "default": "left"           
-      },
-      {
-        "type": "text_alignment",
-        "id": "alignment",          
-        "label": "Alignement sur ordinateur",     
-        "default": "left"           
-      },
-      {
-        "type": "image_picker",
-        "id": "image",
-        "label": "Image"
-      },
-      {
-        "type": "select",
-        "id": "image_object_fit",
-        "label": "Fit de l'image",
-        "options": [
-          {
-            "value": "object-cover",
-            "label": "Cover"
-          },
-          {
-            "value": "object-contain",
-            "label": "Contain"
-          }
-        ],
-        "default": "object-cover"
-      },
-      {
-        "type": "select",
-        "id": "image_position",
-        "label": "Position de l'image",
-        "options": [
-          {
-            "value": "left",
-            "label": "Gauche"
-          },
-          {
-            "value": "right",
-            "label": "Droite"
-          }
-        ],
-        "default": "left"
-      },
-      {
-        "type": "color",
-        "id": "background_color",
-        "label": "Couleur de fond contenu",
-        "default": "#FBF8F5"
-      },
-      {
-        "type": "color",
-        "id": "background_color_image",
-        "label": "Couleur de fond image",
-        "default": "#FBF8F5"
-      },
-      {
-      "type": "header",
-      "content": "Margin"
-    },
+  {% schema %}
     {
-      "type": "range",
-      "id": "margin_top",
-      "label": "Margin Top",
-      "default": 0,
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px"
-    },
-    {
-      "type": "range",
-      "id": "margin_bottom",
-      "label": "Margin Bottom",
-      "default": 0,
-      "min": 0,
-      "max": 100,
-      "step": 1,
-      "unit": "px"
+      "name": "Section Gauche Droite",
+      "class": "section-gauche-droite",
+      "settings": [
+        {
+          "type": "checkbox",
+          "id": "enable_page_width",
+          "label": "Activer Page Width"
+        },
+        {
+          "type": "select",
+          "id": "text-align-mobile",
+          "label": "Alignement sur mobile",
+          "options": [
+            {
+              "value": "left",
+              "label": "Gauche"
+            },
+            {
+              "value": "center",
+              "label": "Centre"
+            },
+            {
+              "value": "right",
+              "label": "Droite"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignement sur ordinateur",
+          "options": [
+            {
+              "value": "left",
+              "label": "Gauche"
+            },
+            {
+              "value": "center",
+              "label": "Centre"
+            },
+            {
+              "value": "right",
+              "label": "Droite"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "select",
+          "id": "image_object_fit",
+          "label": "Fit de l'image",
+          "options": [
+            {
+              "value": "object-cover",
+              "label": "Cover"
+            },
+            {
+              "value": "object-contain",
+              "label": "Contain"
+            }
+          ],
+          "default": "object-cover"
+        },
+        {
+          "type": "select",
+          "id": "image_position",
+          "label": "Position de l'image",
+          "options": [
+            {
+              "value": "left",
+              "label": "Gauche"
+            },
+            {
+              "value": "right",
+              "label": "Droite"
+            }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Couleur de fond",
+          "default": "#FBF8F5"
+        },
+        {
+          "type": "color",
+          "id": "background_color_image",
+          "label": "Couleur de fond image",
+          "default": "#FBF8F5"
+        },
+        {
+          "type": "header",
+          "content": "Margin"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin Top",
+          "default": 0,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin Bottom",
+          "default": 0,
+          "min": 0,
+          "max": 100,
+          "step": 1,
+          "unit": "px"
+        }
+      ],
+      "blocks": [
+        {
+          "type": "title",
+          "name": "Titre",
+          "settings": [
+            {
+              "type": "text",
+              "id": "title",
+              "label": "Title"
+            },
+            {
+              "type": "color",
+              "id": "color",
+              "label": "Couleur du titre",
+              "default": "#191918"
+            },
+            {
+              "type": "select",
+              "id": "div",
+              "label": "Balise HTML",
+              "options": [
+                {
+                  "label": "H1",
+                  "value": "h1"
+                },
+                {
+                  "label": "H2",
+                  "value": "h2"
+                },
+                {
+                  "label": "H3",
+                  "value": "h3"
+                }
+              ],
+              "default": "h3"
+            }
+          ]
+        },
+        {
+          "type": "subtitle",
+          "name": "Sous-titre",
+          "settings": [
+            {
+              "type": "text",
+              "id": "subtitle",
+              "label": "Sous-titre"
+            },
+            {
+              "type": "color",
+              "id": "color",
+              "label": "Couleur du sous-titre",
+              "default": "#C4664A"
+            }
+          ]
+        },
+        {
+          "type": "description",
+          "name": "Description",
+          "settings": [
+            {
+              "type": "richtext",
+              "id": "description",
+              "label": "Description"
+            },
+            {
+              "type": "checkbox",
+              "id": "use_custom_color",
+              "label": "Utiliser une couleur personnalisée",
+              "default": false
+            },
+            {
+              "type": "color",
+              "id": "custom_color",
+              "label": "Couleur personnalisée",
+              "default": "#444441"
+            },
+            {
+              "type": "select",
+              "id": "font_size_p",
+              "label": "Taille du texte",
+              "options": [
+                {
+                  "value": "12",
+                  "label": "12px"
+                },
+                {
+                  "value": "13",
+                  "label": "13px"
+                },
+                {
+                  "value": "14",
+                  "label": "14px"
+                },
+                {
+                  "value": "15",
+                  "label": "15px"
+                },
+                {
+                  "value": "16",
+                  "label": "16px"
+                },
+                {
+                  "value": "17",
+                  "label": "17px"
+                },
+                {
+                  "value": "18",
+                  "label": "18px"
+                }
+              ],
+              "default": "14"
+            }
+          ]
+        },
+        {
+          "type": "button",
+          "name": "Bouton",
+          "settings": [
+            {
+              "type": "text",
+              "id": "button_label",
+              "label": "Label"
+            },
+            {
+              "type": "text",
+              "id": "button_label_mobile",
+              "label": "Label mobile"
+            },
+            {
+              "type": "url",
+              "id": "button_url",
+              "label": "URL"
+            },
+            {
+              "type": "select",
+              "id": "button_style",
+              "label": "Style du bouton",
+              "options": [
+                {
+                  "value": "btn-primaire",
+                  "label": "Primaire"
+                },
+                {
+                  "value": "btn-secondaire",
+                  "label": "Secondaire"
+                },
+                {
+                  "value": "btn-tertiaire",
+                  "label": "Tertiaire"
+                }
+              ],
+              "default": "btn-primaire"
+            }
+          ]
+        }
+      ],
+      "presets": [
+        {
+          "name": "Section Gauche Droite",
+          "category": "Maxence",
+          "blocks": [
+            {
+              "type": "title",
+              "settings": {
+                "title": "Anne Borde & <br> Charlotte Rey"
+              }
+            },
+            {
+              "type": "description",
+              "settings": {
+                "description": "<p>Deux expertes en joaillerie, avec chacune plus de 20 ans d'expérience, dénichent les trésors cachés dans les coffres des particuliers et des professionnels.<\/p>"
+              }
+            },
+            {
+              "type": "button",
+              "settings": {
+                "button_label": "Découvrir les fondatrices",
+                "button_label_mobile": "Découvrir",
+                "button_url": "shopify:\/\/collections",
+                "button_style": "btn-primaire"
+              }
+            }
+          ]
+        }
+      ]
     }
-    ],
-    "blocks": [
-      {
-        "type": "title",
-        "name": "Titre",
-        "settings": [
-          {
-            "type": "text",
-            "id": "title",
-            "label": "Title"
-          },
-          {
-            "type": "color",
-            "id": "color",
-            "label": "Couleur du titre",
-            "default": "#191918"
-          },
-          {
-            "type": "select",
-            "id": "div",
-            "label": "Div",
-            "options": [
-              {
-                "label": "H1",
-                "value": "H1"
-              },
-              {
-                "label": "H2",
-                "value": "H2"
-              },
-              {
-                "label": "H3",
-                "value": "H3"
-              }
-            ],
-            "default": "H3"
-          }
-        ]
-      },
-      {
-        "type": "subtitle",
-        "name": "Sous-titre",
-        "settings": [
-          {
-            "type": "text",
-            "id": "subtitle",
-            "label": "Sous-titre"
-          },
-          {
-            "type": "color",
-            "id": "color",
-            "label": "Couleur du sous-titre",
-            "default": "#C4664A"
-          }
-        ]
-      },
-      {
-        "type": "description",
-        "name": "Description",
-        "settings": [
-          {
-            "type": "richtext",
-            "id": "description",
-            "label": "Description"
-          },
-          {
-            "type": "color",
-            "id": "color",
-            "label": "Couleur de la description",
-            "default": "#444441"
-          },
-          {
-        "type": "select",
-        "id": "font_size_p",
-        "label": "Taille du texte",
-        "options": [
-              {
-                "value": "12",
-                "label": "12px"
-              },
-              {
-                "value": "13",
-                "label": "13px"
-              },
-              {
-                "value": "14",
-                "label": "14px"
-              },
-              {
-                "value": "15",
-                "label": "15px"
-              },
-              {
-                "value": "16",
-                "label": "16px"
-              },
-              {
-                "value": "17",
-                "label": "17px"
-              },
-              {
-                "value": "18",
-                "label": "18px"
-              }
-            ],
-            "default": "14"
-          }
-        ]
-      },
-      {
-        "type": "button",
-        "name": "Bouton",
-        "settings": [
-          {
-            "type": "text",
-            "id": "button_label",
-            "label": "Label"
-          },
-          {
-            "type": "text",
-            "id": "button_label_mobile",
-            "label": "Label mobile"
-          },
-          {
-            "type": "url",
-            "id": "button_url",
-            "label": "URL"
-          },
-          {
-            "type": "select",
-            "id": "button_style",
-            "label": "Style du bouton",
-            "options": [
-              {
-                "value": "btn-primaire",
-                "label": "Primaire"
-              },
-              {
-                "value": "btn-secondaire",
-                "label": "Secondaire"
-              },
-              {
-                "value": "btn-tertiaire",
-                "label": "Tertiaire"
-              }
-            ],
-            "default": "btn-primaire"
-          }
-        ]
-      }
-    ],
-    "presets": [
-      {
-        "name": "Section Gauche Droite",
-        "category": "Maxence",
-        "blocks": [
-          {
-            "type": "title",
-            "settings": {
-              "title": "Anne Borde & <br> Charlotte Rey"
-            }
-          },
-          {
-            "type": "description",
-            "settings": {
-              "description": "<p>Deux expertes en joaillerie, avec chacune plus de 20 ans d'expérience, dénichent les trésors cachés dans les coffres des particuliers et des professionnels.<\/p>"
-            }
-          },
-          {
-            "type": "button",
-            "settings": {
-              "button_label": "Découvrir les fondatrices",
-              "button_label_mobile": "Découvrir",
-              "button_url": "shopify:\/\/collections",
-              "button_style": "btn-primaire"
-            }
-          }
-        ]
-      }
-    ]
-  }
-{% endschema %}
+  {% endschema %}

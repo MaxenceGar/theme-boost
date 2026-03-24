@@ -98,6 +98,9 @@
               {%- when '@app' -%}
                 {% render block %}
 
+              {% when 'trustpilot_rating' %}
+                {% render 'trustpilot-rating-block', block: block %}
+
                 {%- # Estimation Livraison -%}
                {%- when 'delivery_estimation' -%}
                   <div
@@ -107,6 +110,25 @@
                   >
                     {%- render 'block-delivery-estimation', block: block -%}
                   </div>
+
+              {% when 'divider' %}
+                {% render 'divider',
+                  color: block.settings.color,
+                  width: block.settings.width,
+                  thickness: block.settings.thickness,
+                  style: block.settings.style,
+                  margin_top: block.settings.margin_top,
+                  margin_bottom: block.settings.margin_bottom,
+                  alignment: block.settings.alignment,
+                  max_width: block.settings.max_width,
+                  block: block
+                %}
+
+                {% when 'custom_text' %}
+                    {% render 'maxence-garandel', block: block %}
+
+              {% when 'text_line' %}
+                {% render 'block-text-line', block: block %}
 
               {%- # Collabs Tabs -%}
               {% when 'collab_tabs' %}
@@ -882,6 +904,140 @@
       "type": "@app"
     },
     {
+      "type": "text_line",
+      "name": "Texte en ligne",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Livraison offerte dès 70€"
+        },
+        {
+          "type": "header",
+          "content": "Icône"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icône"
+        },
+        {
+          "type": "select",
+          "id": "icon_position",
+          "label": "Position de l'icône",
+          "options": [
+            { "value": "before", "label": "Avant le texte" },
+            { "value": "after", "label": "Après le texte" }
+          ],
+          "default": "before"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Taille de l'icône",
+          "min": 12,
+          "max": 48,
+          "step": 2,
+          "default": 20,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "icon_gap",
+          "label": "Espace icône / texte",
+          "min": 0,
+          "max": 24,
+          "step": 2,
+          "default": 8,
+          "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Style"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Couleur du texte",
+          "default": "#121212"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Couleur de fond"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignement",
+          "options": [
+            { "value": "left", "label": "Gauche" },
+            { "value": "center", "label": "Centre" },
+            { "value": "right", "label": "Droite" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Poids du texte",
+          "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semi-Bold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "header",
+          "content": "Espacement"
+        },
+        {
+          "type": "range",
+          "id": "padding_y",
+          "label": "Padding vertical",
+          "min": 0,
+          "max": 32,
+          "step": 2,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_x",
+          "label": "Padding horizontal",
+          "min": 0,
+          "max": 32,
+          "step": 2,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin Top",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin Bottom",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "default": 0,
+          "unit": "px"
+        }
+      ]
+    },
+    {
       "type": "text",
       "name": "t:sections.main-product.blocks.text.name",
       "settings": [
@@ -1125,6 +1281,354 @@
       "unit": "px"
     }
       ]
+    },
+    {
+      "name": "Trustpilot Rating",
+      "type": "trustpilot_rating",
+      "settings": [
+        {
+          "type": "header",
+          "content": "Content Settings"
+        },
+        {
+          "type": "text",
+          "id": "rating_text",
+          "label": "Rating Text",
+          "default": "Excellent"
+        },
+        {
+          "type": "text",
+          "id": "rating_score",
+          "label": "Rating Score",
+          "default": "4.7 sur 5"
+        },
+        {
+          "type": "header",
+          "content": "Style Settings"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Text Color",
+          "default": "#000000"
+        },
+        {
+          "type": "color",
+          "id": "star_color",
+          "label": "Star Color",
+          "default": "#00b67a"
+        },
+        {
+          "type": "checkbox",
+          "id": "show_single_star_after_text",
+          "label": "Show additional single star after text",
+          "default": false
+        },
+        {
+          "type": "range",
+          "id": "font_size_desktop",
+          "min": 10,
+          "max": 24,
+          "step": 1,
+          "default": 14,
+          "label": "Desktop Font Size (px)"
+        },
+        {
+          "type": "range",
+          "id": "font_size_tablet",
+          "min": 10,
+          "max": 22,
+          "step": 1,
+          "default": 14,
+          "label": "Tablet Font Size (px)"
+        },
+        {
+          "type": "range",
+          "id": "font_size_mobile",
+          "min": 10,
+          "max": 20,
+          "step": 1,
+          "default": 14,
+          "label": "Mobile Font Size (px)"
+        },
+        {
+          "type": "range",
+          "id": "star_size_desktop",
+          "min": 12,
+          "max": 30,
+          "step": 1,
+          "default": 18,
+          "label": "Desktop Star Size (px)"
+        },
+        {
+          "type": "range",
+          "id": "star_size_tablet",
+          "min": 12,
+          "max": 28,
+          "step": 1,
+          "default": 18,
+          "label": "Tablet Star Size (px)"
+        },
+        {
+          "type": "range",
+          "id": "star_size_mobile",
+          "min": 12,
+          "max": 24,
+          "step": 1,
+          "default": 18,
+          "label": "Mobile Star Size (px)"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "min": -20,
+          "max": 20,
+          "step": 5,
+          "default": 10,
+          "label": "Top Margin (px)"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "min": -20,
+          "max": 20,
+          "step": 5,
+          "default": 10,
+          "label": "Bottom Margin (px)"
+        },
+        {
+          "type": "text",
+          "id": "link",
+          "label": "Reviews anchor",
+          "default": "reviews",
+          "info": "Enter the ID of the reviews section (e.g., \"reviews\")."
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_background",
+          "label": "Enable Background Color",
+          "default": false
+        },
+        {
+          "type": "color",
+          "id": "background_color",
+          "label": "Background Color",
+          "default": "#f8f8f8",
+          "info": "Only applied if 'Enable Background Color' is checked."
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_background_gradient",
+          "label": "Enable Background Gradient",
+          "default": false,
+          "info": "Enable gradient background instead of solid color"
+        },
+        {
+          "type": "color",
+          "id": "background_gradient_start",
+          "label": "Gradient Start Color",
+          "default": "#ffffff",
+          "info": "Starting color of the gradient"
+        },
+        {
+          "type": "color",
+          "id": "background_gradient_end",
+          "label": "Gradient End Color",
+          "default": "#f0f0f0",
+          "info": "Ending color of the gradient"
+        },
+        {
+          "type": "select",
+          "id": "background_gradient_direction",
+          "label": "Gradient Direction",
+          "default": "to right",
+          "options": [
+            {
+              "value": "to right",
+              "label": "Left to Right"
+            },
+            {
+              "value": "to left",
+              "label": "Right to Left"
+            },
+            {
+              "value": "to bottom",
+              "label": "Top to Bottom"
+            },
+            {
+              "value": "to top",
+              "label": "Bottom to Top"
+            },
+            {
+              "value": "to bottom right",
+              "label": "Top Left to Bottom Right"
+            },
+            {
+              "value": "to bottom left",
+              "label": "Top Right to Bottom Left"
+            },
+            {
+              "value": "to top right",
+              "label": "Bottom Left to Top Right"
+            },
+            {
+              "value": "to top left",
+              "label": "Bottom Right to Top Left"
+            },
+            {
+              "value": "45deg",
+              "label": "45° Diagonal"
+            },
+            {
+              "value": "90deg",
+              "label": "90° Vertical"
+            },
+            {
+              "value": "135deg",
+              "label": "135° Diagonal"
+            },
+            {
+              "value": "180deg",
+              "label": "180° Horizontal"
+            }
+          ],
+          "info": "Direction of the gradient"
+        },
+        {
+          "type": "color",
+          "id": "border_color",
+          "label": "Border Color",
+          "default": "#e0e0e0"
+        },
+        {
+          "type": "range",
+          "id": "border_width",
+          "min": 0,
+          "max": 5,
+          "step": 1,
+          "default": 1,
+          "label": "Border Width (px)"
+        },
+        {
+          "type": "select",
+          "id": "border_style",
+          "label": "Border Style",
+          "options": [
+            { "value": "none", "label": "None" },
+            { "value": "solid", "label": "Solid" },
+            { "value": "dotted", "label": "Dotted" },
+            { "value": "dashed", "label": "Dashed" }
+          ],
+          "default": "dotted"
+        },
+        {
+          "type": "range",
+          "id": "border_radius",
+          "min": 0,
+          "max": 20,
+          "step": 1,
+          "default": 4,
+          "label": "Border Radius (px)",
+          "info": "Only applied if 'Enable Background Color' is checked."
+        }
+      ]
+    },
+    {
+      "name": "Divider",
+      "type": "divider",
+      "settings": [
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Divider color",
+          "default": "#e0e0e0"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Line style",
+          "options": [
+            {
+              "value": "solid",
+              "label": "Solid"
+            },
+            {
+              "value": "dashed",
+              "label": "Dashed"
+            },
+            {
+              "value": "dotted",
+              "label": "Dotted"
+            }
+          ],
+          "default": "solid"
+        },
+        {
+          "type": "range",
+          "id": "thickness",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 1,
+          "label": "Thickness (px)"
+        },
+        {
+          "type": "text",
+          "id": "width",
+          "label": "Width (% or px)",
+          "default": "100%",
+          "info": "Enter a value like '100%', '80%' or '200px'"
+        },
+        {
+          "type": "text",
+          "id": "max_width",
+          "label": "Maximum width",
+          "default": "100%",
+          "info": "Enter a value like '500px' or '100%'"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "min": -20,
+          "max": 20,
+          "step": 1,
+          "default": 10,
+          "label": "Top margin (px)"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "min": -20,
+          "max": 20,
+          "step": 1,
+          "default": 10,
+          "label": "Bottom margin (px)"
+        }
+      ]
+    },
+    {
+      "type": "custom_text",
+      "name": "Maxence Garandel"
     },
     {
       "type": "price",

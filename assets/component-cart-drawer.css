@@ -474,3 +474,27 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 #CartDrawer .cart__checkout-button:hover:not(:disabled) {
   opacity: 0.88;
 }
+
+#CartDrawer .quantity {
+  height: 32px;
+  width: calc(9rem / var(--font-body-scale) + var(--inputs-border-width) * 2);
+}
+#CartDrawer .quantity__button {
+  width: calc(3rem / var(--font-body-scale));
+  min-width: unset;
+  min-height: 32px;
+  padding: 0;
+}
+#CartDrawer .quantity__input {
+  padding: 0;
+}
+
+#CartDrawer .cart-item__totals .price {
+  font-size: var(--typo-p--size);
+  font-weight: var(--font-body-weight);
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  line-height: var(--typo-p--line-height);
+  letter-spacing: var(--typo-body--letter-spacing);
+  color: black;
+}
