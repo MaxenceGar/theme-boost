@@ -248,14 +248,6 @@
                           headers="CartDrawer-ColumnProduct">
                           <a href="{{ item.url }}" class="cart-item__name break">{{ item.product.title | escape }}</a>
 
-                          {%- if item.original_price != item.final_price -%}
-                            <div class="cart-item__discounted-prices">
-                              <s class="cart-item__old-price product-option">{{ item.original_price | money }}</s>
-                              <strong class="cart-item__final-price product-option">{{ item.final_price | money }}</strong>
-                            </div>
-                          {%- else -%}
-                            <div class="product-option">{{ item.original_price | money }}</div>
-                          {%- endif -%}
 
                           {%- if item.product.has_only_default_variant == false -%}
                             <dl>
