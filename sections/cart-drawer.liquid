@@ -79,8 +79,8 @@
           aria-label="{{ 'accessibility.close' | t }}">
           <span class="svg-wrapper">{{- 'icon-close.svg' | inline_asset_content -}}</span>
         </button>
-        {% render 'annonce-bar-cart-drawer' %}
       </div>
+      {% render 'annonce-bar-cart-drawer' %}
 
       {%- comment -%} Cart items — le palier est à l'intérieur pour être mis à jour par onCartUpdate() {%- endcomment -%}
       <cart-drawer-items
