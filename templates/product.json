@@ -12,24 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "text_line_wNThrG": {
-          "type": "text_line",
-          "settings": {
-            "text": "Livraison offerte dès 70€",
-            "icon": "shopify://shop_images/1.Face_2aaed132-26f0-40e9-a8c9-9ede7ca34ccc_1.webp",
-            "icon_position": "after",
-            "icon_size": 20,
-            "icon_gap": 8,
-            "text_color": "#000000",
-            "bg_color": "rgba(0,0,0,0)",
-            "alignment": "left",
-            "font_weight": "700",
-            "padding_y": 0,
-            "padding_x": 0,
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        },
         "trustpilot_rating_fdVqhw": {
           "type": "trustpilot_rating",
           "settings": {
@@ -76,8 +58,39 @@
             "width": "100%",
             "max_width": "100%",
             "alignment": "right",
-            "margin_top": 10,
-            "margin_bottom": 10
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "text_line_wNThrG": {
+          "type": "text_line",
+          "settings": {
+            "text": "Livraison offerte dès 70€",
+            "icon": "shopify://shop_images/svgviewer-output_34.svg",
+            "icon_position": "before",
+            "icon_size": 20,
+            "icon_gap": 4,
+            "text_color": "#000000",
+            "bg_color": "rgba(0,0,0,0)",
+            "alignment": "left",
+            "font_weight": "700",
+            "padding_y": 0,
+            "padding_x": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "divider_TwM4pQ": {
+          "type": "divider",
+          "settings": {
+            "color": "#17433c",
+            "style": "solid",
+            "thickness": 1,
+            "width": "100%",
+            "max_width": "100%",
+            "alignment": "right",
+            "margin_top": 0,
+            "margin_bottom": 0
           }
         },
         "custom_text_V3iCzj": {
@@ -212,10 +225,11 @@
         }
       },
       "block_order": [
-        "text_line_wNThrG",
         "trustpilot_rating_fdVqhw",
         "title_wjgMq3",
         "divider_44Jj9g",
+        "text_line_wNThrG",
+        "divider_TwM4pQ",
         "custom_text_V3iCzj",
         "price_xGmqGm",
         "badge_max_bRGcBD",
