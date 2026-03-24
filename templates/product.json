@@ -65,6 +65,35 @@
             "margin_bottom": 15
           }
         },
+        "trustpilot_rating_fdVqhw": {
+          "type": "trustpilot_rating",
+          "settings": {
+            "rating_text": "Excellent",
+            "rating_score": "4.7 sur 5",
+            "text_color": "#000000",
+            "star_color": "#00b67a",
+            "show_single_star_after_text": true,
+            "font_size_desktop": 14,
+            "font_size_tablet": 14,
+            "font_size_mobile": 14,
+            "star_size_desktop": 18,
+            "star_size_tablet": 18,
+            "star_size_mobile": 18,
+            "margin_top": 10,
+            "margin_bottom": 10,
+            "link": "reviews",
+            "enable_background": false,
+            "background_color": "#c6fa53",
+            "enable_background_gradient": false,
+            "background_gradient_start": "#c6fa53",
+            "background_gradient_end": "#17433c",
+            "background_gradient_direction": "to top",
+            "border_color": "#334fb4",
+            "border_width": 5,
+            "border_style": "dashed",
+            "border_radius": 20
+          }
+        },
         "details_jJBXri": {
           "type": "details",
           "settings": {
@@ -166,6 +195,7 @@
         "price_xGmqGm",
         "badge_max_bRGcBD",
         "text_DzNNBt",
+        "trustpilot_rating_fdVqhw",
         "details_jJBXri",
         "variant_picker_dRhy4i",
         "buy_buttons_max_WTNj9H",
@@ -241,7 +271,8 @@
           "type": "description",
           "settings": {
             "description": "<p><strong>Chaque bijou est une histoire, chaque gravure une émotion.</strong></p><p>Gravez vos mots d'amour sur une médaille, une bague ou des boucles d'oreilles et transformez chaque instant en un précieux souvenir chargé d'émotion.</p><p>Depuis 2007, Nouvel Amour capture l'essence de vos histoires avec des bijoux personnalisés.</p><p>Que ce soit pour célébrer un moment spécial ou simplement pour exprimer vos sentiments, nos bijoux personnalisés sont conçus pour capturer l'essence de vos histoires.</p>",
-            "color": "#020202",
+            "use_custom_color": false,
+            "custom_color": "#444441",
             "font_size_p": "14"
           }
         }
