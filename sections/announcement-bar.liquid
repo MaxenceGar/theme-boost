@@ -1,9 +1,17 @@
 {{ 'section-announcement-bar.css' | asset_url | stylesheet_tag }}
 
+{%- style -%}
+  #shopify-section-{{ section.id }} {
+    background-color: {{ section.settings.bg_color }};
+    margin-top: {{ section.settings.margin_top }}px;
+    margin-bottom: {{ section.settings.margin_bottom }}px;
+    --ab-text-color: {{ section.settings.text_color }};
+  }
+{%- endstyle -%}
+
 <div
   class="page-width section-announcement-bar"
-  style="background-color: {{ section.settings.bg_color }}; margin-top: {{ section.settings.margin_top }}px; margin-bottom: {{ section.settings.margin_bottom }}px;"
-  {{ block.shopify_attributes }}>
+  {{ section.shopify_attributes }}>
 
   {% if section.blocks.size > 0 %}
     {% if section.blocks.size == 1 %}
@@ -43,6 +51,12 @@
         "id": "bg_color",
         "label": "Couleur de fond",
         "default": "#000000"
+      },
+      {
+        "type": "color",
+        "id": "text_color",
+        "label": "Couleur du texte",
+        "default": "#FFFFFF"
       },
       {
         "type": "range",
