@@ -16,3 +16,20 @@
     <div style="height: 100%; width: {{ progress }}%; background-color: blue; border-radius: 999px; transition: width 400ms ease;"></div>
   </div>
 </div>
+
+<style>
+  .progress-bar {
+    height: 6px;
+    background-color: red;
+    border-radius: 999px;
+    overflow: hidden;
+  }
+
+  .bar-progress {
+    height: 100%;
+    width: {{ progress }}%;
+    background-color: blue;
+    border-radius: 999px;
+    transition: width 400ms ease;
+  }
+</style>
