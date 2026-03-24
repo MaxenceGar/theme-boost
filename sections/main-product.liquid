@@ -904,6 +904,140 @@
       "type": "@app"
     },
     {
+      "type": "text_line",
+      "name": "Texte en ligne",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Texte",
+          "default": "Livraison offerte dès 70€"
+        },
+        {
+          "type": "header",
+          "content": "Icône"
+        },
+        {
+          "type": "image_picker",
+          "id": "icon",
+          "label": "Icône"
+        },
+        {
+          "type": "select",
+          "id": "icon_position",
+          "label": "Position de l'icône",
+          "options": [
+            { "value": "before", "label": "Avant le texte" },
+            { "value": "after", "label": "Après le texte" }
+          ],
+          "default": "before"
+        },
+        {
+          "type": "range",
+          "id": "icon_size",
+          "label": "Taille de l'icône",
+          "min": 12,
+          "max": 48,
+          "step": 2,
+          "default": 20,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "icon_gap",
+          "label": "Espace icône / texte",
+          "min": 0,
+          "max": 24,
+          "step": 2,
+          "default": 8,
+          "unit": "px"
+        },
+        {
+          "type": "header",
+          "content": "Style"
+        },
+        {
+          "type": "color",
+          "id": "text_color",
+          "label": "Couleur du texte",
+          "default": "#121212"
+        },
+        {
+          "type": "color",
+          "id": "bg_color",
+          "label": "Couleur de fond"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignement",
+          "options": [
+            { "value": "left", "label": "Gauche" },
+            { "value": "center", "label": "Centre" },
+            { "value": "right", "label": "Droite" }
+          ],
+          "default": "left"
+        },
+        {
+          "type": "select",
+          "id": "font_weight",
+          "label": "Poids du texte",
+          "options": [
+            { "value": "300", "label": "Light" },
+            { "value": "400", "label": "Normal" },
+            { "value": "500", "label": "Medium" },
+            { "value": "600", "label": "Semi-Bold" },
+            { "value": "700", "label": "Bold" }
+          ],
+          "default": "400"
+        },
+        {
+          "type": "header",
+          "content": "Espacement"
+        },
+        {
+          "type": "range",
+          "id": "padding_y",
+          "label": "Padding vertical",
+          "min": 0,
+          "max": 32,
+          "step": 2,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "padding_x",
+          "label": "Padding horizontal",
+          "min": 0,
+          "max": 32,
+          "step": 2,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin Top",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "default": 0,
+          "unit": "px"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin Bottom",
+          "min": 0,
+          "max": 60,
+          "step": 2,
+          "default": 0,
+          "unit": "px"
+        }
+      ]
+    },
+    {
       "type": "text",
       "name": "t:sections.main-product.blocks.text.name",
       "settings": [
