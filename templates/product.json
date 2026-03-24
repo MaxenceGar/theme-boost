@@ -12,17 +12,34 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "rating_max_cbxGJ4": {
-          "type": "rating_max",
+        "trustpilot_rating_fdVqhw": {
+          "type": "trustpilot_rating",
           "settings": {
-            "nombre_etoiles": 5,
-            "note": "4.7",
-            "number": "762"
+            "rating_text": "Excellent",
+            "rating_score": "4.7 sur 5",
+            "text_color": "#000000",
+            "star_color": "#00b67a",
+            "show_single_star_after_text": true,
+            "font_size_desktop": 14,
+            "font_size_tablet": 14,
+            "font_size_mobile": 14,
+            "star_size_desktop": 18,
+            "star_size_tablet": 18,
+            "star_size_mobile": 18,
+            "margin_top": 10,
+            "margin_bottom": 10,
+            "link": "reviews",
+            "enable_background": false,
+            "background_color": "#c6fa53",
+            "enable_background_gradient": false,
+            "background_gradient_start": "#c6fa53",
+            "background_gradient_end": "#17433c",
+            "background_gradient_direction": "to top",
+            "border_color": "#334fb4",
+            "border_width": 5,
+            "border_style": "none",
+            "border_radius": 20
           }
-        },
-        "rating_KLybDT": {
-          "type": "rating",
-          "settings": {}
         },
         "title_wjgMq3": {
           "type": "title",
@@ -63,35 +80,6 @@
             "text_color": "#000000",
             "margin_top": 15,
             "margin_bottom": 15
-          }
-        },
-        "trustpilot_rating_fdVqhw": {
-          "type": "trustpilot_rating",
-          "settings": {
-            "rating_text": "Excellent",
-            "rating_score": "4.7 sur 5",
-            "text_color": "#000000",
-            "star_color": "#00b67a",
-            "show_single_star_after_text": true,
-            "font_size_desktop": 14,
-            "font_size_tablet": 14,
-            "font_size_mobile": 14,
-            "star_size_desktop": 18,
-            "star_size_tablet": 18,
-            "star_size_mobile": 18,
-            "margin_top": 10,
-            "margin_bottom": 10,
-            "link": "reviews",
-            "enable_background": false,
-            "background_color": "#c6fa53",
-            "enable_background_gradient": false,
-            "background_gradient_start": "#c6fa53",
-            "background_gradient_end": "#17433c",
-            "background_gradient_direction": "to top",
-            "border_color": "#334fb4",
-            "border_width": 5,
-            "border_style": "none",
-            "border_radius": 20
           }
         },
         "details_jJBXri": {
@@ -189,13 +177,11 @@
         }
       },
       "block_order": [
-        "rating_max_cbxGJ4",
-        "rating_KLybDT",
+        "trustpilot_rating_fdVqhw",
         "title_wjgMq3",
         "price_xGmqGm",
         "badge_max_bRGcBD",
         "text_DzNNBt",
-        "trustpilot_rating_fdVqhw",
         "details_jJBXri",
         "variant_picker_dRhy4i",
         "buy_buttons_max_WTNj9H",
