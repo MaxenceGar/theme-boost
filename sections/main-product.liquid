@@ -1381,6 +1381,99 @@
       ]
     },
     {
+      "name": "Divider",
+      "type": "divider",
+      "settings": [
+        {
+          "type": "color",
+          "id": "color",
+          "label": "Divider color",
+          "default": "#e0e0e0"
+        },
+        {
+          "type": "select",
+          "id": "style",
+          "label": "Line style",
+          "options": [
+            {
+              "value": "solid",
+              "label": "Solid"
+            },
+            {
+              "value": "dashed",
+              "label": "Dashed"
+            },
+            {
+              "value": "dotted",
+              "label": "Dotted"
+            }
+          ],
+          "default": "solid"
+        },
+        {
+          "type": "range",
+          "id": "thickness",
+          "min": 1,
+          "max": 5,
+          "step": 1,
+          "default": 1,
+          "label": "Thickness (px)"
+        },
+        {
+          "type": "text",
+          "id": "width",
+          "label": "Width (% or px)",
+          "default": "100%",
+          "info": "Enter a value like '100%', '80%' or '200px'"
+        },
+        {
+          "type": "text",
+          "id": "max_width",
+          "label": "Maximum width",
+          "default": "100%",
+          "info": "Enter a value like '500px' or '100%'"
+        },
+        {
+          "type": "select",
+          "id": "alignment",
+          "label": "Alignment",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ],
+          "default": "center"
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "min": -20,
+          "max": 20,
+          "step": 1,
+          "default": 10,
+          "label": "Top margin (px)"
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "min": -20,
+          "max": 20,
+          "step": 1,
+          "default": 10,
+          "label": "Bottom margin (px)"
+        }
+      ]
+    },
+    {
       "type": "price",
       "name": "t:sections.main-product.blocks.price.name",
       "limit": 1,
