@@ -24,6 +24,7 @@
     "body_scale": 100,
     "typo_p_size": "14",
     "typo_p_mobile_size": "13",
+    "typo_p_color": "#000000",
     "typo_h1_size": "72",
     "typo_h1_mobile_size": "48",
     "typo_h6_size": "18",
