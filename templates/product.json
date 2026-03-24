@@ -49,6 +49,19 @@
             "margin_bottom": 5
           }
         },
+        "divider_44Jj9g": {
+          "type": "divider",
+          "settings": {
+            "color": "#17433c",
+            "style": "solid",
+            "thickness": 1,
+            "width": "100%",
+            "max_width": "100%",
+            "alignment": "right",
+            "margin_top": 10,
+            "margin_bottom": 10
+          }
+        },
         "price_xGmqGm": {
           "type": "price",
           "disabled": true,
@@ -179,6 +192,7 @@
       "block_order": [
         "trustpilot_rating_fdVqhw",
         "title_wjgMq3",
+        "divider_44Jj9g",
         "price_xGmqGm",
         "badge_max_bRGcBD",
         "text_DzNNBt",
