@@ -495,4 +495,6 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
   font-family: var(--font-body-family);
   font-style: var(--font-body-style);
   line-height: var(--typo-p--line-height);
+  letter-spacing: var(--typo-body--letter-spacing);
+  color: black;
 }
