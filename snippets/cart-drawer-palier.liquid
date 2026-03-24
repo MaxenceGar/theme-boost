@@ -9,7 +9,11 @@
 -%}
 
 <div style="padding: 16px 20px;">
-  <p>Plus que {{ remaining | money }} pour la livraison offerte</p>
+  {% if cart_total >= goal %}
+    <p>Livraison offerte !</p>
+  {% else %}
+    <p>Plus que {{ remaining | money }} pour la livraison offerte</p>
+  {% endif %}
   <div style="height: 6px; background-color: #e5e5e5; border-radius: 999px; overflow: hidden;">
     <div style="display: block; height: 6px; width: {{ progress }}%; background-color: #000; border-radius: 999px; transition: width 400ms ease;"></div>
   </div>
