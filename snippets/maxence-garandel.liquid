@@ -1,0 +1,500 @@
+<div class="custom-text-block-container-{{ block.id }}">
+  <div class="custom-text-block-{{ block.id }}" {{ block.shopify_attributes }}>
+    <div class="custom-text-wrapper">
+      <div class="custom-text-content">
+        {% if block.settings.show_divider %}
+          <div class="custom-text-with-divider">
+            {% if block.settings.text_align == 'right' %}
+              <div class="divider-line"></div>
+            {% elsif block.settings.text_align == 'center' %}
+              <div class="divider-line"></div>
+            {% endif %}
+
+            <div class="custom-text-main">
+              {% if block.settings.show_icon %}
+                <div class="custom-text-icon">
+                  {% if block.settings.use_image_icon and block.settings.icon_image != blank %}
+                    <img
+                      src="{{ block.settings.icon_image | image_url: width: 72 }}"
+                      srcset="{{ block.settings.icon_image | image_url: width: 72 }} 1x, {{ block.settings.icon_image | image_url: width: 144 }} 2x"
+                      alt="Icon"
+                      loading="lazy"
+                      width="{{ block.settings.icon_size }}"
+                      height="{{ block.settings.icon_size }}"
+                      style="width: {{ block.settings.icon_size }}px; height: {{ block.settings.icon_size }}px; object-fit: contain;">
+                  {% elsif block.settings.custom_icon != blank %}
+                    {{ block.settings.custom_icon }}
+                  {% endif %}
+                </div>
+              {% endif %}
+              <div class="custom-text-main-text-content">
+                {% if block.settings.show_accent_text and block.settings.accent_text_position == 'before' %}
+                  <div class="custom-text-accent">{{ block.settings.accent_text }}</div>
+                {% endif %}
+
+                {% if block.settings.show_accent_text and block.settings.accent_text_position == 'inline' %}
+                  {% assign accent_placeholder = '[ACCENT]' %}
+                  {% if block.settings.text contains accent_placeholder %}
+                    {% assign text_parts = block.settings.text | split: accent_placeholder %}
+                    {{ text_parts[0] -}}
+                    <span class="custom-text-accent-inline">{{ block.settings.accent_text }}</span>
+                    {{- text_parts[1] }}
+                  {% else %}
+                    <span class="custom-text-accent-inline">{{ block.settings.accent_text }}</span>
+                    {{ block.settings.text }}
+                  {% endif %}
+                {% else %}
+                  {{ block.settings.text }}
+                {% endif %}
+
+                {% if block.settings.show_accent_text and block.settings.accent_text_position == 'after' %}
+                  <div class="custom-text-accent">{{ block.settings.accent_text }}</div>
+                {% endif %}
+              </div>
+              {% if block.settings.show_after_icon %}
+                <div class="custom-text-after-icon">
+                  {% if block.settings.use_image_after_icon and block.settings.after_icon_image != blank %}
+                    <img
+                      src="{{ block.settings.after_icon_image | image_url: width: 72 }}"
+                      srcset="{{ block.settings.after_icon_image | image_url: width: 72 }} 1x, {{ block.settings.after_icon_image | image_url: width: 144 }} 2x"
+                      alt="After Icon"
+                      loading="lazy"
+                      width="{{ block.settings.after_icon_size }}"
+                      height="{{ block.settings.after_icon_size }}"
+                      style="width: {{ block.settings.after_icon_size }}px; height: {{ block.settings.after_icon_size }}px; object-fit: contain;">
+                  {% elsif block.settings.after_custom_icon != blank %}
+                    {{ block.settings.after_custom_icon }}
+                  {% endif %}
+                </div>
+              {% endif %}
+            </div>
+
+            {% if block.settings.text_align == 'left' %}
+              <div class="divider-line"></div>
+            {% elsif block.settings.text_align == 'center' %}
+              <div class="divider-line"></div>
+            {% endif %}
+          </div>
+        {% else %}
+          <div class="custom-text-main">
+            {% if block.settings.show_icon %}
+              <div class="custom-text-icon">
+                {% if block.settings.use_image_icon and block.settings.icon_image != blank %}
+                  <img
+                    src="{{ block.settings.icon_image | image_url: width: 72 }}"
+                    srcset="{{ block.settings.icon_image | image_url: width: 72 }} 1x, {{ block.settings.icon_image | image_url: width: 144 }} 2x"
+                    alt="Icon"
+                    loading="lazy"
+                    width="{{ block.settings.icon_size }}"
+                    height="{{ block.settings.icon_size }}"
+                    style="width: {{ block.settings.icon_size }}px; height: {{ block.settings.icon_size }}px; object-fit: contain;">
+                {% elsif block.settings.custom_icon != blank %}
+                  {{ block.settings.custom_icon }}
+                {% endif %}
+              </div>
+            {% endif %}
+            <div class="custom-text-main-text-content">
+              {% if block.settings.show_accent_text and block.settings.accent_text_position == 'before' %}
+                <div class="custom-text-accent">{{ block.settings.accent_text }}</div>
+              {% endif %}
+
+              {% if block.settings.show_accent_text and block.settings.accent_text_position == 'inline' %}
+                {% assign accent_placeholder = '[ACCENT]' %}
+                {% if block.settings.text contains accent_placeholder %}
+                  {% assign text_parts = block.settings.text | split: accent_placeholder %}
+                  {{ text_parts[0] -}}
+                  <span class="custom-text-accent-inline">{{ block.settings.accent_text }}</span>
+                  {{- text_parts[1] }}
+                {% else %}
+                  <span class="custom-text-accent-inline">{{ block.settings.accent_text }}</span>
+                  {{ block.settings.text }}
+                {% endif %}
+              {% else %}
+                {{ block.settings.text }}
+              {% endif %}
+
+              {% if block.settings.show_accent_text and block.settings.accent_text_position == 'after' %}
+                <div class="custom-text-accent">{{ block.settings.accent_text }}</div>
+              {% endif %}
+            </div>
+            {% if block.settings.show_after_icon %}
+              <div class="custom-text-after-icon">
+                {% if block.settings.use_image_after_icon and block.settings.after_icon_image != blank %}
+                  <img
+                    src="{{ block.settings.after_icon_image | image_url: width: 72 }}"
+                    srcset="{{ block.settings.after_icon_image | image_url: width: 72 }} 1x, {{ block.settings.after_icon_image | image_url: width: 144 }} 2x"
+                    alt="After Icon"
+                    loading="lazy"
+                    width="{{ block.settings.after_icon_size }}"
+                    height="{{ block.settings.after_icon_size }}"
+                    style="width: {{ block.settings.after_icon_size }}px; height: {{ block.settings.after_icon_size }}px; object-fit: contain;">
+                {% elsif block.settings.after_custom_icon != blank %}
+                  {{ block.settings.after_custom_icon }}
+                {% endif %}
+              </div>
+            {% endif %}
+          </div>
+        {% endif %}
+
+        {% if block.settings.show_description and block.settings.description != blank %}
+          <div class="custom-text-description">
+            {{ block.settings.description }}
+          </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  .custom-text-block-container-{{ block.id }} {
+    width: 100%;
+    display: block;
+    {% if block.settings.use_container and block.settings.container_fit_content %}
+      text-align: {{ block.settings.text_align }};
+    {% endif %}
+  }
+
+  .custom-text-block-{{ block.id }} {
+    margin-top: {{ block.settings.margin_top }}px;
+    margin-bottom: {{ block.settings.margin_bottom }}px;
+    text-align: {{ block.settings.text_align }};
+    {% if block.settings.use_container and block.settings.container_fit_content %}
+      display: inline-block;
+      width: auto;
+      max-width: 100%;
+    {% else %}
+      width: 100%;
+    {% endif %}
+    {% if block.settings.use_container %}
+      {% if block.settings.container_bg_type == 'gradient' %}
+        background: {{ block.settings.container_bg_gradient }};
+      {% else %}
+        background-color: {{ block.settings.container_bg }};
+      {% endif %}
+      padding: {{ block.settings.container_padding_top | default: 10 }}px{{ block.settings.container_padding_h | default: 14 }}px{{ block.settings.container_padding_bottom | default: 10 }}px{{ block.settings.container_padding_h | default: 14 }}px;
+      border-radius: {{ block.settings.border_radius }}px;
+    {% endif %}
+  }
+
+  .custom-text-block-{{ block.id }}
+  .custom-text-wrapper {
+    {% if block.settings.use_container and block.settings.container_fit_content %}
+      width: auto;
+    {% else %}
+      width: 100%;
+    {% endif %}
+  }
+
+  .custom-text-block-{{ block.id }}
+  .custom-text-with-divider {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: {{ block.settings.divider_spacing | default: 12 }}px;
+  }
+
+  .custom-text-block-{{ block.id }}
+  .divider-line {
+    flex: 1;
+    height: {{ block.settings.divider_height | default: 1 }}px;
+    min-height: {{ block.settings.divider_height | default: 1 }}px;
+    min-width: 20px;
+    background-color: {{ block.settings.divider_color | default: '#e0e0e0' }};
+    border: none;
+    margin: 0;
+    display: block;
+    {% if block.settings.divider_style == 'dashed' %}
+      background-image: repeating-linear-gradient(to right, {{ block.settings.divider_color | default: '#e0e0e0' }} 0px, {{ block.settings.divider_color | default: '#e0e0e0' }} 8px, transparent 8px, transparent 16px);
+      background-color: transparent;
+    {% elsif block.settings.divider_style == 'dotted' %}
+      background-image: repeating-linear-gradient(to right, {{ block.settings.divider_color | default: '#e0e0e0' }} 0px, {{ block.settings.divider_color | default: '#e0e0e0' }} 4px, transparent 4px, transparent 8px);
+      background-color: transparent;
+    {% endif %}
+  }
+
+  .custom-text-block-{{ block.id }}
+  .custom-text-main {
+    display: flex;
+    align-items: {{ block.settings.icon_alignment | default: 'center' }};
+    gap: {{ block.settings.icon_spacing | default: 8 }}px;
+    font-size: {{ block.settings.font_size }}px;
+    font-weight: {% case block.settings.font_weight %}
+    {% when 'bold' %}var(--font-weight-bold)
+  {% when 'semibold' %}var(--font-weight-semibold)
+{% when 'regular' %}var(--font-weight-regular)
+{% else %}var(--font-weight-regular)
+{% endcase %};
+{% unless block.settings.show_divider %}
+  width: 100%;
+  {% if block.settings.text_align == 'center' %}
+    justify-content: center;
+  {% elsif block.settings.text_align == 'right' %}
+    justify-content: flex-end;
+  {% else %}
+    justify-content: flex-start;
+  {% endif %}
+{% endunless %}
+flex-shrink: 0;
+}
+
+.custom-text-block-{{ block.id }}
+.custom-text-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: {{ block.settings.icon_color | default: block.settings.text_color }};
+  width: {{ block.settings.icon_size | default: 20 }}px;
+  height: {{ block.settings.icon_size | default: 20 }}px;
+  margin-left: {{ block.settings.icon_margin_left | default: 0 }}px;
+  margin-right: {{ block.settings.icon_margin_right | default: 8 }}px;
+}
+
+.custom-text-block-{{ block.id }}
+.custom-text-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.custom-text-block-{{ block.id }}
+.custom-text-after-icon {
+  flex-shrink: 0;
+  display: flex;
+  align-items: {{ block.settings.after_icon_alignment | default: 'center' }};
+  justify-content: center;
+  color: {{ block.settings.after_icon_color | default: block.settings.text_color }};
+  width: {{ block.settings.after_icon_size | default: 20 }}px;
+  height: {{ block.settings.after_icon_size | default: 20 }}px;
+  margin-left: {{ block.settings.after_icon_margin_left | default: 8 }}px;
+  margin-right: {{ block.settings.after_icon_margin_right | default: 0 }}px;
+}
+
+.custom-text-block-{{ block.id }}
+.custom-text-after-icon svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  stroke: currentColor;
+}
+
+.custom-text-block-{{ block.id }}
+.custom-text-content {
+  color: {{ block.settings.text_color }};
+  margin: 0;
+  width: 100%;
+}
+
+.custom-text-block-{{ block.id }}
+.custom-text-content a
+, .custom-text-block-{{ block.id }}
+.custom-text-main-text-content a {
+  color: {{ block.settings.link_color | default: '#0066CC' }};
+  text-decoration: underline;
+}
+
+.custom-text-block-{{ block.id }}.custom-text-content a:hover,
+.custom-text-block-{{ block.id }}.custom-text-main-text-content a:hover {
+  opacity: 0.8;
+}
+
+.custom-text-block-{{ block.id }}
+.custom-text-content strong
+, .custom-text-block-{{ block.id }}
+.custom-text-content b
+, .custom-text-block-{{ block.id }}
+.custom-text-main-text-content strong
+, .custom-text-block-{{ block.id }}
+.custom-text-main-text-content b {
+  font-weight: 700 !important;
+}
+
+.custom-text-block-{{ block.id }}
+.custom-text-main-text-content {
+  {% if block.settings.show_divider %}
+    text-align: {{ block.settings.text_align }};
+  {% else %}
+    text-align: {{ block.settings.text_align }};
+    {% unless block.settings.text_align == 'center' %}
+      width: auto;
+    {% endunless %}
+  {% endif %}
+  font-weight: {% case block.settings.font_weight %}
+  {% when 'bold' %}var(--font-weight-bold)
+{% when 'semibold' %}var(--font-weight-semibold)
+{% when 'regular' %}var(--font-weight-regular)
+{% else %}var(--font-weight-regular)
+{% endcase %};
+}
+
+/* Ensure paragraph tags inherit the text alignment and font weight */
+.custom-text-block-{{ block.id }} .custom-text-main-text-content p {
+  text-align: inherit;
+  font-weight: inherit;
+}
+
+/* Ensure strong tags within the custom text also respect the font weight setting */
+.custom-text-block-{{ block.id }} .custom-text-main-text-content strong
+, .custom-text-block-{{ block.id }}
+.custom-text-main-text-content b {
+  font-weight: {% case block.settings.font_weight %}
+  {% when 'bold' %}700 !important
+{% when 'semibold' %}var(--font-weight-bold)
+{% when 'regular' %}var(--font-weight-semibold)
+{% else %}var(--font-weight-semibold)
+{% endcase %};
+}
+
+{% if block.settings.reset_paragraph_margin %}
+  .custom-text-block-{{ block.id }}
+  .custom-text-main-text-content p {
+    margin: 0;
+    padding: 0;
+  }
+{% else %}
+.custom-text-block-{{ block.id }}
+.custom-text-main-text-content p {
+  margin-top: 0;
+  margin-bottom: {{ block.settings.paragraph_spacing }}px;
+}
+.custom-text-block-{{ block.id }}.custom-text-main-text-content p:last-child {
+  margin-bottom: 0;
+}
+{% endif %}
+
+.custom-text-block-{{ block.id }}
+.custom-text-description {
+  font-size: {{ block.settings.description_font_size | default: block.settings.font_size | minus: 2 }}px;
+  margin-top: {{ block.settings.description_spacing | default: 4 }}px;
+  color: {{ block.settings.description_color | default: block.settings.text_color }};
+  opacity: {{ block.settings.description_opacity | default: 0.8 }};
+  font-weight: {% case block.settings.font_weight %}
+  {% when 'bold' %}var(--font-weight-regular)
+{% when 'semibold' %}var(--font-weight-regular)
+{% when 'regular' %}var(--font-weight-regular)
+{% else %}var(--font-weight-regular)
+{% endcase %};
+  text-align: {{ block.settings.text_align }};
+}
+
+/* Accent Text Styles */
+{% if block.settings.show_accent_text %}
+  .custom-text-block-{{ block.id }}
+  .custom-text-accent
+  , .custom-text-block-{{ block.id }}
+  .custom-text-accent-inline {
+    font-size: {{ block.settings.accent_text_font_size }}px;
+    font-weight: {% case block.settings.accent_text_font_weight %}
+    {% when 'bold' %}var(--font-weight-bold)
+  {% when 'semibold' %}var(--font-weight-semibold)
+{% when 'regular' %}var(--font-weight-regular)
+{% else %}var(--font-weight-semibold)
+{% endcase %};
+{% if block.settings.use_accent_gradient %}
+  background: {{ block.settings.accent_text_gradient }};
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+{% else %}
+  color: {{ block.settings.accent_text_color }};
+{% endif %}
+}
+
+.custom-text-block-{{ block.id }}
+.custom-text-accent {
+  display: block;
+  {% if block.settings.accent_text_position == 'before' %}
+    margin-bottom: {{ block.settings.accent_text_spacing }}px;
+  {% elsif block.settings.accent_text_position == 'after' %}
+    margin-top: {{ block.settings.accent_text_spacing }}px;
+  {% endif %}
+}
+
+.custom-text-block-{{ block.id }}
+.custom-text-accent-inline {
+  display: inline;
+}
+{% endif %}
+
+/* Ensure strong tags within the description also work properly */
+.custom-text-block-{{ block.id }} .custom-text-description strong
+, .custom-text-block-{{ block.id }}
+.custom-text-description b {
+  font-weight: {% case block.settings.font_weight %}
+  {% when 'bold' %}var(--font-weight-bold)
+{% when 'semibold' %}var(--font-weight-semibold)
+{% when 'regular' %}var(--font-weight-semibold)
+{% else %}var(--font-weight-semibold)
+{% endcase %};
+}
+
+{% if block.settings.reset_description_margin %}
+  .custom-text-block-{{ block.id }}
+  .custom-text-description p {
+    margin: 0;
+    padding: 0;
+  }
+{% else %}
+.custom-text-block-{{ block.id }}
+.custom-text-description p {
+  margin-top: 0;
+  margin-bottom: {{ block.settings.description_paragraph_spacing }}px;
+}
+.custom-text-block-{{ block.id }}.custom-text-description p:last-child {
+  margin-bottom: 0;
+}
+{% endif %}
+
+/* Special handling for center alignment with divider */
+{% if block.settings.show_divider and block.settings.text_align == 'center' %}
+  .custom-text-block-{{ block.id }}.custom-text-with-divider .divider-line:first-child {
+    order: -1;
+  }
+  .custom-text-block-{{ block.id }}
+  .custom-text-with-divider .custom-text-main {
+    order: 0;
+  }
+  .custom-text-block-{{ block.id }}.custom-text-with-divider .divider-line:last-child {
+    order: 1;
+  }
+{% endif %}
+</style>
+
+<style>
+  /* Ensure strong and bold tags always display as bold */
+  .custom-text-block-{{ block.id }} .custom-text-main-text-content strong
+  , .custom-text-block-{{ block.id }}
+  .custom-text-main-text-content b
+  , .custom-text-block-{{ block.id }}
+  .custom-text-description strong
+  , .custom-text-block-{{ block.id }}
+  .custom-text-description b {
+    font-weight: 700 !important;
+  }
+
+  /* Override font weight inheritance for non-bold elements only */
+  .custom-text-block-{{ block.id }}*:not(strong):not(b) {
+    font-weight: inherit;
+  }
+
+  /* Ensure all text elements respect the custom font weight (except strong/b tags) */
+  .custom-text-block-{{ block.id }}span:not(strong):not(b),
+  .custom-text-block-{{ block.id }}div:not(.custom-text-icon):not(strong):not(b),
+  .custom-text-block-{{ block.id }}p:not(strong):not(b),
+  .custom-text-block-{{ block.id }}h1:not(strong):not(b),
+  .custom-text-block-{{ block.id }}h2:not(strong):not(b),
+  .custom-text-block-{{ block.id }}h3:not(strong):not(b),
+  .custom-text-block-{{ block.id }}h4:not(strong):not(b),
+  .custom-text-block-{{ block.id }}h5:not(strong):not(b),
+  .custom-text-block-{{ block.id }}h6:not(strong):not(b) {
+    font-weight: {% case block.settings.font_weight %}
+    {% when 'bold' %}var(--font-weight-bold)
+  {% when 'semibold' %}var(--font-weight-semibold)
+{% when 'regular' %}var(--font-weight-regular)
+{% else %}var(--font-weight-regular)
+{% endcase %};
+}
+</style>
