@@ -1,124 +1,14 @@
-{%- comment -%}
-  Snippet: Palier d'Avantages Séquentiel (3 objectifs)
-  Version optimisée - safe pour thème commercial
+{%- liquid
+  assign goal = 200.0
+  assign cart_total = cart.total_price | divided_by: 100.0
+  assign progress = cart_total | divided_by: goal | times: 100.0 | round
+  if progress > 100
+    assign progress = 100
+  endif
+-%}
 
-  - Calculs uniquement en centimes
-  - Compatible refresh AJAX Dawn
-  - Aucun float
-  - Utilise correctement le filtre money
-{%- endcomment -%}
-
-{%- unless enable -%}
-  {%- comment -%} Palier désactivé {%- endcomment -%}
-{%- else -%}
-
-  {%- liquid
-    assign cart_total = cart.total_price
-
-    # Convertir les montants configurés (supposés en euros) en centimes
-    assign p1_amount = p1_amount | times: 100
-    assign p2_amount = p2_amount | times: 100
-    assign p3_amount = p3_amount | times: 100
-
-    assign current_amount = 0
-    assign current_text = ''
-    assign current_icon = ''
-    assign current_message = ''
-    assign all_reached = false
-
-    # Déterminer le palier actif (ordre séquentiel)
-    if p1_amount > 0 and p1_text != blank and cart_total < p1_amount
-      assign current_amount = p1_amount
-      assign current_text = p1_text
-      assign current_icon = p1_icon
-      assign current_message = p1_message
-
-    elsif p2_amount > 0 and p2_text != blank and cart_total < p2_amount
-      assign current_amount = p2_amount
-      assign current_text = p2_text
-      assign current_icon = p2_icon
-      assign current_message = p2_message
-
-    elsif p3_amount > 0 and p3_text != blank and cart_total < p3_amount
-      assign current_amount = p3_amount
-      assign current_text = p3_text
-      assign current_icon = p3_icon
-      assign current_message = p3_message
-
-    else
-      assign all_reached = true
-    endif
-  -%}
-
-  {%- if all_reached and all_reached_message != blank -%}
-
-    <div class="palier-cart-drawer palier-cart-drawer--completed">
-      <p class="palier-message palier-message--final">
-        {{ all_reached_message }}
-      </p>
-    </div>
-
-  {%- elsif current_amount > 0 -%}
-
-    {%- liquid
-      assign progress_pct = cart_total | times: 100 | divided_by: current_amount
-
-      if progress_pct > 100
-        assign progress_pct = 100
-      endif
-
-      assign remaining = current_amount | minus: cart_total
-    -%}
-
-    <div
-      class="palier-cart-drawer"
-      style="--palier-color: {{ bar_color }};"
-      data-cart-total="{{ cart_total }}"
-      data-max-amount="{{ current_amount }}"
-    >
-
-      <p class="palier-message">
-        {{ current_message }}
-        <strong>{{ remaining | money }}</strong>
-      </p>
-
-      <div class="palier-bar-container">
-        <div class="palier-bar">
-          <div
-            class="palier-bar__fill"
-            style="width: {{ progress_pct }}%; background-color: {{ bar_color }};">
-          </div>
-        </div>
-
-        <div class="palier-steps">
-          <div class="palier-step" style="color: {{ bar_color }};">
-            <div class="palier-step__circle {% if progress_pct >= 100 %}palier-step__circle--active{% endif %}">
-              {%- if progress_pct >= 100 -%}
-                <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                  <polyline points="20 6 9 17 4 12"></polyline>
-                </svg>
-              {%- endif -%}
-            </div>
-
-            <div class="palier-step__label">
-              {%- if current_icon != blank -%}
-                <img
-                  src="{{ current_icon | image_url: width: 20 }}"
-                  alt="{{ current_text | escape }}"
-                  class="palier-step__icon"
-                  loading="lazy" />
-              {%- endif -%}
-
-              <span class="palier-step__text">
-                {{ current_text }}
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-  {%- endif -%}
-
-{%- endunless -%}
+<div style="padding: 16px 20px;">
+  <div style="height: 6px; background: #e5e5e5; border-radius: 999px; overflow: hidden;">
+    <div style="height: 100%; width: {{ progress }}%; background: #000; border-radius: 999px; transition: width 400ms ease;"></div>
+  </div>
+</div>

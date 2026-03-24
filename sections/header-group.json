@@ -51,19 +51,7 @@
         "checkout_btn_text": "#FFFFFF",
         "checkout_btn_radius": 12,
         "cart_image_size": 60,
-        "cart_item_gap": 24,
-        "enable_palier": true,
-        "palier_bar_color": "#000000",
-        "palier_1_amount": 70,
-        "palier_1_text": "Livraison offerte",
-        "palier_1_message": "Plus que # pour la livraison offerte",
-        "palier_2_amount": 0,
-        "palier_2_text": "",
-        "palier_2_message": "",
-        "palier_3_amount": 0,
-        "palier_3_text": "",
-        "palier_3_message": "",
-        "palier_all_reached_message": "Livraison offerte !"
+        "cart_item_gap": 24
       }
     },
     "header": {
