@@ -474,3 +474,14 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 #CartDrawer .cart__checkout-button:hover:not(:disabled) {
   opacity: 0.88;
 }
+
+#CartDrawer .quantity {
+  height: 15px; /* réduire la hauteur */
+}
+#CartDrawer .quantity__button {
+  min-width: Xrem;
+  min-height: Xrem;
+}
+#CartDrawer .quantity__input {
+  width: 15px;
+}
