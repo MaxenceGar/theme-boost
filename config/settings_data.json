@@ -29,7 +29,7 @@
     "typo_h6_size": "18",
     "typo_h6_mobile_size": "16",
     "typo_heading_letter_spacing": "heading-normal",
-    "typo_body_letter_spacing": "body-normal",
+    "typo_body_letter_spacing": "body-tight",
     "page_width": 1600,
     "spacing_sections": 0,
     "spacing_grid_horizontal": 8,
