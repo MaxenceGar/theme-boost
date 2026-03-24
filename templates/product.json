@@ -12,6 +12,24 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "text_line_wNThrG": {
+          "type": "text_line",
+          "settings": {
+            "text": "Livraison offerte dès 70€",
+            "icon": "shopify://shop_images/1.Face_2aaed132-26f0-40e9-a8c9-9ede7ca34ccc_1.webp",
+            "icon_position": "after",
+            "icon_size": 20,
+            "icon_gap": 8,
+            "text_color": "#c6fa53",
+            "bg_color": "",
+            "alignment": "center",
+            "font_weight": "700",
+            "padding_y": 32,
+            "padding_x": 32,
+            "margin_top": 60,
+            "margin_bottom": 60
+          }
+        },
         "trustpilot_rating_fdVqhw": {
           "type": "trustpilot_rating",
           "settings": {
@@ -194,6 +212,7 @@
         }
       },
       "block_order": [
+        "text_line_wNThrG",
         "trustpilot_rating_fdVqhw",
         "title_wjgMq3",
         "divider_44Jj9g",
