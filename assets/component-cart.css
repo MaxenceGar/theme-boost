@@ -225,4 +225,8 @@ cart-items {
   background-color: black;
   display: inline-block;
   border-radius: 999px;
+  color: white;
+  width: 10px;
+  height: 10px;
+  font-size: 1rem;
 }
