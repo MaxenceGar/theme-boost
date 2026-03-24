@@ -41,17 +41,17 @@
     "cart-drawer": {
       "type": "cart-drawer",
       "settings": {
-        "preview_mode": false,
-        "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design",
-        "cart_bg": "#FFFFFF",
+        "cart_bg": "#ffffff",
         "cart_padding": 32,
         "cart_radius": 12,
-        "drawer_width": 35,
+        "drawer_width": 50,
         "checkout_btn_bg": "#121212",
-        "checkout_btn_text": "#FFFFFF",
+        "checkout_btn_text": "#ffffff",
         "checkout_btn_radius": 12,
         "cart_image_size": 60,
-        "cart_item_gap": 24
+        "cart_item_gap": 24,
+        "preview_mode": false,
+        "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
       }
     },
     "header": {
