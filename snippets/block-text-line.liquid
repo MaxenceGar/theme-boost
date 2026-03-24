@@ -1,0 +1,50 @@
+{{ 'block-text-line.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  assign icon = block.settings.icon
+  assign has_icon = false
+  if icon != blank
+    assign has_icon = true
+  endif
+-%}
+
+<div
+  class="text-line"
+  style="
+    text-align: {{ block.settings.alignment }};
+    background-color: {{ block.settings.bg_color }};
+    padding: {{ block.settings.padding_y }}px {{ block.settings.padding_x }}px;
+    margin-top: {{ block.settings.margin_top }}px;
+    margin-bottom: {{ block.settings.margin_bottom }}px;
+  "
+  {{ block.shopify_attributes }}>
+  <span class="text-line__inner" style="
+      color: {{ block.settings.text_color }};
+      font-weight: {{ block.settings.font_weight }};
+      gap: {{ block.settings.icon_gap }}px;
+    ">
+
+    {%- if has_icon and block.settings.icon_position == 'before' -%}
+      <img
+        class="text-line__icon"
+        src="{{ icon | image_url: width: 96 }}"
+        alt=""
+        width="{{ block.settings.icon_size }}"
+        height="{{ block.settings.icon_size }}"
+        loading="lazy">
+    {%- endif -%}
+
+    <span class="text-line__text">{{ block.settings.text | escape }}</span>
+
+    {%- if has_icon and block.settings.icon_position == 'after' -%}
+      <img
+        class="text-line__icon"
+        src="{{ icon | image_url: width: 96 }}"
+        alt=""
+        width="{{ block.settings.icon_size }}"
+        height="{{ block.settings.icon_size }}"
+        loading="lazy">
+    {%- endif -%}
+
+  </span>
+</div>
