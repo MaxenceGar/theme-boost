@@ -78,7 +78,7 @@
               {% when 'description' %}
                 <div
                   class="sgd__description"
-                  style="{% if block.settings.use_custom_color %}color: {{ block.settings.custom_color }} !important;{% endif %} font-size: {{ block.settings.font_size_p }}px;"
+                  style="{% if block.settings.use_custom_color %}--typo-p--color: {{ block.settings.custom_color }};{% endif %} font-size: {{ block.settings.font_size_p }}px;"
                   {{ block.shopify_attributes }}>
                   {{ block.settings.description }}
                 </div>
