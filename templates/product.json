@@ -51,6 +51,7 @@
         },
         "divider_44Jj9g": {
           "type": "divider",
+          "disabled": true,
           "settings": {
             "color": "#17433c",
             "style": "solid",
@@ -82,6 +83,7 @@
         },
         "divider_TwM4pQ": {
           "type": "divider",
+          "disabled": true,
           "settings": {
             "color": "#17433c",
             "style": "solid",
