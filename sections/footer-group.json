@@ -59,7 +59,7 @@
       ],
       "name": "Reassurance Footer",
       "settings": {
-        "bg_color": "#c6fa53",
+        "bg_color": "#fbf8f5",
         "padding_mobile": "py-[38px]! md:py-[32px]!"
       }
     },
@@ -95,13 +95,13 @@
         "footer-0"
       ],
       "settings": {
-        "bg_color": "#17433c",
+        "bg_color": "#000000",
         "copyright": "© 2026 MAXENCE-GARANDEL",
         "navigation": "customer-account-main-menu",
         "color_scheme": "scheme-3",
         "newsletter_enable": true,
-        "bg_footer": "#c6fa53",
-        "color_text_footer": "#17433c",
+        "bg_footer": "#000000",
+        "color_text_footer": "#ffffff",
         "logo_enable": false,
         "newsletter_heading": "- 5% de réduction en vous abonnant à notre newsletter !",
         "newsletter_subheading": "Remplissez le formulaire pour vous inscrire.",
