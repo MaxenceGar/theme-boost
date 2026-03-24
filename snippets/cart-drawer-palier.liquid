@@ -11,9 +11,10 @@
 -%}
 
 <div style="padding: 16px 20px;">
-  <p>Plus que {{ remaining | money }} pour la livraison offerte</p>
+  <p>Progress: {{ progress }}%</p>
+  <p>Cart: {{ cart_total }}</p>
   <div class="progress-bar">
-    <div class="bar-progress"></div>
+    <div class="bar-progress">-</div>
   </div>
 </div>
 
