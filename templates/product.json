@@ -22,12 +22,12 @@
             "icon_gap": 8,
             "text_color": "#c6fa53",
             "bg_color": "",
-            "alignment": "center",
+            "alignment": "left",
             "font_weight": "700",
-            "padding_y": 32,
-            "padding_x": 32,
-            "margin_top": 60,
-            "margin_bottom": 60
+            "padding_y": 0,
+            "padding_x": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
           }
         },
         "trustpilot_rating_fdVqhw": {
