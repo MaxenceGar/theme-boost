@@ -17,13 +17,13 @@
         "announcement_Eg69L6": {
           "type": "announcement",
           "settings": {
-            "text": "<p><strong>Livraison gratuite à partir de 70€</strong></p>"
+            "text": "<p>Livraison gratuite à partir de 70€<\/p>"
           }
         },
         "announcement_E3Eqxe": {
           "type": "announcement",
           "settings": {
-            "text": "<p><strong>Paiement sécurisé</strong></p>"
+            "text": "<p>Paiement sécurisé<\/p>"
           }
         }
       },
@@ -33,8 +33,7 @@
       ],
       "name": "Barre d'annonce",
       "settings": {
-        "bg_color": "#c6fa53",
-        "text_color": "#17433c",
+        "bg_color": "#000000",
         "margin_top": 0,
         "margin_bottom": 0
       }
@@ -42,17 +41,17 @@
     "cart-drawer": {
       "type": "cart-drawer",
       "settings": {
-        "cart_bg": "#ffffff",
+        "preview_mode": false,
+        "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design",
+        "cart_bg": "#FFFFFF",
         "cart_padding": 32,
         "cart_radius": 12,
-        "drawer_width": 50,
+        "drawer_width": 35,
         "checkout_btn_bg": "#121212",
-        "checkout_btn_text": "#ffffff",
+        "checkout_btn_text": "#FFFFFF",
         "checkout_btn_radius": 12,
-        "cart_image_size": 90,
-        "cart_item_gap": 24,
-        "preview_mode": false,
-        "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
+        "cart_image_size": 60,
+        "cart_item_gap": 24
       }
     },
     "header": {
@@ -87,8 +86,8 @@
         "megamenu": true,
         "sticky_header_type": "always",
         "show_line_separator": true,
-        "color_scheme": "scheme-5",
-        "menu_color_scheme": "scheme-5",
+        "color_scheme": "scheme-1",
+        "menu_color_scheme": "",
         "padding_top": 20,
         "padding_bottom": 20
       }
