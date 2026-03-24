@@ -127,6 +127,9 @@
                 {% when 'custom_text' %}
                     {% render 'maxence-garandel', block: block %}
 
+              {% when 'text_line' %}
+                {% render 'block-text-line', block: block %}
+
               {%- # Collabs Tabs -%}
               {% when 'collab_tabs' %}
                 <div {{ block.shopify_attributes }} style="margin-top: {{ block.settings.margin_top }}px;
