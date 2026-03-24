@@ -62,6 +62,10 @@
             "margin_bottom": 10
           }
         },
+        "custom_text_V3iCzj": {
+          "type": "custom_text",
+          "settings": {}
+        },
         "price_xGmqGm": {
           "type": "price",
           "disabled": true,
@@ -193,6 +197,7 @@
         "trustpilot_rating_fdVqhw",
         "title_wjgMq3",
         "divider_44Jj9g",
+        "custom_text_V3iCzj",
         "price_xGmqGm",
         "badge_max_bRGcBD",
         "text_DzNNBt",
