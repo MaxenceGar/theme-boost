@@ -488,3 +488,11 @@ cart-drawer-items::-webkit-scrollbar-track-piece {
 #CartDrawer .quantity__input {
   padding: 0;
 }
+
+#CartDrawer .cart-item__totals .price {
+  font-size: var(--typo-p--size);
+  font-weight: var(--font-body-weight);
+  font-family: var(--font-body-family);
+  font-style: var(--font-body-style);
+  line-height: var(--typo-p--line-height);
+}
