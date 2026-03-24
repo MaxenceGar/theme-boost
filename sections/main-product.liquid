@@ -98,6 +98,9 @@
               {%- when '@app' -%}
                 {% render block %}
 
+              {% when 'trustpilot_rating' %}
+                {% render 'trustpilot-rating-block', block: block %}
+
                 {%- # Estimation Livraison -%}
                {%- when 'delivery_estimation' -%}
                   <div
