@@ -190,7 +190,7 @@
           "type": "description",
           "settings": {
             "description": "<p><strong>Chaque bijou est une histoire, chaque gravure une émotion.</strong></p><p>Gravez vos mots d'amour sur une médaille, une bague ou des boucles d'oreilles et transformez chaque instant en un précieux souvenir chargé d'émotion.</p><p>Depuis 2007, Nouvel Amour capture l'essence de vos histoires avec des bijoux personnalisés.</p><p>Que ce soit pour célébrer un moment spécial ou simplement pour exprimer vos sentiments, nos bijoux personnalisés sont conçus pour capturer l'essence de vos histoires.</p>",
-            "color": "#020202",
+            "color": "#c6fa53",
             "font_size_p": "14"
           }
         }
@@ -206,8 +206,8 @@
         "image": "shopify://shop_images/creation-unique-bijoux-personnalises-nouvel-amour-paris-personnalisation.webp",
         "image_object_fit": "object-cover",
         "image_position": "left",
-        "background_color": "#f5f2ec",
-        "background_color_image": "#f5f2ec",
+        "background_color": "#17433c",
+        "background_color_image": "#17433c",
         "margin_top": 50,
         "margin_bottom": 50
       }
