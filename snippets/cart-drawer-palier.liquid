@@ -1,7 +1,9 @@
 {%- liquid
-  assign goal = 200.0
-  assign cart_total = cart.total_price | divided_by: 100.0
-  assign progress = cart_total | divided_by: goal | times: 100.0 | round
+  assign goal = 20000
+  assign cart_total = cart.total_price
+
+  assign progress = cart_total | times: 100 | divided_by: goal
+
   if progress > 100
     assign progress = 100
   endif
