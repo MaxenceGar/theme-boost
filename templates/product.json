@@ -12,17 +12,34 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "rating_max_cbxGJ4": {
-          "type": "rating_max",
+        "trustpilot_rating_fdVqhw": {
+          "type": "trustpilot_rating",
           "settings": {
-            "nombre_etoiles": 5,
-            "note": "4.7",
-            "number": "762"
+            "rating_text": "Excellent",
+            "rating_score": "4.7 sur 5",
+            "text_color": "#000000",
+            "star_color": "#00b67a",
+            "show_single_star_after_text": true,
+            "font_size_desktop": 14,
+            "font_size_tablet": 14,
+            "font_size_mobile": 14,
+            "star_size_desktop": 18,
+            "star_size_tablet": 18,
+            "star_size_mobile": 18,
+            "margin_top": 10,
+            "margin_bottom": 10,
+            "link": "reviews",
+            "enable_background": false,
+            "background_color": "#c6fa53",
+            "enable_background_gradient": false,
+            "background_gradient_start": "#c6fa53",
+            "background_gradient_end": "#17433c",
+            "background_gradient_direction": "to top",
+            "border_color": "#334fb4",
+            "border_width": 5,
+            "border_style": "none",
+            "border_radius": 20
           }
-        },
-        "rating_KLybDT": {
-          "type": "rating",
-          "settings": {}
         },
         "title_wjgMq3": {
           "type": "title",
@@ -31,6 +48,56 @@
             "margin_top": 5,
             "margin_bottom": 5
           }
+        },
+        "divider_44Jj9g": {
+          "type": "divider",
+          "disabled": true,
+          "settings": {
+            "color": "#17433c",
+            "style": "solid",
+            "thickness": 1,
+            "width": "100%",
+            "max_width": "100%",
+            "alignment": "right",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "text_line_wNThrG": {
+          "type": "text_line",
+          "settings": {
+            "text": "Livraison offerte dès 70€",
+            "icon": "shopify://shop_images/svgviewer-output_34.svg",
+            "icon_position": "before",
+            "icon_size": 20,
+            "icon_gap": 4,
+            "text_color": "#000000",
+            "bg_color": "rgba(0,0,0,0)",
+            "alignment": "left",
+            "font_weight": "700",
+            "padding_y": 0,
+            "padding_x": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "divider_TwM4pQ": {
+          "type": "divider",
+          "disabled": true,
+          "settings": {
+            "color": "#17433c",
+            "style": "solid",
+            "thickness": 1,
+            "width": "100%",
+            "max_width": "100%",
+            "alignment": "right",
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "custom_text_V3iCzj": {
+          "type": "custom_text",
+          "settings": {}
         },
         "price_xGmqGm": {
           "type": "price",
@@ -160,9 +227,12 @@
         }
       },
       "block_order": [
-        "rating_max_cbxGJ4",
-        "rating_KLybDT",
+        "trustpilot_rating_fdVqhw",
         "title_wjgMq3",
+        "divider_44Jj9g",
+        "text_line_wNThrG",
+        "divider_TwM4pQ",
+        "custom_text_V3iCzj",
         "price_xGmqGm",
         "badge_max_bRGcBD",
         "text_DzNNBt",
@@ -241,7 +311,8 @@
           "type": "description",
           "settings": {
             "description": "<p><strong>Chaque bijou est une histoire, chaque gravure une émotion.</strong></p><p>Gravez vos mots d'amour sur une médaille, une bague ou des boucles d'oreilles et transformez chaque instant en un précieux souvenir chargé d'émotion.</p><p>Depuis 2007, Nouvel Amour capture l'essence de vos histoires avec des bijoux personnalisés.</p><p>Que ce soit pour célébrer un moment spécial ou simplement pour exprimer vos sentiments, nos bijoux personnalisés sont conçus pour capturer l'essence de vos histoires.</p>",
-            "color": "#020202",
+            "use_custom_color": false,
+            "custom_color": "#444441",
             "font_size_p": "14"
           }
         }
