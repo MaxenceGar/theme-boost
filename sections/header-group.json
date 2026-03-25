@@ -17,13 +17,13 @@
         "announcement_Eg69L6": {
           "type": "announcement",
           "settings": {
-            "text": "<p>Livraison gratuite à partir de 70€</p>"
+            "text": "<p><strong>Livraison gratuite à partir de 70€</strong></p>"
           }
         },
         "announcement_E3Eqxe": {
           "type": "announcement",
           "settings": {
-            "text": "<p>Paiement sécurisé</p>"
+            "text": "<p><strong>Paiement sécurisé</strong></p>"
           }
         }
       },
