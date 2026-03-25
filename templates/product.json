@@ -49,6 +49,19 @@
             "margin_bottom": 20
           }
         },
+        "divider_tBHakx": {
+          "type": "divider",
+          "settings": {
+            "color": "#e0e0e0",
+            "style": "solid",
+            "thickness": 1,
+            "width": "100%",
+            "max_width": "100%",
+            "alignment": "center",
+            "margin_top": 5,
+            "margin_bottom": 5
+          }
+        },
         "text_line_4FQLaM": {
           "type": "text_line",
           "settings": {
@@ -65,6 +78,19 @@
             "padding_x": 0,
             "margin_top": 0,
             "margin_bottom": 0
+          }
+        },
+        "divider_BLVCd6": {
+          "type": "divider",
+          "settings": {
+            "color": "#e0e0e0",
+            "style": "solid",
+            "thickness": 1,
+            "width": "100%",
+            "max_width": "100%",
+            "alignment": "center",
+            "margin_top": 0,
+            "margin_bottom": 5
           }
         },
         "text_line_DtUtw7": {
@@ -85,6 +111,19 @@
             "margin_bottom": 0
           }
         },
+        "divider_KpGCGa": {
+          "type": "divider",
+          "settings": {
+            "color": "#e0e0e0",
+            "style": "solid",
+            "thickness": 1,
+            "width": "100%",
+            "max_width": "100%",
+            "alignment": "center",
+            "margin_top": 5,
+            "margin_bottom": 5
+          }
+        },
         "text_line_djnMyK": {
           "type": "text_line",
           "settings": {
@@ -103,6 +142,19 @@
             "margin_bottom": 0
           }
         },
+        "divider_PCbJMQ": {
+          "type": "divider",
+          "settings": {
+            "color": "#e0e0e0",
+            "style": "solid",
+            "thickness": 1,
+            "width": "100%",
+            "max_width": "100%",
+            "alignment": "center",
+            "margin_top": 5,
+            "margin_bottom": 5
+          }
+        },
         "text_line_nFjCtM": {
           "type": "text_line",
           "settings": {
@@ -119,6 +171,19 @@
             "padding_x": 0,
             "margin_top": 0,
             "margin_bottom": 0
+          }
+        },
+        "divider_p8VBDB": {
+          "type": "divider",
+          "settings": {
+            "color": "#e0e0e0",
+            "style": "solid",
+            "thickness": 1,
+            "width": "100%",
+            "max_width": "100%",
+            "alignment": "center",
+            "margin_top": 5,
+            "margin_bottom": 5
           }
         },
         "variant_picker_dRhy4i": {
@@ -177,10 +242,15 @@
       "block_order": [
         "trustpilot_rating_fdVqhw",
         "title_wjgMq3",
+        "divider_tBHakx",
         "text_line_4FQLaM",
+        "divider_BLVCd6",
         "text_line_DtUtw7",
+        "divider_KpGCGa",
         "text_line_djnMyK",
+        "divider_PCbJMQ",
         "text_line_nFjCtM",
+        "divider_p8VBDB",
         "variant_picker_dRhy4i",
         "buy_buttons_max_WTNj9H",
         "delivery_estimation_bUmQim",
