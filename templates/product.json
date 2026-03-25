@@ -12,6 +12,74 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "text_line_4FQLaM": {
+          "type": "text_line",
+          "settings": {
+            "text": "Type de bijou · Bague",
+            "icon_position": "before",
+            "icon_size": 20,
+            "icon_gap": 8,
+            "text_color": "#121212",
+            "bg_color": "",
+            "alignment": "left",
+            "font_weight": "400",
+            "padding_y": 0,
+            "padding_x": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "text_line_DtUtw7": {
+          "type": "text_line",
+          "settings": {
+            "text": "Matière · Argent 925 rhodié",
+            "icon_position": "before",
+            "icon_size": 20,
+            "icon_gap": 8,
+            "text_color": "#121212",
+            "bg_color": "",
+            "alignment": "left",
+            "font_weight": "400",
+            "padding_y": 0,
+            "padding_x": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "text_line_djnMyK": {
+          "type": "text_line",
+          "settings": {
+            "text": "Pierre · Zircon blanc taille brillant",
+            "icon_position": "before",
+            "icon_size": 20,
+            "icon_gap": 8,
+            "text_color": "#121212",
+            "bg_color": "",
+            "alignment": "left",
+            "font_weight": "400",
+            "padding_y": 0,
+            "padding_x": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "text_line_nFjCtM": {
+          "type": "text_line",
+          "settings": {
+            "text": "Finition · Dorure à l'or jaune 18 carats",
+            "icon_position": "before",
+            "icon_size": 20,
+            "icon_gap": 8,
+            "text_color": "#121212",
+            "bg_color": "",
+            "alignment": "left",
+            "font_weight": "400",
+            "padding_y": 0,
+            "padding_x": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
         "trustpilot_rating_fdVqhw": {
           "type": "trustpilot_rating",
           "settings": {
@@ -47,71 +115,6 @@
             "typo_h1_size": "32",
             "margin_top": 0,
             "margin_bottom": 0
-          }
-        },
-        "divider_44Jj9g": {
-          "type": "divider",
-          "disabled": true,
-          "settings": {
-            "color": "#17433c",
-            "style": "solid",
-            "thickness": 1,
-            "width": "100%",
-            "max_width": "100%",
-            "alignment": "right",
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        },
-        "divider_TwM4pQ": {
-          "type": "divider",
-          "disabled": true,
-          "settings": {
-            "color": "#17433c",
-            "style": "solid",
-            "thickness": 1,
-            "width": "100%",
-            "max_width": "100%",
-            "alignment": "right",
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        },
-        "custom_text_V3iCzj": {
-          "type": "custom_text",
-          "settings": {}
-        },
-        "price_xGmqGm": {
-          "type": "price",
-          "disabled": true,
-          "settings": {
-            "text_typo_price_size": "14",
-            "font_weight": "font-extrabold",
-            "price_color": "#000000",
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        },
-        "badge_max_bRGcBD": {
-          "type": "badge_max",
-          "disabled": true,
-          "settings": {
-            "badge_1": "Badge 1",
-            "badge_2": "Badge 2",
-            "badge_3": "Badge 3",
-            "rounded": "rounded-none"
-          }
-        },
-        "text_DzNNBt": {
-          "type": "text",
-          "disabled": true,
-          "settings": {
-            "text": "{{ product.description }}",
-            "text_typo_p_size": "14",
-            "text_font_weight": "font-light",
-            "text_color": "#000000",
-            "margin_top": 15,
-            "margin_bottom": 15
           }
         },
         "details_jJBXri": {
@@ -172,56 +175,21 @@
             "margin_top": 15,
             "margin_bottom": 15
           }
-        },
-        "faq_section_ywQckf": {
-          "type": "faq_section",
-          "disabled": true,
-          "settings": {
-            "question": "Ingrédients",
-            "reponse": "Réponse",
-            "margin_top": 6,
-            "margin_bottom": 5
-          }
-        },
-        "faq_section_DQqUq3": {
-          "type": "faq_section",
-          "disabled": true,
-          "settings": {
-            "question": "Recommandé pour",
-            "reponse": "Réponse",
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        },
-        "faq_section_7tajTz": {
-          "type": "faq_section",
-          "disabled": true,
-          "settings": {
-            "question": "Conseils",
-            "reponse": "Réponse",
-            "margin_top": 5,
-            "margin_bottom": 0
-          }
         }
       },
       "block_order": [
+        "text_line_4FQLaM",
+        "text_line_DtUtw7",
+        "text_line_djnMyK",
+        "text_line_nFjCtM",
         "trustpilot_rating_fdVqhw",
         "title_wjgMq3",
-        "divider_44Jj9g",
-        "divider_TwM4pQ",
-        "custom_text_V3iCzj",
-        "price_xGmqGm",
-        "badge_max_bRGcBD",
-        "text_DzNNBt",
         "details_jJBXri",
         "variant_picker_dRhy4i",
         "buy_buttons_max_WTNj9H",
         "delivery_estimation_bUmQim",
         "upsell_product_page_XfnKqB",
-        "collab_tabs_74mwYD",
-        "faq_section_ywQckf",
-        "faq_section_DQqUq3",
-        "faq_section_7tajTz"
+        "collab_tabs_74mwYD"
       ],
       "settings": {
         "enable_sticky_info": true,
