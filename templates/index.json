@@ -172,7 +172,7 @@
       "type": "fixed-collection",
       "name": "Fixed Collection",
       "settings": {
-        "title": "<strong>Nos coups de coe</strong>ur",
+        "title": "<strong>Nos coups de coeur</strong>",
         "subtitle": "Des incontournables bientôt essentiels dans votre collection.",
         "button_label": "Découvrir",
         "button_style": "btn-primaire",
@@ -190,8 +190,8 @@
           "type": "description",
           "settings": {
             "description": "<p><strong>Chaque bijou est une histoire, chaque gravure une émotion.</strong></p><p>Gravez vos mots d'amour sur une médaille, une bague ou des boucles d'oreilles et transformez chaque instant en un précieux souvenir chargé d'émotion.</p><p>Depuis 2007, Nouvel Amour capture l'essence de vos histoires avec des bijoux personnalisés.</p><p>Que ce soit pour célébrer un moment spécial ou simplement pour exprimer vos sentiments, nos bijoux personnalisés sont conçus pour capturer l'essence de vos histoires.</p>",
-            "use_custom_color": false,
-            "custom_color": "#444441",
+            "use_custom_color": true,
+            "custom_color": "#c6fa53",
             "font_size_p": "14"
           }
         }
@@ -207,7 +207,7 @@
         "image": "shopify://shop_images/creation-unique-bijoux-personnalises-nouvel-amour-paris-personnalisation.webp",
         "image_object_fit": "object-cover",
         "image_position": "left",
-        "background_color": "#f5f2ec",
+        "background_color": "#17433c",
         "background_color_image": "#f5f2ec",
         "margin_top": 50,
         "margin_bottom": 50
@@ -379,31 +379,8 @@
       "settings": {
         "section_title": "Ils en parlent mieux que nous.",
         "section_subtitle": "4.44/5 sur 34165 avis",
-        "margin_top": 100,
-        "margin_bottom": 100
-      }
-    },
-    "black_friday_highlight_banner_DiAXEH": {
-      "type": "black-friday-highlight-banner",
-      "name": "BF Highlight Banner",
-      "settings": {
-        "banner_text": "BLACK FRIDAY SALE IS LIVE",
-        "additional_text": "<p><strong>BIGGEST SALE OF THE YEAR</strong></p>",
-        "highlight_richtext": "<p><strong>BIGGEST SALE OF THE YEAR</strong></p>",
-        "show_tape": true,
-        "tape_text": "SALE SALE SALE SALE",
-        "tape_background": "#c6fa53",
-        "tape_text_color": "#17433c",
-        "background_color": "#17433c",
-        "text_color": "#FFFFFF",
-        "highlighter_style": "background",
-        "highlighter_color_1": "#c6fa53",
-        "highlighter_color_2": "#c6fa53",
-        "end_year": 2026,
-        "end_month": 5,
-        "end_day": 29,
-        "end_hour": 23,
-        "end_minute": 59
+        "margin_top": 20,
+        "margin_bottom": 20
       }
     }
   },
@@ -416,7 +393,6 @@
     "section_gauche_droite_waaAai",
     "instagram_Aa8Tj6",
     "faq_product_page_9RC7rB",
-    "avis_client_NhydB8",
-    "black_friday_highlight_banner_DiAXEH"
+    "avis_client_NhydB8"
   ]
 }
