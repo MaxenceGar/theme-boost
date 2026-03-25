@@ -59,7 +59,7 @@
       ],
       "name": "Reassurance Footer",
       "settings": {
-        "bg_color": "#fbf8f5",
+        "bg_color": "#17433c",
         "padding_mobile": "py-[38px]! md:py-[32px]!"
       }
     },
