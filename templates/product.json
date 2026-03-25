@@ -131,7 +131,7 @@
         "buy_buttons_max_WTNj9H": {
           "type": "buy_buttons_max",
           "settings": {
-            "button_style": "btn-secondaire",
+            "button_style": "btn-primaire",
             "margin_top": 20,
             "margin_bottom": 10,
             "price_enable": true
