@@ -3,8 +3,10 @@
 {{ 'component-totals.css' | asset_url | stylesheet_tag }}
 {{ 'component-price.css' | asset_url | stylesheet_tag }}
 {{ 'component-discounts.css' | asset_url | stylesheet_tag }}
+{{ 'section-cart-drawer.css' | asset_url | stylesheet_tag }}
 <script src="{{ 'cart.js' | asset_url }}" defer="defer"></script>
 <script src="{{ 'cart-drawer.js' | asset_url }}" defer="defer"></script>
+<script src="{{ 'cart-drawer-blocks-preserver.js' | asset_url }}" defer="defer"></script>
 
 {%- liquid
   assign preview_mode = section.settings.preview_mode
@@ -40,7 +42,7 @@
   {% if preview_mode and preview_product != blank %}
   data-preview-mode{% endif %}>
   <div id="CartDrawer" class="cart-drawer">
-    <div id="CartDrawer-Overlay" class="cart-drawer__overlay bg-[#d9d9d999]!"></div>
+    <div id="CartDrawer-Overlay" class="cart-drawer__overlay"></div>
     <div
       class="drawer__inner gradient color-{{ settings.cart_color_scheme }}"
       role="dialog"
@@ -71,7 +73,7 @@
 
       {%- comment -%} Header {%- endcomment -%}
       <div class="drawer__header">
-        <h2 class="drawer__heading h4 items-center">{{ 'sections.cart.title' | t }}
+        <h2 class="drawer__heading h4">{{ 'sections.cart.title' | t }}
           <div class="compteur-produits">{{ cart.item_count }}</div>
         </h2>
         <button
@@ -83,7 +85,17 @@
         </button>
       </div>
 
-      {% render 'annonce-bar-cart-drawer' section: block %}
+      <div data-cart-blocks>
+        {% for block in section.blocks %}
+          {% case block.type %}
+            {% when 'annonce-bar-cart-drawer' %}
+              <div {{ block.shopify_attributes }}>
+                {% render 'annonce-bar-cart-drawer'
+                  , block: block %}
+              </div>
+          {% endcase %}
+        {% endfor %}
+      </div>
 
       {%- comment -%} Cart items — le palier est à l'intérieur pour être mis à jour par onCartUpdate() {%- endcomment -%}
       <cart-drawer-items
@@ -98,7 +110,7 @@
           id="CartDrawer-Form"
           class="cart__contents cart-drawer__form"
           method="post">
-          <div id="CartDrawer-CartItems" class="m-4 drawer__contents js-contents">
+          <div id="CartDrawer-CartItems" class="drawer__contents js-contents">
             {%- if cart_has_items -%}
               <div class="drawer__cart-items-wrapper">
                 <table class="cart-items" role="table">
@@ -188,9 +200,9 @@
                           class="cart-item__quantity"
                           role="cell"
                           headers="CartDrawer-ColumnQuantity">
-                          <div class="cart-item__quantity-wrapper quantity-popover-wrapper rounded-full">
+                          <div class="cart-item__quantity-wrapper quantity-popover-wrapper">
                             <div class="quantity-popover-container">
-                              <quantity-input class="quantity cart-quantity rounded-full!">
+                              <quantity-input class="quantity cart-quantity">
                                 <button
                                   class="quantity__button"
                                   name="minus"
@@ -294,9 +306,9 @@
                           class="cart-item__quantity"
                           role="cell"
                           headers="CartDrawer-ColumnQuantity">
-                          <div class="cart-item__quantity-wrapper quantity-popover-wrapper rounded-full">
+                          <div class="cart-item__quantity-wrapper quantity-popover-wrapper">
                             <div class="quantity-popover-container">
-                              <quantity-input class="quantity cart-quantity rounded-full!">
+                              <quantity-input class="quantity cart-quantity">
                                 <button
                                   class="quantity__button"
                                   name="minus"
@@ -370,26 +382,8 @@
       </cart-drawer-items>
 
       {%- comment -%} ZONE FOOTER : Blocks après les articles {%- endcomment -%}
-      <div class="drawer__footer m-4">
+      <div class="drawer__footer">
         <div class="cart-drawer__footer">
-          {%- for block in section.blocks -%}
-            {%- case block.type -%}
-              {%- when 'upsell-product-page' -%}
-                {%- render 'upsell-product-page'
-                  , block: block -%}
-
-              {%- when 'reassurance' -%}
-                {%- render 'footer-rassurance'
-                  , block: block -%}
-
-              {%- when 'divider' -%}
-                <div
-                  class="cart-drawer-divider"
-                  style="background-color: {{ block.settings.color }}; height: {{ block.settings.thickness }}px; margin: {{ block.settings.margin_y }}px 0;"
-                  {{ block.shopify_attributes }}></div>
-
-            {%- endcase -%}
-          {%- endfor -%}
           {%- if cart.cart_level_discount_applications.size > 0 -%}
             <ul
               class="discounts list-unstyled"
@@ -418,11 +412,11 @@
           </div>
         </div>
 
-        <div class="cart__ctas mt-8">
+        <div class="cart__ctas">
           <button
             type="submit"
             id="CartDrawer-Checkout"
-            class="cart__checkout-button button bg-black! text-white! border-none!"
+            class="cart__checkout-button button"
             name="checkout"
             form="CartDrawer-Form"
             {% unless cart_has_items %}
@@ -438,10 +432,10 @@
 
 {%- if preview_mode and preview_product != blank -%}
   <script>
-    document.addEventListener('DOMContentLoaded', function() {
+          document.addEventListener('DOMContentLoaded', function() {
       const drawer = document.querySelector('cart-drawer[data-preview-mode]');
       if (drawer) setTimeout(function() { drawer.open(); }, 500);
-    });
+          });
   </script>
 {%- endif -%}
 
@@ -555,6 +549,137 @@
         "type": "product",
         "id": "preview_product",
         "label": "Produit à afficher"
+      }
+    ],
+    "blocks": [
+      {
+        "type": "annonce-bar-cart-drawer",
+        "name": "Barre d'annonce",
+        "settings": [
+          {
+            "type": "text",
+            "id": "text",
+            "label": "Texte",
+            "default": "Join 10,000+ happy customers!"
+          },
+          {
+            "type": "header",
+            "content": "Icône"
+          },
+          {
+            "type": "image_picker",
+            "id": "icon",
+            "label": "Icône (optionnelle)"
+          },
+          {
+            "type": "select",
+            "id": "icon_position",
+            "label": "Position de l'icône",
+            "options": [
+              {
+                "value": "before",
+                "label": "Avant le texte"
+              },
+              {
+                "value": "after",
+                "label": "Après le texte"
+              }
+            ],
+            "default": "before"
+          },
+          {
+            "type": "range",
+            "id": "icon_size",
+            "label": "Taille de l'icône",
+            "min": 12,
+            "max": 40,
+            "step": 2,
+            "default": 18,
+            "unit": "px"
+          },
+          {
+            "type": "header",
+            "content": "Couleurs"
+          },
+          {
+            "type": "color",
+            "id": "text_color",
+            "label": "Couleur du texte",
+            "default": "#FFFFFF"
+          },
+          {
+            "type": "select",
+            "id": "bg_type",
+            "label": "Type de fond",
+            "options": [
+              {
+                "value": "solid",
+                "label": "Couleur unie"
+              },
+              {
+                "value": "gradient",
+                "label": "Dégradé"
+              }
+            ],
+            "default": "gradient"
+          },
+          {
+            "type": "color",
+            "id": "bg_color",
+            "label": "Couleur de fond (ou début dégradé)",
+            "default": "#f42e75"
+          },
+          {
+            "type": "color",
+            "id": "bg_color_2",
+            "label": "Couleur fin de dégradé",
+            "default": "#5d5aaf"
+          },
+          {
+            "type": "select",
+            "id": "gradient_direction",
+            "label": "Direction du dégradé",
+            "options": [
+              {
+                "value": "90deg",
+                "label": "Gauche → Droite"
+              },
+              {
+                "value": "135deg",
+                "label": "Diagonal"
+              },
+              {
+                "value": "180deg",
+                "label": "Haut → Bas"
+              }
+            ],
+            "default": "90deg"
+          },
+          {
+            "type": "header",
+            "content": "Espacement"
+          },
+          {
+            "type": "range",
+            "id": "padding_y",
+            "label": "Padding vertical",
+            "min": 4,
+            "max": 24,
+            "step": 2,
+            "default": 8,
+            "unit": "px"
+          },
+          {
+            "type": "range",
+            "id": "padding_x",
+            "label": "Padding horizontal",
+            "min": 0,
+            "max": 32,
+            "step": 2,
+            "default": 10,
+            "unit": "px"
+          }
+        ]
       }
     ],
     "enabled_on": {

@@ -1,0 +1,8 @@
+.drawer__heading {
+  display: flex;
+  align-items: center;
+}
+
+.drawer__contents {
+  margin: 1rem;
+}

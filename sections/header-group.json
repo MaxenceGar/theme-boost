@@ -17,13 +17,13 @@
         "announcement_Eg69L6": {
           "type": "announcement",
           "settings": {
-            "text": "<p>Livraison gratuite à partir de 70€<\/p>"
+            "text": "<p>Livraison gratuite à partir de 70€</p>"
           }
         },
         "announcement_E3Eqxe": {
           "type": "announcement",
           "settings": {
-            "text": "<p>Paiement sécurisé<\/p>"
+            "text": "<p>Paiement sécurisé</p>"
           }
         }
       },
@@ -33,25 +33,47 @@
       ],
       "name": "Barre d'annonce",
       "settings": {
-        "bg_color": "#000000",
+        "bg_color": "#17433c",
+        "text_color": "#c6fa53",
         "margin_top": 0,
         "margin_bottom": 0
       }
     },
     "cart-drawer": {
       "type": "cart-drawer",
+      "blocks": {
+        "annonce_bar_default": {
+          "type": "annonce-bar-cart-drawer",
+          "settings": {
+            "text": "Join 10,000+ happy customers!",
+            "icon": "shopify://shop_images/svgviewer-output_34.svg",
+            "icon_position": "before",
+            "icon_size": 18,
+            "text_color": "#ffffff",
+            "bg_type": "gradient",
+            "bg_color": "#17433c",
+            "bg_color_2": "#c6fa53",
+            "gradient_direction": "90deg",
+            "padding_y": 8,
+            "padding_x": 10
+          }
+        }
+      },
+      "block_order": [
+        "annonce_bar_default"
+      ],
       "settings": {
-        "preview_mode": false,
-        "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design",
-        "cart_bg": "#FFFFFF",
+        "cart_bg": "#ffffff",
         "cart_padding": 32,
         "cart_radius": 12,
-        "drawer_width": 35,
+        "drawer_width": 50,
         "checkout_btn_bg": "#121212",
-        "checkout_btn_text": "#FFFFFF",
+        "checkout_btn_text": "#ffffff",
         "checkout_btn_radius": 12,
         "cart_image_size": 60,
-        "cart_item_gap": 24
+        "cart_item_gap": 24,
+        "preview_mode": false,
+        "preview_product": "bague-weekly-bijou-personnalise-unique-vintage-design"
       }
     },
     "header": {

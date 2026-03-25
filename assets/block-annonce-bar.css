@@ -1,0 +1,21 @@
+.annonce-bar {
+  text-align: center;
+}
+
+.annonce-bar__content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.annonce-bar__icon {
+  display: block;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.annonce-bar__text {
+  font-size: 13px;
+  line-height: 1.4;
+}

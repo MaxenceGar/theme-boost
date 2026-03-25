@@ -73,18 +73,18 @@
   {%- endif -%}
 
   {% assign variant_images = product.images | where: 'attached_to_variant?', true | map: 'src' %}
-  <div class="page-width justify-center mx-auto! items-center">
+  <div class="page-width">
     <div>
       {% render 'breadcrumb' %}
     </div>
-    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} flex flex-col md:flex-row gap-8 md:gap-8{% unless product.media.size > 0 %} product--no-media{% endunless %}">
+    <div class="product product--{{ section.settings.media_size }} product--{{ section.settings.media_position }} product--{{ section.settings.gallery_layout }} product--mobile-{{ section.settings.mobile_thumbnails }} product__layout{% unless product.media.size > 0 %} product--no-media{% endunless %}">
       {%- comment -%} ========== PHOTOS PRODUIT (colonne gauche) ========== {%- endcomment -%}
-      <div class="w-full md:flex-1 min-w-0">
+      <div class="product__media-column">
         {% render 'product-media-gallery', variant_images: variant_images %}
       </div>
 
       {%- comment -%} ========== INFOS PRODUIT (colonne droite) : titre, prix, variantes, CTA... ========== {%- endcomment -%}
-      <div class="bg-[#FBF8F5] p-5 md:p-10 rounded-2xl flex-1 min-w-0 {% if settings.page_width > 1400 and section.settings.media_size == "small" %}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <div class="product__info-column{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
         <section
           id="ProductInfo-{{ section.id }}"
           class="{% if section.settings.enable_sticky_info %} product__column-sticky{% endif %}"
@@ -281,8 +281,8 @@
 
                 {%- # Description longue du produit (layout étendu) -%}
                 {%- when 'description_max' -%}
-                <div class="lg:order-1 text-black my-14!" {{ block.shopify_attributes }}>
-                  <div class="leading-none text-black/80">
+                <div class="product__description-max" {{ block.shopify_attributes }}>
+                  <div class="product__description-max__text">
                     <p>{{ product.description }}</p>
                   </div>
                 </div>
@@ -313,16 +313,16 @@
               {%- # Accordéon FAQ avec question/réponse -%}
               {%- when 'faq_section' -%}
                 {{ block.settings.custom_liquid }}
-                <div class="w-full" 
+                <div class="product__faq-wrapper"
                       style="margin-top: {{ block.settings.margin_top }}px;
                             margin-bottom: {{ block.settings.margin_bottom }}px;" {{ block.shopify_attributes }}>
-                        <details class="group border border-gray-200 p-4" style="border-radius: var(--rounded--size);">
-                          <summary class="flex cursor-pointer items-center justify-between font-medium">
+                        <details class="product__faq-details" style="border-radius: var(--rounded--size);">
+                          <summary class="product__faq-summary">
                             <span>{{ block.settings.question }}</span>
-                            <span class="transition-transform group-open:rotate-45">+</span>
+                            <span class="product__faq-icon">+</span>
                           </summary>
 
-                          <p class="mt-3 text-gray-600">
+                          <p class="product__faq-answer">
                             {{ block.settings.reponse }}
                           </p>
                         </details>
@@ -620,20 +620,20 @@
 
                 {%- # 3 badges personnalisés (texte + style) -%}
                 {%- when 'badge_max' -%}
-                  <ul class="mt-12 flex flex-wrap gap-6 lg:mt-12 text-sm! text-black" {{ block.shopify_attributes }}>
+                  <ul class="product__badges" {{ block.shopify_attributes }}>
                   <li>
-                    <div class="flex w-fit items-center justify-center {{ block.settings.rounded }} border text-white bg-black py-3 px-5 text-base/none font-bold uppercase leading-none ">
-                      <span class="-mb-1 block">{{ block.settings.badge_1 }}</span>
+                    <div class="product__badge" style="border-radius: {{ block.settings.rounded }};">
+                      <span class="product__badge-text">{{ block.settings.badge_1 }}</span>
                     </div>
                   </li>
                   <li>
-                    <div class="flex w-fit items-center justify-center {{ block.settings.rounded }} border text-white bg-black py-3 px-5 text-base/none  font-bold uppercase leading-none ">
-                      <span class="-mb-1 block">{{ block.settings.badge_2 }}</span>
+                    <div class="product__badge" style="border-radius: {{ block.settings.rounded }};">
+                      <span class="product__badge-text">{{ block.settings.badge_2 }}</span>
                     </div>
                   </li>
                   <li>
-                    <div class="flex w-fit items-center justify-center {{ block.settings.rounded }} border text-white bg-black py-3 px-5 text-base/none  font-bold uppercase leading-none ">
-                      <span class="-mb-1 block">{{ block.settings.badge_3 }}</span>
+                    <div class="product__badge" style="border-radius: {{ block.settings.rounded }};">
+                      <span class="product__badge-text">{{ block.settings.badge_3 }}</span>
                     </div>
                   </li>
                 </ul>
@@ -2209,18 +2209,19 @@
           "type": "select",
           "id": "rounded",
           "label": "Badge Radius",
+          "default": "0",
           "options": [
             {
-              "label": "rounded-none",
-              "value": "rounded-none"
+              "label": "Carré",
+              "value": "0"
             },
             {
-              "value": "rounded-lg",
-              "label": "rounded-lg"
+              "label": "Arrondi",
+              "value": "8px"
             },
             {
-              "value": "rounded-full",
-              "label": "rounded-full"
+              "label": "Pilule",
+              "value": "9999px"
             }
           ]
         }
@@ -2943,7 +2944,7 @@
     },
     {
       "type": "time_livraison",
-      "name": "Time Livraison Block",
+      "name": "Time Livraison Block"
     },
     {
       "type": "complementary",
