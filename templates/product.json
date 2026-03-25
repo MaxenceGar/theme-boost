@@ -12,74 +12,6 @@
     "main": {
       "type": "main-product",
       "blocks": {
-        "text_line_4FQLaM": {
-          "type": "text_line",
-          "settings": {
-            "text": "Type de bijou · Bague",
-            "icon_position": "before",
-            "icon_size": 20,
-            "icon_gap": 8,
-            "text_color": "#121212",
-            "bg_color": "",
-            "alignment": "left",
-            "font_weight": "400",
-            "padding_y": 0,
-            "padding_x": 0,
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        },
-        "text_line_DtUtw7": {
-          "type": "text_line",
-          "settings": {
-            "text": "Matière · Argent 925 rhodié",
-            "icon_position": "before",
-            "icon_size": 20,
-            "icon_gap": 8,
-            "text_color": "#121212",
-            "bg_color": "",
-            "alignment": "left",
-            "font_weight": "400",
-            "padding_y": 0,
-            "padding_x": 0,
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        },
-        "text_line_djnMyK": {
-          "type": "text_line",
-          "settings": {
-            "text": "Pierre · Zircon blanc taille brillant",
-            "icon_position": "before",
-            "icon_size": 20,
-            "icon_gap": 8,
-            "text_color": "#121212",
-            "bg_color": "",
-            "alignment": "left",
-            "font_weight": "400",
-            "padding_y": 0,
-            "padding_x": 0,
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        },
-        "text_line_nFjCtM": {
-          "type": "text_line",
-          "settings": {
-            "text": "Finition · Dorure à l'or jaune 18 carats",
-            "icon_position": "before",
-            "icon_size": 20,
-            "icon_gap": 8,
-            "text_color": "#121212",
-            "bg_color": "",
-            "alignment": "left",
-            "font_weight": "400",
-            "padding_y": 0,
-            "padding_x": 0,
-            "margin_top": 0,
-            "margin_bottom": 0
-          }
-        },
         "trustpilot_rating_fdVqhw": {
           "type": "trustpilot_rating",
           "settings": {
@@ -114,14 +46,79 @@
           "settings": {
             "typo_h1_size": "32",
             "margin_top": 0,
+            "margin_bottom": 20
+          }
+        },
+        "text_line_4FQLaM": {
+          "type": "text_line",
+          "settings": {
+            "text": "Type de bijou · Bague",
+            "icon": "shopify://shop_images/svgviewer-output_35.svg",
+            "icon_position": "before",
+            "icon_size": 12,
+            "icon_gap": 12,
+            "text_color": "#121212",
+            "bg_color": "",
+            "alignment": "left",
+            "font_weight": "500",
+            "padding_y": 0,
+            "padding_x": 0,
+            "margin_top": 0,
             "margin_bottom": 0
           }
         },
-        "details_jJBXri": {
-          "type": "details",
+        "text_line_DtUtw7": {
+          "type": "text_line",
           "settings": {
-            "margin_top": 20,
-            "margin_bottom": 20
+            "text": "Matière · Argent 925 rhodié",
+            "icon": "shopify://shop_images/svgviewer-output_35.svg",
+            "icon_position": "before",
+            "icon_size": 12,
+            "icon_gap": 12,
+            "text_color": "#121212",
+            "bg_color": "",
+            "alignment": "left",
+            "font_weight": "400",
+            "padding_y": 0,
+            "padding_x": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "text_line_djnMyK": {
+          "type": "text_line",
+          "settings": {
+            "text": "Pierre · Zircon blanc taille brillant",
+            "icon": "shopify://shop_images/svgviewer-output_35.svg",
+            "icon_position": "before",
+            "icon_size": 12,
+            "icon_gap": 12,
+            "text_color": "#121212",
+            "bg_color": "",
+            "alignment": "left",
+            "font_weight": "400",
+            "padding_y": 0,
+            "padding_x": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
+          }
+        },
+        "text_line_nFjCtM": {
+          "type": "text_line",
+          "settings": {
+            "text": "Finition · Dorure à l'or jaune 18 carats",
+            "icon": "shopify://shop_images/svgviewer-output_35.svg",
+            "icon_position": "before",
+            "icon_size": 12,
+            "icon_gap": 12,
+            "text_color": "#121212",
+            "bg_color": "",
+            "alignment": "left",
+            "font_weight": "400",
+            "padding_y": 0,
+            "padding_x": 0,
+            "margin_top": 0,
+            "margin_bottom": 0
           }
         },
         "variant_picker_dRhy4i": {
@@ -178,13 +175,12 @@
         }
       },
       "block_order": [
+        "trustpilot_rating_fdVqhw",
+        "title_wjgMq3",
         "text_line_4FQLaM",
         "text_line_DtUtw7",
         "text_line_djnMyK",
         "text_line_nFjCtM",
-        "trustpilot_rating_fdVqhw",
-        "title_wjgMq3",
-        "details_jJBXri",
         "variant_picker_dRhy4i",
         "buy_buttons_max_WTNj9H",
         "delivery_estimation_bUmQim",
